@@ -2,6 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#008000</color>
+    <color name="red">#FF0000</color>
+
     <color name="dark_blue">#220B48</color>
     <color name="tablayout_item">#BF220B48</color>
     <color name="light_blue">#03A9F4</color>
@@ -30,7 +33,9 @@
     <color name="gray">#777777</color>
     <color name="purple">#434a9f</color>
 
-    <color name="wins_loses_winrate">#FFFFFF</color>
+    <color name="mvp">#86826308</color>
+    <color name="wins_winrate">#FFC107</color>
+    <color name="lose_winrate">#726F6F</color>
     <color name="winProgress">#00bc8c</color>
     <color name="looseProgress">#FF1100</color>
 
