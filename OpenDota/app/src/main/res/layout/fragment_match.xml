@@ -82,7 +82,7 @@
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white"
+                android:background="@color/icon_color"
                 android:orientation="vertical"
                 android:layout_below="@+id/recentmatches">
             </LinearLayout>
@@ -95,7 +95,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/white">
+                    android:background="@color/icon_color">
                 </LinearLayout>
 
                 <LinearLayout
@@ -144,24 +144,22 @@
                         android:text="K/D/A"
                         android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
                         android:textColor="@color/white"/>
-
                 </LinearLayout>
-
-
-
-
             </LinearLayout>
         </LinearLayout>
+
+
         <LinearLayout
             android:id="@+id/rm_recycleview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#DD262738"
+                android:background="@color/mvp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -207,16 +205,43 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
-                <TextView
-                    android:id="@+id/rm_K_D_A"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="13/6/8"
+                    android:layout_gravity="center"
+                    android:paddingRight="17dp"
+                    android:paddingLeft="17dp"
                     android:gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center_vertical"
-                    />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="13/6/8"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:layout_weight="0.2"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MVP"
+                        android:gravity="center"
+                        android:background="@drawable/mvp_tag"
+                        android:layout_weight="200"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
 
@@ -274,6 +299,13 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
+
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
             <LinearLayout
@@ -331,11 +363,18 @@
                     android:layout_gravity="center_vertical"
                     />
 
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#DD262738"
+                android:background="@color/mvp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -377,15 +416,44 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="23/3/5"
+                    android:layout_gravity="center"
+                    android:paddingRight="17dp"
+                    android:paddingLeft="17dp"
                     android:gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center_vertical"
-                    />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rm_K_D_A"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="23/3/5"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:layout_weight="0.2"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MVP"
+                        android:gravity="center"
+                        android:background="@drawable/mvp_tag"
+                        android:layout_weight="200"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
             <LinearLayout
@@ -443,6 +511,13 @@
                     android:layout_gravity="center_vertical"
                     />
 
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -498,6 +573,13 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
+
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
             <LinearLayout
@@ -555,6 +637,13 @@
                     android:layout_gravity="center_vertical"
                     />
 
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -610,6 +699,13 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
+
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
             <LinearLayout
@@ -667,9 +763,13 @@
                     android:layout_gravity="center_vertical"
                     />
 
+                <ProgressBar
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
             </LinearLayout>
-
-
         </LinearLayout>
     </LinearLayout>
 
