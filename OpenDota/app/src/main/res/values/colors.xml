@@ -2,37 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_blue">#220B48</color>
-    <color name="tablayout_item">#BF220B48</color>
-    <color name="light_blue">#03A9F4</color>
-    <color name="pink">#FFE4ED</color>
-
-    <color name="pink_bar">#ccb6bd</color>
-    <color name="hyper_fuse">#171718</color>
-    <color name="hyper_fuse_bar">#3b3b3e</color>
-    <color name="sky_dolch">#abc6dc</color>
-    <color name="sky_dolch_bar">#5b6a76</color>
-    <color name="invisibility">#e1d8cd</color>
-    <color name="invisibility_bar">#a19a91</color>
-    <color name="night_dota">#4e5156</color>
-    <color name="night_dota_bar">#1f2023</color>
-
-
-
-
-
-    <color name="background">#131623</color>
-    <color name="item">#262738</color>
-    <color name="icon_color">#03A9F4</color>
-
-    <color name="win">#90ee90</color>
-    <color name="lose">#e84057</color>
-    <color name="gray">#777777</color>
-    <color name="purple">#434a9f</color>
-
-    <color name="wins_loses_winrate">#FFFFFF</color>
-    <color name="winProgress">#00bc8c</color>
-    <color name="looseProgress">#FF1100</color>
-
-
+    <color name="green">#128E82</color>
+    <color name="red">#F44326</color>
 </resources>
