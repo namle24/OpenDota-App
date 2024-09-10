@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "vn.edu.usth.opendota"
-        minSdk = 26
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -40,9 +40,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation ("com.google.android.material:material:1.9.0")
 }
