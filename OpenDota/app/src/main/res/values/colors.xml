@@ -21,7 +21,7 @@
 
 
 
-    <color name="background">#131623</color>
+    <color name="background">#FFFFFFFF</color>
     <color name="item">#262738</color>
     <color name="icon_color">#03A9F4</color>
 

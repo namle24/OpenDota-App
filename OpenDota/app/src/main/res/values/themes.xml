@@ -6,4 +6,18 @@
     </style>
 
     <style name="Theme.OpenDota" parent="Base.Theme.OpenDota" />
+
+    <style name="NavigationView_line" parent="ThemeOverlay.AppCompat.DayNight">
+        <item name="android:listDivider">@color/icon_color</item>
+
+    </style>
+
+    <style name="Theme.OpenDota.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.USTHOpenDotaClient.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.USTHOpenDotaClient.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
