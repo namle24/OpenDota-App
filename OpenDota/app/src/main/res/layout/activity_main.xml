@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/hyper_fuse_bar">
+        android:background="@color/licorice">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/option_icon"
-                android:contentDescription="Icon" />
+                android:contentDescription="Icon"
+                app:tint="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"

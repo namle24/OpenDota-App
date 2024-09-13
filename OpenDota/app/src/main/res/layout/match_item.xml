@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_item_file"
+    android:id="@+id/match_item"
     android:layout_width="match_parent"
+    android:orientation="horizontal"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -1070,4 +1071,4 @@
     </LinearLayout>
 
 
-</ScrollView>
+</LinearLayout>

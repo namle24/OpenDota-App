@@ -19,7 +19,7 @@ public class fragment_match extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.match_item, container, false);
+        View view = inflater.inflate(R.layout.fragment_match, container, false);
 
         card1 = view.findViewById(R.id.match_1);
         card2 = view.findViewById(R.id.match_2);
