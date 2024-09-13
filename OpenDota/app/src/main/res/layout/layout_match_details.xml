@@ -1,25 +1,18 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#131623"
-    tools:ignore="ScrollViewCount">
+    tools:ignore="ScrollViewCount"
+    android:id="@+id/matches_info">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <Toolbar android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#262738"
-            android:navigationIcon="@drawable/option_icon"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:title="Match Details"
-            android:titleTextColor="#FFFFFF" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -72,7 +65,7 @@
                         android:text="Match ID: \nRegion: \nSkill:"
                         android:textAlignment="viewStart"
                         android:textColor="#03A9F4"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textStyle="bold">
                     </TextView>
 
@@ -83,7 +76,7 @@
                         android:layout_marginEnd="5dp"
                         android:text="7932356419\nEurope \n"
                         android:textColor="@color/white"
-                        android:textSize="18dp">
+                        android:textSize="15dp">
                     </TextView>
                 </LinearLayout>
 
@@ -98,7 +91,7 @@
                         android:text="36"
                         android:layout_marginStart="15dp"
                         android:textSize="50sp"
-                        android:textColor="@color/green">
+                        android:textColor="@color/win">
                     </TextView>
 
                     <LinearLayout
@@ -141,7 +134,7 @@
                         android:text="24"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="15dp"
-                        android:textColor="@color/red"
+                        android:textColor="@color/lose"
                         android:textSize="50sp">
                     </TextView>
 
@@ -245,7 +238,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#313642">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="50dp"
@@ -349,7 +343,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#313642">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="50dp"
@@ -453,7 +448,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#313642">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="50dp"
@@ -561,6 +557,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hero"
+                        android:textStyle="bold"
                         android:textAlignment="center"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
@@ -651,7 +648,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#313642">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="50dp"
@@ -755,7 +753,8 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#313642">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="50dp"

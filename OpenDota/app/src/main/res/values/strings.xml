@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">OpenDota</string>
     <string name="link_steamid">https://steamcommunity.com/profiles/76561198416096252</string>
+    <string name="player_profile">Player Profile</string>
+    <string name="player_profile1">1-20 of 125 heroes</string>
+    <string name="player_profile2">HEROES</string>
+    <string name="player_profile4">Hero</string>
+    <string name="player_profile5">Played</string>
+    <string name="player_profile6">Win%</string>
+    <string name="player_profile8">Last Played</string>
+    <string name="player_profile7">Huskar</string>
+    <string name="player_profile10">115</string>
+    <string name="player_profile11">60.87%</string>
+    <string name="player_profile12">9 months</string>
 
 </resources>

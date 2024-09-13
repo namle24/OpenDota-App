@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 public class layout_header extends MainActivity{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View home = inflater.inflate(R.layout.layout_home, container, false);
-        return home;
+        return inflater.inflate(R.layout.layout_home, container, false);
     }
 }
