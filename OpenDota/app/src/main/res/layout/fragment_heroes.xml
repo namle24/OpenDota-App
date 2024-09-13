@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/CARD"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".PlayerHeroesFragment"
+        android:background="@color/CARD">
 
         <TextView
             android:layout_width="match_parent"
@@ -26,770 +29,85 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
+            android:background="@drawable/card_border"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/player_profile2"
+                android:text="HEROES"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"/>
-
             <LinearLayout
+                android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_below="@+id/recentmatches">
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/item">
+                tools:context=".searchplayerfragment.MatchesHistoryFragment"
+                android:background="@drawable/card_border">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/icon_color">
+                    android:background="@color/white">
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:text="Hero"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:text="Played"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:gravity="center"
+                        android:text="Win%"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
+                        android:text="Last Played"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
             </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:text="@string/player_profile4"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:text="@string/player_profile5"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:text="@string/player_profile6"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:text="@string/player_profile8"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-            </TableRow>
-
-
         </LinearLayout>
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hero_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:background="@color/item"
+            tools:listitem="@layout/hero_item"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/player_profile7"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/item">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icon_color">
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/huskar_full"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile10"
-                    android:textSize="18sp"
-                    android:layout_weight="0.2"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile11"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile12"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-            </TableRow>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/player_profile7"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/item">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icon_color">
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/huskar_full"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile10"
-                    android:textSize="18sp"
-                    android:layout_weight="0.2"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile11"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile12"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-            </TableRow>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/player_profile7"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/item">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icon_color">
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/huskar_full"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile10"
-                    android:textSize="18sp"
-                    android:layout_weight="0.2"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile11"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile12"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-            </TableRow>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/player_profile7"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/item">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icon_color">
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/huskar_full"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile10"
-                    android:textSize="18sp"
-                    android:layout_weight="0.2"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile11"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile12"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-            </TableRow>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/player_profile7"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/item">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icon_color">
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/huskar_full"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile10"
-                    android:textSize="18sp"
-                    android:layout_weight="0.2"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile11"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile12"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-            </TableRow>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/player_profile7"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/item">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icon_color">
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/huskar_full"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile10"
-                    android:textSize="18sp"
-                    android:layout_weight="0.2"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile11"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile12"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-            </TableRow>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/rounded_heroes"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/player_profile7"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/icon_color"
-                android:orientation="vertical">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/item">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/icon_color">
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/huskar_full"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile10"
-                    android:textSize="18sp"
-                    android:layout_weight="0.2"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile11"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/player_profile12"
-                    android:textSize="18sp"
-                    android:textAlignment="center"
-                    android:padding="5dp"
-                    android:layout_weight="0.2"
-                    android:textColor="#FFFFFF"
-                    tools:ignore="RtlCompat" />
-
-            </TableRow>
-
-
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>
