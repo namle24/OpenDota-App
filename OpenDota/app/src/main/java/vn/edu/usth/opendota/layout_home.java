@@ -1,4 +1,4 @@
-package vn.edu.usth.opendota.player_info;
+package vn.edu.usth.opendota;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import vn.edu.usth.opendota.MainActivity;
-import vn.edu.usth.opendota.R;
-
 public class layout_home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_match_details, container, false);
+        return inflater.inflate(R.layout.fragment_match_details, container, false);
     }
 }

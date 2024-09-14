@@ -12,5 +12,7 @@
     <string name="player_profile10">115</string>
     <string name="player_profile11">60.87%</string>
     <string name="player_profile12">9 months</string>
+    <string name="open">open\n</string>
+    <string name="close">close</string>
 
 </resources>

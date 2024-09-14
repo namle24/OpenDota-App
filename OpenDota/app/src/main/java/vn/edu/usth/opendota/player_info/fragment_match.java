@@ -47,34 +47,36 @@ public class fragment_match extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent i;
         if (v.getId() == R.id.match_1) {
-            Log.d(TAG, "======================( CardView 1 clicked )=========================");
-            Intent intent = new Intent(getActivity(), layout_match_details.class);
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_2) {
-            Log.d(TAG, "======================( CardView 2 clicked )=========================");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_3) {
-            Log.d(TAG, "======================( CardView 3 clicked )=========================");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_4) {
-            Log.d(TAG, "======================( CardView 4 clicked )=========================");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_5) {
-            Log.d(TAG, "======================( CardView 5 clicked )=========================");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_6) {
-            Log.d(TAG, "======================( CardView 6 clicked )=========================");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_7) {
-            Log.d(TAG, "======================( CardView 7 clicked )=========================");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_8) {
-            Log.d(TAG, "======================( CardView 8 clicked )=========================");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         } else if (v.getId() == R.id.match_9) {
-            Log.d(TAG, "======================( CardView 9 clicked )=========================");
-        } else {
-            Log.d(TAG, "Unknown CardView clicked");
+            i = new Intent(getActivity(), fragment_match_details.class);
+            startActivity(i);
         }
-
-        Toast.makeText(getActivity(), "CardView clicked", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getActivity(), layout_match_details.class);
-        startActivity(intent);
     }
-
 
     public static fragment_match newInstance() {
         return new fragment_match();

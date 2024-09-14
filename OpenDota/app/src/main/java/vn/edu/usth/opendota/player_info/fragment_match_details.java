@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import vn.edu.usth.opendota.R;
 
-public class layout_match_details extends AppCompatActivity {
+public class fragment_match_details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_match_details);
+        setContentView(R.layout.fragment_match_details);
     }
 }

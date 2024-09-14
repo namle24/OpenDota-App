@@ -5,10 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class fragment_match_detail extends MainActivity{
+import androidx.fragment.app.Fragment;
+
+public class layout_search extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View match = inflater.inflate(R.layout.layout_match_details, container, false);
-        return match;
+        return inflater.inflate(R.layout.layout_search, container, false);
     }
 }
