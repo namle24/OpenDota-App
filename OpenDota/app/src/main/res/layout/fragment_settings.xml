@@ -14,23 +14,13 @@
         android:layout_height="match_parent"
         android:background="@color/background">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/setting_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/item"
-            app:navigationIcon="@drawable/option_icon"
-            app:title="Themes"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <LinearLayout
             android:id="@+id/setting_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:orientation="vertical"
-            android:layout_below="@+id/setting_toolbar">
-
+            android:orientation="vertical">
             <RadioGroup
                 android:id="@+id/Themes"
                 android:layout_width="match_parent"
@@ -89,7 +79,7 @@
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/navigation_item"
+        app:menu="@menu/drawer_view"
         app:itemTextColor="@color/white"
         app:itemIconSize="45dp"
         android:background="@color/item"
