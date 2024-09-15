@@ -57,8 +57,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    //dependencies for circluar ImageView
     implementation (libs.circleimageview)
+
+        implementation("com.google.android.material:material:1.0.0")
 
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {

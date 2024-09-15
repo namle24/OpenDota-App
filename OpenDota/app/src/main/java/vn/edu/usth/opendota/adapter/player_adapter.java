@@ -1,8 +1,12 @@
-package vn.edu.usth.opendota.player_info;
+package vn.edu.usth.opendota.adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import vn.edu.usth.opendota.player_info.fragment_heroes;
+import vn.edu.usth.opendota.player_info.fragment_match;
+import vn.edu.usth.opendota.player_info.fragment_overview;
 
 public class player_adapter extends FragmentPagerAdapter {
     private final int PAGE_COUNT = 3;

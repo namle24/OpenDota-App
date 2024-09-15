@@ -1,0 +1,225 @@
+Index: app/src/main/res/layout/fragment_overview.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ScrollView\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:fillViewport=\"true\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"vertical\"\r\n        tools:context=\".searchplayerfragment.MatchesHistoryFragment\"\r\n        android:background=\"@color/CARD\"\r\n        android:padding=\"15dp\">\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/header\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            tools:context=\".searchplayerfragment.MatchesHistoryFragment\"\r\n            android:background=\"@drawable/neon_border\">\r\n            <de.hdodenhof.circleimageview.CircleImageView\r\n                android:id=\"@+id/A_image\"\r\n                android:layout_width=\"90dp\"\r\n                android:layout_height=\"90dp\"\r\n                android:src=\"@drawable/avatar_1\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                tools:ignore=\"MissingClass\" />\r\n            <TextView\r\n                android:id=\"@+id/A_name\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Minh\"\r\n                android:textStyle=\"bold\"\r\n                android:textColor=\"@color/white\"\r\n                android:textAlignment=\"center\"\r\n                android:textSize=\"25sp\"/>\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\"\r\n                android:weightSum=\"9\"\r\n                android:layout_marginTop=\"10dp\">\r\n                <TextView\r\n                    android:id=\"@+id/tv_win\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"3\"\r\n                    android:textColor=\"@color/wins_winrate\"\r\n                    android:text=\"WINS\\n211\"\r\n                    android:textSize=\"@dimen/wins_loses_winrate\"\r\n                    android:textAlignment=\"center\"/>\r\n                <TextView\r\n                    android:id=\"@+id/losses\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"3\"\r\n                    android:text=\"LOSSES\\n207\"\r\n                    android:textColor=\"@color/lose_winrate\"\r\n                    android:textSize=\"@dimen/wins_loses_winrate\"\r\n                    android:textAlignment=\"center\"/>\r\n                <TextView\r\n                    android:id=\"@+id/winrate\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"3\"\r\n                    android:text=\"WINRATE\\n50.48%\"\r\n                    android:textColor=\"@color/wins_winrate\"\r\n                    android:textSize=\"@dimen/wins_loses_winrate\"\r\n                    android:textAlignment=\"center\"/>\r\n            </LinearLayout>\r\n            <de.hdodenhof.circleimageview.CircleImageView\r\n                android:layout_width=\"70dp\"\r\n                android:layout_height=\"65dp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:src=\"@drawable/rank_icon_8\"\r\n                />\r\n            <ProgressBar\r\n                android:id=\"@+id/progressBar\"\r\n                android:paddingTop=\"18dp\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"25dp\"\r\n                android:max=\"100\"\r\n                android:progress=\"50\"\r\n                android:secondaryProgress=\"100\"\r\n                android:progressTint=\"@color/winProgress\"\r\n                android:secondaryProgressTint=\"@color/looseProgress\"\r\n                style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\r\n            <TextView\r\n                android:id=\"@+id/profile_steam\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"@string/link_steamid\"\r\n                android:textColorLink=\"@color/white\"\r\n                android:padding=\"15dp\"\r\n                android:textSize=\"15sp\"\r\n                android:textColor=\"@color/white\"\r\n                android:autoLink=\"web\"\r\n                android:linksClickable=\"true\"/>\r\n        </LinearLayout>\r\n        <RelativeLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:background=\"@drawable/my_border\"\r\n            android:layout_marginTop=\"10dp\">\r\n            <TextView\r\n                android:id=\"@+id/recentmatches\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"RECENT MATCHES\"\r\n                android:textSize=\"25dp\"\r\n                android:textAlignment=\"center\"\r\n                android:textColor=\"@color/white\"\r\n                android:textStyle=\"bold\"/>\r\n            <LinearLayout\r\n                android:id=\"@+id/line\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"1dp\"\r\n                android:background=\"@color/light_blue\"\r\n                android:orientation=\"vertical\"\r\n                android:layout_below=\"@+id/recentmatches\">\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\"\r\n                android:layout_below=\"@+id/line\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:layout_marginBottom=\"5dp\">\r\n                <TextView\r\n                    android:layout_width=\"fill_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Hero\"\r\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textStyle=\"bold\"/>\r\n                <TextView\r\n                    android:layout_width=\"fill_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Mode\"\r\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textStyle=\"bold\"/>\r\n                <TextView\r\n                    android:layout_width=\"fill_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Ended\"\r\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textStyle=\"bold\"/>\r\n                <TextView\r\n                    android:layout_width=\"fill_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Length\"\r\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textStyle=\"bold\"/>\r\n                <TextView\r\n                    android:layout_width=\"fill_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"K/D/A\"\r\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textStyle=\"bold\"/>\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </RelativeLayout>\r\n\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/hero_recyclerView\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:background=\"@color/item\"\r\n            tools:listitem=\"@layout/match_item\"/>\r\n\r\n    </LinearLayout>\r\n</ScrollView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_overview.xml b/app/src/main/res/layout/fragment_overview.xml
+--- a/app/src/main/res/layout/fragment_overview.xml	(revision ef762f73cb025de5f7db02e2df07111c77e53c89)
++++ b/app/src/main/res/layout/fragment_overview.xml	(date 1726240292258)
+@@ -1,10 +1,11 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<ScrollView
++<LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:fillViewport="true">
++    android:fillViewport="true"
++    android:orientation="vertical">
+ 
+     <LinearLayout
+         android:layout_width="match_parent"
+@@ -187,9 +188,9 @@
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/hero_recyclerView"
+             android:layout_width="match_parent"
+-            android:layout_height="match_parent"
++            android:layout_height="wrap_content"
+             android:background="@color/item"
+-            tools:listitem="@layout/match_item"/>
++            tools:listitem="@layout/match_item" />
+ 
+     </LinearLayout>
+-</ScrollView>
+\ No newline at end of file
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_match.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:fillViewport=\"true\"\r\n    android:orientation=\"vertical\">\r\n\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\"\r\n        android:background=\"@color/CARD\"\r\n        android:paddingTop=\"12dp\"\r\n        android:paddingStart=\"12dp\"\r\n        android:paddingEnd=\"12dp\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:background=\"@color/background\"\r\n            android:orientation=\"vertical\"\r\n            android:id=\"@+id/relative_layout_search\">\r\n\r\n            <androidx.appcompat.widget.SearchView\r\n                android:id=\"@+id/searchView\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:background=\"@color/licorice\"\r\n                app:queryHint=\"Search Match\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"45dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:textSize=\"14sp\"\r\n                android:gravity=\"center\"\r\n                android:background=\"@color/white\"\r\n                android:text=\"1-20 of 418 matches\"\r\n                android:textColor=\"@color/black\">\r\n\r\n            </TextView>\r\n        </LinearLayout>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:background=\"@drawable/my_border\"\r\n            android:orientation=\"vertical\">\r\n\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"MATCHES\"\r\n                android:textAlignment=\"center\"\r\n                android:textSize=\"30sp\"\r\n                android:textColor=\"@color/white\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:layout_marginBottom=\"10dp\"/>\r\n            <LinearLayout\r\n                android:id=\"@+id/line\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"1dp\"\r\n                android:background=\"@color/white\"\r\n                android:orientation=\"vertical\"\r\n                android:layout_below=\"@+id/recentmatches\">\r\n            </LinearLayout>\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\"\r\n                tools:context=\".searchplayerfragment.MatchesHistoryFragment\"\r\n                android:background=\"@drawable/my_border\">\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"1dp\"\r\n                    android:background=\"@color/white\">\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"horizontal\"\r\n                    android:layout_marginTop=\"10dp\"\r\n                    android:layout_marginBottom=\"10dp\">\r\n                    <TextView\r\n                        android:layout_width=\"fill_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"0.2\"\r\n                        android:gravity=\"center\"\r\n                        android:text=\"Hero\"\r\n                        android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                        android:textColor=\"@color/white\"/>\r\n                    <TextView\r\n                        android:layout_width=\"fill_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"0.2\"\r\n                        android:gravity=\"center\"\r\n                        android:text=\"Mode\"\r\n                        android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                        android:textColor=\"@color/white\"/>\r\n                    <TextView\r\n                        android:layout_width=\"fill_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"0.2\"\r\n                        android:gravity=\"center\"\r\n                        android:text=\"Ended\"\r\n                        android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                        android:textColor=\"@color/white\"/>\r\n                    <TextView\r\n                        android:layout_width=\"fill_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"0.2\"\r\n                        android:gravity=\"center\"\r\n                        android:text=\"Length\"\r\n                        android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                        android:textColor=\"@color/white\"/>\r\n                    <TextView\r\n                        android:layout_width=\"fill_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"0.2\"\r\n                        android:gravity=\"center\"\r\n                        android:text=\"K/D/A\"\r\n                        android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                        android:textColor=\"@color/white\"/>\r\n                </LinearLayout>\r\n            </LinearLayout>\r\n        </LinearLayout>\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/hero_recyclerView\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:background=\"@color/item\"\r\n            tools:listitem=\"@layout/match_item\"/>\r\n\r\n    </LinearLayout>\r\n\r\n\r\n</ScrollView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_match.xml b/app/src/main/res/layout/fragment_match.xml
+--- a/app/src/main/res/layout/fragment_match.xml	(revision ef762f73cb025de5f7db02e2df07111c77e53c89)
++++ b/app/src/main/res/layout/fragment_match.xml	(date 1726239188233)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
++<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+@@ -133,11 +133,11 @@
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/hero_recyclerView"
+             android:layout_width="match_parent"
+-            android:layout_height="match_parent"
++            android:layout_height="wrap_content"
+             android:background="@color/item"
+             tools:listitem="@layout/match_item"/>
+ 
+     </LinearLayout>
+ 
+ 
+-</ScrollView>
+\ No newline at end of file
++</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
+Index: app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.player_info;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport androidx.cardview.widget.CardView;\r\nimport androidx.fragment.app.Fragment;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.Toast;\r\n\r\nimport vn.edu.usth.opendota.R;\r\n\r\npublic class fragment_match extends Fragment implements View.OnClickListener {\r\n    private static final String TAG = \"Cardview\";\r\n    private CardView card1, card2, card3, card4, card5, card6, card7, card8, card9;\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n        View view = inflater.inflate(R.layout.match_item, container, false);\r\n\r\n        card1 = view.findViewById(R.id.match_1);\r\n        card2 = view.findViewById(R.id.match_2);\r\n        card3 = view.findViewById(R.id.match_3);\r\n        card4 = view.findViewById(R.id.match_4);\r\n        card5 = view.findViewById(R.id.match_5);\r\n        card6 = view.findViewById(R.id.match_6);\r\n        card7 = view.findViewById(R.id.match_7);\r\n        card8 = view.findViewById(R.id.match_8);\r\n        card9 = view.findViewById(R.id.match_9);\r\n\r\n\r\n        card1.setOnClickListener(this);\r\n        card2.setOnClickListener(this);\r\n        card3.setOnClickListener(this);\r\n        card4.setOnClickListener(this);\r\n        card5.setOnClickListener(this);\r\n        card6.setOnClickListener(this);\r\n        card7.setOnClickListener(this);\r\n        card8.setOnClickListener(this);\r\n        card9.setOnClickListener(this);\r\n\r\n        return view;\r\n    }\r\n\r\n    @Override\r\n    public void onClick(View v) {\r\n        if (v.getId() == R.id.match_1) {\r\n            Log.d(TAG, \"======================( CardView 1 clicked )=========================\");\r\n            Intent intent = new Intent(getActivity(), layout_match_details.class);\r\n        } else if (v.getId() == R.id.match_2) {\r\n            Log.d(TAG, \"======================( CardView 2 clicked )=========================\");\r\n        } else if (v.getId() == R.id.match_3) {\r\n            Log.d(TAG, \"======================( CardView 3 clicked )=========================\");\r\n        } else if (v.getId() == R.id.match_4) {\r\n            Log.d(TAG, \"======================( CardView 4 clicked )=========================\");\r\n        } else if (v.getId() == R.id.match_5) {\r\n            Log.d(TAG, \"======================( CardView 5 clicked )=========================\");\r\n        } else if (v.getId() == R.id.match_6) {\r\n            Log.d(TAG, \"======================( CardView 6 clicked )=========================\");\r\n        } else if (v.getId() == R.id.match_7) {\r\n            Log.d(TAG, \"======================( CardView 7 clicked )=========================\");\r\n        } else if (v.getId() == R.id.match_8) {\r\n            Log.d(TAG, \"======================( CardView 8 clicked )=========================\");\r\n        } else if (v.getId() == R.id.match_9) {\r\n            Log.d(TAG, \"======================( CardView 9 clicked )=========================\");\r\n        } else {\r\n            Log.d(TAG, \"Unknown CardView clicked\");\r\n        }\r\n\r\n        Toast.makeText(getActivity(), \"CardView clicked\", Toast.LENGTH_SHORT).show();\r\n        Intent intent = new Intent(getActivity(), layout_match_details.class);\r\n        startActivity(intent);\r\n    }\r\n\r\n\r\n    public static fragment_match newInstance() {\r\n        return new fragment_match();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match.java b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match.java
+--- a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match.java	(revision ef762f73cb025de5f7db02e2df07111c77e53c89)
++++ b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match.java	(date 1726239459151)
+@@ -16,11 +16,15 @@
+     private static final String TAG = "Cardview";
+     private CardView card1, card2, card3, card4, card5, card6, card7, card8, card9;
+ 
++
++
+     @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
+         View view = inflater.inflate(R.layout.match_item, container, false);
+ 
++
++
+         card1 = view.findViewById(R.id.match_1);
+         card2 = view.findViewById(R.id.match_2);
+         card3 = view.findViewById(R.id.match_3);
+@@ -47,36 +51,43 @@
+ 
+     @Override
+     public void onClick(View v) {
++        Intent i;
+         if (v.getId() == R.id.match_1) {
+-            Log.d(TAG, "======================( CardView 1 clicked )=========================");
+-            Intent intent = new Intent(getActivity(), layout_match_details.class);
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_2) {
+-            Log.d(TAG, "======================( CardView 2 clicked )=========================");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_3) {
+-            Log.d(TAG, "======================( CardView 3 clicked )=========================");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_4) {
+-            Log.d(TAG, "======================( CardView 4 clicked )=========================");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_5) {
+-            Log.d(TAG, "======================( CardView 5 clicked )=========================");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_6) {
+-            Log.d(TAG, "======================( CardView 6 clicked )=========================");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_7) {
+-            Log.d(TAG, "======================( CardView 7 clicked )=========================");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_8) {
+-            Log.d(TAG, "======================( CardView 8 clicked )=========================");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         } else if (v.getId() == R.id.match_9) {
+-            Log.d(TAG, "======================( CardView 9 clicked )=========================");
+-        } else {
+-            Log.d(TAG, "Unknown CardView clicked");
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
++        } else if (v.getId() == R.id.match_2) {
++            i = new Intent(getActivity(), layout_match_details.class);
++            startActivity(i);
+         }
+-
+-        Toast.makeText(getActivity(), "CardView clicked", Toast.LENGTH_SHORT).show();
+-        Intent intent = new Intent(getActivity(), layout_match_details.class);
+-        startActivity(intent);
+     }
+-
+ 
+     public static fragment_match newInstance() {
+-        return new fragment_match();
++        fragment_match frag_layout2 = new fragment_match();
++        return frag_layout2;
+     }
++
+ }
+Index: app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.player_info;\r\n\r\nimport android.os.Bundle;\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport vn.edu.usth.opendota.R;\r\n\r\n\r\npublic class fragment_overview extends Fragment {\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n\r\n        return inflater.inflate(R.layout.fragment_overview, container, false);\r\n    }\r\n\r\n    public static fragment_overview newInstance() {\r\n        fragment_overview frag_layout1 = new fragment_overview();\r\n        return frag_layout1;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java
+--- a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java	(revision ef762f73cb025de5f7db02e2df07111c77e53c89)
++++ b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java	(date 1726239557548)
+@@ -2,6 +2,8 @@
+ 
+ import android.os.Bundle;
+ import androidx.fragment.app.Fragment;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
+ 
+ import android.view.LayoutInflater;
+ import android.view.View;
+@@ -15,7 +17,11 @@
+     public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
+ 
+-        return inflater.inflate(R.layout.fragment_overview, container, false);
++        View view = inflater.inflate(R.layout.fragment_overview, container, false);
++
++        RecyclerView recyclerView = view.findViewById(R.id.hero_recyclerView);
++        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
++        return view;
+     }
+ 
+     public static fragment_overview newInstance() {
+Index: app/src/main/java/vn/edu/usth/opendota/player_info/layout_home.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.player_info;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport vn.edu.usth.opendota.MainActivity;\r\nimport vn.edu.usth.opendota.R;\r\n\r\npublic class layout_home extends Fragment {\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n        return inflater.inflate(R.layout.layout_match_details, container, false);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/player_info/layout_home.java b/app/src/main/java/vn/edu/usth/opendota/player_info/layout_home.java
+--- a/app/src/main/java/vn/edu/usth/opendota/player_info/layout_home.java	(revision ef762f73cb025de5f7db02e2df07111c77e53c89)
++++ b/app/src/main/java/vn/edu/usth/opendota/player_info/layout_home.java	(date 1726237551039)
+@@ -5,14 +5,16 @@
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
++import androidx.appcompat.app.AppCompatActivity;
+ import androidx.fragment.app.Fragment;
+ 
+ import vn.edu.usth.opendota.MainActivity;
+ import vn.edu.usth.opendota.R;
+ 
+-public class layout_home extends Fragment {
+-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+-                             Bundle savedInstanceState) {
+-        return inflater.inflate(R.layout.layout_match_details, container, false);
++public class layout_home extends AppCompatActivity {
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.layout_home);
+     }
+-}
++}
+\ No newline at end of file
