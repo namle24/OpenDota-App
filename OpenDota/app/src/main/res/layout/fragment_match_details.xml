@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#131623"
+    android:background="@color/black"
     tools:ignore="ScrollViewCount"
     android:id="@+id/matches_info">
 
@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/black">
+        android:background="@color/black"
+        tools:ignore="HardcodedText" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -33,19 +34,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="65dp"
-                        android:src="@drawable/radiant">
+                        android:src="@drawable/radiant"
+                        android:contentDescription="@string/win">
                     </ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Radiant Victory"
+                        android:text="Dire Victory"
                         android:textColor="#FFFFFF"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -54,7 +57,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:padding="8dp">
@@ -78,7 +81,7 @@
                         android:layout_marginEnd="5dp"
                         android:text="7932356419\nEurope \n"
                         android:textColor="@color/white"
-                        android:textSize="15sp">
+                        android:textSize="20sp">
                     </TextView>
                 </LinearLayout>
 
@@ -106,7 +109,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="All Draft"
-                            android:textSize="18dp"
+                            android:textSize="18sp"
                             android:layout_gravity="center"
                             android:textColor="@color/white">
                         </TextView>
@@ -162,6 +165,7 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:src="@drawable/radiant"
+                    android:contentDescription="logo"
                     android:layout_gravity="center_vertical">
                 </ImageView>
 
@@ -180,7 +184,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#03A9F4"
+                android:background="@color/white"
                 android:orientation="horizontal"
                 android:layout_marginTop="60sp">
             </RelativeLayout>
@@ -207,11 +211,11 @@
                         android:textColor="#FFFFFF" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="135dp"
                         android:layout_height="wrap_content"
+                        android:padding="8dp"
                         android:text="Player"
                         android:textAlignment="center"
-                        android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
                     <TextView
@@ -239,270 +243,732 @@
                         android:textColor="#FFFFFF" />
                 </TableRow>
 
-                <TableRow
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#313642">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/slardar_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Nam"
-                        android:textAlignment="center"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:id="@+id/player_info2"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="13/1/13"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/puck_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="113"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Minh"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1113"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="11/5/8"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="686"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="1024"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/layout_hide_show2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:layout_marginBottom="3dp"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="428\n5\n28.2k\n34.4k\n0\n998"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="backpack"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/bottle_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/recipe_greater_crit_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/ultimate_scepter_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/blink_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/cyclone_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/onyx">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/phantom_assassin_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Minh"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:id="@+id/player_info3"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="13/1/3"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/mars_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="13"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Nghia"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1113"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="3/6/17"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="489"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="812"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/layout_hide_show3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:layout_marginBottom="3dp"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="185\n11\n20.1k\n17.3k\n0\n425"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="backpack"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/blink_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/cyclone_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/phase_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/octarine_core_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/bracer_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/black_king_bar_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#313642">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/phoenix_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nghĩa"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:id="@+id/player_info4"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="13/1/3"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/lich_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="89"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Duc"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="913"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="5/14/11"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="281"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="312"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/layout_hide_show4"
+                            android:background="@color/licorice"
+                            android:layout_marginBottom="3dp"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="38\n0\n11.5k\n14.1k\n0\n0"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:contentDescription="item"
+                                    android:layout_height="42dp"
+                                    android:src="@drawable/recipe_magic_wand_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/ward_dispenser_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/glimmer_cape_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/force_staff_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/arcane_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/no_item" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/onyx">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/queenofpain_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Đức"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:id="@+id/player_info1"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="3/1/13"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/nevermore_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="776"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Nam"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="133"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="11/9/6"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="684"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="904"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/layout_hide_show1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:background="@color/licorice"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="386\n12\n28.1k\n28.6k\n0\n7.0k"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/black_king_bar_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/dragon_lance_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/greater_crit_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/silver_edge_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/rapier_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#313642">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/sniper_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Minh"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:id="@+id/player_info5"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="1/1/13"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/slardar_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1373"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="QMinh"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1913"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="3/8/15"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="370"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="556"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:id="@+id/layout_hide_show5"
+                            android:layout_marginBottom="3dp"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textColor="#4BB7F1"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="108\n5\n15.2k\n26.2k\n2.7k\n340"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="backpack"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/recipe_magic_wand_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/null_talisman_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/no_item" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/guardian_greaves_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/lotus_orb_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:src="@drawable/aether_lens_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </TableLayout>
         </RelativeLayout>
@@ -541,7 +1007,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#03A9F4"
+                android:background="@color/white"
                 android:orientation="horizontal"
                 android:layout_marginTop="60sp">
             </RelativeLayout>
@@ -600,270 +1066,729 @@
                         android:textColor="#FFFFFF" />
                 </TableRow>
 
-                <TableRow
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/onyx">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/slardar_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Nam"
-                        android:textAlignment="center"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:id="@+id/player_info6"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="13/1/13"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/juggernaut_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="113"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Ronaldo"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1113"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="11/6/9"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="705"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="849"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:id="@+id/layout_hide_show6"
+                            android:layout_marginBottom="3dp"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="367\n5\n29.0k\n24.7k\n13.9k\n17.3k"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/ultimate_scepter_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_mjollnir_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/nullifier_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/sange_and_yasha_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/travel_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/wraith_band_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#313642">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/phantom_assassin_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Minh"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:background="@color/licorice"
+                        android:id="@+id/player_info7"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="13/1/3"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/grimstroke_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="13"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Anthony"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1113"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="5/6/18"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="345"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="473"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:visibility="gone"
+                            android:id="@+id/layout_hide_show7"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="67\n3\n14.2k\n15.5k\n0\n654"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="backpack"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_greater_crit_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/ward_dispenser_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/point_booster_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/ethereal_blade_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/arcane_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/dust_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/onyx">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/phoenix_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nghĩa"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:background="@color/licorice"
+                        android:id="@+id/player_info8"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="13/1/3"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/pudge_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="89"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Fan Anh Long"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="913"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="8/11/26"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="391"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="540"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:layout_marginBottom="3dp"
+                            android:id="@+id/layout_hide_show8"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="76\n4\n16.1k\n21.7k\n0\n925"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/cyclone_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_magic_wand_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/arcane_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/no_item" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/no_item" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/ghost_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#313642">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/queenofpain_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Đức"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:background="@color/licorice"
+                        android:id="@+id/player_info9"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="3/1/13"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/viper_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="776"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Messi"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="133"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="7/2/12"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                <TableRow
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="581"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="756"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="3dp"
+                            android:background="@color/licorice"
+                            android:id="@+id/layout_hide_show9"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="283\n15\n23.9k\n18.0k\n0\n654"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_magic_wand_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/phase_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/black_king_bar_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/hurricane_pike_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_mjollnir_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/onyx">
+                    android:layout_height="wrap_content">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/sniper_full"
-                        android:scaleType="centerCrop"
-                        android:padding="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Minh"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                        android:background="@color/licorice"
+                        android:id="@+id/player_info10"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:padding="8dp"
-                        android:text="1/1/13"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/queenofpain_full"
+                                android:scaleType="centerCrop"
+                                android:padding="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1373"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
+                            <TextView
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="Murphy"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:layout_gravity="center_vertical"
-                        android:text="1913"
-                        android:padding="8dp"
-                        android:textColor="#FFFFFF"
-                        tools:ignore="RtlCompat" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:padding="8dp"
+                                android:text="8/8/16"
+                                android:textAlignment="center"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="434"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:layout_gravity="center_vertical"
+                                android:text="531"
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                tools:ignore="RtlCompat" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:id="@+id/layout_hide_show10"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="118\n17\n14.2k\n19.1k\n284\n3.0k"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_magic_wand_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/ultimate_scepter_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/black_king_bar_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/bracer_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/phase_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/veil_of_discord_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </TableLayout>
         </RelativeLayout>
