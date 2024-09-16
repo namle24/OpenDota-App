@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/black"
-    tools:context=".PlayerHeroesFragment">
+    tools:context=".player_info.PlayerHeroesFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

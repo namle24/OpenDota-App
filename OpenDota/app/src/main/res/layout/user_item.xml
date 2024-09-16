@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/CARD"
+    android:layout_marginBottom="5dp"
+    android:padding="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_user"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:src="@drawable/avarta2"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/licorice"
+        android:layout_toEndOf="@+id/img_user"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/user_profile"
+            android:layout_toEndOf="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Namlee"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="22dp"/>
+            <View
+                style="@style/Divider"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="5dp"/>
+            <TextView
+                android:id="@+id/ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                android:text="ID: 185476982" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/user_rank"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_toEndOf="@id/name_id"
+            android:src="@drawable/rank_icon_8"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</RelativeLayout>

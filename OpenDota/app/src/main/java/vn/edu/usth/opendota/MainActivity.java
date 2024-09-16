@@ -3,6 +3,7 @@ package vn.edu.usth.opendota;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,17 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         MaterialToolbar toolbar = findViewById(R.id.topappbar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
-
-        ViewPager viewPager = findViewById(R.id.viewpager);
-        PagerAdapter adapter_1 = new player_adapter(getSupportFragmentManager());
-        viewPager.setOffscreenPageLimit(3);
-        viewPager.setAdapter(adapter_1);
-
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -63,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (id == R.id.nav_home) {
                     replaceFragment(new HomeFragment());
+                } else if (id == R.id.nav_myprofile) {
+                    replaceFragment(new vn.edu.usth.opendota.player_info.MyProfileFragment());
                 } else if (id == R.id.nav_favourite) {
                     replaceFragment(new FavouriteFragment());
                 } else if (id == R.id.nav_search) {
@@ -75,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -84,6 +77,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout, fragment);
         fragmentTransaction.commit();
-
     }
 }
+
