@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import vn.edu.usth.opendota.R;
 
-public class layout_match_details extends AppCompatActivity {
+public class fragment_match_details extends AppCompatActivity {
     private LinearLayout player_info1, player_info2, player_info3, player_info4, player_info5, player_info6, player_info7, player_info8, player_info9, player_info10,
     layout_hide_show1, layout_hide_show2, layout_hide_show3, layout_hide_show4, layout_hide_show5, layout_hide_show6, layout_hide_show7, layout_hide_show8, layout_hide_show9, layout_hide_show10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_match_details);
+        setContentView(R.layout.fragment_match_details);
 
         player_info1=findViewById(R.id.player_info1);
         player_info2=findViewById(R.id.player_info2);

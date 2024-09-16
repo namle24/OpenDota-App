@@ -1,0 +1,61 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.drawerlayout.widget.DrawerLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tool=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/drawer_layout\"\n    tool:context=\".MainActivity\">\n\n    <RelativeLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\">\n\n        <com.google.android.material.appbar.AppBarLayout\n            android:id=\"@+id/appbar_layout\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\">\n\n            <com.google.android.material.appbar.MaterialToolbar\n                android:id=\"@+id/topappbar\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"?attr/actionBarSize\"\n                app:title=\"OpenDota\"\n                app:titleTextColor=\"@color/white\"\n                app:navigationIcon=\"@drawable/option_icon\"\n                android:background=\"@color/dark_blue\"/>\n        </com.google.android.material.appbar.AppBarLayout>\n\n        <FrameLayout\n            android:id=\"@+id/framelayout\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            android:layout_below=\"@id/appbar_layout\"\n            android:layout_alignParentEnd=\"true\"\n            android:layout_marginTop=\"-3dp\"\n            android:layout_marginEnd=\"0dp\" />\n\n\n    </RelativeLayout>\n\n\n    <com.google.android.material.navigation.NavigationView\n        android:id=\"@+id/navigation_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"match_parent\"\n        android:layout_gravity=\"start\"\n        app:headerLayout=\"@layout/nav_header\"\n        app:menu=\"@menu/drawer_view\"\n        android:visibility=\"visible\"/>\n</androidx.drawerlayout.widget.DrawerLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	
++++ b/app/src/main/res/layout/activity_main.xml	
+@@ -37,6 +37,25 @@
+             android:layout_marginEnd="0dp" />
+ 
+ 
++        <androidx.viewpager.widget.ViewPager
++            android:id="@+id/viewpager"
++            android:layout_width="match_parent"
++            android:layout_height="match_parent">
++
++            <com.google.android.material.tabs.TabLayout
++                android:id="@+id/tab_layout"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_gravity="bottom" />
++        </androidx.viewpager.widget.ViewPager>
++
++        <androidx.recyclerview.widget.RecyclerView
++            android:id="@+id/recyclerview_favor"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:scrollbars="vertical"
++            android:layout_marginTop="16dp"/>
++
+     </RelativeLayout>
+ 
+ 
+Index: app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match_details.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.player_info;\n\nimport android.os.Bundle;\nimport android.view.View;\nimport android.widget.LinearLayout;\n\nimport androidx.appcompat.app.AppCompatActivity;\n\nimport vn.edu.usth.opendota.R;\n\npublic class layout_match_details extends AppCompatActivity {\n    private LinearLayout player_info1, player_info2, player_info3, player_info4, player_info5, player_info6, player_info7, player_info8, player_info9, player_info10,\n    layout_hide_show1, layout_hide_show2, layout_hide_show3, layout_hide_show4, layout_hide_show5, layout_hide_show6, layout_hide_show7, layout_hide_show8, layout_hide_show9, layout_hide_show10;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.layout_match_details);\n\n        player_info1=findViewById(R.id.player_info1);\n        player_info2=findViewById(R.id.player_info2);\n        player_info3=findViewById(R.id.player_info3);\n        player_info4=findViewById(R.id.player_info4);\n        player_info5=findViewById(R.id.player_info5);\n        player_info6=findViewById(R.id.player_info6);\n        player_info7=findViewById(R.id.player_info7);\n        player_info8=findViewById(R.id.player_info8);\n        player_info9=findViewById(R.id.player_info9);\n        player_info10=findViewById(R.id.player_info10);\n\n\n\n\n        layout_hide_show1=findViewById(R.id.layout_hide_show1);\n        layout_hide_show2=findViewById(R.id.layout_hide_show2);\n        layout_hide_show3=findViewById(R.id.layout_hide_show3);\n        layout_hide_show4=findViewById(R.id.layout_hide_show4);\n        layout_hide_show5=findViewById(R.id.layout_hide_show5);\n        layout_hide_show6=findViewById(R.id.layout_hide_show6);\n        layout_hide_show7=findViewById(R.id.layout_hide_show7);\n        layout_hide_show8=findViewById(R.id.layout_hide_show8);\n        layout_hide_show9=findViewById(R.id.layout_hide_show9);\n        layout_hide_show10=findViewById(R.id.layout_hide_show10);\n\n\n\n\n\n\n\n\n        player_info1.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show1.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show1.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show1.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info2.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show2.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show2.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show2.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info3.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show3.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show3.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show3.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info4.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show4.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show4.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show4.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info5.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show5.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show5.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show5.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info6.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show6.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show6.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show6.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info7.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show7.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show7.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show7.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info8.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show8.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show8.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show8.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info9.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show9.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show9.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show9.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n\n        player_info10.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                int isvisible =layout_hide_show10.getVisibility();\n                if (isvisible==View.VISIBLE) {\n                    layout_hide_show10.setVisibility(View.GONE);\n                }else {\n                    layout_hide_show10.setVisibility(View.VISIBLE);\n                }\n            }\n        });\n    }\n}\n
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match_details.java b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match_details.java
+--- a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match_details.java	
++++ b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_match_details.java	
+@@ -8,14 +8,14 @@
+ 
+ import vn.edu.usth.opendota.R;
+ 
+-public class layout_match_details extends AppCompatActivity {
++public class fragment_match_details extends AppCompatActivity {
+     private LinearLayout player_info1, player_info2, player_info3, player_info4, player_info5, player_info6, player_info7, player_info8, player_info9, player_info10,
+     layout_hide_show1, layout_hide_show2, layout_hide_show3, layout_hide_show4, layout_hide_show5, layout_hide_show6, layout_hide_show7, layout_hide_show8, layout_hide_show9, layout_hide_show10;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        setContentView(R.layout.layout_match_details);
++        setContentView(R.layout.fragment_match_details);
+ 
+         player_info1=findViewById(R.id.player_info1);
+         player_info2=findViewById(R.id.player_info2);

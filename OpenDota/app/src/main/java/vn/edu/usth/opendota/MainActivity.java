@@ -11,10 +11,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
+import vn.edu.usth.opendota.adapter.player_adapter;
 import vn.edu.usth.opendota.favourite.FavouriteFragment;
 import vn.edu.usth.opendota.home.HomeFragment;
 import vn.edu.usth.opendota.search.SearchFragment;
@@ -29,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.topappbar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
+
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        PagerAdapter adapter_1 = new player_adapter(getSupportFragmentManager());
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.setAdapter(adapter_1);
+
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
