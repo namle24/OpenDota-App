@@ -1,0 +1,2036 @@
+Index: app/src/main/res/layout/match_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/match_item\"\n    android:layout_width=\"match_parent\"\n    android:orientation=\"horizontal\"\n    android:layout_height=\"wrap_content\">\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:orientation=\"vertical\"\n        android:layout_marginTop=\"4dp\"\n        app:cardElevation=\"10dp\"\n        android:padding=\"3dp\">\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_1\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/mvp\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:id=\"@+id/rm_hero\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/obsidian_destroyer_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:id=\"@+id/re_mode\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:id=\"@+id/rm_ended\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"13 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:id=\"@+id/rm_length\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"48:54\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <LinearLayout\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_gravity=\"center\"\n                    android:paddingRight=\"17dp\"\n                    android:paddingLeft=\"17dp\"\n                    android:gravity=\"center\"\n                    android:orientation=\"vertical\">\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:layout_marginBottom=\"4dp\"\n                        android:text=\"13/6/8\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/white\"\n                        android:layout_weight=\"0.2\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:text=\"MVP\"\n                        android:gravity=\"center\"\n                        android:background=\"@drawable/mvp_tag\"\n                        android:layout_weight=\"200\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n                </LinearLayout>\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_2\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_3\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/no_item\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"26:59\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"15/0/12\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_4\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/mvp\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:id=\"@+id/rm_hero1\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/obsidian_destroyer_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:id=\"@+id/re_mode1\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:id=\"@+id/rm_ended1\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"13 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:id=\"@+id/rm_length1\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"48:54\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <LinearLayout\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_gravity=\"center\"\n                    android:paddingRight=\"17dp\"\n                    android:paddingLeft=\"17dp\"\n                    android:gravity=\"center\"\n                    android:orientation=\"vertical\">\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:layout_marginBottom=\"4dp\"\n                        android:text=\"13/6/8\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/white\"\n                        android:layout_weight=\"0.2\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:text=\"MVP\"\n                        android:gravity=\"center\"\n                        android:background=\"@drawable/mvp_tag\"\n                        android:layout_weight=\"200\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n                </LinearLayout>\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_5\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_6\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/no_item\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"26:59\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"15/0/12\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_7\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_8\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/no_item\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"26:59\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"15/0/12\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_9\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_10\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/queenofpain_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"25:33\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"11/5/8\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_11\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mirana_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"48:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"7/17/5\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_12\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"0/17/5\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_13\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/puck_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"41:06\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"11/5/8\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_14\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@color/onyx\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/sniper_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"37:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"10/6/15\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.recyclerview.widget.RecyclerView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_item\">\n\n        </androidx.recyclerview.widget.RecyclerView>\n    </LinearLayout>\n\n\n</LinearLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/match_item.xml b/app/src/main/res/layout/match_item.xml
+--- a/app/src/main/res/layout/match_item.xml	(revision 8a774119ee63f5c0609c9a466af7b70b78267162)
++++ b/app/src/main/res/layout/match_item.xml	(date 1726382846703)
+@@ -1,1072 +1,1072 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:id="@+id/match_item"
+-    android:layout_width="match_parent"
+-    android:orientation="horizontal"
+-    android:layout_height="wrap_content">
++<!--<?xml version="1.0" encoding="utf-8"?>-->
++<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
++<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
++<!--    xmlns:tools="http://schemas.android.com/tools"-->
++<!--    android:id="@+id/match_item"-->
++<!--    android:layout_width="match_parent"-->
++<!--    android:orientation="horizontal"-->
++<!--    android:layout_height="wrap_content">-->
+ 
+-    <LinearLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="vertical"
+-        android:layout_marginTop="4dp"
+-        app:cardElevation="10dp"
+-        android:padding="3dp">
++<!--    <LinearLayout-->
++<!--        android:layout_width="match_parent"-->
++<!--        android:layout_height="wrap_content"-->
++<!--        android:orientation="vertical"-->
++<!--        android:layout_marginTop="4dp"-->
++<!--        app:cardElevation="10dp"-->
++<!--        android:padding="3dp">-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_1">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_1">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/mvp"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/mvp"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:id="@+id/rm_hero"
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/obsidian_destroyer_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    tools:ignore="MissingClass" />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:id="@+id/rm_hero"-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/obsidian_destroyer_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    tools:ignore="MissingClass" />-->
+ 
+ 
+-                <TextView
+-                    android:id="@+id/re_mode"
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:id="@+id/rm_ended"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="13 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:id="@+id/rm_length"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="48:54"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <LinearLayout
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_gravity="center"
+-                    android:paddingRight="17dp"
+-                    android:paddingLeft="17dp"
+-                    android:gravity="center"
+-                    android:orientation="vertical">
++<!--                <TextView-->
++<!--                    android:id="@+id/re_mode"-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:id="@+id/rm_ended"-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="13 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:id="@+id/rm_length"-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="48:54"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <LinearLayout-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:paddingRight="17dp"-->
++<!--                    android:paddingLeft="17dp"-->
++<!--                    android:gravity="center"-->
++<!--                    android:orientation="vertical">-->
+ 
+-                    <TextView
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginBottom="4dp"
+-                        android:text="13/6/8"
+-                        android:gravity="center"
+-                        android:textColor="@color/white"
+-                        android:layout_weight="0.2"
+-                        android:layout_gravity="center_vertical"
+-                        />
++<!--                    <TextView-->
++<!--                        android:layout_width="match_parent"-->
++<!--                        android:layout_height="wrap_content"-->
++<!--                        android:layout_marginBottom="4dp"-->
++<!--                        android:text="13/6/8"-->
++<!--                        android:gravity="center"-->
++<!--                        android:textColor="@color/white"-->
++<!--                        android:layout_weight="0.2"-->
++<!--                        android:layout_gravity="center_vertical"-->
++<!--                        />-->
+ 
+-                    <TextView
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:text="MVP"
+-                        android:gravity="center"
+-                        android:background="@drawable/mvp_tag"
+-                        android:layout_weight="200"
+-                        android:layout_gravity="center_vertical"
+-                        />
+-                </LinearLayout>
++<!--                    <TextView-->
++<!--                        android:layout_width="match_parent"-->
++<!--                        android:layout_height="wrap_content"-->
++<!--                        android:text="MVP"-->
++<!--                        android:gravity="center"-->
++<!--                        android:background="@drawable/mvp_tag"-->
++<!--                        android:layout_weight="200"-->
++<!--                        android:layout_gravity="center_vertical"-->
++<!--                        />-->
++<!--                </LinearLayout>-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/winProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/winProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_2">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_2">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/mars_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    tools:ignore="MissingClass" />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/mars_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    tools:ignore="MissingClass" />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="47:42"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="3/5/26"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="47:42"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="3/5/26"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_3">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_3">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/no_item"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/no_item"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="26:59"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="15/0/12"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="26:59"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="15/0/12"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_4">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_4">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/mvp"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/mvp"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:id="@+id/rm_hero1"
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/obsidian_destroyer_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    tools:ignore="MissingClass" />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:id="@+id/rm_hero1"-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/obsidian_destroyer_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    tools:ignore="MissingClass" />-->
+ 
+ 
+-                <TextView
+-                    android:id="@+id/re_mode1"
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:id="@+id/rm_ended1"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="13 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:id="@+id/rm_length1"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="48:54"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <LinearLayout
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_gravity="center"
+-                    android:paddingRight="17dp"
+-                    android:paddingLeft="17dp"
+-                    android:gravity="center"
+-                    android:orientation="vertical">
++<!--                <TextView-->
++<!--                    android:id="@+id/re_mode1"-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:id="@+id/rm_ended1"-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="13 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:id="@+id/rm_length1"-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="48:54"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <LinearLayout-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:paddingRight="17dp"-->
++<!--                    android:paddingLeft="17dp"-->
++<!--                    android:gravity="center"-->
++<!--                    android:orientation="vertical">-->
+ 
+-                    <TextView
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginBottom="4dp"
+-                        android:text="13/6/8"
+-                        android:gravity="center"
+-                        android:textColor="@color/white"
+-                        android:layout_weight="0.2"
+-                        android:layout_gravity="center_vertical"
+-                        />
++<!--                    <TextView-->
++<!--                        android:layout_width="match_parent"-->
++<!--                        android:layout_height="wrap_content"-->
++<!--                        android:layout_marginBottom="4dp"-->
++<!--                        android:text="13/6/8"-->
++<!--                        android:gravity="center"-->
++<!--                        android:textColor="@color/white"-->
++<!--                        android:layout_weight="0.2"-->
++<!--                        android:layout_gravity="center_vertical"-->
++<!--                        />-->
+ 
+-                    <TextView
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:text="MVP"
+-                        android:gravity="center"
+-                        android:background="@drawable/mvp_tag"
+-                        android:layout_weight="200"
+-                        android:layout_gravity="center_vertical"
+-                        />
+-                </LinearLayout>
++<!--                    <TextView-->
++<!--                        android:layout_width="match_parent"-->
++<!--                        android:layout_height="wrap_content"-->
++<!--                        android:text="MVP"-->
++<!--                        android:gravity="center"-->
++<!--                        android:background="@drawable/mvp_tag"-->
++<!--                        android:layout_weight="200"-->
++<!--                        android:layout_gravity="center_vertical"-->
++<!--                        />-->
++<!--                </LinearLayout>-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/winProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/winProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_5">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_5">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/mars_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    tools:ignore="MissingClass" />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/mars_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    tools:ignore="MissingClass" />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="47:42"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="3/5/26"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="47:42"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="3/5/26"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_6">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_6">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/no_item"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/no_item"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="26:59"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="15/0/12"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="26:59"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="15/0/12"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_7">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_7">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/mars_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    tools:ignore="MissingClass" />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/mars_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    tools:ignore="MissingClass" />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="47:42"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="3/5/26"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="47:42"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="3/5/26"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_8">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_8">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/no_item"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/no_item"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="26:59"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="15/0/12"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="26:59"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="15/0/12"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_9">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_9">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/mars_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    tools:ignore="MissingClass" />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/mars_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    tools:ignore="MissingClass" />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="47:42"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="3/5/26"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="47:42"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="3/5/26"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_10">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_10">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/queenofpain_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/queenofpain_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="25:33"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="11/5/8"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="25:33"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="11/5/8"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/winProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/winProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_11">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_11">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/mirana_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/mirana_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="48:42"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="7/17/5"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="48:42"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="7/17/5"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+ 
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_12">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_12">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/mars_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/mars_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="47:42"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="0/17/5"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="47:42"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="0/17/5"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+ 
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_13">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_13">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/puck_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/puck_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="41:06"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="11/5/8"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="41:06"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="11/5/8"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/winProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/winProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+ 
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/match_14">
++<!--        <androidx.cardview.widget.CardView-->
++<!--            android:layout_width="match_parent"-->
++<!--            android:layout_height="wrap_content"-->
++<!--            android:id="@+id/match_14">-->
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/onyx"
+-                android:orientation="horizontal">
++<!--            <LinearLayout-->
++<!--                android:layout_width="match_parent"-->
++<!--                android:layout_height="wrap_content"-->
++<!--                android:background="@color/onyx"-->
++<!--                android:orientation="horizontal">-->
+ 
+-                <de.hdodenhof.circleimageview.CircleImageView
+-                    android:layout_width="45dp"
+-                    android:layout_height="45dp"
+-                    android:layout_weight="0.2"
+-                    android:gravity="center"
+-                    android:src="@drawable/sniper_full"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"
+-                    />
++<!--                <de.hdodenhof.circleimageview.CircleImageView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="45dp"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:gravity="center"-->
++<!--                    android:src="@drawable/sniper_full"-->
++<!--                    android:layout_marginTop="10dp"-->
++<!--                    android:layout_marginBottom="10dp"-->
++<!--                    />-->
+ 
+ 
+-                <TextView
+-                    android:layout_width="45dp"
+-                    android:layout_height="wrap_content"
+-                    android:layout_weight="0.2"
+-                    android:text="All Draft Normal"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:textSize="12sp"/>
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="14 days"
+-                    android:gravity="center"
+-                    android:textSize="12sp"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="37:42"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:text="10/6/15"
+-                    android:gravity="center"
+-                    android:textColor="@color/white"
+-                    android:layout_weight="0.2"
+-                    android:layout_gravity="center_vertical"
+-                    />
++<!--                <TextView-->
++<!--                    android:layout_width="45dp"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:text="All Draft Normal"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:textAlignment="center"-->
++<!--                    android:layout_gravity="center"-->
++<!--                    android:textSize="12sp"/>-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="14 days"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textSize="12sp"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="37:42"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
++<!--                <TextView-->
++<!--                    android:layout_width="wrap_content"-->
++<!--                    android:layout_height="wrap_content"-->
++<!--                    android:text="10/6/15"-->
++<!--                    android:gravity="center"-->
++<!--                    android:textColor="@color/white"-->
++<!--                    android:layout_weight="0.2"-->
++<!--                    android:layout_gravity="center_vertical"-->
++<!--                    />-->
+ 
+-                <ProgressBar
+-                    android:layout_width="4dp"
+-                    android:layout_height="match_parent"
+-                    android:progress="100"
+-                    android:progressTint="@color/looseProgress"
+-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
++<!--                <ProgressBar-->
++<!--                    android:layout_width="4dp"-->
++<!--                    android:layout_height="match_parent"-->
++<!--                    android:progress="100"-->
++<!--                    android:progressTint="@color/looseProgress"-->
++<!--                    style="@android:style/Widget.ProgressBar.Horizontal"/>-->
+ 
+-            </LinearLayout>
++<!--            </LinearLayout>-->
+ 
+ 
+ 
+-        </androidx.cardview.widget.CardView>
++<!--        </androidx.cardview.widget.CardView>-->
+ 
+         <androidx.recyclerview.widget.RecyclerView
+             android:layout_width="match_parent"
+@@ -1074,7 +1074,7 @@
+             android:id="@+id/match_item">
+ 
+         </androidx.recyclerview.widget.RecyclerView>
+-    </LinearLayout>
++<!--    </LinearLayout>-->
+ 
+ 
+-</LinearLayout>
++<!--</LinearLayout>-->

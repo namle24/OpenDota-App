@@ -321,7 +321,7 @@
                         android:layout_height="45dp"
                         android:layout_weight="0.2"
                         android:gravity="center"
-                        android:src="@drawable/no_item"
+                        android:src="@drawable/puck_full"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         />
@@ -349,7 +349,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="26:59"
+                        android:text="41:06"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:layout_weight="0.2"
@@ -358,7 +358,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15/0/12"
+                        android:text="11/5/8"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:layout_weight="0.2"
@@ -369,7 +369,7 @@
                         android:layout_width="4dp"
                         android:layout_height="match_parent"
                         android:progress="100"
-                        android:progressTint="@color/looseProgress"
+                        android:progressTint="@color/winProgress"
                         style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 </LinearLayout>
