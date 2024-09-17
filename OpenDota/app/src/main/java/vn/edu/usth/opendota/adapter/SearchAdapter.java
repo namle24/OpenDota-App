@@ -35,6 +35,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHo
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+
         User user = mListUser.get(position);
         if (user == null) {
             return;

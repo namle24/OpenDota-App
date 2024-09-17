@@ -1,5 +1,6 @@
 package vn.edu.usth.opendota.player_info;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,22 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.matches.Matches;
 import vn.edu.usth.opendota.adapter.MatchesAdapter;
+import vn.edu.usth.opendota.models.MatchDetailActivityManage;
 import vn.edu.usth.opendota.retrofit.Client;
 
 public class fragment_match extends Fragment {
-    private static final String TAG = "SearchFragment";
     private final MatchesAdapter matchesAdapter = new MatchesAdapter();
 
-
     public static fragment_match newInstance() {
-        fragment_match frag_layout2 = new fragment_match();
-        return frag_layout2;
+        return new fragment_match();
     }
 
     @Override
@@ -36,16 +36,17 @@ public class fragment_match extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        androidx.recyclerview.widget.RecyclerView recyclerView = view.findViewById(R.id.recyclerview_match_history);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerview_match_history);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(matchesAdapter);
 
         loadMockData();
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+        matchesAdapter.setOnClickListener((position, match) -> {
+            Intent intent = new Intent(getActivity(), MatchDetailActivityManage.class);
+            intent.putExtra("MATCH_DETAILS", match);
+            startActivity(intent);
+        });
     }
 
     private void loadMockData() {
@@ -54,3 +55,4 @@ public class fragment_match extends Fragment {
         matchesAdapter.submit(mockMatches);
     }
 }
+
