@@ -18,7 +18,7 @@
     <color name="night_dota_bar">#1f2023</color>
 
     <color name="licorice">#DC1D1D1D</color>
-    <color name="onyx">#353935</color>
+    <color name="onyx">#000000</color>
     <color name="CARD">#0D0D0D</color>
 
 
@@ -36,6 +36,7 @@
     <color name="mvp">#C59506</color>
     <color name="wins_winrate">#FFC107</color>
     <color name="lose_winrate">#726F6F</color>
-    <color name="winProgress">#00bc8c</color>
-    <color name="looseProgress">#FF1100</color>
+    <color name="winProgress">#00ff4c</color>
+    <color name="looseProgress">#ea0000</color>
+    <color name="odin">#B82E1F</color >
 </resources>
