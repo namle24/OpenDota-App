@@ -1,5 +1,6 @@
-package vn.edu.usth.opendota.models;
+package vn.edu.usth.opendota.matches;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Locale;
 
 import vn.edu.usth.opendota.R;
 
-public class Matches {
+public class Matches implements Serializable {
     private String modes;
     private int kills;
     private int deaths;
@@ -113,8 +114,8 @@ public class Matches {
         results.add(new Matches("Ranks",10, 2, 15, "12/09/2024", "50:00", R.drawable.slardar_full, true));
         results.add(new Matches("All Draft Normal",5, 8, 20, "12/09/2024", "50:00", R.drawable.queenofpain_full, false));
         results.add(new Matches("All Draft Normal", 12, 4, 8, "12/09/2024", "50:00", R.drawable.slardar_full, true));
-        results.add(new Matches("All Draft Normal",7, 10, 25, "12/09/2024", "50:00", R.drawable.slardar_full, false));
-        results.add(new Matches("All Draft Normal",14, 3, 17, "12/09/2024", "50:00", R.drawable.slardar_full, true));
+        results.add(new Matches("All Draft Normal",7, 10, 25, "12/09/2024", "50:00", R.drawable.huskar_full, false));
+        results.add(new Matches("All Draft Normal",14, 3, 17, "12/09/2024", "50:00", R.drawable.aether_lens_lg, true));
 
         return results;
     }

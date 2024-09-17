@@ -1,17 +1,11 @@
 package vn.edu.usth.opendota.search;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,8 +25,7 @@ public class SearchFragment extends Fragment {
     private androidx.appcompat.widget.SearchView searchView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         rcvUser = view.findViewById(R.id.rcv_users);
@@ -42,7 +35,12 @@ public class SearchFragment extends Fragment {
         rcvUser.setLayoutManager(linearLayoutManager);
 
         userList = getListUsers();
-        userAdapter = new SearchAdapter(userList);
+        userAdapter = new SearchAdapter(userList, new SearchAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, boolean isSelected) {
+                Log.i("SearchFragment", "Heart icon at position " + position + " clicked. Selected: " + isSelected);
+            }
+        });
         rcvUser.setAdapter(userAdapter);
 
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
@@ -81,14 +79,11 @@ public class SearchFragment extends Fragment {
 
     private List<User> getListUsers() {
         List<User> list = new ArrayList<>();
-        list.add(new User(R.drawable.avarta2, "NamLee", "ID: 185476982", R.drawable.rank_icon_8));
-        list.add(new User(R.drawable.avarta3, "Minh", "ID: 185476982", R.drawable.rank_icon_8b));
-        list.add(new User(R.drawable.avarta4, "Nghia", "ID: 408523961", R.drawable.rank_icon_6));
-        list.add(new User(R.drawable.anhlong1, "Duc", "ID: 233507135", R.drawable.rank_icon_7));
-        list.add(new User(R.drawable.avatar_1, "Qminh", "ID: 1856746982", R.drawable.rank_icon_6));
+        list.add(new User(R.drawable.avarta2, "NamLee", "ID: 185476982"));
+        list.add(new User(R.drawable.avarta3, "Minh", "ID: 185476982"));
+        list.add(new User(R.drawable.avarta4, "Nghia", "ID: 408523961"));
+        list.add(new User(R.drawable.anhlong1, "Duc", "ID: 233507135"));
+        list.add(new User(R.drawable.avatar_1, "Qminh", "ID: 1856746982"));
         return list;
     }
 }
-
-
-

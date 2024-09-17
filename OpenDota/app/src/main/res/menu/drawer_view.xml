@@ -15,7 +15,7 @@
             android:title="Search" />
         <item
             android:id="@+id/nav_favourite"
-            android:icon="@drawable/ic_heart_x24"
+            android:icon="@drawable/ic_white_heart_x24"
             android:title="Favourite" />
         <item
             android:id="@+id/nav_settings"

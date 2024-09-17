@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
-import vn.edu.usth.opendota.models.Matches;
+import vn.edu.usth.opendota.matches.Matches;
 
 public class Client {
     private static Client INSTANCE = null;

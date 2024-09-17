@@ -4,13 +4,12 @@ public class User {
     private int image;
     private String name;
     private String id;
-    private int rank;
+    private int imagerank;
 
-    public User(int image, String name, String id, int rank_icon_8) {
+    public User(int image, String name, String id) {
         this.image = image;
         this.name = name;
         this.id = id;
-        this.image = image;
     }
 
     public int getImage() {
@@ -37,11 +36,5 @@ public class User {
         this.id = id;
     }
 
-    public int getRank() {
-        return rank;
-    }
 
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
 }

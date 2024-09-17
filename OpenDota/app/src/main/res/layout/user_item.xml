@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/CARD"
+    android:background="@color/light_blue"
     android:layout_marginBottom="5dp"
     android:padding="10dp">
 
@@ -52,15 +53,17 @@
                 android:textSize="22dp"
                 android:text="ID: 185476982" />
         </LinearLayout>
-        <ImageView
-            android:id="@+id/user_rank"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:id="@+id/user_imagerank"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
             android:layout_toEndOf="@id/name_id"
-            android:src="@drawable/rank_icon_8"
+            android:background="@color/light_blue"
+            android:src="@drawable/heart_icon"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            tools:ignore="ObsoleteLayoutParam" />
     </LinearLayout>
 </RelativeLayout>
