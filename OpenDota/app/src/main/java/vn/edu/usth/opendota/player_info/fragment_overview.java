@@ -1,5 +1,6 @@
 package vn.edu.usth.opendota.player_info;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import java.util.List;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapter.MatchesAdapter;
 import vn.edu.usth.opendota.matches.Matches;
+import vn.edu.usth.opendota.models.MatchDetailActivityManage;
 import vn.edu.usth.opendota.retrofit.Client;
 
 
@@ -42,7 +44,14 @@ public class fragment_overview extends Fragment {
         recyclerView.setAdapter(matchesAdapter);
 
         loadMockData();
+
+        matchesAdapter.setOnClickListener((position, match) -> {
+            Intent intent = new Intent(getActivity(), MatchDetailActivityManage.class);
+            intent.putExtra("MATCH_DETAILS", match);
+            startActivity(intent);
+        });
     }
+
 
     private void loadMockData() {
         Client client = Client.getInstance(getContext());

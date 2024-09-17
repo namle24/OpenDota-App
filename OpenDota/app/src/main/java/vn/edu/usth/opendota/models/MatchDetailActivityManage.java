@@ -13,13 +13,14 @@ public class MatchDetailActivityManage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_match_details);
 
         Intent intent = getIntent();
         Matches match = (Matches) intent.getSerializableExtra("MATCH_DETAILS");
 
         if (match != null) {
             setContentView(getLayoutForMatchId(match.getId()));
+        } else {
+            setContentView(R.layout.fragment_error);
         }
     }
 
