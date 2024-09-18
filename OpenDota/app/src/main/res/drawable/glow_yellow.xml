@@ -1,0 +1,15 @@
+<!-- res/drawable/glow_custom.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer glow effect -->
+    <item>
+        <shape android:shape="oval">
+
+            <gradient
+                android:type="radial"
+                android:startColor="#958E69"
+                android:endColor="#FFFFFF"
+                android:gradientRadius="50dp" />
+        </shape>
+    </item>
+</layer-list>

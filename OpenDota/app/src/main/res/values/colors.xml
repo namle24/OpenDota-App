@@ -6,7 +6,7 @@
     <color name="tablayout_item">#BF220B48</color>
     <color name="light_blue">#03A9F4</color>
     <color name="pink">#FFE4ED</color>
-
+    <color name="red">#FF0000</color>
     <color name="pink_bar">#ccb6bd</color>
     <color name="hyper_fuse">#171718</color>
     <color name="hyper_fuse_bar">#3b3b3e</color>
@@ -29,7 +29,7 @@
     <color name="win">#16CB16</color>
     <color name="lose">#F21D0E</color>
 
-    <color name="gray">#777777</color>
+    <color name="gray">#8B939A</color>
     <color name="purple">#434a9f</color>
 
     <color name="wins_loses_winrate">#FFFFFF</color>

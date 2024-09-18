@@ -37,9 +37,9 @@
                 android:layout_gravity="center"
                 android:textSize="14sp"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@color/black"
                 android:text="1-20 of 418 matches"
-                android:textColor="@color/black">
+                android:textColor="@color/white">
 
             </TextView>
         </LinearLayout>
@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MATCHES"
+                android:text="RECENT MATCHES"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textColor="@color/white"
@@ -68,66 +68,7 @@
                 android:orientation="vertical"
                 android:layout_below="@+id/recentmatches">
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:context=".searchplayerfragment.MatchesHistoryFragment"
-                android:background="@drawable/my_border">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/white">
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:gravity="center"
-                        android:text="Hero"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:gravity="center"
-                        android:text="Mode"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:gravity="center"
-                        android:text="Ended"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:gravity="center"
-                        android:text="Length"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:gravity="center"
-                        android:text="K/D/A"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
