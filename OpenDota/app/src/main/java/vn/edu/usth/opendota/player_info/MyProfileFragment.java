@@ -21,7 +21,6 @@ public class MyProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_profile, container, false);
-        
         Bundle args = getArguments();
         if (args != null) {
             String userName = args.getString("userName");
@@ -36,7 +35,6 @@ public class MyProfileFragment extends Fragment {
 
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-
 
         return view;
     }

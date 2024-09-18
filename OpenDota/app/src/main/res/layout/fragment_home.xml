@@ -61,6 +61,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_gravity="center"
                 android:src="@drawable/steam_icon">
             </ImageView>
 
@@ -82,10 +83,10 @@
         android:id="@+id/khunghome_2">
 
         <LinearLayout
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_marginStart="5dp"
-
+            android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="288dp"
             android:background="@color/licorice"
@@ -118,9 +119,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_below="@+id/khunghome_1"
+            android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
