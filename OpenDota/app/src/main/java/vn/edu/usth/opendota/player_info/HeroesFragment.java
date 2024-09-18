@@ -1,6 +1,8 @@
 package vn.edu.usth.opendota.player_info;
 
 import android.os.Bundle;
+
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -22,4 +24,6 @@ public class HeroesFragment extends Fragment {
         HeroesFragment frag_layout3 = new HeroesFragment();
         return frag_layout3;
     }
+
+
 }

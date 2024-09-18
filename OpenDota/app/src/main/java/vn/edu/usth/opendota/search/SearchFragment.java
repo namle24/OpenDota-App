@@ -16,9 +16,9 @@ import java.util.List;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapter.SearchAdapter;
-import vn.edu.usth.opendota.player_info.MyProfileActivity;
+import vn.edu.usth.opendota.player_info.MyProfileFragment;
 
-public class SearchActivity extends Fragment {
+public class SearchFragment extends Fragment {
 
     private RecyclerView rcvUser;
     private SearchAdapter userAdapter;
@@ -83,7 +83,7 @@ public class SearchActivity extends Fragment {
     }
 
     private void openUserProfile(User user) {
-        MyProfileActivity profileFragment = new MyProfileActivity();
+        MyProfileFragment profileFragment = new MyProfileFragment();
 
         Bundle bundle = new Bundle();
         bundle.putString("userName", user.getName());
@@ -92,7 +92,7 @@ public class SearchActivity extends Fragment {
 
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.framelayout, profileFragment)
+                .replace(R.id.main, profileFragment)
                 .addToBackStack(null)
                 .commit();
     }

@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapter.player_adapter;
 
-public class MyProfileActivity extends Fragment {
+public class MyProfileFragment extends Fragment {
 
     @Nullable
     @Override
