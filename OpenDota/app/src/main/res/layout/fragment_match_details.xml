@@ -192,11 +192,10 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="1"
                 android:padding="16dp">
 
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
@@ -207,12 +206,14 @@
                         android:layout_height="wrap_content"
                         android:text="Hero"
                         android:textAlignment="center"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
                     <TextView
-                        android:layout_width="135dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="3"
                         android:padding="8dp"
                         android:text="Player"
                         android:textAlignment="center"
@@ -222,6 +223,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="K/D/A"
+                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
@@ -231,6 +233,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:text="GPM"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
@@ -239,9 +242,10 @@
                         android:layout_height="wrap_content"
                         android:text="XPM"
                         android:textAlignment="center"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
-                </TableRow>
+                </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -265,16 +269,18 @@
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
+                                android:layout_weight="1"
                                 android:src="@drawable/puck_full"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Minh"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -285,6 +291,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="11/5/8"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -295,6 +302,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="686"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -305,6 +313,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="1024"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -413,15 +422,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/mars_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Nghia"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -431,6 +442,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:text="3/6/17"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -441,6 +453,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="489"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
@@ -452,6 +465,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="812"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -560,15 +574,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/lich_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Duc"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -579,6 +595,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="5/14/11"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -589,6 +606,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="281"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -600,6 +618,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="312"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -706,15 +725,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/nevermore_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Nam"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -725,6 +746,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="11/9/6"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -736,6 +758,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="684"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -746,6 +769,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="904"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -851,15 +875,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/slardar_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="QMinh"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -870,6 +896,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="3/8/15"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -880,6 +907,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="370"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -891,6 +919,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="556"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -1023,11 +1052,10 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="1"
                 android:padding="16dp">
 
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
@@ -1038,14 +1066,16 @@
                         android:layout_height="wrap_content"
                         android:text="Hero"
                         android:textStyle="bold"
+                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
                     <TextView
-                        android:layout_width="170dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Player"
+                        android:layout_weight="3"
                         android:textAlignment="center"
                         android:padding="2dp"
                         android:textColor="#FFFFFF" />
@@ -1055,6 +1085,8 @@
                         android:layout_height="wrap_content"
                         android:text="K/D/A"
                         android:padding="8dp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
                         android:textColor="#FFFFFF" />
 
                     <TextView
@@ -1062,6 +1094,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:text="GPM"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
@@ -1069,10 +1102,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="XPM"
+                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
-                </TableRow>
+                </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -1093,33 +1127,32 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/juggernaut_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <LinearLayout
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
+                                android:layout_gravity="center_vertical"
                                 android:gravity="center_horizontal"
-                                android:orientation="vertical">
+                                android:padding="8dp"
+                                android:layout_weight="2"
+                                android:orientation="horizontal">
                                 <TextView
-                                    android:layout_width="170dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:paddingTop="8dp"
                                     android:text="Ronaldo"
+                                    android:layout_marginRight="5dp"
                                     android:textAlignment="center"
                                     android:textColor="#FFFFFF"
                                     tools:ignore="RtlCompat" />
                                 <TextView
-                                    android:layout_width="50dp"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="60dp"
+                                    android:layout_height="20dp"
                                     android:text="MVP"
-                                    android:gravity="center_horizontal"
+                                    android:gravity="center"
                                     android:background="@drawable/mvp_tag"
-                                    android:layout_weight="200"
-                                    android:layout_marginStart="60dp"
-                                    android:layout_gravity="center_vertical"
                                     />
                             </LinearLayout>
 
@@ -1131,6 +1164,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="11/6/9"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1142,6 +1176,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="705"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1151,6 +1186,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="849"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1258,14 +1294,16 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/grimstroke_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
+                                android:layout_weight="3"
                                 android:text="Anthony"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -1277,6 +1315,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="5/6/18"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1288,6 +1327,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="345"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1298,6 +1338,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="473"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -1404,14 +1445,16 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/pudge_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:padding="8dp"
+                                android:layout_weight="3"
+                                android:padding="4dp"
                                 android:text="Fan Anh Long"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -1421,7 +1464,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:padding="8dp"
+                                android:textFontWeight="1"
                                 android:text="8/11/26"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -1432,6 +1477,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="391"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
@@ -1442,6 +1488,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="540"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
@@ -1551,14 +1598,16 @@
                                 android:layout_height="50dp"
                                 android:src="@drawable/viper_full"
                                 android:scaleType="centerCrop"
+                                android:layout_weight="1"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Messi"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1569,6 +1618,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="7/2/12"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1580,6 +1630,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="581"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1590,6 +1641,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="756"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -1697,14 +1749,16 @@
                                 android:layout_height="50dp"
                                 android:src="@drawable/queenofpain_full"
                                 android:scaleType="centerCrop"
+                                android:layout_weight="1"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Murphy"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1715,6 +1769,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="8/8/16"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1726,6 +1781,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="434"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1735,6 +1791,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="531"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />

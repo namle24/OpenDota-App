@@ -66,15 +66,16 @@
             android:gravity="center"
             android:textColor="@color/white"
             tools:text="3/5/26" />
+
+        <View
+            android:id="@+id/line_view"
+            android:layout_width="4dp"
+            android:layout_alignParentEnd="true"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@android:color/holo_red_dark" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/line_view"
-        android:layout_width="4dp"
-        android:layout_alignParentEnd="true"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:background="@android:color/holo_red_dark" />
 
     <View
         android:layout_width="match_parent"

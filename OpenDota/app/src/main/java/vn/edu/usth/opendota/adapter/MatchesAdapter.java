@@ -58,9 +58,9 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         holder.avatar.setImageDrawable(ContextCompat.getDrawable(holder.itemView.getContext(), item.getAvatarResId()));
 
         if (item.isWin()) {
-            holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.holo_green_dark));
+            holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.winProgress));
         } else {
-            holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.holo_red_dark));
+            holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.looseProgress));
         }
     }
 

@@ -20,7 +20,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHo
     private List<User> mListUser;
     private OnItemClickListener itemClickListener;
 
-    // Constructor
     public SearchAdapter(List<User> mListUser, OnItemClickListener itemClickListener) {
         this.mListUser = mListUser;
         this.itemClickListener = itemClickListener;
@@ -54,7 +53,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHo
             }
         });
 
-        // Handle item click to open user profile
         holder.itemView.setOnClickListener(v -> {
             if (itemClickListener != null) {
                 itemClickListener.onItemClick(position, user);
@@ -67,13 +65,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHo
         return mListUser != null ? mListUser.size() : 0;
     }
 
-    // Filter function for search
     public void filterList(List<User> filteredList) {
         this.mListUser = filteredList;
         notifyDataSetChanged();
     }
 
-    // ViewHolder class
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         private final CircleImageView imgUser;
         private final TextView tvName;
@@ -89,7 +85,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHo
         }
     }
 
-    // Interface for handling clicks
     public interface OnItemClickListener {
         void onItemClick(int position, User user);
         void onItemClick(int position, boolean isSelected);

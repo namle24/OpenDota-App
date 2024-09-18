@@ -39,7 +39,7 @@ public class SearchFragment extends Fragment {
         userAdapter = new SearchAdapter(userList, new SearchAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, User user) {
-                openUserProfile(user);  // Open user profile when clicked
+                openUserProfile(user); 
             }
             @Override
             public void onItemClick(int position, boolean isSelected) {

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/cardview_dark_background"
     android:orientation="vertical"
     android:id="@+id/setting_drawer_layout">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:id="@+id/relative_layout_setting"
         android:layout_height="match_parent"
-        android:background="@color/background">
+        android:background="@color/CARD">
 
 
         <LinearLayout
@@ -25,28 +25,28 @@
                 android:id="@+id/Themes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@id/Theme_Default"
+                android:checkedButton="@id/default_theme"
                 android:paddingLeft="10dp">
 
                 <RadioButton
-                    android:id="@+id/Theme_Default"
+                    android:id="@+id/default_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="OpenDota (Default)"
                     android:textColor="@color/white"/>
 
                 <RadioButton
-                    android:id="@+id/Theme_SkyDolch"
+                    android:id="@+id/white_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sky Dolch"
+                    android:text="White Theme"
                     android:textColor="@color/white"/>
 
                 <RadioButton
-                    android:id="@+id/Theme_Hyperfuse"
+                    android:id="@+id/holeblue_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hyperfuse"
+                    android:text="Holo Blue"
                     android:textColor="@color/white"/>
 
                 <RadioButton
@@ -60,13 +60,13 @@
                     android:id="@+id/Theme_NightDota"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="NightDota"
+                    android:text="Night theme"
                     android:textColor="@color/white"/>
                 <RadioButton
                     android:id="@+id/Theme_FUWA_FUWA_PINK"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PINK!!!"
+                    android:text="Pink Theme"
                     android:textColor="@color/white"/>
 
             </RadioGroup>
