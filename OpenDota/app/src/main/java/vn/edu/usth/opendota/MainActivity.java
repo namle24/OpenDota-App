@@ -3,7 +3,6 @@ package vn.edu.usth.opendota;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,18 +11,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 
-import vn.edu.usth.opendota.adapter.player_adapter;
-import vn.edu.usth.opendota.favourite.FavouriteFragment;
-import vn.edu.usth.opendota.home.HomeFragment;
-import vn.edu.usth.opendota.search.SearchFragment;
-import vn.edu.usth.opendota.settings.SettingsFragment;
+import vn.edu.usth.opendota.favourite.FavouriteActivity;
+import vn.edu.usth.opendota.home.HomeActivity;
+import vn.edu.usth.opendota.player_info.MyProfileActivity;
+import vn.edu.usth.opendota.search.SearchActivity;
+import vn.edu.usth.opendota.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (savedInstanceState == null) {
-            replaceFragment(new HomeFragment());
+            replaceFragment(new HomeActivity());
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
@@ -55,15 +51,15 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (id == R.id.nav_home) {
-                    replaceFragment(new HomeFragment());
+                    replaceFragment(new HomeActivity());
                 } else if (id == R.id.nav_myprofile) {
-                    replaceFragment(new vn.edu.usth.opendota.player_info.MyProfileFragment());
+                    replaceFragment(new MyProfileActivity());
                 } else if (id == R.id.nav_favourite) {
-                    replaceFragment(new FavouriteFragment());
+                    replaceFragment(new FavouriteActivity());
                 } else if (id == R.id.nav_search) {
-                    replaceFragment(new SearchFragment());
+                    replaceFragment(new SearchActivity());
                 } else if (id == R.id.nav_settings) {
-                    replaceFragment(new SettingsFragment());
+                    replaceFragment(new SettingsActivity());
                 } else {
                     return true;
                 }

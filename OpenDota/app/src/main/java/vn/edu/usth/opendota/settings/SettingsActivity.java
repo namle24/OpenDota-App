@@ -1,4 +1,4 @@
-package vn.edu.usth.opendota.favourite;
+package vn.edu.usth.opendota.settings;
 
 import android.os.Bundle;
 
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import vn.edu.usth.opendota.R;
 
-public class FavouriteFragment extends Fragment {
+public class SettingsActivity extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,6 @@ public class FavouriteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_favourite, container, false);
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
-
 }

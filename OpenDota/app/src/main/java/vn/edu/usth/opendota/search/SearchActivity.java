@@ -16,9 +16,9 @@ import java.util.List;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapter.SearchAdapter;
-import vn.edu.usth.opendota.player_info.MyProfileFragment;
+import vn.edu.usth.opendota.player_info.MyProfileActivity;
 
-public class SearchFragment extends Fragment {
+public class SearchActivity extends Fragment {
 
     private RecyclerView rcvUser;
     private SearchAdapter userAdapter;
@@ -83,7 +83,7 @@ public class SearchFragment extends Fragment {
     }
 
     private void openUserProfile(User user) {
-        MyProfileFragment profileFragment = new MyProfileFragment();
+        MyProfileActivity profileFragment = new MyProfileActivity();
 
         Bundle bundle = new Bundle();
         bundle.putString("userName", user.getName());
@@ -107,9 +107,9 @@ public class SearchFragment extends Fragment {
         list.add(new User(R.drawable.anhlong1, "Duc", "ID: 233507135"));
         list.add(new User(R.drawable.avatar_22, "Qminh", "ID: 1856746982"));
 
-        list.add(new User(R.drawable.anhsi, "Messi", "ID: 334455667"));
-        list.add(new User(R.drawable.avarta10, "Ni garami", "ID: 556677889"));
-        list.add(new User(R.drawable.ronaldo1, "Ronaldo", "ID: 667788990"));
+        list.add(new User(R.drawable.anhsi, "Messi", "ID: 154520951"));
+        list.add(new User(R.drawable.avarta10, "Ni garami", "ID: 282677100"));
+        list.add(new User(R.drawable.ronaldo1, "Ronaldo", "ID: 613456720"));
         list.add(new User(R.drawable.goku, "Leopard", "ID: 778899001"));
         list.add(new User(R.drawable.avatar_7, "SlayerKing", "ID: 123456789"));
         list.add(new User(R.drawable.avatar_8, "StormFury", "ID: 987654321"));

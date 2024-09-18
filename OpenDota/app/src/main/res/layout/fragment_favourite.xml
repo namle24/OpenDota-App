@@ -1,137 +1,726 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_bground"
-        android:padding="10dp"
-        android:layout_margin="4dp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_user"
-            android:layout_width="60dp"
-            android:layout_height="70dp"
-            android:src="@drawable/avarta2"
-            />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        tools:ignore="ScrollViewSize">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/img_user"
-            android:layout_marginStart="10dp"
-            android:orientation="horizontal">
+            android:background="@drawable/gradient_bground"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_1"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:src="@drawable/avarta2"
+                />
 
             <LinearLayout
-                android:id="@+id/user_profile"
-                android:layout_toEndOf="@+id/img"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="3">
+                android:layout_toEndOf="@+id/user_1"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/name"
+                <LinearLayout
+                    android:id="@+id/user_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Namlee"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textSize="22dp"/>
-                <View
-                    style="@style/Divider"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="5dp"/>
-                <TextView
-                    android:id="@+id/ID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textSize="22dp"
-                    android:text="ID: 185476982" />
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Namlee"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:id="@+id/ID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="ID: 185476982" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/user_imagerank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
             </LinearLayout>
-            <ImageButton
-                android:id="@+id/user_imagerank"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_toEndOf="@id/name_id"
-                android:src="@drawable/ic_red_heart_x24"
-                android:background="@android:color/transparent"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                tools:ignore="ObsoleteLayoutParam" />
-        </LinearLayout>
-    </RelativeLayout>
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_bground"
-        android:padding="10dp"
-        android:layout_margin="4dp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="60dp"
-            android:layout_height="70dp"
-            android:id="@+id/user_2"
-            android:src="@drawable/avarta3"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/user_2"
-            android:orientation="horizontal">
+            android:background="@drawable/gradient_band"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_2"
+                android:src="@drawable/avarta3"
+                />
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/user_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="3">
+                android:orientation="horizontal">
 
-                <TextView
+                <LinearLayout
+                    android:layout_toEndOf="@+id/user_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quang Minh"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textSize="22dp"/>
-                <View
-                    style="@style/Divider"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="5dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textSize="22dp"
-                    android:text="ID: 185476982" />
-            </LinearLayout>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_toEndOf="@id/name_id"
-                android:src="@drawable/ic_red_heart_x24"
-                android:background="@android:color/transparent"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                tools:ignore="ObsoleteLayoutParam" />
-        </LinearLayout>
-    </RelativeLayout>
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
 
-</LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quang Minh"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        tools:ignore="HardcodedText" />
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="ID: 158643232"
+                        tools:ignore="HardcodedText,ObsoleteLayoutParam" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/image"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bground"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_3"
+                android:src="@drawable/avatar_6"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_3"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_toEndOf="@+id/user_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Viet Duc"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        tools:ignore="HardcodedText" />
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:text="ID: 233507135"
+                        tools:ignore="HardcodedText"/>
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/image" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_band"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_4"
+                android:src="@drawable/avarta4"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_4"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nghia"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        tools:ignore="HardcodedText"
+                        android:text="ID: 158643232" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bground"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_5"
+                android:src="@drawable/avatar_1"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_5"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Minh"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        tools:ignore="HardcodedText"
+                        android:text="ID: 158643232" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_band"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_6"
+                android:src="@drawable/ronaldo1"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_6"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ronaldo"
+                        android:singleLine="true"
+                        tools:ignore="HardcodedText"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"
+                        android:text="ID: 613456720" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bground"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_7"
+                android:src="@drawable/anhlong1"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_7"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anh Long"
+                        android:singleLine="true"
+                        tools:ignore="HardcodedText"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"
+                        android:text="ID: 780225124" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_band"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_8"
+                android:src="@drawable/avatar_15"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_8"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MCK"
+                        android:singleLine="true"
+                        tools:ignore="HardcodedText"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"
+                        android:text="ID: 707070707" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bground"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_9"
+                android:src="@drawable/avatar_14"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_9"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wxrdie"
+                        android:singleLine="true"
+                        tools:ignore="HardcodedText"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"
+                        android:text="ID: 606060606" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_band"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_10"
+                android:src="@drawable/avatar_16"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_10"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tlinh"
+                        android:singleLine="true"
+                        tools:ignore="HardcodedText"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"
+                        android:text="ID: 808080808" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bground"
+            android:padding="10dp"
+            android:layout_margin="4dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:id="@+id/user_11"
+                android:src="@drawable/avatar_18"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/user_11"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Night Stalker"
+                        android:singleLine="true"
+                        tools:ignore="HardcodedText"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"/>
+                    <View
+                        style="@style/Divider"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText"
+                        android:textSize="22sp"
+                        android:text="ID: 111222333" />
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_toEndOf="@id/name_id"
+                    android:src="@drawable/ic_red_heart_x24"
+                    android:background="@android:color/transparent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/image"
+                    android:layout_weight="1"
+                    tools:ignore="ObsoleteLayoutParam" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -18,12 +18,12 @@ import vn.edu.usth.opendota.matches.Matches;
 import vn.edu.usth.opendota.models.MatchDetailActivityManage;
 import vn.edu.usth.opendota.retrofit.Client;
 
-public class FragmentOverview extends Fragment {
+public class fragment_overview extends Fragment {
     private static final String TAG = "FragmentOverview";
     private MatchesAdapter matchesAdapter;
 
-    public static FragmentOverview newInstance() {
-        return new FragmentOverview();
+    public static fragment_overview newInstance() {
+        return new fragment_overview();
     }
 
     @Override

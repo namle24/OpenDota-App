@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import vn.edu.usth.opendota.R;
 
-public class HomeFragment extends Fragment {
+public class HomeActivity extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
