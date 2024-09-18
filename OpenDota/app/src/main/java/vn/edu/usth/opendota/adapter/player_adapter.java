@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import vn.edu.usth.opendota.player_info.fragment_heroes;
-import vn.edu.usth.opendota.player_info.fragment_match;
-import vn.edu.usth.opendota.player_info.fragment_overview;
+import vn.edu.usth.opendota.player_info.HeroesFragment;
+import vn.edu.usth.opendota.player_info.MatchFragment;
+import vn.edu.usth.opendota.player_info.OverviewFragment;
 
 public class player_adapter extends FragmentPagerAdapter {
     private final int PAGE_COUNT = 3;
@@ -25,11 +25,11 @@ public class player_adapter extends FragmentPagerAdapter {
     public Fragment getItem(int page) {
         switch (page) {
             case 0:
-                return fragment_overview.newInstance();
+                return OverviewFragment.newInstance();
             case 1:
-                return fragment_match.newInstance();
+                return MatchFragment.newInstance();
             case 2:
-                return fragment_heroes.newInstance();
+                return HeroesFragment.newInstance();
             default:
                 return null;
         }

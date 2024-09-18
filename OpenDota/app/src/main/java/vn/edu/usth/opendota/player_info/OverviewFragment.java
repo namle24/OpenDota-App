@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import vn.edu.usth.opendota.R;
 
 
-public class fragment_overview extends Fragment {
+public class OverviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -18,8 +18,8 @@ public class fragment_overview extends Fragment {
         return inflater.inflate(R.layout.fragment_overview, container, false);
     }
 
-    public static fragment_overview newInstance() {
-        fragment_overview frag_layout1 = new fragment_overview();
+    public static OverviewFragment newInstance() {
+        OverviewFragment frag_layout1 = new OverviewFragment();
         return frag_layout1;
     }
 
