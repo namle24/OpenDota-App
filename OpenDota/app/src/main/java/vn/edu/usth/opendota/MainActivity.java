@@ -3,6 +3,7 @@ package vn.edu.usth.opendota;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MaterialToolbar toolbar = findViewById(R.id.topappbar);
+
+        MaterialToolbar toolbar = findViewById(R.id.TopAppBar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
 
@@ -42,12 +44,19 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        if (savedInstanceState == null) {
+            replaceFragment(new HomeFragment());
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -57,27 +66,28 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (id == R.id.nav_home) {
                     replaceFragment(new HomeFragment());
+                    toolbarTitle.setText("Home");
                 } else if (id == R.id.nav_favourite) {
                     replaceFragment(new FavouriteFragment());
+                    toolbarTitle.setText("Favourite");
                 } else if (id == R.id.nav_search) {
                     replaceFragment(new SearchFragment());
+                    toolbarTitle.setText("Search");
                 } else if (id == R.id.nav_settings) {
                     replaceFragment(new SettingsFragment());
+                    toolbarTitle.setText("Settings");
                 } else {
                     return true;
                 }
                 return true;
             }
         });
-
-
     }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout, fragment);
+        fragmentTransaction.replace(R.id.main, fragment);
         fragmentTransaction.commit();
-
     }
 }
