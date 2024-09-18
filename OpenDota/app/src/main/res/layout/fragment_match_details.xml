@@ -1,4 +1,4 @@
-<ScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="36"
+                        android:text="42"
                         android:layout_marginStart="20dp"
                         android:textSize="50sp"
                         android:textColor="@color/win">
@@ -117,7 +117,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="00:32:03"
+                            android:text="00:41:06"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:layout_gravity="center"
@@ -127,7 +127,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ENDED 2 DAYS AGO"
+                            android:text="ENDED 16 DAYS AGO"
                             android:textSize="18dp"
                             android:textColor="@color/white">
                         </TextView>
@@ -136,7 +136,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="24"
+                        android:text="44"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="20dp"
                         android:textColor="@color/lose"
@@ -192,11 +192,10 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="1"
                 android:padding="16dp">
 
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
@@ -207,12 +206,14 @@
                         android:layout_height="wrap_content"
                         android:text="Hero"
                         android:textAlignment="center"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
                     <TextView
-                        android:layout_width="135dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="3"
                         android:padding="8dp"
                         android:text="Player"
                         android:textAlignment="center"
@@ -222,6 +223,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="K/D/A"
+                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
@@ -231,6 +233,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:text="GPM"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
@@ -239,13 +242,17 @@
                         android:layout_height="wrap_content"
                         android:text="XPM"
                         android:textAlignment="center"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
-                </TableRow>
+                </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -262,16 +269,18 @@
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
+                                android:layout_weight="1"
                                 android:src="@drawable/puck_full"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Minh"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -282,6 +291,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="11/5/8"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -292,6 +302,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="686"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -302,6 +313,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="1024"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -317,6 +329,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -409,15 +422,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/mars_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Nghia"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -427,6 +442,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:text="3/6/17"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -437,6 +453,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="489"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
@@ -448,6 +465,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="812"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -463,6 +481,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -555,15 +574,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/lich_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Duc"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -574,6 +595,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="5/14/11"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -584,6 +606,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="281"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -595,6 +618,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="312"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -609,6 +633,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -700,15 +725,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/nevermore_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Nam"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -719,6 +746,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="11/9/6"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -730,6 +758,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="684"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -740,6 +769,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="904"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -753,6 +783,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -844,15 +875,17 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/slardar_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="QMinh"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -863,6 +896,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="3/8/15"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -873,6 +907,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="370"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -884,6 +919,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="556"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -898,6 +934,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
@@ -1015,11 +1052,10 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="1"
                 android:padding="16dp">
 
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
@@ -1030,6 +1066,7 @@
                         android:layout_height="wrap_content"
                         android:text="Hero"
                         android:textStyle="bold"
+                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
@@ -1038,8 +1075,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Player"
+                        android:layout_weight="3"
                         android:textAlignment="center"
-                        android:padding="8dp"
+                        android:padding="2dp"
                         android:textColor="#FFFFFF" />
 
                     <TextView
@@ -1047,6 +1085,8 @@
                         android:layout_height="wrap_content"
                         android:text="K/D/A"
                         android:padding="8dp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
                         android:textColor="#FFFFFF" />
 
                     <TextView
@@ -1054,6 +1094,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:text="GPM"
+                        android:layout_weight="1"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
 
@@ -1061,10 +1102,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="XPM"
+                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:padding="8dp"
                         android:textColor="#FFFFFF" />
-                </TableRow>
+                </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -1074,29 +1116,47 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/player_info6"
-                        android:background="@color/licorice"
+                        android:background="@color/CARD"
                         android:orientation="vertical">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/licorice">
+                            android:background="@drawable/mvp_gradient">
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/juggernaut_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
-                            <TextView
-                                android:layout_width="170dp"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:gravity="center_horizontal"
                                 android:padding="8dp"
-                                android:text="Ronaldo"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                tools:ignore="RtlCompat" />
+                                android:layout_weight="2"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Ronaldo"
+                                    android:layout_marginRight="5dp"
+                                    android:textAlignment="center"
+                                    android:textColor="#FFFFFF"
+                                    tools:ignore="RtlCompat" />
+                                <TextView
+                                    android:layout_width="60dp"
+                                    android:layout_height="20dp"
+                                    android:text="MVP"
+                                    android:gravity="center"
+                                    android:background="@drawable/mvp_tag"
+                                    />
+                            </LinearLayout>
+
+
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -1104,6 +1164,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="11/6/9"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1115,6 +1176,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="705"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1124,6 +1186,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="849"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1139,6 +1202,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -1230,14 +1294,16 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/grimstroke_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
+                                android:layout_weight="3"
                                 android:text="Anthony"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -1249,6 +1315,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="5/6/18"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1260,6 +1327,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="345"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1270,6 +1338,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="473"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -1283,6 +1352,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -1375,14 +1445,16 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:src="@drawable/pudge_full"
+                                android:layout_weight="1"
                                 android:scaleType="centerCrop"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:padding="8dp"
+                                android:layout_weight="3"
+                                android:padding="4dp"
                                 android:text="Fan Anh Long"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -1392,7 +1464,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:padding="8dp"
+                                android:textFontWeight="1"
                                 android:text="8/11/26"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
@@ -1403,6 +1477,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="391"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
@@ -1413,6 +1488,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="540"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
@@ -1429,6 +1505,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -1521,14 +1598,16 @@
                                 android:layout_height="50dp"
                                 android:src="@drawable/viper_full"
                                 android:scaleType="centerCrop"
+                                android:layout_weight="1"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Messi"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1539,6 +1618,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="7/2/12"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1550,6 +1630,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="581"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1560,6 +1641,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="756"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
                         </LinearLayout>
@@ -1574,6 +1656,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -1666,14 +1749,16 @@
                                 android:layout_height="50dp"
                                 android:src="@drawable/queenofpain_full"
                                 android:scaleType="centerCrop"
+                                android:layout_weight="1"
                                 android:padding="8dp" />
 
                             <TextView
-                                android:layout_width="170dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="Murphy"
+                                android:layout_weight="3"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1684,6 +1769,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:padding="8dp"
                                 android:text="8/8/16"
+                                android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1695,6 +1781,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:text="434"
                                 android:padding="8dp"
+                                android:layout_weight="1"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
 
@@ -1704,6 +1791,7 @@
                                 android:textAlignment="center"
                                 android:layout_gravity="center_vertical"
                                 android:text="531"
+                                android:layout_weight="1"
                                 android:padding="8dp"
                                 android:textColor="#FFFFFF"
                                 tools:ignore="RtlCompat" />
@@ -1718,6 +1806,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/player_stats10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#4BB7F1"
@@ -1793,4 +1882,4 @@
             </TableLayout>
         </RelativeLayout>
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
