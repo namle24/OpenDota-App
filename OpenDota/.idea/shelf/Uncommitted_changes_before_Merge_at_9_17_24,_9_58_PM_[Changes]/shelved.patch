@@ -1,0 +1,879 @@
+Index: app/src/main/java/vn/edu/usth/opendota/adapter/MatchesAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.adapter;\n\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.ImageView;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.core.content.ContextCompat;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport vn.edu.usth.opendota.R;\nimport vn.edu.usth.opendota.matches.Matches;\n\npublic class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {\n    private List<Matches> matches = new ArrayList<>();\n    private OnClickListener onClickListener;\n\n    public void submit(List<Matches> newList) {\n        matches = newList;\n        notifyDataSetChanged();\n    }\n\n    public void setOnClickListener(OnClickListener onClickListener) {\n        this.onClickListener = onClickListener;\n    }\n\n    @NonNull\n    @Override\n    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.khung_trandau, parent, false);\n        return new ViewHolder(view);\n    }\n\n    @Override\n    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {\n        Matches item = matches.get(position);\n\n        holder.itemView.setOnClickListener(view -> {\n            if (onClickListener != null) {\n                onClickListener.onClick(position, item);\n            }\n        });\n\n        String mode = item.getModes();\n        holder.tvTitle.setText(mode);\n\n        String kda = item.getKills() + \"/\" + item.getDeaths() + \"/\" + item.getAssists();\n        holder.tvKda.setText(kda);\n\n        holder.tvTimeEnded.setText(item.getStartTime());\n        holder.idDuration.setText(item.getDuration());\n\n        holder.avatar.setImageDrawable(ContextCompat.getDrawable(holder.itemView.getContext(), item.getAvatarResId()));\n\n        if (item.isWin()) {\n            holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.holo_green_dark));\n        } else {\n            holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.holo_red_dark));\n        }\n    }\n\n    @Override\n    public int getItemCount() {\n        return matches.size();\n    }\n\n    public interface OnClickListener {\n        void onClick(int position, Matches match);\n    }\n\n    static class ViewHolder extends RecyclerView.ViewHolder {\n        private final TextView tvTitle;\n        private final TextView tvKda;\n        private final TextView tvTimeEnded;\n        private final TextView idDuration;\n        private final ImageView avatar;\n        private final View lineView;\n\n        public ViewHolder(@NonNull View itemView) {\n            super(itemView);\n            tvTitle = itemView.findViewById(R.id.tv_title);\n            tvKda = itemView.findViewById(R.id.tv_kda);\n            tvTimeEnded = itemView.findViewById(R.id.tv_time_ended);\n            idDuration = itemView.findViewById(R.id.id_duration);\n            avatar = itemView.findViewById(R.id.avatar);\n            lineView = itemView.findViewById(R.id.line_view);\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/adapter/MatchesAdapter.java b/app/src/main/java/vn/edu/usth/opendota/adapter/MatchesAdapter.java
+--- a/app/src/main/java/vn/edu/usth/opendota/adapter/MatchesAdapter.java	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/java/vn/edu/usth/opendota/adapter/MatchesAdapter.java	(date 1726584919648)
+@@ -10,18 +10,27 @@
+ import androidx.core.content.ContextCompat;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
++import java.text.SimpleDateFormat;
+ import java.util.ArrayList;
++import java.util.Date;
+ import java.util.List;
++import java.util.Locale;
+ 
+ import vn.edu.usth.opendota.R;
+ import vn.edu.usth.opendota.matches.Matches;
+ 
+ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
++
+     private List<Matches> matches = new ArrayList<>();
+     private OnClickListener onClickListener;
+ 
+-    public void submit(List<Matches> newList) {
+-        matches = newList;
++    // Submitting a new list of matches, either append or replace
++    public void submit(List<Matches> newList, boolean append) {
++        if (append) {
++            matches.addAll(newList);
++        } else {
++            matches = newList;
++        }
+         notifyDataSetChanged();
+     }
+ 
+@@ -40,37 +49,68 @@
+     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+         Matches item = matches.get(position);
+ 
+-        holder.itemView.setOnClickListener(view -> {
+-            if (onClickListener != null) {
+-                onClickListener.onClick(position, item);
+-            }
+-        });
+-
+         String mode = item.getModes();
+         holder.tvTitle.setText(mode);
+ 
+         String kda = item.getKills() + "/" + item.getDeaths() + "/" + item.getAssists();
+         holder.tvKda.setText(kda);
+ 
+-        holder.tvTimeEnded.setText(item.getStartTime());
+-        holder.idDuration.setText(item.getDuration());
++        // Safely format and display the start time of the match
++        if (item.getStartTime() > 0) {
++            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
++            Date date = new Date(item.getStartTime());
++            String formattedDate = sdf.format(date);
++            holder.tvTimeEnded.setText(formattedDate);
++        } else {
++            holder.tvTimeEnded.setText("Unknown");
++        }
+ 
+-        holder.avatar.setImageDrawable(ContextCompat.getDrawable(holder.itemView.getContext(), item.getAvatarResId()));
++        // Safely format and display the duration of the match
++        try {
++            long startTime = Long.parseLong(item.getStartTime());
++            if (startTime > 0) {
++                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
++                Date date = new Date(startTime);
++                String formattedDate = sdf.format(date);
++                holder.tvTimeEnded.setText(formattedDate);
++            } else {
++                holder.tvTimeEnded.setText("Unknown");
++            }
++        } catch (NumberFormatException e) {
++            holder.tvTimeEnded.setText("Unknown");  // Handle case where startTime is not a valid number
++        }
+ 
++        // Safely load the avatar resource or set a default if missing
++        int avatarResId = item.getAvatarResId();
++        if (avatarResId != 0) {
++            holder.avatar.setImageDrawable(ContextCompat.getDrawable(holder.itemView.getContext(), avatarResId));
++        } else {
++            holder.avatar.setImageDrawable(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.default_avatar));
++        }
++
++        // Set the color of the line view based on whether the match was a win or a loss
+         if (item.isWin()) {
+             holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.holo_green_dark));
+         } else {
+             holder.lineView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.holo_red_dark));
+         }
++
++        // Set click listener if available
++        holder.itemView.setOnClickListener(view -> {
++            if (onClickListener != null) {
++                onClickListener.onClick(position, item);
++            }
++        });
+     }
+ 
+     @Override
+     public int getItemCount() {
+-        return matches.size();
++        return matches != null ? matches.size() : 0;
+     }
+ 
++    // Interface for handling click events
+     public interface OnClickListener {
+-        void onClick(int position, Matches match);
++        void onClick(int position, Matches model);
+     }
+ 
+     static class ViewHolder extends RecyclerView.ViewHolder {
+Index: app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.player_info;\n\nimport android.os.Bundle;\n\nimport androidx.annotation.NonNull;\nimport androidx.annotation.Nullable;\nimport androidx.fragment.app.Fragment;\nimport androidx.recyclerview.widget.LinearLayoutManager;\n\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\n\nimport java.util.List;\n\nimport vn.edu.usth.opendota.R;\nimport vn.edu.usth.opendota.adapter.MatchesAdapter;\nimport vn.edu.usth.opendota.matches.Matches;\nimport vn.edu.usth.opendota.retrofit.Client;\n\n\npublic class fragment_overview extends Fragment {\n    private MatchesAdapter matchesAdapter;\n    public static fragment_overview newInstance() {\n        fragment_overview frag_layout1 = new fragment_overview();\n        return frag_layout1;\n    }\n\n    @Override\n    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\n        return inflater.inflate(R.layout.fragment_overview, container, false);\n    }\n\n    @Override\n    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {\n        super.onViewCreated(view, savedInstanceState);\n\n        androidx.recyclerview.widget.RecyclerView recyclerView = view.findViewById(R.id.recyclerview_match_history);\n        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));\n\n        matchesAdapter = new MatchesAdapter();\n        recyclerView.setAdapter(matchesAdapter);\n\n        loadMockData();\n    }\n\n    private void loadMockData() {\n        Client client = Client.getInstance(getContext());\n        List<Matches> mockMatches = client.getMockMatches();\n        matchesAdapter.submit(mockMatches);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java
+--- a/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/java/vn/edu/usth/opendota/player_info/fragment_overview.java	(date 1726584065972)
+@@ -7,6 +7,7 @@
+ import androidx.fragment.app.Fragment;
+ import androidx.recyclerview.widget.LinearLayoutManager;
+ 
++import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+@@ -31,22 +32,35 @@
+         return inflater.inflate(R.layout.fragment_overview, container, false);
+     }
+ 
++
+     @Override
+     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+         super.onViewCreated(view, savedInstanceState);
+ 
+         androidx.recyclerview.widget.RecyclerView recyclerView = view.findViewById(R.id.recyclerview_match_history);
+-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+-
+-        matchesAdapter = new MatchesAdapter();
+-        recyclerView.setAdapter(matchesAdapter);
++
++        if (recyclerView != null) {
++            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
++            matchesAdapter = new MatchesAdapter();
++            recyclerView.setAdapter(matchesAdapter);
+ 
+-        loadMockData();
++            loadMockData();
++        } else {
++            Log.e("fragment_overview", "RecyclerView is null. Check the layout ID.");
++        }
+     }
++
+ 
+     private void loadMockData() {
+         Client client = Client.getInstance(getContext());
+         List<Matches> mockMatches = client.getMockMatches();
+-        matchesAdapter.submit(mockMatches);
++
++        if (mockMatches != null && !mockMatches.isEmpty()) {
++            matchesAdapter.submit(mockMatches);  // Submit the data to the adapter
++        } else {
++            Log.e("fragment_overview", "No mock matches available");
++        }
+     }
++
++
+ }
+Index: app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.search;\n\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\n\nimport androidx.fragment.app.Fragment;\nimport androidx.recyclerview.widget.DividerItemDecoration;\nimport androidx.recyclerview.widget.LinearLayoutManager;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport vn.edu.usth.opendota.R;\nimport vn.edu.usth.opendota.adapter.SearchAdapter;\n\npublic class SearchFragment extends Fragment {\n\n    private RecyclerView rcvUser;\n    private SearchAdapter userAdapter;\n    private List<User> userList;\n    private androidx.appcompat.widget.SearchView searchView;\n\n    @Override\n    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {\n        View view = inflater.inflate(R.layout.fragment_search, container, false);\n\n        rcvUser = view.findViewById(R.id.rcv_users);\n        searchView = view.findViewById(R.id.search_view);\n\n        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);\n        rcvUser.setLayoutManager(linearLayoutManager);\n\n        userList = getListUsers();\n        userAdapter = new SearchAdapter(userList, new SearchAdapter.OnItemClickListener() {\n            @Override\n            public void onItemClick(int position, boolean isSelected) {\n                Log.i(\"SearchFragment\", \"Heart icon at position \" + position + \" clicked. Selected: \" + isSelected);\n            }\n        });\n        rcvUser.setAdapter(userAdapter);\n\n        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);\n        rcvUser.addItemDecoration(itemDecoration);\n\n        setupSearchView();\n\n        return view;\n    }\n\n    private void setupSearchView() {\n        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {\n            @Override\n            public boolean onQueryTextSubmit(String query) {\n                filter(query);\n                return false;\n            }\n\n            @Override\n            public boolean onQueryTextChange(String newText) {\n                filter(newText);\n                return false;\n            }\n        });\n    }\n\n    private void filter(String text) {\n        List<User> filteredList = new ArrayList<>();\n        for (User user : userList) {\n            if (user.getName().toLowerCase().contains(text.toLowerCase())) {\n                filteredList.add(user);\n            }\n        }\n        userAdapter.filterList(filteredList);\n    }\n\n    private List<User> getListUsers() {\n        List<User> list = new ArrayList<>();\n        list.add(new User(R.drawable.avarta2, \"NamLee\", \"ID: 185476982\"));\n        list.add(new User(R.drawable.avarta3, \"Minh\", \"ID: 185476982\"));\n        list.add(new User(R.drawable.avarta4, \"Nghia\", \"ID: 408523961\"));\n        list.add(new User(R.drawable.anhlong1, \"Duc\", \"ID: 233507135\"));\n        list.add(new User(R.drawable.avatar_1, \"Qminh\", \"ID: 1856746982\"));\n        return list;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java b/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java
+--- a/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java	(date 1726584065984)
+@@ -84,6 +84,27 @@
+         list.add(new User(R.drawable.avarta4, "Nghia", "ID: 408523961"));
+         list.add(new User(R.drawable.anhlong1, "Duc", "ID: 233507135"));
+         list.add(new User(R.drawable.avatar_1, "Qminh", "ID: 1856746982"));
++
++        list.add(new User(R.drawable.anhsi, "Messi", "ID: 334455667"));
++        list.add(new User(R.drawable.avarta10, "Ni garami", "ID: 556677889"));
++        list.add(new User(R.drawable.ronaldo1, "Ronaldo", "ID: 667788990"));
++        list.add(new User(R.drawable.goku, "Leopard", "ID: 778899001"));
++        list.add(new User(R.drawable.avatar_7, "SlayerKing", "ID: 123456789"));
++        list.add(new User(R.drawable.avatar_8, "StormFury", "ID: 987654321"));
++        list.add(new User(R.drawable.avatar_9, "ShadowWalker", "ID: 112233445"));
++        list.add(new User(R.drawable.avatar_22, "RogueAssassin", "ID: 998877665"));
++        list.add(new User(R.drawable.avatar_21, "VoidHunter", "ID: 889900112"));
++        list.add(new User(R.drawable.avatar_19, "PhoenixFlame", "ID: 990011223"));
++        list.add(new User(R.drawable.avatar_20, "FrostKnight", "ID: 101010101"));
++        list.add(new User(R.drawable.avatar_10, "EarthShaker", "ID: 202020202"));
++        list.add(new User(R.drawable.avatar_11, "SkyBreaker", "ID: 303030303"));
++        list.add(new User(R.drawable.avatar_12, "ShadowFiend", "ID: 404040404"));
++        list.add(new User(R.drawable.avatar_13, "DragonSlayer", "ID: 505050505"));
++        list.add(new User(R.drawable.avatar_14, "Wxrdie", "ID: 606060606"));
++        list.add(new User(R.drawable.avatar_15, "MCK", "ID: 707070707"));
++        list.add(new User(R.drawable.avatar_16, "Tlinh", "ID: 808080808"));
++        list.add(new User(R.drawable.avatar_17, "WarGod", "ID: 909090909"));
++        list.add(new User(R.drawable.avatar_18, "NightStalker", "ID: 111222333"));
+         return list;
+     }
+ }
+Index: app/src/main/res/drawable/rounded.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><shape xmlns:android=\"http://schemas.android.com/apk/res/android\">\n    <solid android:color=\"#262738\" />\n    <corners android:radius=\"16dp\" />\n</shape>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/rounded.xml b/app/src/main/res/drawable/rounded.xml
+--- a/app/src/main/res/drawable/rounded.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/drawable/rounded.xml	(date 1726584065995)
+@@ -1,4 +1,6 @@
+ <shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <solid android:color="#262738" />
++    <solid android:color="@color/white" />
+     <corners android:radius="16dp" />
++    <stroke android:color="@color/black"
++        android:width="2dp"/>
+ </shape>
+Index: app/src/main/res/drawable/newbgr.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<layer-list xmlns:android=\"http://schemas.android.com/apk/res/android\">\n\n    <!-- Background color band with gradient -->\n    <item>\n        <shape android:shape=\"rectangle\">\n            <!-- Gradient from right to left -->\n            <gradient\n                android:type=\"linear\"\n                android:startColor=\"#0F1923\"\n                android:centerColor=\"#FF4655\"\n                android:endColor=\"#0F1923\"\n                android:angle=\"90\"\n        </shape>\n    </item>\n\n\n</layer-list>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/newbgr.xml b/app/src/main/res/drawable/newbgr.xml
+--- a/app/src/main/res/drawable/newbgr.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/drawable/newbgr.xml	(date 1726584066062)
+@@ -10,7 +10,7 @@
+                 android:startColor="#0F1923"
+                 android:centerColor="#FF4655"
+                 android:endColor="#0F1923"
+-                android:angle="90"
++                android:angle="90"/>
+         </shape>
+     </item>
+ 
+Index: app/src/main/res/layout/fragment_overview.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ScrollView\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:fillViewport=\"true\">\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n\n        android:layout_height=\"wrap_content\"\n        android:orientation=\"vertical\"\n        tools:context=\".searchplayerfragment.MatchesHistoryFragment\"\n        android:background=\"@drawable/newbgr\"\n        android:padding=\"15dp\">\n\n        <LinearLayout\n            android:id=\"@+id/header\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:orientation=\"vertical\"\n            tools:context=\".searchplayerfragment.MatchesHistoryFragment\"\n             android:background=\"\"\n            >\n            <de.hdodenhof.circleimageview.CircleImageView\n                android:id=\"@+id/A_image\"\n                android:layout_width=\"90dp\"\n                android:layout_height=\"90dp\"\n                android:src=\"@drawable/avatar_1\"\n                android:layout_marginTop=\"10dp\"\n                android:layout_gravity=\"center_horizontal\"\n                tools:ignore=\"MissingClass\" />\n            <TextView\n                android:id=\"@+id/A_name\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:text=\"Minh\"\n                android:textStyle=\"bold\"\n                android:textColor=\"@color/white\"\n                android:textAlignment=\"center\"\n                android:textSize=\"25sp\"/>\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"horizontal\"\n                android:weightSum=\"9\"\n                android:layout_marginTop=\"10dp\">\n\n                <TextView\n                    android:id=\"@+id/tv_win\"\n                    android:layout_width=\"match_parent\"\n                    android:layout_height=\"wrap_content\"\n                    android:textStyle=\"bold\"\n                    android:layout_weight=\"3\"\n                    android:text=\"WINS\\n211\"\n                    android:textAlignment=\"center\"\n                    android:textColor=\"@color/wins_winrate\"\n                    android:textSize=\"@dimen/wins_loses_winrate\" />\n                <TextView\n                    android:id=\"@+id/losses\"\n                    android:layout_width=\"match_parent\"\n                    android:layout_height=\"wrap_content\"\n                    android:textStyle=\"bold\"\n                    android:layout_weight=\"3\"\n                    android:text=\"LOSSES\\n207\"\n                    android:textColor=\"@color/black\"\n                    android:textSize=\"@dimen/wins_loses_winrate\"\n                    android:textAlignment=\"center\"/>\n                <TextView\n                    android:id=\"@+id/winrate\"\n                    android:layout_width=\"match_parent\"\n                    android:textStyle=\"bold\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"3\"\n                    android:text=\"WINRATE\\n50.48%\"\n                    android:textColor=\"@color/white\"\n                    android:textSize=\"@dimen/wins_loses_winrate\"\n                    android:textAlignment=\"center\"/>\n            </LinearLayout>\n\n            <de.hdodenhof.circleimageview.CircleImageView\n                android:layout_width=\"79dp\"\n                android:layout_height=\"72dp\"\n                android:layout_gravity=\"center_horizontal\"\n                android:layout_marginTop=\"8dp\"\n                android:src=\"@drawable/rank_icon_8\" />\n            <TextView\n                android:id=\"@+id/profile_steam\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:text=\"@string/link_steamid\"\n                android:textStyle=\"italic\"\n                android:textAlignment=\"center\"\n                android:textColorLink=\"@color/white\"\n                android:padding=\"15dp\"\n                android:textSize=\"15sp\"\n                android:textColor=\"@color/white\"\n                android:autoLink=\"web\"\n                android:linksClickable=\"true\"/>\n        </LinearLayout>\n        <RelativeLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:background=\"@drawable/my_border\"\n            android:layout_marginTop=\"10dp\">\n            <TextView\n                android:id=\"@+id/recentmatches\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:text=\"RECENT MATCHES\"\n                android:textSize=\"25dp\"\n                android:textAlignment=\"center\"\n                android:textColor=\"@color/white\"\n                android:textStyle=\"bold\"/>\n            <LinearLayout\n                android:id=\"@+id/line\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"1dp\"\n                android:background=\"@color/light_blue\"\n                android:orientation=\"vertical\"\n                android:layout_below=\"@+id/recentmatches\">\n            </LinearLayout>\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"horizontal\"\n                android:layout_below=\"@+id/line\"\n                android:layout_marginTop=\"5dp\"\n                android:layout_marginBottom=\"5dp\">\n                <TextView\n                    android:layout_width=\"fill_parent\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:text=\"Hero\"\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\n                    android:textColor=\"@color/white\"\n                    android:textStyle=\"bold\"/>\n                <TextView\n                    android:layout_width=\"fill_parent\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:text=\"Mode\"\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\n                    android:textColor=\"@color/white\"\n                    android:textStyle=\"bold\"/>\n                <TextView\n                    android:layout_width=\"fill_parent\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:text=\"Ended\"\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\n                    android:textColor=\"@color/white\"\n                    android:textStyle=\"bold\"/>\n                <TextView\n                    android:layout_width=\"fill_parent\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:text=\"Length\"\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\n                    android:textColor=\"@color/white\"\n                    android:textStyle=\"bold\"/>\n                <TextView\n                    android:layout_width=\"fill_parent\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:text=\"K/D/A\"\n                    android:textSize=\"@dimen/recentMaches_overview_textsize\"\n                    android:textColor=\"@color/white\"\n                    android:textStyle=\"bold\"/>\n\n            </LinearLayout>\n\n\n        </RelativeLayout>\n\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:orientation=\"vertical\"\n            android:layout_marginTop=\"4dp\"\n            android:padding=\"3dp\">\n\n            <androidx.recyclerview.widget.RecyclerView\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\" />\n\n        </LinearLayout>\n    </LinearLayout>\n</ScrollView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_overview.xml b/app/src/main/res/layout/fragment_overview.xml
+--- a/app/src/main/res/layout/fragment_overview.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/layout/fragment_overview.xml	(date 1726584066009)
+@@ -8,11 +8,10 @@
+ 
+     <LinearLayout
+         android:layout_width="match_parent"
+-
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         tools:context=".searchplayerfragment.MatchesHistoryFragment"
+-        android:background="@drawable/newbgr"
++        android:background="@color/CARD"
+         android:padding="15dp">
+ 
+         <LinearLayout
+@@ -21,8 +20,7 @@
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             tools:context=".searchplayerfragment.MatchesHistoryFragment"
+-             android:background=""
+-            >
++            android:background="@drawable/neon_border">
+             <de.hdodenhof.circleimageview.CircleImageView
+                 android:id="@+id/A_image"
+                 android:layout_width="90dp"
+@@ -46,52 +44,57 @@
+                 android:orientation="horizontal"
+                 android:weightSum="9"
+                 android:layout_marginTop="10dp">
+-
+                 <TextView
+                     android:id="@+id/tv_win"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+-                    android:textStyle="bold"
+                     android:layout_weight="3"
+-                    android:text="WINS\n211"
+-                    android:textAlignment="center"
+                     android:textColor="@color/wins_winrate"
+-                    android:textSize="@dimen/wins_loses_winrate" />
++                    android:text="WINS\n211"
++                    android:textSize="@dimen/wins_loses_winrate"
++                    android:textAlignment="center"/>
+                 <TextView
+                     android:id="@+id/losses"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+-                    android:textStyle="bold"
+                     android:layout_weight="3"
+                     android:text="LOSSES\n207"
+-                    android:textColor="@color/black"
++                    android:textColor="@color/lose_winrate"
+                     android:textSize="@dimen/wins_loses_winrate"
+                     android:textAlignment="center"/>
+                 <TextView
+                     android:id="@+id/winrate"
+                     android:layout_width="match_parent"
+-                    android:textStyle="bold"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="3"
+                     android:text="WINRATE\n50.48%"
+-                    android:textColor="@color/white"
++                    android:textColor="@color/wins_winrate"
+                     android:textSize="@dimen/wins_loses_winrate"
+                     android:textAlignment="center"/>
+             </LinearLayout>
+-
+             <de.hdodenhof.circleimageview.CircleImageView
+-                android:layout_width="79dp"
+-                android:layout_height="72dp"
++                android:layout_width="70dp"
++                android:layout_height="65dp"
+                 android:layout_gravity="center_horizontal"
+                 android:layout_marginTop="8dp"
+-                android:src="@drawable/rank_icon_8" />
++                android:src="@drawable/rank_icon_8"
++                />
++            <ProgressBar
++                android:id="@+id/progressBar"
++                android:paddingTop="18dp"
++                android:layout_width="match_parent"
++                android:layout_height="25dp"
++                android:max="100"
++                android:progress="50"
++                android:secondaryProgress="100"
++                android:progressTint="@color/winProgress"
++                android:secondaryProgressTint="@color/looseProgress"
++                style="@android:style/Widget.ProgressBar.Horizontal"/>
+             <TextView
+                 android:id="@+id/profile_steam"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="@string/link_steamid"
+-                android:textStyle="italic"
+-                android:textAlignment="center"
+                 android:textColorLink="@color/white"
+                 android:padding="15dp"
+                 android:textSize="15sp"
+@@ -189,8 +192,10 @@
+             android:padding="3dp">
+ 
+             <androidx.recyclerview.widget.RecyclerView
++                android:id="@+id/rcv_overview"
+                 android:layout_width="match_parent"
+-                android:layout_height="wrap_content" />
++                android:layout_height="match_parent"
++                tools:listitem="@layout/khung_trandau"/>
+ 
+         </LinearLayout>
+     </LinearLayout>
+Index: app/src/main/res/drawable-hdpi/option_icon.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><vector android:height=\"24dp\" android:tint=\"#67beff\"\n    android:viewportHeight=\"24\" android:viewportWidth=\"24\"\n    android:width=\"24dp\" xmlns:android=\"http://schemas.android.com/apk/res/android\">\n    <path android:fillColor=\"@android:color/white\" android:pathData=\"M3,18h18v-2L3,16v2zM3,13h18v-2L3,11v2zM3,6v2h18L21,6L3,6z\"/>\n</vector>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable-hdpi/option_icon.xml b/app/src/main/res/drawable-hdpi/option_icon.xml
+--- a/app/src/main/res/drawable-hdpi/option_icon.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/drawable-hdpi/option_icon.xml	(date 1726584066023)
+@@ -1,4 +1,4 @@
+-<vector android:height="24dp" android:tint="#67beff"
++<vector android:height="24dp" android:tint="@color/white"
+     android:viewportHeight="24" android:viewportWidth="24"
+     android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+     <path android:fillColor="@android:color/white" android:pathData="M3,18h18v-2L3,16v2zM3,13h18v-2L3,11v2zM3,6v2h18L21,6L3,6z"/>
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.drawerlayout.widget.DrawerLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tool=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/drawer_layout\"\n    tool:context=\".MainActivity\">\n\n    <LinearLayout\n        android:id=\"@+id/main\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"\n        android:orientation=\"vertical\">\n\n\n        <androidx.appcompat.widget.Toolbar\n            android:id=\"@+id/toolbar\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:background=\"@color/licorice\">\n\n            <LinearLayout\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"horizontal\">\n\n                <ImageView\n                    android:id=\"@+id/option_icon\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:src=\"@drawable/option_icon\"\n                    android:contentDescription=\"Icon\"\n                    app:tint=\"@color/white\" />\n\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginStart=\"15dp\"\n                    android:text=\"Home\"\n                    android:textColor=\"@android:color/white\"\n                    android:textSize=\"20sp\"/>\n            </LinearLayout>\n        </androidx.appcompat.widget.Toolbar>\n\n        <androidx.viewpager.widget.ViewPager\n            android:id=\"@+id/viewpager\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\">\n\n            <com.google.android.material.tabs.TabLayout\n                android:id=\"@+id/tab_layout\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:layout_gravity=\"bottom\" />\n        </androidx.viewpager.widget.ViewPager>\n\n        <androidx.recyclerview.widget.RecyclerView\n            android:id=\"@+id/recyclerview_favor\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:scrollbars=\"vertical\"\n            android:layout_marginTop=\"16dp\"/>\n\n    </LinearLayout>\n\n    <RelativeLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\">\n\n        <com.google.android.material.appbar.MaterialToolbar\n            android:id=\"@+id/topappbar\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"?attr/actionBarSize\"\n            app:title=\"OpenDota\"\n            app:titleTextColor=\"@color/white\"\n            app:navigationIcon=\"@drawable/option_icon\"\n            android:background=\"@color/dark_blue\"/>\n\n        <FrameLayout\n            android:id=\"@+id/framelayout\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            android:layout_below=\"@id/topappbar\"\n            android:layout_alignParentEnd=\"true\"\n            android:layout_marginTop=\"-3dp\"\n            android:layout_marginEnd=\"0dp\" />\n\n\n    </RelativeLayout>\n\n\n    <com.google.android.material.navigation.NavigationView\n        android:id=\"@+id/navigation_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"match_parent\"\n        android:layout_gravity=\"start\"\n        app:headerLayout=\"@layout/nav_header\"\n        app:menu=\"@menu/drawer_view\"\n        android:visibility=\"visible\"/>\n</androidx.drawerlayout.widget.DrawerLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1726584066031)
+@@ -30,17 +30,10 @@
+                     android:id="@+id/option_icon"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+-                    android:src="@drawable/option_icon"
+                     android:contentDescription="Icon"
++                    android:src="@drawable/option_icon"
+                     app:tint="@color/white" />
+ 
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginStart="15dp"
+-                    android:text="Home"
+-                    android:textColor="@android:color/white"
+-                    android:textSize="20sp"/>
+             </LinearLayout>
+         </androidx.appcompat.widget.Toolbar>
+ 
+@@ -73,10 +66,9 @@
+             android:id="@+id/topappbar"
+             android:layout_width="match_parent"
+             android:layout_height="?attr/actionBarSize"
+-            app:title="OpenDota"
+             app:titleTextColor="@color/white"
+             app:navigationIcon="@drawable/option_icon"
+-            android:background="@color/dark_blue"/>
++            android:background="@color/licorice"/>
+ 
+         <FrameLayout
+             android:id="@+id/framelayout"
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    alias(libs.plugins.android.application)\n}\n\nandroid {\n    namespace = \"vn.edu.usth.opendota\"\n    compileSdk = 34\n\n    defaultConfig {\n        applicationId = \"vn.edu.usth.opendota\"\n        minSdk = 28\n        targetSdk = 34\n        versionCode = 1\n        versionName = \"1.0\"\n\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n    buildTypes {\n        release {\n            isMinifyEnabled = false\n            proguardFiles(\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\n                \"proguard-rules.pro\"\n            )\n        }\n    }\n    compileOptions {\n        sourceCompatibility = JavaVersion.VERSION_1_8\n        targetCompatibility = JavaVersion.VERSION_1_8\n    }\n}\n\ndependencies {\n\n    implementation(\"androidx.appcompat:appcompat:1.6.1\")\n    implementation(\"com.google.android.material:material:1.9.0\")\n    implementation(\"androidx.constraintlayout:constraintlayout:2.1.4\")\n    implementation(\"androidx.navigation:navigation-fragment:2.5.3\")\n    implementation(\"androidx.navigation:navigation-ui:2.5.3\")\n    implementation(\"androidx.lifecycle:lifecycle-livedata-ktx:2.6.2\")\n    implementation(\"androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2\")\n    implementation(\"androidx.lifecycle:lifecycle-runtime-ktx:2.6.2\")\n    implementation(\"androidx.activity:activity-compose:1.7.2\")\n    implementation(platform(\"androidx.compose:compose-bom:2023.03.00\"))\n    implementation(\"androidx.compose.ui:ui\")\n    implementation(\"androidx.compose.ui:ui-graphics\")\n    implementation(\"androidx.compose.ui:ui-tooling-preview\")\n    implementation(\"androidx.compose.material3:material3\")\n    implementation(libs.recyclerview)\n    implementation(libs.media3.common)\n    testImplementation(\"junit:junit:4.13.2\")\n    androidTestImplementation(\"androidx.test.ext:junit:1.1.5\")\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.5.1\")\n    androidTestImplementation(platform(\"androidx.compose:compose-bom:2023.03.00\"))\n    androidTestImplementation(\"androidx.compose.ui:ui-test-junit4\")\n    debugImplementation(\"androidx.compose.ui:ui-tooling\")\n    debugImplementation(\"androidx.compose.ui:ui-test-manifest\")\n\n    implementation (libs.circleimageview)\n\n        implementation(\"com.google.android.material:material:1.0.0\")\n\n    constraints {\n        implementation(\"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0\") {\n            because(\"kotlin-stdlib-jdk7 is now a part of kotlin-stdlib\")\n        }\n        implementation(\"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0\") {\n            because(\"kotlin-stdlib-jdk8 is now a part of kotlin-stdlib\")\n        }\n    }\n\n    // for call API\n    implementation (\"com.google.code.gson:gson:2.10.1\")\n    implementation(\"com.squareup.retrofit2:retrofit:2.9.0\")\n    implementation(\"com.squareup.retrofit2:converter-gson:2.9.0\")\n    implementation (\"com.squareup.okhttp3:logging-interceptor:4.9.1\")\n    implementation (\"com.squareup.picasso:picasso:2.8\")\n    implementation (\"de.hdodenhof:circleimageview:3.1.0\")\n    implementation (\"androidx.recyclerview:recyclerview:1.3.2\")\n    // For control over item selection of both touch and mouse driven selection\n    implementation (\"androidx.recyclerview:recyclerview:1.2.1\")\n    implementation(libs.material.v180)\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/build.gradle.kts	(date 1726584151698)
+@@ -49,6 +49,7 @@
+     implementation("androidx.compose.material3:material3")
+     implementation(libs.recyclerview)
+     implementation(libs.media3.common)
++    implementation(libs.annotation.jvm)
+     testImplementation("junit:junit:4.13.2")
+     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+Index: app/src/main/res/layout/fragment_search.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\">\n\n   <androidx.appcompat.widget.SearchView\n       android:id=\"@+id/search_view\"\n       android:layout_width=\"match_parent\"\n       android:layout_height=\"wrap_content\"\n       android:iconifiedByDefault=\"false\"\n       android:queryHint=\"Search Users\" />\n\n\n   <androidx.recyclerview.widget.RecyclerView\n       android:id=\"@+id/rcv_users\"\n       android:layout_width=\"match_parent\"\n       android:layout_height=\"match_parent\"\n       android:layout_below=\"@id/search_view\"\n       android:padding=\"16dp\" />\n\n</RelativeLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_search.xml b/app/src/main/res/layout/fragment_search.xml
+--- a/app/src/main/res/layout/fragment_search.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/layout/fragment_search.xml	(date 1726584066040)
+@@ -1,12 +1,18 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+-    android:layout_height="match_parent">
++    android:layout_height="match_parent"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:background="@color/white">
+ 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
++       android:textAppearance="@color/white"
+        android:layout_height="wrap_content"
++       android:background="@drawable/rounded"
++       android:gravity="left"
++       android:layout_margin="10dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Users" />
+ 
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\nagp = \"8.5.0\"\ncircleimageview = \"3.1.0\"\ngoogleMaterial = \"1.8.0\"\njunit = \"4.13.2\"\njunitVersion = \"1.2.1\"\nespressoCore = \"3.6.1\"\nappcompat = \"1.7.0\"\nmaterial = \"1.12.0\"\nactivity = \"1.9.2\"\nconstraintlayout = \"2.1.4\"\nrecyclerview = \"1.3.2\"\nmedia3Common = \"1.4.1\"\n\n[libraries]\ncircleimageview = { module = \"de.hdodenhof:circleimageview\", version.ref = \"circleimageview\" }\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\next-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\nespresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\nappcompat = { group = \"androidx.appcompat\", name = \"appcompat\", version.ref = \"appcompat\" }\nmaterial = { group = \"com.google.android.material\", name = \"material\", version.ref = \"material\" }\nactivity = { group = \"androidx.activity\", name = \"activity\", version.ref = \"activity\" }\nconstraintlayout = { group = \"androidx.constraintlayout\", name = \"constraintlayout\", version.ref = \"constraintlayout\" }\nmaterial-v180 = { module = \"com.google.android.material:material\", version.ref = \"googleMaterial\" }\nrecyclerview = { group = \"androidx.recyclerview\", name = \"recyclerview\", version.ref = \"recyclerview\" }\nmedia3-common = { group = \"androidx.media3\", name = \"media3-common\", version.ref = \"media3Common\" }\n\n[plugins]\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/gradle/libs.versions.toml	(date 1726584151567)
+@@ -11,6 +11,7 @@
+ constraintlayout = "2.1.4"
+ recyclerview = "1.3.2"
+ media3Common = "1.4.1"
++annotationJvm = "1.8.2"
+ 
+ [libraries]
+ circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+@@ -24,6 +25,7 @@
+ material-v180 = { module = "com.google.android.material:material", version.ref = "googleMaterial" }
+ recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+ media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3Common" }
++annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version.ref = "annotationJvm" }
+ 
+ [plugins]
+ android-application = { id = "com.android.application", version.ref = "agp" }
+Index: app/src/main/res/layout/khung_trandau.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/khung_trandau\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"70dp\">\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"70dp\"\n        android:background=\"@color/hyper_fuse\"\n        android:orientation=\"horizontal\"\n        android:weightSum=\"5\">\n\n        <de.hdodenhof.circleimageview.CircleImageView\n            android:id=\"@+id/avatar\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"wrap_content\"\n            android:layout_weight=\"1\"\n            android:gravity=\"center\"\n            android:paddingVertical=\"8dp\"\n            tools:src=\"@drawable/mars_full\" />\n\n\n        <TextView\n            android:id=\"@+id/tv_title\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"match_parent\"\n            android:layout_weight=\"1\"\n            android:ellipsize=\"end\"\n            android:gravity=\"center\"\n            android:maxLines=\"2\"\n            android:textAlignment=\"center\"\n            android:textColor=\"@color/white\"\n            android:textSize=\"12sp\"\n            tools:text=\"All Draft Normall Draft Normal\" />\n\n        <TextView\n            android:id=\"@+id/tv_time_ended\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"match_parent\"\n            android:layout_gravity=\"center_vertical\"\n            android:layout_weight=\"1\"\n            android:gravity=\"center\"\n            android:textColor=\"@color/white\"\n            android:textSize=\"12sp\"\n            tools:text=\"14 days\" />\n\n        <TextView\n            android:id=\"@+id/id_duration\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"match_parent\"\n            android:layout_gravity=\"center_vertical\"\n            android:layout_weight=\"1\"\n            android:gravity=\"center\"\n            android:textColor=\"@color/white\"\n            tools:text=\"47:42\" />\n\n        <TextView\n            android:id=\"@+id/tv_kda\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"match_parent\"\n            android:layout_gravity=\"center_vertical\"\n            android:layout_weight=\"1\"\n            android:gravity=\"center\"\n            android:textColor=\"@color/white\"\n            tools:text=\"3/5/26\" />\n    </LinearLayout>\n\n    <View\n        android:id=\"@+id/line_view\"\n        android:layout_width=\"4dp\"\n        android:layout_alignParentEnd=\"true\"\n        android:layout_height=\"match_parent\"\n        android:layout_gravity=\"end\"\n        android:background=\"@android:color/holo_red_dark\" />\n\n    <View\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"1dp\"\n        android:layout_alignParentBottom=\"true\"\n        android:layout_marginHorizontal=\"16dp\"\n        android:background=\"@color/white\" />\n</RelativeLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/khung_trandau.xml b/app/src/main/res/layout/khung_trandau.xml
+--- a/app/src/main/res/layout/khung_trandau.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/layout/khung_trandau.xml	(date 1726584066049)
+@@ -1,8 +1,9 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/khung_trandau"
+     android:layout_width="match_parent"
++    android:orientation="horizontal"
+     android:layout_height="70dp">
+ 
+     <LinearLayout
+@@ -81,4 +82,4 @@
+         android:layout_alignParentBottom="true"
+         android:layout_marginHorizontal="16dp"
+         android:background="@color/white" />
+-</RelativeLayout>
++</LinearLayout>
+Index: .idea/other.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/other.xml b/.idea/other.xml
+new file mode 100644
+--- /dev/null	(date 1726583527968)
++++ b/.idea/other.xml	(date 1726583527968)
+@@ -0,0 +1,318 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="direct_access_persist.xml">
++    <option name="deviceSelectionList">
++      <list>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="27" />
++          <option name="brand" value="DOCOMO" />
++          <option name="codename" value="F01L" />
++          <option name="id" value="F01L" />
++          <option name="manufacturer" value="FUJITSU" />
++          <option name="name" value="F-01L" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1280" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="28" />
++          <option name="brand" value="DOCOMO" />
++          <option name="codename" value="SH-01L" />
++          <option name="id" value="SH-01L" />
++          <option name="manufacturer" value="SHARP" />
++          <option name="name" value="AQUOS sense2 SH-01L" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2160" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="31" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="a51" />
++          <option name="id" value="a51" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy A51" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="akita" />
++          <option name="id" value="akita" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="b0q" />
++          <option name="id" value="b0q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S22 Ultra" />
++          <option name="screenDensity" value="600" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3088" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="32" />
++          <option name="brand" value="google" />
++          <option name="codename" value="bluejay" />
++          <option name="id" value="bluejay" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 6a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="caiman" />
++          <option name="id" value="caiman" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="960" />
++          <option name="screenY" value="2142" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="comet" />
++          <option name="id" value="comet" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro Fold" />
++          <option name="screenDensity" value="390" />
++          <option name="screenX" value="2076" />
++          <option name="screenY" value="2152" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="29" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="crownqlteue" />
++          <option name="id" value="crownqlteue" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Note9" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2220" />
++          <option name="screenY" value="1080" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="dm3q" />
++          <option name="id" value="dm3q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S23 Ultra" />
++          <option name="screenDensity" value="600" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3088" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="e1q" />
++          <option name="id" value="e1q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S24" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix" />
++          <option name="id" value="felix" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix" />
++          <option name="id" value="felix" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="felix_camera" />
++          <option name="id" value="felix_camera" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Fold (Camera-enabled)" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="2208" />
++          <option name="screenY" value="1840" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="gts8uwifi" />
++          <option name="id" value="gts8uwifi" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Tab S8 Ultra" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="1848" />
++          <option name="screenY" value="2960" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="husky" />
++          <option name="id" value="husky" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8 Pro" />
++          <option name="screenDensity" value="390" />
++          <option name="screenX" value="1008" />
++          <option name="screenY" value="2244" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="motorola" />
++          <option name="codename" value="java" />
++          <option name="id" value="java" />
++          <option name="manufacturer" value="Motorola" />
++          <option name="name" value="G20" />
++          <option name="screenDensity" value="280" />
++          <option name="screenX" value="720" />
++          <option name="screenY" value="1600" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="komodo" />
++          <option name="id" value="komodo" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9 Pro XL" />
++          <option name="screenDensity" value="360" />
++          <option name="screenX" value="1008" />
++          <option name="screenY" value="2244" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="lynx" />
++          <option name="id" value="lynx" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 7a" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="31" />
++          <option name="brand" value="google" />
++          <option name="codename" value="oriole" />
++          <option name="id" value="oriole" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 6" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="panther" />
++          <option name="id" value="panther" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 7" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="q5q" />
++          <option name="id" value="q5q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy Z Fold5" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1812" />
++          <option name="screenY" value="2176" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="google" />
++          <option name="codename" value="r11" />
++          <option name="id" value="r11" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Watch" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="384" />
++          <option name="screenY" value="384" />
++          <option name="type" value="WEAR_OS" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="30" />
++          <option name="brand" value="google" />
++          <option name="codename" value="redfin" />
++          <option name="id" value="redfin" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 5" />
++          <option name="screenDensity" value="440" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2340" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="shiba" />
++          <option name="id" value="shiba" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 8" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2400" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="33" />
++          <option name="brand" value="google" />
++          <option name="codename" value="tangorpro" />
++          <option name="id" value="tangorpro" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel Tablet" />
++          <option name="screenDensity" value="320" />
++          <option name="screenX" value="1600" />
++          <option name="screenY" value="2560" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="34" />
++          <option name="brand" value="google" />
++          <option name="codename" value="tokay" />
++          <option name="id" value="tokay" />
++          <option name="manufacturer" value="Google" />
++          <option name="name" value="Pixel 9" />
++          <option name="screenDensity" value="420" />
++          <option name="screenX" value="1080" />
++          <option name="screenY" value="2424" />
++        </PersistentDeviceSelectionData>
++        <PersistentDeviceSelectionData>
++          <option name="api" value="29" />
++          <option name="brand" value="samsung" />
++          <option name="codename" value="x1q" />
++          <option name="id" value="x1q" />
++          <option name="manufacturer" value="Samsung" />
++          <option name="name" value="Galaxy S20" />
++          <option name="screenDensity" value="480" />
++          <option name="screenX" value="1440" />
++          <option name="screenY" value="3200" />
++        </PersistentDeviceSelectionData>
++      </list>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/match_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/match_item\"\n    android:layout_width=\"match_parent\"\n    android:orientation=\"horizontal\"\n    android:layout_height=\"wrap_content\"\n    android:background=\"@color/black\">\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:orientation=\"vertical\"\n        android:layout_marginTop=\"4dp\"\n        app:cardElevation=\"10dp\"\n        android:padding=\"3dp\">\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_1\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/mvp_gradient\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:id=\"@+id/rm_hero\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/obsidian_destroyer_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:id=\"@+id/re_mode\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:id=\"@+id/rm_ended\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"13 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:id=\"@+id/rm_length\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"48:54\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <LinearLayout\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_gravity=\"center\"\n                    android:paddingRight=\"17dp\"\n                    android:paddingLeft=\"17dp\"\n                    android:gravity=\"center\"\n                    android:orientation=\"vertical\">\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:layout_marginBottom=\"4dp\"\n                        android:text=\"13/6/8\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/white\"\n                        android:layout_weight=\"0.2\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:text=\"MVP\"\n                        android:gravity=\"center\"\n                        android:background=\"@drawable/mvp_tag\"\n                        android:layout_weight=\"200\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n                </LinearLayout>\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_2\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_bground\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_3\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_band\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/no_item\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"26:59\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"15/0/12\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_4\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/mvp_gradient\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:id=\"@+id/rm_hero1\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/obsidian_destroyer_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:id=\"@+id/re_mode1\"\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:id=\"@+id/rm_ended1\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"13 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:id=\"@+id/rm_length1\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"48:54\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <LinearLayout\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_gravity=\"center\"\n                    android:paddingRight=\"17dp\"\n                    android:paddingLeft=\"17dp\"\n                    android:gravity=\"center\"\n                    android:orientation=\"vertical\">\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:layout_marginBottom=\"4dp\"\n                        android:text=\"13/6/8\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/white\"\n                        android:layout_weight=\"0.2\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n\n                    <TextView\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"wrap_content\"\n                        android:text=\"MVP\"\n                        android:gravity=\"center\"\n                        android:background=\"@drawable/mvp_tag\"\n                        android:layout_weight=\"200\"\n                        android:layout_gravity=\"center_vertical\"\n                        />\n                </LinearLayout>\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_5\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_band\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_6\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_bground\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/no_item\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"26:59\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"15/0/12\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_7\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_band\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_8\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_bground\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/no_item\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"26:59\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"15/0/12\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_9\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_band\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    tools:ignore=\"MissingClass\" />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"3/5/26\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_10\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_bground\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/queenofpain_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"25:33\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"11/5/8\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_11\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_band\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mirana_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"48:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"7/17/5\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_12\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_bground\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/mars_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"47:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"0/17/5\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_13\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_band\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/puck_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"41:06\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"11/5/8\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/winProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_14\">\n\n            <LinearLayout\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:background=\"@drawable/gradient_bground\"\n                android:orientation=\"horizontal\">\n\n                <de.hdodenhof.circleimageview.CircleImageView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"45dp\"\n                    android:layout_weight=\"0.2\"\n                    android:gravity=\"center\"\n                    android:src=\"@drawable/sniper_full\"\n                    android:layout_marginTop=\"10dp\"\n                    android:layout_marginBottom=\"10dp\"\n                    />\n\n\n                <TextView\n                    android:layout_width=\"45dp\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_weight=\"0.2\"\n                    android:text=\"All Draft Normal\"\n                    android:textColor=\"@color/white\"\n                    android:textAlignment=\"center\"\n                    android:layout_gravity=\"center\"\n                    android:textSize=\"12sp\"/>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"14 days\"\n                    android:gravity=\"center\"\n                    android:textSize=\"12sp\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"37:42\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:text=\"10/6/15\"\n                    android:gravity=\"center\"\n                    android:textColor=\"@color/white\"\n                    android:layout_weight=\"0.2\"\n                    android:layout_gravity=\"center_vertical\"\n                    />\n\n                <ProgressBar\n                    android:layout_width=\"4dp\"\n                    android:layout_height=\"match_parent\"\n                    android:progress=\"100\"\n                    android:progressTint=\"@color/looseProgress\"\n                    style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\n\n            </LinearLayout>\n\n\n\n        </androidx.cardview.widget.CardView>\n\n        <androidx.recyclerview.widget.RecyclerView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:id=\"@+id/match_item\">\n\n        </androidx.recyclerview.widget.RecyclerView>\n    </LinearLayout>\n\n\n</LinearLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/match_item.xml b/app/src/main/res/layout/match_item.xml
+--- a/app/src/main/res/layout/match_item.xml	(revision 7f83b7ebc03e36794e65a0a359ad71567cc07fb3)
++++ b/app/src/main/res/layout/match_item.xml	(date 1726584066057)
+@@ -1072,7 +1072,7 @@
+         <androidx.recyclerview.widget.RecyclerView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+-            android:id="@+id/match_item">
++            android:id="@+id/match_item_rcv">
+ 
+         </androidx.recyclerview.widget.RecyclerView>
+     </LinearLayout>

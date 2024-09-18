@@ -24,13 +24,15 @@ public class fragment_match extends Fragment {
     private final MatchesAdapter matchesAdapter = new MatchesAdapter();
 
     public static fragment_match newInstance() {
-        return new fragment_match();
+        fragment_match frag_layout5 = new fragment_match();
+        return frag_layout5;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_match, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -55,4 +57,3 @@ public class fragment_match extends Fragment {
         matchesAdapter.submit(mockMatches);
     }
 }
-

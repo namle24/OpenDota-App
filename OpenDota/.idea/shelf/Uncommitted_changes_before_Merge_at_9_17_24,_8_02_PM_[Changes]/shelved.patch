@@ -1,0 +1,566 @@
+Index: app/src/main/java/vn/edu/usth/opendota/adapter/SearchAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.adapter;\n\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.ImageView;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport java.util.List;\n\nimport de.hdodenhof.circleimageview.CircleImageView;\nimport vn.edu.usth.opendota.R;\nimport vn.edu.usth.opendota.search.User;\n\npublic class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHolder> {\n    private List<User> mListUser;\n\n    public SearchAdapter(List<User> mListUser) {\n        this.mListUser = mListUser;\n    }\n\n    @NonNull\n    @Override\n    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_item, parent, false);\n        return new UserViewHolder(view);\n    }\n\n    @Override\n    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {\n        User user = mListUser.get(position);\n        if (user == null)  {\n            return;\n        }\n\n        holder.imgUser.setImageResource(user.getImage());\n        holder.tvName.setText(user.getName());\n        holder.tvID.setText(String.valueOf(user.getId()));\n        holder.tvRank.setImageResource(user.getImage());\n    }\n\n    @Override\n    public int getItemCount() {\n        if (mListUser != null) {\n            return mListUser.size();\n        }\n        return 0;\n    }\n\n    public void filterList(List<User> filteredList) {\n        this.mListUser = filteredList;\n        notifyDataSetChanged();\n    }\n\n    public class UserViewHolder extends RecyclerView.ViewHolder{\n\n        private CircleImageView imgUser;\n        private TextView tvName;\n        private TextView tvID;\n        private ImageView tvRank;\n\n        public UserViewHolder(@NonNull View itemView) {\n            super(itemView);\n            imgUser = itemView.findViewById(R.id.img_user);\n            tvName = itemView.findViewById(R.id.name);\n            tvID = itemView.findViewById(R.id.ID);\n            tvRank = itemView.findViewById(R.id.user_rank);\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/adapter/SearchAdapter.java b/app/src/main/java/vn/edu/usth/opendota/adapter/SearchAdapter.java
+--- a/app/src/main/java/vn/edu/usth/opendota/adapter/SearchAdapter.java	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ b/app/src/main/java/vn/edu/usth/opendota/adapter/SearchAdapter.java	(date 1726560685081)
+@@ -39,7 +39,7 @@
+         holder.imgUser.setImageResource(user.getImage());
+         holder.tvName.setText(user.getName());
+         holder.tvID.setText(String.valueOf(user.getId()));
+-        holder.tvRank.setImageResource(user.getImage());
++        holder.tvRank.setImageResource(user.getRank());
+     }
+ 
+     @Override
+Index: app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.search;\n\nimport android.app.SearchManager;\nimport android.content.Context;\nimport android.os.Bundle;\nimport android.view.LayoutInflater;\nimport android.view.Menu;\nimport android.view.MenuInflater;\nimport android.view.MenuItem;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.SearchView;\n\nimport androidx.annotation.NonNull;\nimport androidx.fragment.app.Fragment;\nimport androidx.recyclerview.widget.DividerItemDecoration;\nimport androidx.recyclerview.widget.LinearLayoutManager;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport vn.edu.usth.opendota.R;\nimport vn.edu.usth.opendota.adapter.SearchAdapter;\n\npublic class SearchFragment extends Fragment {\n\n    private RecyclerView rcvUser;\n    private SearchAdapter userAdapter;\n    private List<User> userList;\n    private androidx.appcompat.widget.SearchView searchView;\n\n    @Override\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\n                             Bundle savedInstanceState) {\n        View view = inflater.inflate(R.layout.fragment_search, container, false);\n\n        rcvUser = view.findViewById(R.id.rcv_users);\n        searchView = view.findViewById(R.id.search_view);\n\n        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);\n        rcvUser.setLayoutManager(linearLayoutManager);\n\n        userList = getListUsers();\n        userAdapter = new SearchAdapter(userList);\n        rcvUser.setAdapter(userAdapter);\n\n        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);\n        rcvUser.addItemDecoration(itemDecoration);\n\n        setupSearchView();\n\n        return view;\n    }\n\n    private void setupSearchView() {\n        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {\n            @Override\n            public boolean onQueryTextSubmit(String query) {\n                filter(query);\n                return false;\n            }\n\n            @Override\n            public boolean onQueryTextChange(String newText) {\n                filter(newText);\n                return false;\n            }\n        });\n    }\n\n    private void filter(String text) {\n        List<User> filteredList = new ArrayList<>();\n        for (User user : userList) {\n            if (user.getName().toLowerCase().contains(text.toLowerCase())) {\n                filteredList.add(user);\n            }\n        }\n        userAdapter.filterList(filteredList);\n    }\n\n    private List<User> getListUsers() {\n        List<User> list = new ArrayList<>();\n        list.add(new User(R.drawable.avarta2, \"NamLee\", \"ID: 185476982\", R.drawable.rank_icon_8));\n        list.add(new User(R.drawable.avarta3, \"Minh\", \"ID: 185476982\", R.drawable.rank_icon_8b));\n        list.add(new User(R.drawable.avarta4, \"Nghia\", \"ID: 408523961\", R.drawable.rank_icon_6));\n        list.add(new User(R.drawable.anhlong1, \"Duc\", \"ID: 233507135\", R.drawable.rank_icon_7));\n        list.add(new User(R.drawable.avatar_1, \"Qminh\", \"ID: 1856746982\", R.drawable.rank_icon_6));\n        return list;\n    }\n}\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java b/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java
+--- a/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ b/app/src/main/java/vn/edu/usth/opendota/search/SearchFragment.java	(date 1726560709550)
+@@ -1,17 +1,10 @@
+ package vn.edu.usth.opendota.search;
+ 
+-import android.app.SearchManager;
+-import android.content.Context;
+ import android.os.Bundle;
+ import android.view.LayoutInflater;
+-import android.view.Menu;
+-import android.view.MenuInflater;
+-import android.view.MenuItem;
+ import android.view.View;
+ import android.view.ViewGroup;
+-import android.widget.SearchView;
+ 
+-import androidx.annotation.NonNull;
+ import androidx.fragment.app.Fragment;
+ import androidx.recyclerview.widget.DividerItemDecoration;
+ import androidx.recyclerview.widget.LinearLayoutManager;
+@@ -48,11 +41,14 @@
+         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+         rcvUser.addItemDecoration(itemDecoration);
+ 
++
+         setupSearchView();
+ 
++
+         return view;
+     }
+ 
++
+     private void setupSearchView() {
+         searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+             @Override
+@@ -82,10 +78,29 @@
+     private List<User> getListUsers() {
+         List<User> list = new ArrayList<>();
+         list.add(new User(R.drawable.avarta2, "NamLee", "ID: 185476982", R.drawable.rank_icon_8));
+-        list.add(new User(R.drawable.avarta3, "Minh", "ID: 185476982", R.drawable.rank_icon_8b));
++        list.add(new User(R.drawable.avatar_1, "Minh", "ID: 185476982", R.drawable.rank_icon_8b));
+         list.add(new User(R.drawable.avarta4, "Nghia", "ID: 408523961", R.drawable.rank_icon_6));
+         list.add(new User(R.drawable.anhlong1, "Duc", "ID: 233507135", R.drawable.rank_icon_7));
+-        list.add(new User(R.drawable.avatar_1, "Qminh", "ID: 1856746982", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.avarta3, "Qminh", "ID: 1856746982", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.ronaldo1, "ShadowFiend", "ID: 123456789", R.drawable.rank_icon_8));
++        list.add(new User(R.drawable.anhsi, "InvokerGod", "ID: 987654321", R.drawable.rank_icon_7));
++        list.add(new User(R.drawable.avarta10, "EarthShaker", "ID: 456789123", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.goku, "CrystalMaiden", "ID: 567891234", R.drawable.rank_icon_8));
++        list.add(new User(R.drawable.avatar_6, "LionKing", "ID: 876543210", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.avatar_21, "AxeWarrior", "ID: 112233445", R.drawable.rank_icon_8));
++        list.add(new User(R.drawable.avatar_8, "PhantomAssassin", "ID: 223344556", R.drawable.rank_icon_7));
++        list.add(new User(R.drawable.avatar_9, "RikiStealth", "ID: 334455667", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.avatar_22, "AntiMage", "ID: 445566778", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.avatar_11, "PudgeButcher", "ID: 556677889", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.avatar_12, "TinkerGenius", "ID: 667788990", R.drawable.rank_icon_8));
++        list.add(new User(R.drawable.avatar_13, "SniperLongShot", "ID: 778899001", R.drawable.rank_icon_7));
++        list.add(new User(R.drawable.avatar_14, "JuggernautSpin", "ID: 889900112", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.avatar_15, "LinaFlame", "ID: 990011223", R.drawable.rank_icon_7));
++        list.add(new User(R.drawable.avatar_16, "ZeusThunder", "ID: 101112113", R.drawable.rank_icon_8));
++        list.add(new User(R.drawable.avatar_17, "SlarkShadow", "ID: 121314151", R.drawable.rank_icon_8));
++        list.add(new User(R.drawable.avatar_18, "WraithKing", "ID: 161718192", R.drawable.rank_icon_7));
++        list.add(new User(R.drawable.avatar_19, "BristleBack", "ID: 192021222", R.drawable.rank_icon_6));
++        list.add(new User(R.drawable.avatar_20, "Lifestealer", "ID: 222324252", R.drawable.rank_icon_8c ));
+         return list;
+     }
+ }
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24,_4_59_PM_[Changes]1/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24,_4_59_PM_[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24,_4_59_PM_[Changes]1/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24,_4_59_PM_[Changes]1/shelved.patch	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ /dev/null	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
+@@ -1,155 +0,0 @@
+-Index: app/src/main/res/values/themes.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\n    <!-- Base application theme. -->\n    <style name=\"Base.Theme.OpenDota\" parent=\"Theme.Material3.DayNight.NoActionBar\">\n        <!-- Customize your light theme here. -->\n        <!-- <item name=\"colorPrimary\">@color/my_light_primary</item> -->\n    </style>\n\n    <style name=\"Theme.OpenDota\" parent=\"Base.Theme.OpenDota\" />\n</resources>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+---- a/app/src/main/res/values/themes.xml	
+-+++ b/app/src/main/res/values/themes.xml	
+-@@ -1,9 +1,23 @@
+- <resources xmlns:tools="http://schemas.android.com/tools">
+-     <!-- Base application theme. -->
+--    <style name="Base.Theme.OpenDota" parent="Theme.Material3.DayNight.NoActionBar">
+-+    <style name="Base.Theme.USTHOpenDotaClient" parent="Theme.Material3.DayNight.NoActionBar">
+-         <!-- Customize your light theme here. -->
+-         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+-     </style>
+- 
+--    <style name="Theme.OpenDota" parent="Base.Theme.OpenDota" />
+-+    <style name="Theme.USTHOpenDotaClient" parent="Base.Theme.USTHOpenDotaClient" />
+-+
+-+    <style name="NavigationView_line" parent="ThemeOverlay.AppCompat.DayNight">
+-+        <item name="android:listDivider">@color/icon_color</item>
+-+
+-+    </style>
+-+
+-+    <style name="Theme.USTHOpenDotaClient.NoActionBar">
+-+        <item name="windowActionBar">false</item>
+-+        <item name="windowNoTitle">true</item>
+-+    </style>
+-+
+-+    <style name="Theme.USTHOpenDotaClient.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+-+
+-+    <style name="Theme.USTHOpenDotaClient.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+- </resources>
+-\ No newline at end of file
+-Index: app/src/main/res/menu/favarourites_item.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/menu/favarourites_item.xml b/app/src/main/res/menu/favarourites_item.xml
+-new file mode 100644
+---- /dev/null	
+-+++ b/app/src/main/res/menu/favarourites_item.xml	
+-@@ -0,0 +1,9 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+-+    xmlns:app="http://schemas.android.com/apk/res-auto">
+-+    <item
+-+        android:title="delete"
+-+        android:id="@+id/delete"
+-+        android:icon="@drawable/outline_delete_24"
+-+        app:showAsAction="ifRoom"/>
+-+</menu>
+-\ No newline at end of file
+-Index: app/src/main/res/drawable/outline_delete_24.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/drawable/outline_delete_24.xml b/app/src/main/res/drawable/outline_delete_24.xml
+-new file mode 100644
+---- /dev/null	
+-+++ b/app/src/main/res/drawable/outline_delete_24.xml	
+-@@ -0,0 +1,5 @@
+-+<vector android:height="24dp" android:tint="@color/icon_color"
+-+    android:viewportHeight="24" android:viewportWidth="24"
+-+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-+    <path android:fillColor="@android:color/white" android:pathData="M16,9v10H8V9h8m-1.5,-6h-5l-1,1H5v2h14V4h-3.5l-1,-1zM18,7H6v12c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7z"/>
+-+</vector>
+-Index: app/src/main/res/drawable/settings1.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/drawable/settings1.xml b/app/src/main/res/drawable/settings1.xml
+-new file mode 100644
+---- /dev/null	
+-+++ b/app/src/main/res/drawable/settings1.xml	
+-@@ -0,0 +1,5 @@
+-+<vector android:height="24dp" android:tint="#67beff"
+-+    android:viewportHeight="24" android:viewportWidth="24"
+-+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-+    <path android:fillColor="@android:color/white" android:pathData="M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.07,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94L14.4,2.81c-0.04,-0.24 -0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41L9.25,5.35C8.66,5.59 8.12,5.92 7.63,6.29L5.24,5.33c-0.22,-0.08 -0.47,0 -0.59,0.22L2.74,8.87C2.62,9.08 2.66,9.34 2.86,9.48l2.03,1.58C4.84,11.36 4.8,11.69 4.8,12s0.02,0.64 0.07,0.94l-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.44,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.12,-0.22 0.07,-0.47 -0.12,-0.61L19.14,12.94zM12,15.6c-1.98,0 -3.6,-1.62 -3.6,-3.6s1.62,-3.6 3.6,-3.6s3.6,1.62 3.6,3.6S13.98,15.6 12,15.6z"/>
+-+</vector>
+-Index: app/src/main/res/menu/navigation_item.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/menu/navigation_item.xml b/app/src/main/res/menu/navigation_item.xml
+-new file mode 100644
+---- /dev/null	
+-+++ b/app/src/main/res/menu/navigation_item.xml	
+-@@ -0,0 +1,42 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+-+    xmlns:tools="http://schemas.android.com/tools"
+-+    tools:showIn = "navigation_view">
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group1">
+-+        <item
+-+            android:id="@+id/nav_home"
+-+            android:icon="@drawable/home_24"
+-+            android:title="Home"
+-+            />
+-+    </group>
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group2">
+-+        <item
+-+            android:id="@+id/nav_favourite"
+-+            android:icon="@drawable/star1"
+-+            android:title="Favourite"
+-+            />
+-+    </group>
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group3">
+-+        <item
+-+            android:id="@+id/nav_search"
+-+            android:icon="@drawable/search_24"
+-+            android:title="Search"/>
+-+    </group>
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group4">
+-+        <item
+-+            android:id="@+id/nav_setting"
+-+            android:icon="@drawable/settings1"
+-+            android:title="Setting"/>
+-+    </group>
+-+
+-+
+-+
+-+</menu>
+-\ No newline at end of file
+-Index: app/src/main/res/drawable/star1.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/drawable/star1.xml b/app/src/main/res/drawable/star1.xml
+-new file mode 100644
+---- /dev/null	
+-+++ b/app/src/main/res/drawable/star1.xml	
+-@@ -0,0 +1,5 @@
+-+<vector android:height="24dp" android:tint="#67beff"
+-+    android:viewportHeight="24" android:viewportWidth="24"
+-+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-+    <path android:fillColor="@android:color/white" android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"/>
+-+</vector>
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24__4_59_PM__Changes_1.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24__4_59_PM__Changes_1.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24__4_59_PM__Changes_1.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24__4_59_PM__Changes_1.xml	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ /dev/null	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_9_10_24,_4_59_PM_[Changes]1" date="1725962371451" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_10_24,_4_59_PM_[Changes]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 9/10/24, 4:59 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_9_10_24,_4_59_PM_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_9_10_24,_4_59_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_9_10_24,_4_59_PM_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_9_10_24,_4_59_PM_[Changes]/shelved.patch	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ /dev/null	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
+@@ -1,155 +0,0 @@
+-Index: app/src/main/res/drawable/star1.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/drawable/star1.xml b/app/src/main/res/drawable/star1.xml
+-new file mode 100644
+---- /dev/null	(date 1725962368991)
+-+++ b/app/src/main/res/drawable/star1.xml	(date 1725962368991)
+-@@ -0,0 +1,5 @@
+-+<vector android:height="24dp" android:tint="#67beff"
+-+    android:viewportHeight="24" android:viewportWidth="24"
+-+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-+    <path android:fillColor="@android:color/white" android:pathData="M12,17.27L18.18,21l-1.64,-7.03L22,9.24l-7.19,-0.61L12,2 9.19,8.63 2,9.24l5.46,4.73L5.82,21z"/>
+-+</vector>
+-Index: app/src/main/res/values/themes.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\n    <!-- Base application theme. -->\n    <style name=\"Base.Theme.OpenDota\" parent=\"Theme.Material3.DayNight.NoActionBar\">\n        <!-- Customize your light theme here. -->\n        <!-- <item name=\"colorPrimary\">@color/my_light_primary</item> -->\n    </style>\n\n    <style name=\"Theme.OpenDota\" parent=\"Base.Theme.OpenDota\" />\n</resources>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+---- a/app/src/main/res/values/themes.xml	(revision 1b3d626595e7a94d2553d7ecc219fc042ddabaa6)
+-+++ b/app/src/main/res/values/themes.xml	(date 1725962368950)
+-@@ -1,9 +1,23 @@
+- <resources xmlns:tools="http://schemas.android.com/tools">
+-     <!-- Base application theme. -->
+--    <style name="Base.Theme.OpenDota" parent="Theme.Material3.DayNight.NoActionBar">
+-+    <style name="Base.Theme.USTHOpenDotaClient" parent="Theme.Material3.DayNight.NoActionBar">
+-         <!-- Customize your light theme here. -->
+-         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+-     </style>
+- 
+--    <style name="Theme.OpenDota" parent="Base.Theme.OpenDota" />
+-+    <style name="Theme.USTHOpenDotaClient" parent="Base.Theme.USTHOpenDotaClient" />
+-+
+-+    <style name="NavigationView_line" parent="ThemeOverlay.AppCompat.DayNight">
+-+        <item name="android:listDivider">@color/icon_color</item>
+-+
+-+    </style>
+-+
+-+    <style name="Theme.USTHOpenDotaClient.NoActionBar">
+-+        <item name="windowActionBar">false</item>
+-+        <item name="windowNoTitle">true</item>
+-+    </style>
+-+
+-+    <style name="Theme.USTHOpenDotaClient.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+-+
+-+    <style name="Theme.USTHOpenDotaClient.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+- </resources>
+-\ No newline at end of file
+-Index: app/src/main/res/drawable/outline_delete_24.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/drawable/outline_delete_24.xml b/app/src/main/res/drawable/outline_delete_24.xml
+-new file mode 100644
+---- /dev/null	(date 1725962368971)
+-+++ b/app/src/main/res/drawable/outline_delete_24.xml	(date 1725962368971)
+-@@ -0,0 +1,5 @@
+-+<vector android:height="24dp" android:tint="@color/icon_color"
+-+    android:viewportHeight="24" android:viewportWidth="24"
+-+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-+    <path android:fillColor="@android:color/white" android:pathData="M16,9v10H8V9h8m-1.5,-6h-5l-1,1H5v2h14V4h-3.5l-1,-1zM18,7H6v12c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7z"/>
+-+</vector>
+-Index: app/src/main/res/menu/favarourites_item.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/menu/favarourites_item.xml b/app/src/main/res/menu/favarourites_item.xml
+-new file mode 100644
+---- /dev/null	(date 1725962368965)
+-+++ b/app/src/main/res/menu/favarourites_item.xml	(date 1725962368965)
+-@@ -0,0 +1,9 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+-+    xmlns:app="http://schemas.android.com/apk/res-auto">
+-+    <item
+-+        android:title="delete"
+-+        android:id="@+id/delete"
+-+        android:icon="@drawable/outline_delete_24"
+-+        app:showAsAction="ifRoom"/>
+-+</menu>
+-\ No newline at end of file
+-Index: app/src/main/res/menu/navigation_item.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/menu/navigation_item.xml b/app/src/main/res/menu/navigation_item.xml
+-new file mode 100644
+---- /dev/null	(date 1725962368986)
+-+++ b/app/src/main/res/menu/navigation_item.xml	(date 1725962368986)
+-@@ -0,0 +1,42 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+-+    xmlns:tools="http://schemas.android.com/tools"
+-+    tools:showIn = "navigation_view">
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group1">
+-+        <item
+-+            android:id="@+id/nav_home"
+-+            android:icon="@drawable/home_24"
+-+            android:title="Home"
+-+            />
+-+    </group>
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group2">
+-+        <item
+-+            android:id="@+id/nav_favourite"
+-+            android:icon="@drawable/star1"
+-+            android:title="Favourite"
+-+            />
+-+    </group>
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group3">
+-+        <item
+-+            android:id="@+id/nav_search"
+-+            android:icon="@drawable/search_24"
+-+            android:title="Search"/>
+-+    </group>
+-+
+-+    <group android:checkableBehavior="single"
+-+        android:id="@+id/group4">
+-+        <item
+-+            android:id="@+id/nav_setting"
+-+            android:icon="@drawable/settings1"
+-+            android:title="Setting"/>
+-+    </group>
+-+
+-+
+-+
+-+</menu>
+-\ No newline at end of file
+-Index: app/src/main/res/drawable/settings1.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/drawable/settings1.xml b/app/src/main/res/drawable/settings1.xml
+-new file mode 100644
+---- /dev/null	(date 1725962368980)
+-+++ b/app/src/main/res/drawable/settings1.xml	(date 1725962368980)
+-@@ -0,0 +1,5 @@
+-+<vector android:height="24dp" android:tint="#67beff"
+-+    android:viewportHeight="24" android:viewportWidth="24"
+-+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+-+    <path android:fillColor="@android:color/white" android:pathData="M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.07,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94L14.4,2.81c-0.04,-0.24 -0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41L9.25,5.35C8.66,5.59 8.12,5.92 7.63,6.29L5.24,5.33c-0.22,-0.08 -0.47,0 -0.59,0.22L2.74,8.87C2.62,9.08 2.66,9.34 2.86,9.48l2.03,1.58C4.84,11.36 4.8,11.69 4.8,12s0.02,0.64 0.07,0.94l-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.44,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.12,-0.22 0.07,-0.47 -0.12,-0.61L19.14,12.94zM12,15.6c-1.98,0 -3.6,-1.62 -3.6,-3.6s1.62,-3.6 3.6,-3.6s3.6,1.62 3.6,3.6S13.98,15.6 12,15.6z"/>
+-+</vector>
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_9_10_24__4_59_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_9_10_24__4_59_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_9_10_24__4_59_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_9_10_24__4_59_PM__Changes_.xml	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ /dev/null	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_9_10_24,_4_59_PM_[Changes]" date="1725962391908" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_10_24,_4_59_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 9/10/24, 4:59 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: app/src/main/java/vn/edu/usth/opendota/search/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.search;\n\npublic class User {\n    private int image;\n    private String name;\n    private String id;\n    private int rank;\n\n    public User(int image, String name, String id, int rank_icon_8) {\n        this.image = image;\n        this.name = name;\n        this.id = id;\n        this.image = image;\n    }\n\n    public int getImage() {\n        return image;\n    }\n\n    public void setImage(int image) {\n        this.image = image;\n    }\n\n    public String getName() {\n        return name;\n    }\n\n    public void setName(String name) {\n        this.name = name;\n    }\n\n    public String getId() {\n        return id;\n    }\n\n    public void setId(String id) {\n        this.id = id;\n    }\n\n    public int getRank() {\n        return rank;\n    }\n\n    public void setRank(int rank) {\n        this.rank = rank;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/search/User.java b/app/src/main/java/vn/edu/usth/opendota/search/User.java
+--- a/app/src/main/java/vn/edu/usth/opendota/search/User.java	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ b/app/src/main/java/vn/edu/usth/opendota/search/User.java	(date 1726556601140)
+@@ -10,7 +10,7 @@
+         this.image = image;
+         this.name = name;
+         this.id = id;
+-        this.image = image;
++        this.rank = rank;
+     }
+ 
+     public int getImage() {
+Index: app/src/main/res/drawable/rounded.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><shape xmlns:android=\"http://schemas.android.com/apk/res/android\">\n    <solid android:color=\"#262738\" />\n    <corners android:radius=\"16dp\" />\n</shape>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/rounded.xml b/app/src/main/res/drawable/rounded.xml
+--- a/app/src/main/res/drawable/rounded.xml	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ b/app/src/main/res/drawable/rounded.xml	(date 1726545056468)
+@@ -1,4 +1,6 @@
+ <shape xmlns:android="http://schemas.android.com/apk/res/android">
+-    <solid android:color="#262738" />
++    <solid android:color="@color/white" />
+     <corners android:radius="16dp" />
++    <stroke android:color="@color/black"
++        android:width="2dp"/>
+ </shape>
+Index: app/src/main/res/drawable-hdpi/option_icon.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><vector android:height=\"24dp\" android:tint=\"#67beff\"\n    android:viewportHeight=\"24\" android:viewportWidth=\"24\"\n    android:width=\"24dp\" xmlns:android=\"http://schemas.android.com/apk/res/android\">\n    <path android:fillColor=\"@android:color/white\" android:pathData=\"M3,18h18v-2L3,16v2zM3,13h18v-2L3,11v2zM3,6v2h18L21,6L3,6z\"/>\n</vector>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable-hdpi/option_icon.xml b/app/src/main/res/drawable-hdpi/option_icon.xml
+--- a/app/src/main/res/drawable-hdpi/option_icon.xml	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ b/app/src/main/res/drawable-hdpi/option_icon.xml	(date 1726541939574)
+@@ -1,4 +1,4 @@
+-<vector android:height="24dp" android:tint="#67beff"
++<vector android:height="24dp" android:tint="@color/white"
+     android:viewportHeight="24" android:viewportWidth="24"
+     android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+     <path android:fillColor="@android:color/white" android:pathData="M3,18h18v-2L3,16v2zM3,13h18v-2L3,11v2zM3,6v2h18L21,6L3,6z"/>
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.drawerlayout.widget.DrawerLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tool=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/drawer_layout\"\n    tool:context=\".MainActivity\">\n\n    <LinearLayout\n        android:id=\"@+id/main\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"\n        android:orientation=\"vertical\">\n\n\n        <androidx.appcompat.widget.Toolbar\n            android:id=\"@+id/toolbar\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:background=\"@color/licorice\">\n\n            <LinearLayout\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"horizontal\">\n\n                <ImageView\n                    android:id=\"@+id/option_icon\"\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:src=\"@drawable/option_icon\"\n                    android:contentDescription=\"Icon\"\n                    app:tint=\"@color/white\" />\n\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:layout_marginStart=\"15dp\"\n                    android:text=\"Home\"\n                    android:textColor=\"@android:color/white\"\n                    android:textSize=\"20sp\"/>\n            </LinearLayout>\n        </androidx.appcompat.widget.Toolbar>\n\n        <androidx.viewpager.widget.ViewPager\n            android:id=\"@+id/viewpager\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\">\n\n            <com.google.android.material.tabs.TabLayout\n                android:id=\"@+id/tab_layout\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:layout_gravity=\"bottom\" />\n        </androidx.viewpager.widget.ViewPager>\n\n        <androidx.recyclerview.widget.RecyclerView\n            android:id=\"@+id/recyclerview_favor\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:scrollbars=\"vertical\"\n            android:layout_marginTop=\"16dp\"/>\n\n    </LinearLayout>\n\n    <RelativeLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\">\n\n        <com.google.android.material.appbar.MaterialToolbar\n            android:id=\"@+id/topappbar\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"?attr/actionBarSize\"\n            app:title=\"OpenDota\"\n            app:titleTextColor=\"@color/white\"\n            app:navigationIcon=\"@drawable/option_icon\"\n            android:background=\"@color/dark_blue\"/>\n\n        <FrameLayout\n            android:id=\"@+id/framelayout\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            android:layout_below=\"@id/topappbar\"\n            android:layout_alignParentEnd=\"true\"\n            android:layout_marginTop=\"-3dp\"\n            android:layout_marginEnd=\"0dp\" />\n\n\n    </RelativeLayout>\n\n\n    <com.google.android.material.navigation.NavigationView\n        android:id=\"@+id/navigation_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"match_parent\"\n        android:layout_gravity=\"start\"\n        app:headerLayout=\"@layout/nav_header\"\n        app:menu=\"@menu/drawer_view\"\n        android:visibility=\"visible\"/>\n</androidx.drawerlayout.widget.DrawerLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1726542175575)
+@@ -30,17 +30,10 @@
+                     android:id="@+id/option_icon"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+-                    android:src="@drawable/option_icon"
+                     android:contentDescription="Icon"
++                    android:src="@drawable/option_icon"
+                     app:tint="@color/white" />
+ 
+-                <TextView
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginStart="15dp"
+-                    android:text="Home"
+-                    android:textColor="@android:color/white"
+-                    android:textSize="20sp"/>
+             </LinearLayout>
+         </androidx.appcompat.widget.Toolbar>
+ 
+@@ -73,10 +66,9 @@
+             android:id="@+id/topappbar"
+             android:layout_width="match_parent"
+             android:layout_height="?attr/actionBarSize"
+-            app:title="OpenDota"
+             app:titleTextColor="@color/white"
+             app:navigationIcon="@drawable/option_icon"
+-            android:background="@color/dark_blue"/>
++            android:background="@color/licorice"/>
+ 
+         <FrameLayout
+             android:id="@+id/framelayout"
+Index: app/src/main/res/layout/fragment_search.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\">\n\n   <androidx.appcompat.widget.SearchView\n       android:id=\"@+id/search_view\"\n       android:layout_width=\"match_parent\"\n       android:layout_height=\"wrap_content\"\n       android:iconifiedByDefault=\"false\"\n       android:queryHint=\"Search Users\" />\n\n   <androidx.recyclerview.widget.RecyclerView\n       android:id=\"@+id/rcv_users\"\n       android:layout_width=\"match_parent\"\n       android:layout_height=\"match_parent\"\n       android:layout_below=\"@id/search_view\"\n       android:padding=\"16dp\" />\n\n</RelativeLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_search.xml b/app/src/main/res/layout/fragment_search.xml
+--- a/app/src/main/res/layout/fragment_search.xml	(revision 46843b7079ef660fbe41f5150c2efb28462f2d65)
++++ b/app/src/main/res/layout/fragment_search.xml	(date 1726545366209)
+@@ -1,12 +1,18 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+-    android:layout_height="match_parent">
++    android:layout_height="match_parent"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:background="@color/white">
+ 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
++       android:textAppearance="@color/white"
+        android:layout_height="wrap_content"
++       android:background="@drawable/rounded"
++       android:gravity="left"
++       android:layout_margin="10dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Users" />
+ 

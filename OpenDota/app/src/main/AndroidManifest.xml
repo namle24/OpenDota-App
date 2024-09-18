@@ -23,7 +23,7 @@
 
         <activity
             android:name=".models.MatchDetailActivityManage" />
-
+        <activity android:name=".player_info.fragment_match_details"/>
     </application>
 
 </manifest>

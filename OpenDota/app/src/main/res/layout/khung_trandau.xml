@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/khung_trandau"
     android:layout_width="match_parent"
+    android:orientation="horizontal"
     android:layout_height="70dp">
 
     <LinearLayout
@@ -81,4 +82,4 @@
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="16dp"
         android:background="@color/white" />
-</RelativeLayout>
+</LinearLayout>

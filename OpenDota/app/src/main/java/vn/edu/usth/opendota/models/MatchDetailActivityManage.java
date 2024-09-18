@@ -35,5 +35,3 @@ public class MatchDetailActivityManage extends AppCompatActivity {
         }
     }
 }
-
-

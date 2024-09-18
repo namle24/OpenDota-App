@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/light_blue"
+    android:background="@drawable/gradient_bground_white"
     android:layout_marginBottom="5dp"
     android:padding="10dp">
 
@@ -17,7 +17,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/licorice"
         android:layout_toEndOf="@+id/img_user"
         android:layout_marginStart="10dp"
         android:orientation="horizontal">
@@ -58,8 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_toEndOf="@id/name_id"
-            android:background="@color/light_blue"
             android:src="@drawable/heart_icon"
+            android:background="@android:color/transparent"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"

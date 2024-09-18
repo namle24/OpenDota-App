@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import vn.edu.usth.opendota.player_info.fragment_heroes;
 import vn.edu.usth.opendota.player_info.fragment_match;
-import vn.edu.usth.opendota.player_info.fragment_overview;
+import vn.edu.usth.opendota.player_info.FragmentOverview;
 
 public class player_adapter extends FragmentPagerAdapter {
     private final int PAGE_COUNT = 3;
@@ -25,7 +25,7 @@ public class player_adapter extends FragmentPagerAdapter {
     public Fragment getItem(int page) {
         switch (page) {
             case 0:
-                return fragment_overview.newInstance();
+                return FragmentOverview.newInstance();
             case 1:
                 return fragment_match.newInstance();
             case 2:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,11 +8,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".searchplayerfragment.MatchesHistoryFragment"
-        android:background="@drawable/newbgr"
+        android:background="@color/CARD"
         android:padding="15dp">
 
         <LinearLayout
@@ -21,8 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:context=".searchplayerfragment.MatchesHistoryFragment"
-             android:background=""
-            >
+            android:background="@drawable/neon_border">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/A_image"
                 android:layout_width="90dp"
@@ -46,52 +44,57 @@
                 android:orientation="horizontal"
                 android:weightSum="9"
                 android:layout_marginTop="10dp">
-
                 <TextView
                     android:id="@+id/tv_win"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_weight="3"
-                    android:text="WINS\n211"
-                    android:textAlignment="center"
                     android:textColor="@color/wins_winrate"
-                    android:textSize="@dimen/wins_loses_winrate" />
+                    android:text="WINS\n211"
+                    android:textSize="@dimen/wins_loses_winrate"
+                    android:textAlignment="center"/>
                 <TextView
                     android:id="@+id/losses"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_weight="3"
                     android:text="LOSSES\n207"
-                    android:textColor="@color/black"
+                    android:textColor="@color/lose_winrate"
                     android:textSize="@dimen/wins_loses_winrate"
                     android:textAlignment="center"/>
                 <TextView
                     android:id="@+id/winrate"
                     android:layout_width="match_parent"
-                    android:textStyle="bold"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="WINRATE\n50.48%"
-                    android:textColor="@color/white"
+                    android:textColor="@color/wins_winrate"
                     android:textSize="@dimen/wins_loses_winrate"
                     android:textAlignment="center"/>
             </LinearLayout>
-
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="79dp"
-                android:layout_height="72dp"
+                android:layout_width="70dp"
+                android:layout_height="65dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/rank_icon_8" />
+                android:src="@drawable/rank_icon_8"
+                />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:paddingTop="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:max="100"
+                android:progress="50"
+                android:secondaryProgress="100"
+                android:progressTint="@color/winProgress"
+                android:secondaryProgressTint="@color/looseProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"/>
             <TextView
                 android:id="@+id/profile_steam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/link_steamid"
-                android:textStyle="italic"
-                android:textAlignment="center"
                 android:textColorLink="@color/white"
                 android:padding="15dp"
                 android:textSize="15sp"
@@ -189,9 +192,11 @@
             android:padding="3dp">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_match_history"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/khung_trandau"/>
 
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
