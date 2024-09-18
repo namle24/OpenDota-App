@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_bground"
+    android:padding="8dp"
+    tools:ignore="HardcodedText"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RANKED SOLO"
+            android:layout_weight="0"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_time_ended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="15d ago"
+            android:layout_weight="5"
+            android:textColor="@color/gray"
+            android:textSize="12sp"/>
+        <TextView
+            android:id="@+id/id_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="34 minutes"
+            android:layout_weight="0"
+            android:textColor="@color/gray"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/grimstroke_full"/>
+
+            <TextView
+                android:id="@+id/tvLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textColor="#ffffff"
+                android:background="#000000"
+                android:layout_gravity="bottom|end"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp">
+
+            <TextView
+                android:id="@+id/tvKDA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 / 12 / 11"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/tvKDARatio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.1 KDA"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
