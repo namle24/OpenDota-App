@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import vn.edu.usth.opendota.R;
 
-public class fragment_match extends Fragment implements View.OnClickListener {
+public class MatchFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "Cardview";
     private CardView card1, card2, card3, card4, card5, card6, card7, card8, card9;
 
@@ -49,36 +48,36 @@ public class fragment_match extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         Intent i;
         if (v.getId() == R.id.match_1) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_2) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_3) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_4) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_5) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_6) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_7) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_8) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_9) {
-            i = new Intent(getActivity(), fragment_match_details.class);
+            i = new Intent(getActivity(), MatchDetailsFragment.class);
             startActivity(i);
         }
     }
 
-    public static fragment_match newInstance() {
-        return new fragment_match();
+    public static MatchFragment newInstance() {
+        return new MatchFragment();
     }
 }

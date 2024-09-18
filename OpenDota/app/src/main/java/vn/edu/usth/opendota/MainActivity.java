@@ -11,15 +11,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
-import vn.edu.usth.opendota.favourite.FavouriteActivity;
-import vn.edu.usth.opendota.home.HomeActivity;
-import vn.edu.usth.opendota.player_info.MyProfileActivity;
-import vn.edu.usth.opendota.search.SearchActivity;
-import vn.edu.usth.opendota.settings.SettingsActivity;
+import vn.edu.usth.opendota.adapter.player_adapter;
+import vn.edu.usth.opendota.favourite.FavouriteFragment;
+import vn.edu.usth.opendota.home.HomeFragment;
+import vn.edu.usth.opendota.search.SearchFragment;
+import vn.edu.usth.opendota.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,10 +30,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         MaterialToolbar toolbar = findViewById(R.id.topappbar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
+
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        PagerAdapter adapter_1 = new player_adapter(getSupportFragmentManager());
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.setAdapter(adapter_1);
+
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,11 +49,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (savedInstanceState == null) {
-            replaceFragment(new HomeActivity());
-            navigationView.setCheckedItem(R.id.nav_home);
-        }
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -51,21 +56,21 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (id == R.id.nav_home) {
-                    replaceFragment(new HomeActivity());
-                } else if (id == R.id.nav_myprofile) {
-                    replaceFragment(new MyProfileActivity());
+                    replaceFragment(new HomeFragment());
                 } else if (id == R.id.nav_favourite) {
-                    replaceFragment(new FavouriteActivity());
+                    replaceFragment(new FavouriteFragment());
                 } else if (id == R.id.nav_search) {
-                    replaceFragment(new SearchActivity());
+                    replaceFragment(new SearchFragment());
                 } else if (id == R.id.nav_settings) {
-                    replaceFragment(new SettingsActivity());
+                    replaceFragment(new SettingsFragment());
                 } else {
                     return true;
                 }
                 return true;
             }
         });
+
+
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -73,5 +78,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout, fragment);
         fragmentTransaction.commit();
+
     }
 }

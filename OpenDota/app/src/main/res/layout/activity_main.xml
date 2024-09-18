@@ -30,10 +30,17 @@
                     android:id="@+id/option_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="Icon"
                     android:src="@drawable/option_icon"
+                    android:contentDescription="Icon"
                     app:tint="@color/white" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Home"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 
@@ -62,19 +69,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topappbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/white"
-            app:navigationIcon="@drawable/option_icon"
-            android:background="@color/licorice"/>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topappbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="OpenDota"
+                app:titleTextColor="@color/white"
+                app:navigationIcon="@drawable/option_icon"
+                android:background="@color/dark_blue"/>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/topappbar"
+            android:layout_below="@id/appbar_layout"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-3dp"
             android:layout_marginEnd="0dp" />
