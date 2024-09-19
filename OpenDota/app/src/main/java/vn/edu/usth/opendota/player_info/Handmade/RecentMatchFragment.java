@@ -1,4 +1,4 @@
-package vn.edu.usth.opendota.matches;
+package vn.edu.usth.opendota.player_info.Handmade;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

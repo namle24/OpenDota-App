@@ -182,7 +182,7 @@
 
             <fragment
                 android:id="@+id/recent_match_fragment"
-                android:name="vn.edu.usth.opendota.matches.RecentMatchFragment"
+                android:name="vn.edu.usth.opendota.player_info.Handmade.RecentMatchFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:layout="@layout/fragment_recent_match" />
