@@ -7,7 +7,7 @@
             android:title="Home"/>
         <item
             android:id="@+id/nav_myprofile"
-            android:title="MyProfile"
+            android:title="My Profile"
             android:icon="@drawable/ic_profile_02_24" />
         <item
             android:id="@+id/nav_search"

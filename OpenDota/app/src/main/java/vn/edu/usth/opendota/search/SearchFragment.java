@@ -92,7 +92,7 @@ public class SearchFragment extends Fragment {
 
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main, profileFragment)
+                .replace(R.id.framelayout, profileFragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -106,7 +106,6 @@ public class SearchFragment extends Fragment {
         list.add(new User(R.drawable.avarta4, "Nghia", "ID: 408523961"));
         list.add(new User(R.drawable.anhlong1, "Duc", "ID: 233507135"));
         list.add(new User(R.drawable.avatar_22, "Qminh", "ID: 1856746982"));
-
         list.add(new User(R.drawable.anhsi, "Messi", "ID: 154520951"));
         list.add(new User(R.drawable.avarta10, "Ni garami", "ID: 282677100"));
         list.add(new User(R.drawable.ronaldo1, "Ronaldo", "ID: 613456720"));
