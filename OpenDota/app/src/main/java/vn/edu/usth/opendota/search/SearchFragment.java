@@ -43,7 +43,6 @@ public class SearchFragment extends Fragment {
             }
             @Override
             public void onItemClick(int position, boolean isSelected) {
-                Log.i("SearchFragment", "Heart icon at position " + position + " clicked. Selected: " + isSelected);
             }
         });
         rcvUser.setAdapter(userAdapter);

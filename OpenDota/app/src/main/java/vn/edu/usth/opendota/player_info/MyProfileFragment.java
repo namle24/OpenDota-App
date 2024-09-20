@@ -21,13 +21,6 @@ public class MyProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_profile, container, false);
-        Bundle args = getArguments();
-        if (args != null) {
-            String userName = args.getString("userName");
-            String userId = args.getString("userId");
-
-            getActivity().setTitle(userName);
-        }
 
         ViewPager viewPager = view.findViewById(R.id.viewpager);
         player_adapter adapter = new player_adapter(getChildFragmentManager());

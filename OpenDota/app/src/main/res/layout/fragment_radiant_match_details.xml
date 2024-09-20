@@ -859,13 +859,9 @@
                                 android:src="@drawable/aether_lens_lg" />
 
                         </GridLayout>
-
                     </LinearLayout>
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
-
         </TableLayout>
     </RelativeLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

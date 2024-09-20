@@ -19,9 +19,7 @@ public class MatchDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_match_details);
-
         View toolbar = findViewById(R.id.match_details_topappbar);
-
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
