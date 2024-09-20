@@ -17,7 +17,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_bground"
+            android:background="@drawable/gradient_bg"
             android:padding="10dp"
             android:layout_margin="4dp">
             <de.hdodenhof.circleimageview.CircleImageView
@@ -147,7 +147,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_bground"
+            android:background="@drawable/gradient_bg"
             android:padding="10dp"
             android:layout_margin="4dp">
             <de.hdodenhof.circleimageview.CircleImageView
@@ -183,7 +183,7 @@
                     <View
                         style="@style/Divider"
                         android:layout_marginTop="7dp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginBottom="5dp" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -275,7 +275,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_bground"
+            android:background="@drawable/gradient_bg"
             android:padding="10dp"
             android:layout_margin="4dp">
             <de.hdodenhof.circleimageview.CircleImageView
@@ -403,7 +403,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_bground"
+            android:background="@drawable/gradient_bg"
             android:padding="10dp"
             android:layout_margin="4dp">
             <de.hdodenhof.circleimageview.CircleImageView
@@ -531,7 +531,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_bground"
+            android:background="@drawable/gradient_bg"
             android:padding="10dp"
             android:layout_margin="4dp">
             <de.hdodenhof.circleimageview.CircleImageView
@@ -659,7 +659,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_bground"
+            android:background="@drawable/gradient_bg"
             android:padding="10dp"
             android:layout_margin="4dp">
             <de.hdodenhof.circleimageview.CircleImageView

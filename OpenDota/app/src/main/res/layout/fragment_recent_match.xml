@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:hardwareAccelerated="true"
     android:id="@+id/recentmatches">
 
     <LinearLayout
@@ -23,6 +24,13 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/mvp_gradient"
                 android:orientation="horizontal">
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
+
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/rm_hero"
@@ -96,12 +104,6 @@
                         />
                 </LinearLayout>
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/winProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
 
@@ -115,8 +117,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -167,13 +176,6 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -186,8 +188,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/wining_bg"
                 android:orientation="horizontal">
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -238,12 +246,6 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/winProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
 
@@ -259,6 +261,12 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/mvp_gradient"
                 android:orientation="horizontal">
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/rm_hero1"
@@ -331,13 +339,6 @@
                         />
                 </LinearLayout>
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/winProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -350,8 +351,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -401,13 +409,6 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
-
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
 
@@ -421,8 +422,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -472,13 +480,6 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
-
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
 
@@ -492,8 +493,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -543,14 +551,6 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
-
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -563,8 +563,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -615,13 +622,6 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -634,8 +634,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -686,13 +693,6 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
-
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -705,8 +705,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/wining_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -757,12 +764,7 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/winProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
+
 
             </LinearLayout>
 
@@ -777,8 +779,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -829,12 +838,7 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
+
 
             </LinearLayout>
 
@@ -850,8 +854,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -902,13 +913,6 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
-
             </LinearLayout>
 
 
@@ -923,8 +927,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/wining_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/winProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -975,13 +986,6 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/winProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
-
             </LinearLayout>
 
 
@@ -996,8 +1000,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/onyx"
+                android:background="@drawable/losing_bg"
                 android:orientation="horizontal">
+
+                <ProgressBar
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:progress="100"
+                    android:progressTint="@color/looseProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="45dp"
@@ -1047,13 +1058,6 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center_vertical"
                     />
-
-                <ProgressBar
-                    android:layout_width="4dp"
-                    android:layout_height="match_parent"
-                    android:progress="100"
-                    android:progressTint="@color/looseProgress"
-                    style="@android:style/Widget.ProgressBar.Horizontal"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

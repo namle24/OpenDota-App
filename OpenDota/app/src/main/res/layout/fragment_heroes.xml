@@ -5,8 +5,9 @@
     android:id="@+id/fragment_heros"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/CARD"
-    android:fillViewport="true">
+    android:background="@color/black"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,28 +65,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:weightSum="4">
                     <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Hero"
                         android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Played"
                         android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
                         android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Win%"
                         android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
@@ -93,7 +93,7 @@
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Last Played"
                         android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
@@ -108,7 +108,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="4dp"
-            android:padding="3dp">
+            android:padding="3dp"
+            >
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -118,9 +119,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/onyx"
-                    android:orientation="vertical">
+                    android:background="@drawable/card_border"
+                    android:orientation="vertical"
+                    android:weightSum="4">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -135,18 +136,11 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/white">
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:layout_weight="0.25"
+                            android:layout_weight="1"
                             android:gravity="center"
                             android:src="@drawable/obsidian_destroyer_full"
                             android:layout_marginTop="10dp"
@@ -155,26 +149,28 @@
                         <TextView
                             android:layout_width="45dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.25"
+                            android:layout_weight="1"
                             android:text="425"
-                            android:paddingLeft="20dp"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="57.14%"
                             android:textColor="@color/white"
-                            android:layout_weight="0.25"
+                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="13 days"
                             android:textColor="@color/white"
-                            android:layout_weight="0.25"
+                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                     </LinearLayout>
 
@@ -190,8 +186,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/onyx"
+                    android:background="@drawable/card_border"
                     android:orientation="vertical">
 
                     <TextView
@@ -204,13 +199,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/white">
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -229,9 +217,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
                             android:text="316"
-                            android:paddingLeft="20dp"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -239,6 +227,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -247,7 +236,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
-                            />
+                            android:gravity="center" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -263,8 +252,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/onyx"
+                    android:background="@drawable/card_border"
                     android:orientation="vertical">
 
                     <TextView
@@ -277,13 +265,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/white">
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -302,9 +283,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
                             android:text="106"
-                            android:paddingLeft="20dp"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -312,6 +293,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -320,6 +302,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                     </LinearLayout>
 
@@ -334,8 +317,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/onyx"
+                    android:background="@drawable/card_border"
                     android:orientation="vertical">
 
                     <TextView
@@ -348,13 +330,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/white">
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -373,9 +348,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
                             android:text="211"
-                            android:paddingLeft="20dp"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -383,6 +359,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -391,6 +368,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                     </LinearLayout>
 
@@ -405,8 +383,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/onyx"
+                    android:background="@drawable/card_border"
                     android:orientation="vertical">
 
                     <TextView
@@ -419,13 +396,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/white">
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -444,9 +414,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
                             android:text="125"
-                            android:paddingLeft="20dp"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -454,6 +424,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -462,6 +433,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                     </LinearLayout>
 
@@ -476,8 +448,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/onyx"
+                    android:background="@drawable/card_border"
                     android:orientation="vertical">
 
                     <TextView
@@ -490,13 +461,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/white">
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -515,9 +479,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
                             android:text="93"
-                            android:paddingLeft="20dp"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -525,6 +489,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -533,6 +498,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                     </LinearLayout>
 
@@ -547,8 +513,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/onyx"
+                    android:background="@drawable/card_border"
                     android:orientation="vertical">
 
                     <TextView
@@ -561,13 +526,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/white">
-                    </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -586,9 +544,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
                             android:text="80"
-                            android:paddingLeft="20dp"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -596,6 +554,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -604,6 +563,7 @@
                             android:textColor="@color/white"
                             android:layout_weight="0.25"
                             android:layout_gravity="center_vertical"
+                            android:gravity="center"
                             />
                     </LinearLayout>
 

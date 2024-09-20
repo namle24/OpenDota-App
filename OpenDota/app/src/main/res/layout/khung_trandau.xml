@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/gradient_bground"
+    android:background="@drawable/gradient_bg"
     android:padding="8dp"
     tools:ignore="HardcodedText"
     >
