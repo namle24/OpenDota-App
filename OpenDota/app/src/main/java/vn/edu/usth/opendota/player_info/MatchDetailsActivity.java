@@ -1,21 +1,33 @@
 package vn.edu.usth.opendota.player_info;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import vn.edu.usth.opendota.R;
 
-public class MatchDetailsFragment extends AppCompatActivity {
+public class MatchDetailsActivity extends AppCompatActivity {
     private LinearLayout player_info1, player_info2, player_info3, player_info4, player_info5, player_info6, player_info7, player_info8, player_info9, player_info10,
     layout_hide_show1, layout_hide_show2, layout_hide_show3, layout_hide_show4, layout_hide_show5, layout_hide_show6, layout_hide_show7, layout_hide_show8, layout_hide_show9, layout_hide_show10;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_match_details);
+
+        View toolbar = findViewById(R.id.match_details_topappbar);
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         player_info1=findViewById(R.id.player_info1);
         player_info2=findViewById(R.id.player_info2);

@@ -1,5 +1,6 @@
 package vn.edu.usth.opendota.player_info;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
@@ -15,6 +16,7 @@ public class MatchFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "Cardview";
     private CardView card1, card2, card3, card4, card5, card6, card7, card8, card9;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,31 +50,31 @@ public class MatchFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         Intent i;
         if (v.getId() == R.id.match_1) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_2) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_3) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_4) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_5) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_6) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_7) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_8) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         } else if (v.getId() == R.id.match_9) {
-            i = new Intent(getActivity(), MatchDetailsFragment.class);
+            i = new Intent(getActivity(), MatchDetailsActivity.class);
             startActivity(i);
         }
     }

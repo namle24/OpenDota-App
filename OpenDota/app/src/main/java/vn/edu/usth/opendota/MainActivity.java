@@ -22,6 +22,7 @@ import vn.edu.usth.opendota.search.SearchFragment;
 import vn.edu.usth.opendota.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
+
     private MaterialToolbar toolbar;
 
     @Override

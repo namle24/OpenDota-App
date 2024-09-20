@@ -160,7 +160,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="47:42"
+                    android:text="60:00"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:layout_weight="0.2"
@@ -305,7 +305,7 @@
                     android:id="@+id/rm_length1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="48:54"
+                    android:text="48:00"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:layout_weight="0.2"
@@ -323,7 +323,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
-                        android:text="13/6/8"
+                        android:text="20/0/8"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:layout_gravity="center_horizontal"
@@ -437,7 +437,7 @@
                     android:layout_height="45dp"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:src="@drawable/no_item"
+                    android:src="@drawable/queenofpain_full"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     />
@@ -474,7 +474,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="15/0/12"
+                    android:text="0/15/12"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:layout_weight="0.2"
@@ -536,7 +536,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="47:42"
+                    android:text="15:42"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:layout_weight="0.2"
@@ -545,7 +545,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3/5/26"
+                    android:text="3/5/0"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:layout_weight="0.2"
@@ -563,14 +563,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/losing_bg"
+                android:background="@drawable/wining_bg"
                 android:orientation="horizontal">
 
                 <ProgressBar
                     android:layout_width="3dp"
                     android:layout_height="match_parent"
                     android:progress="100"
-                    android:progressTint="@color/looseProgress"
+                    android:progressTint="@color/winProgress"
                     style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -578,7 +578,7 @@
                     android:layout_height="45dp"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:src="@drawable/no_item"
+                    android:src="@drawable/sniper_full"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     />

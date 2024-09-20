@@ -69,9 +69,6 @@
             app:titleTextColor="@color/white"
             app:navigationIcon="@drawable/option_icon"
             android:background="@color/licorice">
-
-
-
         </com.google.android.material.appbar.MaterialToolbar>
 
 

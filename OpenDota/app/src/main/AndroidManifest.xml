@@ -22,7 +22,7 @@
         </activity>
 
         <activity
-            android:name=".player_info.MatchDetailsFragment"
+            android:name=".player_info.MatchDetailsActivity"
             android:exported="true" />
 
     </application>
