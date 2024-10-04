@@ -1,6 +1,8 @@
 package vn.edu.usth.opendota;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Menu;
 
@@ -20,6 +22,28 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String theme = getPreferredTheme();
+        switch (theme) {
+            case "Light":
+                setTheme(R.style.AppTheme_Light);
+                break;
+            case "Dark":
+                setTheme(R.style.AppTheme_Dark);
+                break;
+            case "Classic":
+                setTheme(R.style.AppTheme_Classic);
+                break;
+            case "ClassicDark":
+                setTheme(R.style.AppTheme_ClassicDark);
+                break;
+            case "PearlDark":
+                setTheme(R.style.AppTheme_PearlDark);
+                break;
+            default:
+                setTheme(R.style.AppTheme_Light);
+                break;
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -41,5 +65,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private String getPreferredTheme() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return sharedPreferences.getString("theme_key", "Light"); // Mặc định là Light
     }
 }

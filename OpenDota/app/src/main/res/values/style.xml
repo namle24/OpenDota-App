@@ -1,8 +1,44 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryVariant">#3700B3</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#03DAC5</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="textFillColor">#FFFF66</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#BB86FC</item>
+        <item name="colorPrimaryVariant">#3700B3</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">#03DAC5</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="textFillColor">#FF2266</item>
+
+    </style>
+
+    <style name="AppTheme.Classic" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#FF5722</item>
+        <item name="colorPrimaryVariant">#D84315</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#FFC107</item>
+        <item name="colorOnSecondary">#000000</item>
+    </style>
+
+    <style name="AppTheme.ClassicDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="colorPrimary">#673AB7</item>
-        <item name="colorPrimaryDark">#512DA8</item>
-        <item name="colorAccent">#FF4081</item>
+        <item name="colorPrimaryVariant">#512DA8</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#FF4081</item>
+        <item name="colorOnSecondary">#000000</item>
+    </style>
+
+    <style name="AppTheme.PearlDark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#B2DFDB</item>
+        <item name="colorPrimaryVariant">#009688</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">#FFEB3B</item>
+        <item name="colorOnSecondary">#000000</item>
     </style>
 </resources>
