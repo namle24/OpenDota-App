@@ -3,18 +3,16 @@ package vn.edu.usth.opendota;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
-import android.view.Menu;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,27 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String theme = getPreferredTheme();
-        switch (theme) {
-            case "Light":
-                setTheme(R.style.AppTheme_Light);
-                break;
-            case "Dark":
-                setTheme(R.style.AppTheme_Dark);
-                break;
-            case "Classic":
-                setTheme(R.style.AppTheme_Classic);
-                break;
-            case "ClassicDark":
-                setTheme(R.style.AppTheme_ClassicDark);
-                break;
-            case "PearlDark":
-                setTheme(R.style.AppTheme_PearlDark);
-                break;
-            default:
-                setTheme(R.style.AppTheme_Light);
-                break;
-        }
+        applyThemeFromPreferences();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -67,8 +45,26 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    private String getPreferredTheme() {
+    private void applyThemeFromPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getString("theme_key", "Light");
+        String theme = sharedPreferences.getString("theme_key", "Light");
+
+        switch (theme) {
+            case "Dark":
+                setTheme(R.style.AppTheme_Dark);
+                break;
+            case "Classic":
+                setTheme(R.style.AppTheme_Classic);
+                break;
+            case "ClassicDark":
+                setTheme(R.style.AppTheme_ClassicDark);
+                break;
+            case "PearlDark":
+                setTheme(R.style.AppTheme_PearlDark);
+                break;
+            default:
+                setTheme(R.style.AppTheme_Light);
+                break;
+        }
     }
 }

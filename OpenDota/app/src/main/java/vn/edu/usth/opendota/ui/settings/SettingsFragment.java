@@ -6,9 +6,8 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -17,8 +16,31 @@ import vn.edu.usth.opendota.R;
 
 public class SettingsFragment extends Fragment {
 
-    private Spinner themeSpinner;
-    private Button applyButton;
+    private RadioGroup themeRadioGroup;
+
+    private enum Theme {
+        LIGHT("Light", R.id.theme_light),
+        DARK("Dark", R.id.theme_dark),
+        CLASSIC("Classic", R.id.theme_classic),
+        CLASSIC_DARK("ClassicDark", R.id.theme_classicDark),
+        PEARL_DARK("PearlDark", R.id.theme_pearlDark);
+
+        private final String name;
+        private final int radioId;
+
+        Theme(String name, int radioId) {
+            this.name = name;
+            this.radioId = radioId;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getRadioId() {
+            return radioId;
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,24 +52,25 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        themeSpinner = view.findViewById(R.id.theme_spinner);
-        applyButton = view.findViewById(R.id.apply_button);
+        themeRadioGroup = view.findViewById(R.id.theme_radio_group);
+        Button applyButton = view.findViewById(R.id.apply_button);
 
-        setupThemeSpinner();
+        loadSelectedTheme();
+
         applyButton.setOnClickListener(v -> applyTheme());
 
         return view;
     }
 
-    private void setupThemeSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.themes_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        themeSpinner.setAdapter(adapter);
-    }
-
     private void applyTheme() {
-        String selectedTheme = themeSpinner.getSelectedItem().toString();
+        int selectedId = themeRadioGroup.getCheckedRadioButtonId();
+        if (selectedId == -1) {
+            Toast.makeText(getContext(), "Please select a theme", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String selectedTheme = getThemeName(selectedId);
+
         saveSelectedTheme(selectedTheme);
         Toast.makeText(getContext(), "Theme changed to " + selectedTheme, Toast.LENGTH_SHORT).show();
 
@@ -56,8 +79,29 @@ public class SettingsFragment extends Fragment {
         }
     }
 
+    private String getThemeName(int selectedId) {
+        for (Theme theme : Theme.values()) {
+            if (theme.getRadioId() == selectedId) {
+                return theme.getName();
+            }
+        }
+        return Theme.LIGHT.getName();
+    }
+
     private void saveSelectedTheme(String theme) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         sharedPreferences.edit().putString("theme_key", theme).apply();
+    }
+
+    private void loadSelectedTheme() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String selectedTheme = sharedPreferences.getString("theme_key", Theme.LIGHT.getName());
+
+        for (Theme theme : Theme.values()) {
+            if (theme.getName().equals(selectedTheme)) {
+                themeRadioGroup.check(theme.getRadioId());
+                break;
+            }
+        }
     }
 }
