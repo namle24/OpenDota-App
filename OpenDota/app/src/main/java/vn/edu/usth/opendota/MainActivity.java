@@ -69,6 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String getPreferredTheme() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getString("theme_key", "Light"); // Mặc định là Light
+        return sharedPreferences.getString("theme_key", "Light");
     }
 }

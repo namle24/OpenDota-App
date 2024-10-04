@@ -51,7 +51,6 @@ public class SettingsFragment extends Fragment {
         saveSelectedTheme(selectedTheme);
         Toast.makeText(getContext(), "Theme changed to " + selectedTheme, Toast.LENGTH_SHORT).show();
 
-        // Tải lại Activity (nếu cần) để áp dụng theme mới
         if (getActivity() != null) {
             getActivity().recreate();
         }
