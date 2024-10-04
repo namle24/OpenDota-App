@@ -1,4 +1,4 @@
-package vn.edu.usth.opendota.settings;
+package vn.edu.usth.opendota.ui.settings;
 
 import android.os.Bundle;
 

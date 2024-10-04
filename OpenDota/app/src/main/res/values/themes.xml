@@ -17,7 +17,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.USTHOpenDotaClient.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.OpenDota.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.USTHOpenDotaClient.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.OpenDota.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

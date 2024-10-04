@@ -74,20 +74,4 @@
 
 
     </RelativeLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:menu="@menu/drawer_view"
-        app:itemTextColor="@color/white"
-        app:itemIconSize="45dp"
-        android:background="@color/item"
-        app:itemIconTint="@color/icon_color"
-        android:layout_gravity="start"
-        android:theme="@style/NavigationView_line"
-        android:fitsSystemWindows="true"
-        tools:ignore="MissingConstraints"/>
-
-
 </androidx.drawerlayout.widget.DrawerLayout>
