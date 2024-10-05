@@ -1,14 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_heros"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.my_profile.OverviewFragment">
+    android:background="@color/black"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:background="@color/CARD">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:background="@color/white"
+            android:text="@string/player_profile1"
+            android:textColor="@color/black">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_border"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HEROES"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_below="@+id/recentmatches">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:context=".searchplayerfragment.MatchesHistoryFragment"
+                android:background="@drawable/card_border">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Hero"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Played"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Win%"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Last Played"
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
