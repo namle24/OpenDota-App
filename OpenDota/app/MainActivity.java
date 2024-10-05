@@ -1,18 +1,15 @@
 package vn.edu.usth.opendota;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        applyThemeFromPreferences();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -43,28 +38,5 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    private void applyThemeFromPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String theme = sharedPreferences.getString("theme_key", "Light");
-
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.AppTheme_Dark);
-                break;
-            case "Classic":
-                setTheme(R.style.AppTheme_Classic);
-                break;
-            case "ClassicDark":
-                setTheme(R.style.AppTheme_ClassicDark);
-                break;
-            case "PearlDark":
-                setTheme(R.style.AppTheme_PearlDark);
-                break;
-            default:
-                setTheme(R.style.AppTheme_Light);
-                break;
-        }
     }
 }

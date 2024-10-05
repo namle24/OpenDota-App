@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Base.Theme.OpenDota">
+        android:theme="@style/Theme.OpenDota">
 
         <activity
             android:name=".MainActivity"
@@ -21,9 +21,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".models.MatchDetailActivityManage" />
-        <activity android:name=".player_info.fragment_match_details"/>
     </application>
 
 </manifest>
