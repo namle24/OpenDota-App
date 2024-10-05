@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
-    android:orientation="vertical"
-    android:background="?attr/backgroundColor">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -127,15 +126,21 @@
                         android:textSize="15sp"
                         android:textColor="@color/white" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white" />
+
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+        <fragment
+            android:id="@+id/matchesFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="4dp"
-            android:padding="3dp">
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:name="vn.edu.usth.opendota.matches.MatchesFrameFragment"
+            tools:layout="@layout/fragment_matches_frame"/>
+
     </LinearLayout>
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
