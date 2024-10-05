@@ -26,74 +26,62 @@
             android:textColor="?attr/textFillColor">
         </TextView>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HEROES"
+            android:textAlignment="center"
+            android:background="?attr/colorOnSecondary"
+            android:textSize="30sp"
+            android:textColor="?attr/textFillColor"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="?attr/colorOnSecondary"
-            android:orientation="vertical">
+            android:weightSum="4">
             <TextView
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Hero"
+                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                android:textColor="?attr/textFillColor"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Played"
+                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                android:textColor="?attr/textFillColor"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Win%"
+                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                android:textColor="?attr/textFillColor"/>
+            <TextView
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="HEROES"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textColor="?attr/textFillColor"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
-            <LinearLayout
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?attr/colorOnSecondary"
-                android:orientation="vertical"
-                android:layout_below="@+id/recentmatches">
-            </LinearLayout>
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Last Played"
+                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                android:textColor="?attr/textFillColor"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?attr/colorOnSecondary"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="4">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Hero"
-                    android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                    android:textColor="?attr/textFillColor"/>
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Played"
-                    android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                    android:textColor="?attr/textFillColor"/>
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Win%"
-                    android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                    android:textColor="?attr/textFillColor"/>
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Last Played"
-                    android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                    android:textColor="?attr/textFillColor"/>
-
-            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
