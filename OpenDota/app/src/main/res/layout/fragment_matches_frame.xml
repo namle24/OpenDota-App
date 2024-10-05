@@ -11,20 +11,7 @@
         android:layout_height="70dp"
         android:background="#FF8878"
         android:orientation="horizontal"
-        android:weightSum="6">
-
-        <TextView
-            android:id="@+id/id_hero_id"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            tools:text="12" />
+        android:weightSum="5">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"

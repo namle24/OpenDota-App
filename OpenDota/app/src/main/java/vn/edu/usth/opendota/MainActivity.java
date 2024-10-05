@@ -3,20 +3,29 @@ package vn.edu.usth.opendota;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import vn.edu.usth.opendota.ui.favourite.FavouriteFragment;
+import vn.edu.usth.opendota.ui.home.HomeFragment;
+import vn.edu.usth.opendota.ui.my_profile.MyProfileFragment;
+import vn.edu.usth.opendota.ui.search.SearchFragment;
+import vn.edu.usth.opendota.ui.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
+    private MaterialToolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,24 +34,58 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setSupportActionBar(findViewById(R.id.toolbar));
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.topappbar);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_myprofile, R.id.nav_search, R.id.nav_favourite, R.id.nav_settings)
-                .setOpenableLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        if (savedInstanceState == null) {
+            replaceFragment(new HomeFragment());
+            toolbar.setTitle("Home");
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                item.setChecked(true);
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                if (id == R.id.nav_home) {
+                    replaceFragment(new HomeFragment());
+                    toolbar.setTitle("Home");
+                } else if (id == R.id.nav_myprofile) {
+                    replaceFragment(new MyProfileFragment());
+                    toolbar.setTitle("My Profile");
+                } else if (id == R.id.nav_favourite) {
+                    replaceFragment(new FavouriteFragment());
+                    toolbar.setTitle("Favourite");
+                } else if (id == R.id.nav_search) {
+                    replaceFragment(new SearchFragment());
+                    toolbar.setTitle("Search");
+                } else if (id == R.id.nav_settings) {
+                    replaceFragment(new SettingsFragment());
+                    toolbar.setTitle("Settings");
+                } else {
+                    return true;
+                }
+                return true;
+            }
+        });
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.framelayout, fragment);
+        fragmentTransaction.commit();
     }
 
     private void applyThemeFromPreferences() {
