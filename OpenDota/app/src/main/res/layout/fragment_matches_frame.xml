@@ -9,26 +9,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#FF8878"
+        android:background="?attr/colorSecondary"
         android:orientation="horizontal"
         android:weightSum="6">
 
-        <TextView
-            android:id="@+id/id_hero_id"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            tools:text="12" />
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
-            android:layout_width="0dp"
+            android:layout_width="60px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
@@ -38,54 +25,54 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="?attr/textFillColor"
             android:textSize="12sp"
             tools:text="All Draft Normal" />
 
         <TextView
             android:id="@+id/tv_time_ended"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="?attr/textFillColor"
             android:textSize="12sp"
             tools:text="14 days" />
 
         <TextView
             android:id="@+id/id_duration"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="?attr/textFillColor"
             tools:text="47:42" />
 
         <TextView
             android:id="@+id/tv_kda"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="?attr/textFillColor"
             tools:text="3/5/26" />
 
         <View
             android:id="@+id/line_view"
-            android:layout_width="4dp"
-            android:layout_alignParentEnd="true"
+            android:layout_width="6dp"
+            android:layout_alignParentEnd="false"
             android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:background="@android:color/holo_red_dark" />
+            android:layout_gravity="right"
+            android:background="@color/winProgress" />
     </LinearLayout>
 </LinearLayout>

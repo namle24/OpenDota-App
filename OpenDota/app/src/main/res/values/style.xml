@@ -34,10 +34,10 @@
         <item name="colorPrimary">#DC1D1D1D</item>
         <item name="colorPrimaryVariant">#3700b3</item>
         <item name="colorOnPrimary">#ffffff</item>
-        <item name="colorSecondary">#3C3150</item>
+        <item name="colorSecondary">#353935</item>
         <item name="colorOnSecondary">#DC1D1D1D</item>
         <item name="textFillColor">#ffffff</item>
-        <item name="backgroundColor">#0D0D0D</item>
+        <item name="backgroundColor">#000000</item>
     </style>
 
     <style name="AppTheme.PearlDark" parent="Theme.MaterialComponents.NoActionBar">

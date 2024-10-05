@@ -1,54 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-========
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_heros"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/backgroundColor"
     android:fillViewport="true"
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-    tools:ignore="HardcodedText">
-========
     android:orientation="vertical">
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-        android:background="?attr/background">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:background="@color/white"
-            android:text="@string/player_profile1"
-            android:textColor="?attr/background">
-        </TextView>
-========
         android:paddingTop="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp">
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-            android:background="@drawable/card_border"
-            android:orientation="vertical">
-========
-            android:background="#FF4567"
+            android:background="?attr/colorOnSecondary"
             android:orientation="vertical"
             android:id="@+id/relative_layout_search">
 
@@ -56,7 +27,7 @@
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ff9893"
+                android:background="?attr/colorOnSecondary"
                 app:queryHint="Search Match" />
 
             <TextView
@@ -65,7 +36,7 @@
                 android:layout_gravity="center"
                 android:textSize="14sp"
                 android:gravity="center"
-                android:background="?attr/backgroundColor"
+                android:background="?attr/colorOnSecondary"
                 android:text="1-20 of 418 matches"
                 android:textColor="?attr/textFillColor" />
         </LinearLayout>
@@ -76,11 +47,10 @@
             android:background="?attr/colorOnSecondary"
             android:orientation="vertical">
 
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HEROES"
+                android:text="MATCHES"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textColor="?attr/textFillColor"
@@ -98,82 +68,47 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 tools:context=".searchplayerfragment.MatchesHistoryFragment"
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-                android:background="@drawable/card_border">
-                <LinearLayout
-========
-                android:background="#4256fd">
+                android:background="?attr/colorOnSecondary">
 
                 <View
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/white" />
+                    android:background="?attr/colorOnSecondary" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-                    android:weightSum="4">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-========
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:background="?attr/colorOnSecondary">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Hero"
                         android:textSize="15sp"
-                        android:textColor="@color/white" />
+                        android:textColor="?attr/textFillColor" />
 
                     <TextView
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Played"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Win%"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-========
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="center"
                         android:text="Mode"
                         android:textSize="15sp"
-                        android:textColor="@color/white" />
+                        android:textColor="?attr/textFillColor" />
 
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-                        android:text="Last Played"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-
-========
                         android:text="Ended"
                         android:textSize="15sp"
-                        android:textColor="@color/white" />
+                        android:textColor="?attr/textFillColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -182,7 +117,7 @@
                         android:gravity="center"
                         android:text="Length"
                         android:textSize="15sp"
-                        android:textColor="@color/white" />
+                        android:textColor="?attr/textFillColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -191,21 +126,16 @@
                         android:gravity="center"
                         android:text="K/D/A"
                         android:textSize="15sp"
-                        android:textColor="@color/white" />
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml
+                        android:textColor="?attr/textFillColor" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/white" />
+                    android:background="?attr/colorOnSecondary" />
 
             </LinearLayout>
         </LinearLayout>
-<<<<<<<< HEAD:OpenDota/app/src/main/res/layout/heroes_frame.xml
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
-========
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/Matches_recyclerview"
@@ -216,4 +146,3 @@
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
->>>>>>>> refs/heads/Minh:OpenDota/app/src/main/res/layout/fragment_matches.xml

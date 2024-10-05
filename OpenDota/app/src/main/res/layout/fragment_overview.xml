@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="?attr/backgroundColor">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".searchplayerfragment.MatchesHistoryFragment"
-        android:background="@color/CARD"
         android:padding="15dp">
 
         <LinearLayout
@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:context=".searchplayerfragment.MatchesHistoryFragment"
-            android:background="@drawable/neon_border">
+            android:background="?attr/colorOnSecondary">
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/A_image"
                 android:layout_width="90dp"
@@ -102,100 +102,13 @@
                 android:autoLink="web"
                 android:linksClickable="true"/>
         </LinearLayout>
-        <RelativeLayout
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Matches_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/my_border"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/recentmatches"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="RECENT MATCHES"
-                android:textSize="25dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textStyle="bold"/>
-            <LinearLayout
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/light_blue"
-                android:orientation="vertical"
-                android:layout_below="@+id/recentmatches">
-            </LinearLayout>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/fragment_matches_frame" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@+id/line"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="Hero"
-                    android:textSize="@dimen/recentMaches_overview_textsize"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="Mode"
-                    android:textSize="@dimen/recentMaches_overview_textsize"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="Ended"
-                    android:textSize="@dimen/recentMaches_overview_textsize"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="Length"
-                    android:textSize="@dimen/recentMaches_overview_textsize"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="K/D/A"
-                    android:textSize="@dimen/recentMaches_overview_textsize"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
-
-
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="4dp"
-            android:padding="3dp">
-        </LinearLayout>
-
-        <include
-            android:id="@+id/recyclerview_match_history"
-            layout="@layout/match_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

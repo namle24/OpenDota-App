@@ -15,82 +15,76 @@
         android:orientation="vertical"
         android:background="?attr/background">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:background="@color/white"
-            android:text="@string/player_profile1"
-            android:textColor="?attr/background">
-        </TextView>
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/card_border"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="HEROES"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
-                android:id="@+id/line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
+            android:id="@+id/hero_1">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:context=".searchplayerfragment.MatchesHistoryFragment"
-                android:background="@drawable/card_border">
+                android:layout_marginBottom="4dp"
+                android:background="@color/onyx"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Obisidian Destroyer"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:background="@color/white">
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                    android:layout_height="wrap_content">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="0.25"
                         android:gravity="center"
-                        android:text="Hero"
-                        android:textColor="@color/white" />
+                        android:src="@drawable/obsidian_destroyer_full"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        />
                     <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Played"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Win%"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-                    <TextView
+                        android:layout_width="45dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Last Played"
-                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                        android:textColor="@color/white"/>
-
+                        android:layout_weight="0.25"
+                        android:text="425"
+                        android:paddingLeft="20dp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="57.14%"
+                        android:textColor="@color/white"
+                        android:layout_weight="0.25"
+                        android:layout_gravity="center_vertical"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13 days"
+                        android:textColor="@color/white"
+                        android:layout_weight="0.25"
+                        android:layout_gravity="center_vertical"
+                        />
                 </LinearLayout>
+
             </LinearLayout>
-        </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
