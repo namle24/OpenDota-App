@@ -21,7 +21,7 @@ public class SettingsFragment extends Fragment {
     private enum Theme {
         LIGHT("Light", R.id.theme_light),
         DARK("Dark", R.id.theme_dark),
-        CLASSIC("Classic", R.id.theme_classic),
+        CLASSIC_LIGHT("ClassicLight", R.id.theme_classicLight),
         CLASSIC_DARK("ClassicDark", R.id.theme_classicDark),
         PEARL_DARK("PearlDark", R.id.theme_pearlDark);
 

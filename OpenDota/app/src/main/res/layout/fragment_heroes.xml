@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_heros"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/background"
     android:fillViewport="true"
     tools:ignore="HardcodedText">
 
@@ -13,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="?attr/background">
+        android:background="?attr/backgroundColor">
 
         <TextView
             android:layout_width="match_parent"
@@ -24,7 +23,7 @@
             android:gravity="center"
             android:background="@color/white"
             android:text="@string/player_profile1"
-            android:textColor="?attr/background">
+            android:textColor="@color/black">
         </TextView>
 
         <LinearLayout
@@ -38,20 +37,22 @@
                 android:text="HEROES"
                 android:textAlignment="center"
                 android:textSize="30sp"
+                android:textColor="@color/white"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"/>
+            <LinearLayout
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical"
-                tools:context=".searchplayerfragment.MatchesHistoryFragment"
-                android:background="@drawable/card_border">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                android:layout_below="@+id/recentmatches">
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -64,7 +65,8 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Hero"
-                        android:textColor="@color/white" />
+                        android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
+                        android:textColor="@color/white"/>
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="match_parent"
@@ -82,6 +84,7 @@
                         android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
                         android:textColor="@color/white"/>
                     <TextView
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
@@ -92,5 +95,4 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

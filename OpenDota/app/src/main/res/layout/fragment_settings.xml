@@ -22,10 +22,10 @@
             android:text="Dark" />
 
         <RadioButton
-            android:id="@+id/theme_classic"
+            android:id="@+id/theme_classicLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Classic" />
+            android:text="Classic Light" />
 
         <RadioButton
             android:id="@+id/theme_classicDark"

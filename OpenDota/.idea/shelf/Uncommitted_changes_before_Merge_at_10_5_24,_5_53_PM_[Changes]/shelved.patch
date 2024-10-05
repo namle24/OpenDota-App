@@ -1,0 +1,719 @@
+Index: app/src/main/res/values/style.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n    <style name=\"AppTheme.Light\" parent=\"Theme.MaterialComponents.NoActionBar\">\n        <item name=\"colorPrimary\">#6200EE</item>\n        <item name=\"colorPrimaryVariant\">#3700B3</item>\n        <item name=\"colorOnPrimary\">#FFFFFF</item>\n        <item name=\"colorSecondary\">#03DAC5</item>\n        <item name=\"colorOnSecondary\">#000000</item>\n        <item name=\"textFillColor\">#FFFF66</item>\n        <item name=\"backgroundColor\">#FF3872</item>\n    </style>\n\n    <style name=\"AppTheme.Dark\" parent=\"Theme.MaterialComponents.NoActionBar\">\n        <item name=\"colorPrimary\">#BB86FC</item>\n        <item name=\"colorPrimaryVariant\">#3700B3</item>\n        <item name=\"colorOnPrimary\">#000000</item>\n        <item name=\"colorSecondary\">#03DAC5</item>\n        <item name=\"colorOnSecondary\">#FFFFFF</item>\n        <item name=\"textFillColor\">#FF2266</item>\n        <item name=\"backgroundColor\">#008323</item>\n\n    </style>\n\n    <style name=\"AppTheme.Classic\" parent=\"Theme.MaterialComponents.NoActionBar\">\n        <item name=\"colorPrimary\">#FF5722</item>\n        <item name=\"colorPrimaryVariant\">#D84315</item>\n        <item name=\"colorOnPrimary\">#FFFFFF</item>\n        <item name=\"colorSecondary\">#FFC107</item>\n        <item name=\"colorOnSecondary\">#000000</item>\n        <item name=\"textFillColor\">#FF2266</item>\n        <item name=\"backgroundColor\">#008323</item>\n    </style>\n\n    <style name=\"AppTheme.ClassicDark\" parent=\"Theme.MaterialComponents.NoActionBar\">\n        <item name=\"colorPrimary\">#673AB7</item>\n        <item name=\"colorPrimaryVariant\">#512DA8</item>\n        <item name=\"colorOnPrimary\">#FFFFFF</item>\n        <item name=\"colorSecondary\">#FF4081</item>\n        <item name=\"colorOnSecondary\">#000000</item>\n        <item name=\"textFillColor\">#FF2266</item>\n        <item name=\"backgroundColor\">#008323</item>\n    </style>\n\n    <style name=\"AppTheme.PearlDark\" parent=\"Theme.MaterialComponents.NoActionBar\">\n        <item name=\"colorPrimary\">#B2DFDB</item>\n        <item name=\"colorPrimaryVariant\">#009688</item>\n        <item name=\"colorOnPrimary\">#000000</item>\n        <item name=\"colorSecondary\">#FFEB3B</item>\n        <item name=\"colorOnSecondary\">#000000</item>\n        <item name=\"textFillColor\">#FF2266</item>\n        <item name=\"backgroundColor\">#008323</item>\n    </style>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/style.xml b/app/src/main/res/values/style.xml
+--- a/app/src/main/res/values/style.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ b/app/src/main/res/values/style.xml	(date 1728106589728)
+@@ -1,52 +1,52 @@
+ <resources>
+     <style name="AppTheme.Light" parent="Theme.MaterialComponents.NoActionBar">
+-        <item name="colorPrimary">#6200EE</item>
+-        <item name="colorPrimaryVariant">#3700B3</item>
+-        <item name="colorOnPrimary">#FFFFFF</item>
+-        <item name="colorSecondary">#03DAC5</item>
+-        <item name="colorOnSecondary">#000000</item>
+-        <item name="textFillColor">#FFFF66</item>
+-        <item name="backgroundColor">#FF3872</item>
++        <item name="colorPrimary">#fedbd0</item>
++        <item name="colorPrimaryVariant">#E9E4E4</item>
++        <item name="colorOnPrimary">#E0D9D9</item>
++        <item name="colorSecondary">#feeae6</item>
++        <item name="colorOnSecondary">#E7E1E1</item>
++        <item name="textFillColor">#000000</item>
++        <item name="backgroundColor">#FFFFFF</item>
+     </style>
+ 
+     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
+-        <item name="colorPrimary">#BB86FC</item>
+-        <item name="colorPrimaryVariant">#3700B3</item>
+-        <item name="colorOnPrimary">#000000</item>
+-        <item name="colorSecondary">#03DAC5</item>
+-        <item name="colorOnSecondary">#FFFFFF</item>
+-        <item name="textFillColor">#FF2266</item>
+-        <item name="backgroundColor">#008323</item>
++        <item name="colorPrimary">#290851</item>
++        <item name="colorPrimaryVariant">#3700b3</item>
++        <item name="colorOnPrimary">#ffffff</item>
++        <item name="colorSecondary">#484848</item>
++        <item name="colorOnSecondary">#DC1D1D1D</item>
++        <item name="textFillColor">#ffffff</item>
++        <item name="backgroundColor">#0D0D0D</item>
+ 
+     </style>
+ 
+-    <style name="AppTheme.Classic" parent="Theme.MaterialComponents.NoActionBar">
+-        <item name="colorPrimary">#FF5722</item>
+-        <item name="colorPrimaryVariant">#D84315</item>
++    <style name="AppTheme.ClassicLight" parent="Theme.MaterialComponents.NoActionBar">
++        <item name="colorPrimary">#344955</item>
++        <item name="colorPrimaryVariant">#19A5B8</item>
+         <item name="colorOnPrimary">#FFFFFF</item>
+-        <item name="colorSecondary">#FFC107</item>
+-        <item name="colorOnSecondary">#000000</item>
+-        <item name="textFillColor">#FF2266</item>
+-        <item name="backgroundColor">#008323</item>
++        <item name="colorSecondary">#6A0958A6</item>
++        <item name="colorOnSecondary">#E2E1E1</item>
++        <item name="textFillColor">#000000</item>
++        <item name="backgroundColor">#FFFFFF</item>
+     </style>
+ 
+     <style name="AppTheme.ClassicDark" parent="Theme.MaterialComponents.NoActionBar">
+-        <item name="colorPrimary">#673AB7</item>
+-        <item name="colorPrimaryVariant">#512DA8</item>
+-        <item name="colorOnPrimary">#FFFFFF</item>
+-        <item name="colorSecondary">#FF4081</item>
+-        <item name="colorOnSecondary">#000000</item>
+-        <item name="textFillColor">#FF2266</item>
+-        <item name="backgroundColor">#008323</item>
++        <item name="colorPrimary">#DC1D1D1D</item>
++        <item name="colorPrimaryVariant">#3700b3</item>
++        <item name="colorOnPrimary">#ffffff</item>
++        <item name="colorSecondary">#3C3150</item>
++        <item name="colorOnSecondary">#DC1D1D1D</item>
++        <item name="textFillColor">#ffffff</item>
++        <item name="backgroundColor">#0D0D0D</item>
+     </style>
+ 
+     <style name="AppTheme.PearlDark" parent="Theme.MaterialComponents.NoActionBar">
+         <item name="colorPrimary">#B2DFDB</item>
+-        <item name="colorPrimaryVariant">#009688</item>
++        <item name="colorPrimaryVariant">#0f172a</item>
+         <item name="colorOnPrimary">#000000</item>
+-        <item name="colorSecondary">#FFEB3B</item>
+-        <item name="colorOnSecondary">#000000</item>
+-        <item name="textFillColor">#FF2266</item>
+-        <item name="backgroundColor">#008323</item>
++        <item name="colorSecondary">#637272</item>
++        <item name="colorOnSecondary">#1e3434</item>
++        <item name="textFillColor">#ffffff</item>
++        <item name="backgroundColor">#0d2424</item>
+     </style>
+ </resources>
+Index: app/src/main/java/vn/edu/usth/opendota/ui/settings/SettingsFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.ui.settings;\n\nimport android.content.SharedPreferences;\nimport android.os.Bundle;\nimport android.preference.PreferenceManager;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.Button;\nimport android.widget.RadioGroup;\nimport android.widget.Toast;\n\nimport androidx.fragment.app.Fragment;\n\nimport vn.edu.usth.opendota.R;\n\npublic class SettingsFragment extends Fragment {\n\n    private RadioGroup themeRadioGroup;\n\n    private enum Theme {\n        LIGHT(\"Light\", R.id.theme_light),\n        DARK(\"Dark\", R.id.theme_dark),\n        CLASSIC(\"Classic\", R.id.theme_classic),\n        CLASSIC_DARK(\"ClassicDark\", R.id.theme_classicDark),\n        PEARL_DARK(\"PearlDark\", R.id.theme_pearlDark);\n\n        private final String name;\n        private final int radioId;\n\n        Theme(String name, int radioId) {\n            this.name = name;\n            this.radioId = radioId;\n        }\n\n        public String getName() {\n            return name;\n        }\n\n        public int getRadioId() {\n            return radioId;\n        }\n    }\n\n    @Override\n    public void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n    }\n\n    @Override\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\n                             Bundle savedInstanceState) {\n        View view = inflater.inflate(R.layout.fragment_settings, container, false);\n\n        themeRadioGroup = view.findViewById(R.id.theme_radio_group);\n        Button applyButton = view.findViewById(R.id.apply_button);\n\n        loadSelectedTheme();\n\n        applyButton.setOnClickListener(v -> applyTheme());\n\n        return view;\n    }\n\n    private void applyTheme() {\n        int selectedId = themeRadioGroup.getCheckedRadioButtonId();\n        if (selectedId == -1) {\n            Toast.makeText(getContext(), \"Please select a theme\", Toast.LENGTH_SHORT).show();\n            return;\n        }\n\n        String selectedTheme = getThemeName(selectedId);\n\n        saveSelectedTheme(selectedTheme);\n        Toast.makeText(getContext(), \"Theme changed to \" + selectedTheme, Toast.LENGTH_SHORT).show();\n\n        if (getActivity() != null) {\n            getActivity().recreate();\n        }\n    }\n\n    private String getThemeName(int selectedId) {\n        for (Theme theme : Theme.values()) {\n            if (theme.getRadioId() == selectedId) {\n                return theme.getName();\n            }\n        }\n        return Theme.LIGHT.getName();\n    }\n\n    private void saveSelectedTheme(String theme) {\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());\n        sharedPreferences.edit().putString(\"theme_key\", theme).apply();\n    }\n\n    private void loadSelectedTheme() {\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());\n        String selectedTheme = sharedPreferences.getString(\"theme_key\", Theme.LIGHT.getName());\n\n        for (Theme theme : Theme.values()) {\n            if (theme.getName().equals(selectedTheme)) {\n                themeRadioGroup.check(theme.getRadioId());\n                break;\n            }\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/ui/settings/SettingsFragment.java b/app/src/main/java/vn/edu/usth/opendota/ui/settings/SettingsFragment.java
+--- a/app/src/main/java/vn/edu/usth/opendota/ui/settings/SettingsFragment.java	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ b/app/src/main/java/vn/edu/usth/opendota/ui/settings/SettingsFragment.java	(date 1728101631234)
+@@ -21,7 +21,7 @@
+     private enum Theme {
+         LIGHT("Light", R.id.theme_light),
+         DARK("Dark", R.id.theme_dark),
+-        CLASSIC("Classic", R.id.theme_classic),
++        CLASSIC_LIGHT("ClassicLight", R.id.theme_classicLight),
+         CLASSIC_DARK("ClassicDark", R.id.theme_classicDark),
+         PEARL_DARK("PearlDark", R.id.theme_pearlDark);
+ 
+Index: app/src/main/res/values/arrays.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!-- res/values/arrays.xml -->\n<resources>\n    <string-array name=\"themes_array\">\n        <item>Light</item>\n        <item>Dark</item>\n        <item>Classic</item>\n        <item>ClassicDark</item>\n        <item>PearlDark</item>\n    </string-array>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/arrays.xml b/app/src/main/res/values/arrays.xml
+--- a/app/src/main/res/values/arrays.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ b/app/src/main/res/values/arrays.xml	(date 1728101631248)
+@@ -3,7 +3,7 @@
+     <string-array name="themes_array">
+         <item>Light</item>
+         <item>Dark</item>
+-        <item>Classic</item>
++        <item>ClassicLight</item>
+         <item>ClassicDark</item>
+         <item>PearlDark</item>
+     </string-array>
+Index: app/src/main/java/vn/edu/usth/opendota/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota;\n\nimport android.content.SharedPreferences;\nimport android.os.Bundle;\nimport android.preference.PreferenceManager;\n\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.drawerlayout.widget.DrawerLayout;\n\nimport com.google.android.material.navigation.NavigationView;\n\nimport androidx.navigation.NavController;\nimport androidx.navigation.Navigation;\nimport androidx.navigation.ui.AppBarConfiguration;\nimport androidx.navigation.ui.NavigationUI;\n\npublic class MainActivity extends AppCompatActivity {\n\n    private AppBarConfiguration mAppBarConfiguration;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        applyThemeFromPreferences();\n\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n\n        setSupportActionBar(findViewById(R.id.toolbar));\n        DrawerLayout drawer = findViewById(R.id.drawer_layout);\n        NavigationView navigationView = findViewById(R.id.nav_view);\n\n        mAppBarConfiguration = new AppBarConfiguration.Builder(\n                R.id.nav_home, R.id.nav_myprofile, R.id.nav_search, R.id.nav_favourite, R.id.nav_settings)\n                .setOpenableLayout(drawer)\n                .build();\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);\n        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);\n        NavigationUI.setupWithNavController(navigationView, navController);\n    }\n\n    @Override\n    public boolean onSupportNavigateUp() {\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);\n        return NavigationUI.navigateUp(navController, mAppBarConfiguration)\n                || super.onSupportNavigateUp();\n    }\n\n    private void applyThemeFromPreferences() {\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);\n        String theme = sharedPreferences.getString(\"theme_key\", \"Light\");\n\n        switch (theme) {\n            case \"Dark\":\n                setTheme(R.style.AppTheme_Dark);\n                break;\n            case \"Classic\":\n                setTheme(R.style.AppTheme_Classic);\n                break;\n            case \"ClassicDark\":\n                setTheme(R.style.AppTheme_ClassicDark);\n                break;\n            case \"PearlDark\":\n                setTheme(R.style.AppTheme_PearlDark);\n                break;\n            default:\n                setTheme(R.style.AppTheme_Light);\n                break;\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/MainActivity.java b/app/src/main/java/vn/edu/usth/opendota/MainActivity.java
+--- a/app/src/main/java/vn/edu/usth/opendota/MainActivity.java	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ b/app/src/main/java/vn/edu/usth/opendota/MainActivity.java	(date 1728106464625)
+@@ -53,8 +53,8 @@
+             case "Dark":
+                 setTheme(R.style.AppTheme_Dark);
+                 break;
+-            case "Classic":
+-                setTheme(R.style.AppTheme_Classic);
++            case "ClassicLight":
++                setTheme(R.style.AppTheme_ClassicLight);
+                 break;
+             case "ClassicDark":
+                 setTheme(R.style.AppTheme_ClassicDark);
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_9_15_24__1_55_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_15_24__1_55_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_9_15_24__1_55_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_15_24__1_55_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_9_15_24,_1_55_PM_[Changes]" date="1726383371323" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_15_24,_1_55_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 9/15/24, 1:55 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_35_PM__Changes_1.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_35_PM__Changes_1.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_35_PM__Changes_1.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_35_PM__Changes_1.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,24 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_9_13_24,_10_35_PM_[Changes]1" date="1726241740982" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24,_10_35_PM_[Changes]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 9/13/24, 10:35 PM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/ic_launcher-playstore.png" />
+-    <option name="AFTER_PATH" value="app/src/main/ic_launcher-playstore.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24,_10_35_PM_[Changes]1/ic_launcher-playstore.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-xhdpi/ic_launcher.webp" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xhdpi/ic_launcher.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24,_10_35_PM_[Changes]1/ic_launcher.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24,_10_35_PM_[Changes]1/ic_launcher_foreground.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24,_10_35_PM_[Changes]1/ic_launcher_round.webp" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_9_13_24__10_39_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_24__10_39_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_24__10_39_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_24__10_39_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_9_13_24,_10_39_PM_[Changes]" date="1726241974737" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_24,_10_39_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 9/13/24, 10:39 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_58_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_58_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_58_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_58_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,89 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]" date="1726585112912" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 9/17/24, 9:58 PM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_8.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_8.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_9.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_9.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_19.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_19.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_14.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_14.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_12.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_12.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_22.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_22.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_17.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_17.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_21.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_21.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_11.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_11.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_7.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_7.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_13.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_13.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_10.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_10.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_20.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_20.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_6.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_6.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_18.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_18.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_16.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_16.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_15.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_58_PM_[Changes]/avatar_15.jpg" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_9_13_2024_10_19_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_9_13_2024_10_19_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_9_13_2024_10_19_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_9_13_2024_10_19_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_9_13_2024_10_19_PM_[Changes]" date="1726240821134" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_13_2024_10_19_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 9/13/2024 10:19 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_37_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_37_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_37_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24__10_37_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_9_13_24,_10_37_PM_[Changes]" date="1726241854184" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_24,_10_37_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 9/13/24, 10:37 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_02_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_02_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_02_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_02_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,89 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]" date="1726578197570" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 9/17/24, 8:02 PM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_8.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_8.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_9.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_9.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_19.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_19.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_14.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_14.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_12.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_12.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_22.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_22.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_17.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_17.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_21.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_21.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_11.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_11.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_7.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_7.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_13.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_13.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_10.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_10.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_20.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_20.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_6.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_6.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_18.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_18.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_16.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_16.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_15.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_02_PM_[Changes]/avatar_15.jpg" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_9_13_2024_10_21_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_2024_10_21_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_2024_10_21_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_2024_10_21_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_9_13_2024_10_21_PM_[Changes]" date="1726240920503" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_13_2024_10_21_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 9/13/2024 10:21 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_39_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_39_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_39_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__9_39_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,89 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]" date="1726584066288" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 9/17/24, 9:39 PM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_8.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_8.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_9.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_9.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_19.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_19.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_14.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_14.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_12.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_12.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_22.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_22.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_17.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_17.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_21.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_21.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_11.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_11.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_7.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_7.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_13.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_13.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_10.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_10.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_20.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_20.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_6.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_6.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_18.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_18.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_16.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_16.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_15.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_9_39_PM_[Changes]/avatar_15.jpg" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_2024_10_20_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_2024_10_20_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_2024_10_20_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_2024_10_20_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_9_13_2024_10_20_PM_[Changes]" date="1726240854773" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_13_2024_10_20_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 9/13/2024 10:20 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_03_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_03_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_03_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24__8_03_PM__Changes_.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ /dev/null	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
+@@ -1,89 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]" date="1726578221032" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 9/17/24, 8:03 PM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_8.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_8.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_9.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_9.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_19.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_19.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_14.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_14.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_12.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_12.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_22.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_22.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_17.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_17.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_21.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_21.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_11.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_11.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_7.webp" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_7.webp" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_13.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_13.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_10.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_10.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_20.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_20.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_6.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_6.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_18.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_18.jpg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_16.jpeg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_16.jpeg" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/drawable-hdpi/avatar_15.jpg" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_9_17_24,_8_03_PM_[Changes]/avatar_15.jpg" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/layout1\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".MainActivity\"\n    android:background=\"?attr/backgroundColor\"\n    android:orientation=\"vertical\">\n\n    <RelativeLayout\n        android:id=\"@+id/khunghome_1\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"195sp\"\n        android:layout_marginStart=\"5dp\"\n        android:layout_marginTop=\"30dp\"\n        android:layout_marginEnd=\"5dp\"\n        android:background=\"?attr/colorOnSecondary\"\n        tools:ignore=\"MissingConstraints\">\n\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginTop=\"25dp\"\n            android:layout_marginStart=\"45dp\"\n            android:text=\"OPENDOTA\"\n            android:gravity=\"left\"\n            android:textColor=\"?attr/textFillColor\"\n            android:textSize=\"35sp\">\n        </TextView>\n\n        <ImageView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"63dp\"\n            android:layout_alignParentEnd=\"true\"\n            android:layout_marginTop=\"15dp\"\n            android:layout_marginEnd=\"50dp\"\n            android:src=\"@drawable/dota_2\">\n\n        </ImageView>\n\n        <TextView\n            android:id=\"@+id/text1\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:layout_centerHorizontal=\"true\"\n            android:layout_marginTop=\"90sp\"\n            android:layout_marginEnd=\"20sp\"\n            android:layout_marginBottom=\"17sp\"\n            android:text=\"Open source Dota 2 data platform\"\n            android:textAlignment=\"center\"\n            android:textColor=\"?attr/textFillColor\"\n            android:textSize=\"25sp\">\n        </TextView>\n\n        <androidx.cardview.widget.CardView\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginStart=\"20dp\"\n            android:layout_below=\"@+id/text1\"\n            app:cardBackgroundColor=\"@color/white\"\n            android:layout_marginEnd=\"20dp\">\n\n            <ImageView\n                android:layout_width=\"40dp\"\n                android:layout_height=\"40dp\"\n                android:layout_gravity=\"left\"\n                android:src=\"@drawable/steam_icon\">\n            </ImageView>\n\n            <TextView\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:layout_gravity=\"center\"\n                android:gravity=\"right\"\n                android:text=\" Login for automatic replay parsing \"\n                android:textColor=\"@color/black\"\n                android:textSize=\"20sp\">\n            </TextView>\n        </androidx.cardview.widget.CardView>\n    </RelativeLayout>\n\n    <LinearLayout\n        android:weightSum=\"2\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"220dp\"\n        android:layout_marginTop=\"5dp\"\n        android:layout_marginStart=\"5dp\"\n        android:layout_marginEnd=\"5dp\"\n        android:layout_marginBottom=\"5dp\"\n        android:layout_below=\"@+id/khunghome_1\"\n        android:id=\"@+id/khunghome_2\">\n\n        <LinearLayout\n            android:layout_weight=\"1\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"220dp\"\n            android:layout_marginEnd=\"5dp\"\n            android:layout_marginTop=\"10dp\"\n            android:layout_marginBottom=\"288dp\"\n            android:background=\"?attr/colorOnSecondary\"\n            android:gravity=\"center_horizontal\"\n            android:orientation=\"vertical\">\n\n            <ImageView\n                android:id=\"@+id/open_source\"\n                android:layout_width=\"65dp\"\n                android:layout_height=\"67dp\"\n                android:layout_marginTop=\"5dp\"\n                android:src=\"@drawable/open_source_icon\" />\n\n            <TextView\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:gravity=\"top\"\n                android:text=\"Open Source\"\n                android:textColor=\"#03A9F4\"\n                android:textSize=\"22sp\" />\n\n            <TextView\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:layout_margin=\"4dp\"\n                android:gravity=\"center_horizontal\"\n                android:maxLines=\"5\"\n                android:text=\"All project code is open source and available for contributors to improve and modify.\"\n                android:textColor=\"?attr/textFillColor\"\n                android:textSize=\"18sp\" />\n        </LinearLayout>\n\n        <LinearLayout\n            android:layout_weight=\"1\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"250dp\"\n            android:layout_marginStart=\"5dp\"\n            android:layout_marginTop=\"10dp\"\n            android:background=\"?attr/colorOnSecondary\"\n            android:gravity=\"center_horizontal\"\n            android:orientation=\"vertical\">\n\n            <ImageView\n                android:layout_width=\"65dp\"\n                android:layout_height=\"75dp\"\n                android:layout_marginTop=\"5dp\"\n                android:src=\"@drawable/stats_icon\" />\n\n            <TextView\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:gravity=\"top\"\n                android:text=\"In-Depth Data\"\n                android:textColor=\"#03A9F4\"\n                android:textSize=\"22sp\" />\n\n            <TextView\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:layout_marginTop=\"5dp\"\n                android:gravity=\"center\"\n                android:text=\"Parsing replay files provides highly detailed match data.\"\n                android:textAlignment=\"center\"\n                android:textColor=\"?attr/textFillColor\"\n                android:textSize=\"18sp\" />\n        </LinearLayout>\n\n    </LinearLayout>\n\n\n\n    <LinearLayout\n        android:layout_below=\"@+id/khunghome_2\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"200dp\"\n        android:orientation=\"vertical\"\n        android:layout_marginTop=\"10dp\"\n        android:layout_alignParentEnd=\"true\"\n        android:layout_marginStart=\"5dp\"\n        android:layout_marginEnd=\"5dp\"\n        android:background=\"?attr/colorOnSecondary\">\n\n        <ImageView\n            android:id=\"@+id/magic\"\n            android:layout_width=\"65dp\"\n            android:layout_height=\"67dp\"\n            android:layout_gravity=\"center\"\n            android:layout_marginTop=\"15dp\"\n            android:src=\"@drawable/magic_icon\" />\n\n        <TextView\n            android:id=\"@+id/text9\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_gravity=\"center\"\n            android:text=\"Free of Charge\"\n            android:textColor=\"#03A9F4\"\n            android:textSize=\"24sp\" />\n\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_below=\"@id/text9\"\n            android:layout_marginTop=\"5dp\"\n            android:layout_marginStart=\"20dp\"\n            android:layout_marginEnd=\"20dp\"\n            android:gravity=\"center\"\n            android:text=\"Server are funded by sponsors and volunteers maintain the code, so the service is offered free of charge.\"\n            android:textColor=\"?attr/textFillColor\"\n            android:textSize=\"18sp\" />\n\n    </LinearLayout>\n\n\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_home.xml b/app/src/main/res/layout/fragment_home.xml
+--- a/app/src/main/res/layout/fragment_home.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ b/app/src/main/res/layout/fragment_home.xml	(date 1728101923782)
+@@ -74,7 +74,7 @@
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:gravity="right"
+-                android:text=" Login for automatic replay parsing "
++                android:text="Login for automatic replay parsing "
+                 android:textColor="@color/black"
+                 android:textSize="20sp">
+             </TextView>
+@@ -108,7 +108,8 @@
+                 android:layout_width="65dp"
+                 android:layout_height="67dp"
+                 android:layout_marginTop="5dp"
+-                android:src="@drawable/open_source_icon" />
++                android:src="@drawable/open_source_icon"
++                app:tint="?attr/textFillColor" />
+ 
+             <TextView
+                 android:layout_width="wrap_content"
+@@ -143,7 +144,8 @@
+                 android:layout_width="65dp"
+                 android:layout_height="75dp"
+                 android:layout_marginTop="5dp"
+-                android:src="@drawable/stats_icon" />
++                android:src="@drawable/stats_icon"
++                app:tint="?attr/textFillColor" />
+ 
+             <TextView
+                 android:layout_width="wrap_content"
+@@ -185,7 +187,8 @@
+             android:layout_height="67dp"
+             android:layout_gravity="center"
+             android:layout_marginTop="15dp"
+-            android:src="@drawable/magic_icon" />
++            android:src="@drawable/magic_icon"
++            app:tint="?attr/textFillColor" />
+ 
+         <TextView
+             android:id="@+id/text9"
+Index: app/src/main/res/layout/fragment_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:orientation=\"vertical\"\n    android:padding=\"16dp\">\n\n    <RadioGroup\n        android:id=\"@+id/theme_radio_group\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\">\n\n        <RadioButton\n            android:id=\"@+id/theme_light\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Light\" />\n\n        <RadioButton\n            android:id=\"@+id/theme_dark\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Dark\" />\n\n        <RadioButton\n            android:id=\"@+id/theme_classic\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Classic\" />\n\n        <RadioButton\n            android:id=\"@+id/theme_classicDark\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Classic Dark\" />\n\n        <RadioButton\n            android:id=\"@+id/theme_pearlDark\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Pearl Dark\" />\n    </RadioGroup>\n\n    <Button\n        android:id=\"@+id/apply_button\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"Apply Theme\"\n        android:layout_marginTop=\"16dp\" />\n</LinearLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_settings.xml b/app/src/main/res/layout/fragment_settings.xml
+--- a/app/src/main/res/layout/fragment_settings.xml	(revision 5622076b92f2fec3b24a1353a8dbf697cb7be418)
++++ b/app/src/main/res/layout/fragment_settings.xml	(date 1728102105041)
+@@ -22,10 +22,10 @@
+             android:text="Dark" />
+ 
+         <RadioButton
+-            android:id="@+id/theme_classic"
++            android:id="@+id/theme_classicLight"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+-            android:text="Classic" />
++            android:text="Classic Light" />
+ 
+         <RadioButton
+             android:id="@+id/theme_classicDark"

@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
             case "Dark":
                 setTheme(R.style.AppTheme_Dark);
                 break;
-            case "Classic":
-                setTheme(R.style.AppTheme_Classic);
+            case "ClassicLight":
+                setTheme(R.style.AppTheme_ClassicLight);
                 break;
             case "ClassicDark":
                 setTheme(R.style.AppTheme_ClassicDark);
