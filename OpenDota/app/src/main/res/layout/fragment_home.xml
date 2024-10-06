@@ -54,7 +54,7 @@
             android:textSize="25sp">
         </TextView>
 
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -63,22 +63,23 @@
             android:layout_marginEnd="20dp">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="left"
-                android:src="@drawable/steam_icon">
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/steam_icon"
+                android:contentDescription="Login">
             </ImageView>
 
-            <TextView
+            <Button
+                android:id="@+id/btnSteamLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="right"
-                android:text=" Login for automatic replay parsing "
-                android:textColor="@color/black"
-                android:textSize="20sp">
-            </TextView>
-        </androidx.cardview.widget.CardView>
+                android:text="Login for automatic replay parsing "
+                android:textColor="?attr/textFillColor"
+                android:textSize="18sp">
+            </Button>
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
