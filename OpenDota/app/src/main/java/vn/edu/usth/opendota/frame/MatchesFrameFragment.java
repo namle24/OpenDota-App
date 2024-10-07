@@ -1,4 +1,4 @@
-package vn.edu.usth.opendota.matches;
+package vn.edu.usth.opendota.frame;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

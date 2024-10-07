@@ -103,12 +103,6 @@
                 android:linksClickable="true"/>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/Matches_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/fragment_matches_frame" />
-
+        <include layout="@layout/recycleview_match"/>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,7 +2,9 @@ package vn.edu.usth.opendota.adapters;
 
 import static android.content.ContentValues.TAG;
 
-import static vn.edu.usth.opendota.utils.HeroesDb.getHeroNameById;
+import static vn.edu.usth.opendota.utils.Db.getGameModeNameById;
+import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
+import static vn.edu.usth.opendota.utils.Db.getLobbyTypeNameById;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -43,13 +45,44 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         return new ViewHolder(view);
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        private final TextView tvTitle;
+
+        private final TextView tvKda;
+        private final TextView tvTimeEnded;
+        private final TextView idDuration;
+        private final ImageView avatar;
+        private final View lineview;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            tvTitle = itemView.findViewById(R.id.tv_title);
+            tvKda = itemView.findViewById(R.id.tv_kda);
+            tvTimeEnded = itemView.findViewById(R.id.tv_time_ended);
+            idDuration = itemView.findViewById(R.id.id_duration);
+            avatar = itemView.findViewById(R.id.avatar);
+            lineview = itemView.findViewById(R.id.line_view);
+        }
+
+
+    }
+    @Override
+    public int getItemCount() {
+        return matches.size();
+    }
+
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull MatchesAdapter.ViewHolder holder, int position) {
         Matches item = matches.get(position);
 
         Log.d(TAG, "Match Details: " + item.toString());
 
-        holder.tvTitle.setText("All Draft Normal");
+        int lobbytype = (int) item.getLobbyType();
+        int gamemode = (int) item.getGameMode();
+        String mode =  getGameModeNameById(gamemode) + " " +getLobbyTypeNameById(lobbytype);
+        holder.tvTitle.setText(mode);
 
         String kda = item.getKills() + "/" + item.getDeaths() + "/" + item.getAssists();
         holder.tvKda.setText(kda);
@@ -66,31 +99,16 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         holder.idDuration.setText(formattedTime);
 
         int heroId = (int) item.getHeroID();
-        String heroName = getHeroNameById(heroId);
+        String heroName = getHeroNameByID(heroId);
         String imageUrl = "https://cdn.dota2.com/apps/dota2/images/heroes/"+heroName+"_full.png";
         Picasso.get().load(imageUrl).into(holder.avatar);
-    }
 
-    @Override
-    public int getItemCount() {
-        return matches.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvTitle;
-        private final TextView tvKda;
-        private final TextView tvTimeEnded;
-        private final TextView idDuration;
-        private final ImageView avatar;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            tvTitle = itemView.findViewById(R.id.tv_title);
-            tvKda = itemView.findViewById(R.id.tv_kda);
-            tvTimeEnded = itemView.findViewById(R.id.tv_time_ended);
-            idDuration = itemView.findViewById(R.id.id_duration);
-            avatar = itemView.findViewById(R.id.avatar);
+        if (item.getRadiantWin()) {
+            holder.lineview.setBackgroundResource(R.drawable.gradient_win_color);
+        } else {
+            holder.lineview.setBackgroundResource(R.drawable.gradient_loss_color);
         }
+
+
     }
 }

@@ -22,11 +22,11 @@ import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.MatchesAdapter;
 import vn.edu.usth.opendota.models.Matches;
-import vn.edu.usth.opendota.retrofit.MatchesClient;
+import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class MatchesFragment extends Fragment {
     private final MatchesAdapter matchesAdapter = new MatchesAdapter();
-    private MatchesClient client;
+    private ApiClient client;
     private RecyclerView recyclerView;
 
     @Override
@@ -45,7 +45,7 @@ public class MatchesFragment extends Fragment {
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        client = MatchesClient.getInstance(getContext());
+        client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
         setViews();
         listeners();
@@ -64,9 +64,6 @@ public class MatchesFragment extends Fragment {
                 if (response.isSuccessful()) {
                     List<Matches> matches = response.body();
                     assert matches != null;
-                    for (Matches match : matches) {
-                        Log.d(TAG, "hero ID: " + match.getHeroID() + ", Kills: " + match.getKills());
-                    }
                     matchesAdapter.submit(matches);
                 } else {
                     Log.e(TAG, "Error code: " + response.code() + "Error Message:" + response.message());
