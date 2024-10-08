@@ -105,37 +105,4 @@ public class Matches {
 
     public long getHeroVariant() { return heroVariant; }
     public void setHeroVariant(long value) { this.heroVariant = value; }
-
-    @Override
-    public String toString() {
-        return "Matches{" +
-                "matchID=" + matchID +
-                ", playerSlot=" + playerSlot +
-                ", radiantWin=" + radiant_win +
-                ", heroID=" + hero_id +
-                ", startTime=" + start_time +
-                ", duration=" + duration +
-                ", gameMode=" + game_mode +
-                ", lobbyType=" + lobby_type +
-                ", version=" + version +
-                ", kills=" + kills +
-                ", deaths=" + deaths +
-                ", assists=" + assists +
-                ", averageRank=" + averageRank +
-                ", xpPerMin=" + xpPerMin +
-                ", goldPerMin=" + goldPerMin +
-                ", heroDamage=" + heroDamage +
-                ", towerDamage=" + towerDamage +
-                ", heroHealing=" + heroHealing +
-                ", lastHits=" + lastHits +
-                ", lane=" + lane +
-                ", laneRole=" + laneRole +
-                ", isRoaming=" + isRoaming +
-                ", cluster=" + cluster +
-                ", leaverStatus=" + leaverStatus +
-                ", partySize=" + partySize +
-                ", heroVariant=" + heroVariant +
-                '}';
-    }
-
 }

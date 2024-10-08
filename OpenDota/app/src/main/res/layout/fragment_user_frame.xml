@@ -33,7 +33,7 @@
             android:layout_weight="3">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Namlee"
@@ -61,6 +61,7 @@
                     android:text="ID:" />
 
                 <TextView
+                    android:id="@+id/user_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="123746324234"
@@ -71,7 +72,6 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/user_imagerank"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:src="@drawable/heart_icon"
