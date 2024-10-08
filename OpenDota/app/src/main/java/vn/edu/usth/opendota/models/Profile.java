@@ -24,6 +24,17 @@ public class Profile {
     private boolean isLocked;
     private boolean isPro;
     private Object lockedUntil;
+    private boolean isFavourite;
+
+    public boolean getFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean isFavourite) {
+        this.isFavourite = isFavourite;
+    }
+
+
 
     public long getAccountID() { return account_id; }
     public void setAccountID(long value) { this.account_id = value; }

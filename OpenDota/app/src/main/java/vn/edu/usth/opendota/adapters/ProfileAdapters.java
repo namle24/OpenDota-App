@@ -79,8 +79,12 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         String accavar = (String) item.getAvatarfull();
         Picasso.get().load(accavar).into(holder.profile_avar);
 
+        holder.heart.setSelected(item.getFavourite());
+
         holder.heart.setOnClickListener(v -> {
-            holder.heart.setSelected(!holder.heart.isSelected());
+            boolean newState = !holder.heart.isSelected();
+            holder.heart.setSelected(newState);
+            item.setFavourite(newState);
             Log.d(TAG, "Heart button clicked");
         });
 
