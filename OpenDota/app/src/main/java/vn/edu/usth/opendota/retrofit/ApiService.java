@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.models.Matches;
+import vn.edu.usth.opendota.models.Profile;
 
 public interface ApiService {
 
@@ -15,6 +16,9 @@ public interface ApiService {
 
     @GET("players/{id}/heroes")
     Call<List<Heroes>> getHeroes(@Path("id") String id);
+
+    @GET("proPlayers")
+    Call<List<Profile>> getProfile();
 
 }
 
