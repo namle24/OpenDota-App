@@ -9,6 +9,7 @@
         android:id="@+id/Matches_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorOnSecondary"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/fragment_matches_frame"

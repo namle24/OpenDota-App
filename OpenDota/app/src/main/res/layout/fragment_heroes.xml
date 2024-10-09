@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:background="?attr/backgroundColor">
 
         <TextView
@@ -21,6 +19,9 @@
             android:layout_marginBottom="10dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
             android:textSize="14sp"
             android:gravity="center"
             android:background="?attr/colorOnSecondary"
@@ -31,6 +32,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:text="HEROES"
             android:textAlignment="center"
             android:background="?attr/colorOnSecondary"
@@ -42,6 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:background="?attr/colorOnSecondary"
@@ -85,6 +90,8 @@
             android:id="@+id/Heroes_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:scrollbars="vertical"
             tools:listitem="@layout/fragment_heroes_frame"
             tools:ignore="MissingConstraints" />
