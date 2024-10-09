@@ -4,6 +4,7 @@
     android:id="@+id/matches_frames"
     android:layout_width="match_parent"
     android:orientation="horizontal"
+    android:background="?attr/colorOnSecondary"
     android:layout_height="70dp">
 
     <LinearLayout

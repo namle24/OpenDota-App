@@ -1,10 +1,7 @@
 package vn.edu.usth.opendota.adapters;
 
 import static android.content.ContentValues.TAG;
-
-import static vn.edu.usth.opendota.utils.Db.getGameModeNameById;
 import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
-import static vn.edu.usth.opendota.utils.Db.getLobbyTypeNameById;
 import static vn.edu.usth.opendota.utils.Db.getLocalizedNameByID;
 
 import android.annotation.SuppressLint;
@@ -86,10 +83,10 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
         String localname = getLocalizedNameByID(heroId);
         holder.heroes_name.setText(localname);
 
-        int total = (int) item.getWithGames();
+        int total = (int) item.getGames();
         holder.heroes_played.setText(String.valueOf(total));
 
-        String winrate = String.format("%.2f%%", ((float) item.getWithWin() / total) * 100);
+        String winrate = String.format("%.2f%%", ((float) item.getWin() / total) * 100);
         holder.heroes_winrate.setText(winrate);
 
         long lastPlayedTimestamp = item.getLastPlayed();

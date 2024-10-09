@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="Minh"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textAlignment="center"
                 android:textSize="25sp"/>
             <LinearLayout
@@ -95,10 +95,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/link_steamid"
-                android:textColorLink="@color/white"
+                android:textColorLink="?attr/textFillColor"
                 android:padding="15dp"
                 android:textSize="15sp"
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:autoLink="web"
                 android:linksClickable="true"/>
         </LinearLayout>

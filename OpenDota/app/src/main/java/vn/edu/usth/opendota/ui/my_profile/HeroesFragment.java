@@ -65,6 +65,7 @@ public class HeroesFragment extends Fragment {
                 if (response.isSuccessful()) {
                     List<Heroes> heroes = response.body();
                     if (heroes != null) {
+
                         heroesAdapter.submit(heroes);
                     }
                 } else {

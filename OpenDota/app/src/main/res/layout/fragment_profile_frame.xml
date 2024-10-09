@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/user_frame"
+    android:id="@+id/profile_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/gradient_bground_white"
@@ -11,7 +11,7 @@
     android:padding="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_user"
+        android:id="@+id/profile_avar"
         android:layout_width="60dp"
         android:layout_height="70dp"
         tools:src="@drawable/avarta2" />
@@ -19,12 +19,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/img_user"
+        android:layout_toEndOf="@+id/profile_avar"
         android:layout_marginStart="10dp"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/user_profile"
             android:layout_toEndOf="@+id/img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +32,7 @@
             android:layout_weight="3">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Namlee"
@@ -61,6 +60,7 @@
                     android:text="ID:" />
 
                 <TextView
+                    android:id="@+id/profile_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="123746324234"
@@ -71,7 +71,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/user_imagerank"
+            android:id="@+id/heart_button"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:src="@drawable/heart_icon"
