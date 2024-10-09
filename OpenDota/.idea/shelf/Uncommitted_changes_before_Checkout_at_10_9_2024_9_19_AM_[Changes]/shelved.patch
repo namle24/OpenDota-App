@@ -1,0 +1,1598 @@
+Index: app/src/main/res/layout/fragment_matches.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:background=\"?attr/backgroundColor\"\r\n    android:fillViewport=\"true\"\r\n    android:orientation=\"vertical\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\"\r\n        android:paddingTop=\"12dp\"\r\n        android:paddingStart=\"12dp\"\r\n        android:paddingEnd=\"12dp\">\r\n\r\n        <androidx.appcompat.widget.SearchView\r\n            android:id=\"@+id/searchView\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            app:queryHint=\"Search Match\" />\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"45dp\"\r\n            android:layout_gravity=\"center\"\r\n            android:textSize=\"14sp\"\r\n            android:gravity=\"center\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            android:text=\"1-20 of 418 matches\"\r\n            android:textColor=\"?attr/textFillColor\" />\r\n\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"MATCHES\"\r\n            android:textAlignment=\"center\"\r\n            android:textSize=\"30sp\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            android:layout_marginTop=\"10dp\" />\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\"\r\n            android:layout_marginTop=\"5dp\"\r\n            android:layout_marginBottom=\"10dp\"\r\n            android:background=\"?attr/colorOnSecondary\">\r\n\r\n            <TextView\r\n                android:layout_width=\"0dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Hero\"\r\n                android:textSize=\"15sp\"\r\n                android:textColor=\"?attr/textFillColor\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"0dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"2\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Mode\"\r\n                android:textSize=\"15sp\"\r\n                android:textColor=\"?attr/textFillColor\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"0dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Ended\"\r\n                android:textSize=\"15sp\"\r\n                android:textColor=\"?attr/textFillColor\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"0dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Length\"\r\n                android:textSize=\"15sp\"\r\n                android:textColor=\"?attr/textFillColor\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"0dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"K/D/A\"\r\n                android:textSize=\"15sp\"\r\n                android:textColor=\"?attr/textFillColor\" />\r\n        </LinearLayout>\r\n\r\n        <View\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"1dp\"\r\n            android:background=\"?attr/colorOnSecondary\" />\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/Matches_recyclerview\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\r\n            tools:listitem=\"@layout/fragment_matches_frame\" />\r\n\r\n    </LinearLayout>\r\n</androidx.coordinatorlayout.widget.CoordinatorLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_matches.xml b/app/src/main/res/layout/fragment_matches.xml
+--- a/app/src/main/res/layout/fragment_matches.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/res/layout/fragment_matches.xml	(date 1728373425029)
+@@ -4,7 +4,6 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+-    android:background="?attr/backgroundColor"
+     android:fillViewport="true"
+     android:orientation="vertical">
+ 
+@@ -64,7 +63,7 @@
+             <TextView
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+-                android:layout_weight="2"
++                android:layout_weight="1"
+                 android:gravity="center"
+                 android:text="Mode"
+                 android:textSize="15sp"
+@@ -103,12 +102,7 @@
+             android:layout_height="1dp"
+             android:background="?attr/colorOnSecondary" />
+ 
+-        <androidx.recyclerview.widget.RecyclerView
+-            android:id="@+id/Matches_recyclerview"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+-            tools:listitem="@layout/fragment_matches_frame" />
++        <include layout="@layout/recycleview_match"/>
+ 
+     </LinearLayout>
+ </androidx.coordinatorlayout.widget.CoordinatorLayout>
+\ No newline at end of file
+Index: app/src/main/java/vn/edu/usth/opendota/retrofit/MatchesClient.java
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/retrofit/MatchesClient.java b/app/src/main/java/vn/edu/usth/opendota/retrofit/MatchesClient.java
+deleted file mode 100644
+--- a/app/src/main/java/vn/edu/usth/opendota/retrofit/MatchesClient.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ /dev/null	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
+@@ -1,40 +0,0 @@
+-package vn.edu.usth.opendota.retrofit;
+-
+-import android.content.Context;
+-
+-import java.util.concurrent.TimeUnit;
+-
+-import okhttp3.OkHttpClient;
+-import retrofit2.Retrofit;
+-import retrofit2.converter.gson.GsonConverterFactory;
+-
+-public class MatchesClient {
+-    private static MatchesClient INSTANCE = null;
+-
+-    private static Retrofit retrofit;
+-
+-    private MatchesClient() {
+-    }
+-
+-    public static MatchesClient getInstance(Context context) {
+-        if (MatchesClient.INSTANCE == null) {
+-            MatchesClient.INSTANCE = new MatchesClient();
+-
+-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+-                    .readTimeout(30, TimeUnit.SECONDS)
+-                    .writeTimeout(30, TimeUnit.SECONDS)
+-                    .connectTimeout(30, TimeUnit.SECONDS).build();
+-
+-            MatchesClient.retrofit = new Retrofit.Builder().baseUrl("https://api.opendota.com/api/")
+-                    .addConverterFactory(GsonConverterFactory.create())
+-                    .client(okHttpClient)
+-                    .build();
+-        }
+-
+-        return MatchesClient.INSTANCE;
+-    }
+-
+-    public ApiService getAPIService() {
+-        return retrofit.create(ApiService.class);
+-    }
+-}
+Index: app/src/main/java/vn/edu/usth/opendota/utils/HeroesDb.java
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/utils/HeroesDb.java b/app/src/main/java/vn/edu/usth/opendota/utils/HeroesDb.java
+deleted file mode 100644
+--- a/app/src/main/java/vn/edu/usth/opendota/utils/HeroesDb.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ /dev/null	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
+@@ -1,335 +0,0 @@
+-package vn.edu.usth.opendota.utils;
+-
+-public class HeroesDb {
+-    public static String getHeroNameById(int id) {
+-        String name = "";
+-        switch (id) {
+-            case 1:
+-                name = "antimage";
+-                break;
+-            case 2:
+-                name = "axe";
+-                break;
+-            case 3:
+-                name = "bane";
+-                break;
+-            case 4:
+-                name = "bloodseeker";
+-                break;
+-            case 5:
+-                name = "crystal_maiden";
+-                break;
+-            case 6:
+-                name = "drow_ranger";
+-                break;
+-            case 7:
+-                name = "earthshaker";
+-                break;
+-            case 8:
+-                name = "juggernaut";
+-                break;
+-            case 9:
+-                name = "mirana";
+-                break;
+-            case 10:
+-                name = "morphling";
+-                break;
+-            case 11:
+-                name = "nevermore";
+-                break;
+-            case 12:
+-                name = "phantom_lancer";
+-                break;
+-            case 13:
+-                name = "puck";
+-                break;
+-            case 14:
+-                name = "pudge";
+-                break;
+-            case 15:
+-                name = "razor";
+-                break;
+-            case 16:
+-                name = "sand_king";
+-                break;
+-            case 17:
+-                name = "storm_spirit";
+-                break;
+-            case 18:
+-                name = "sven";
+-                break;
+-            case 19:
+-                name = "tiny";
+-                break;
+-            case 20:
+-                name = "vengefulspirit";
+-                break;
+-            case 21:
+-                name = "windrunner";
+-                break;
+-            case 22:
+-                name = "zuus";
+-                break;
+-            case 23:
+-                name = "kunkka";
+-                break;
+-            case 24:
+-                name = "lina";
+-                break;
+-            case 25:
+-                name = "lion";
+-                break;
+-            case 26:
+-                name = "shadow_shaman";
+-                break;
+-            case 27:
+-                name = "slardar";
+-                break;
+-            case 28:
+-                name = "tidehunter";
+-                break;
+-            case 29:
+-                name = "witch_doctor";
+-                break;
+-            case 30:
+-                name = "lich";
+-                break;
+-            case 31:
+-                name = "riki";
+-                break;
+-            case 32:
+-                name = "enigma";
+-                break;
+-            case 33:
+-                name = "tinker";
+-                break;
+-            case 34:
+-                name = "sniper";
+-                break;
+-            case 35:
+-                name = "necrolyte";
+-                break;
+-            case 36:
+-                name = "warlock";
+-                break;
+-            case 37:
+-                name = "beastmaster";
+-                break;
+-            case 38:
+-                name = "queenofpain";
+-                break;
+-            case 39:
+-                name = "venomancer";
+-                break;
+-            case 40:
+-                name = "faceless_void";
+-                break;
+-            case 41:
+-                name = "skeleton_king";
+-                break;
+-            case 42:
+-                name = "death_prophet";
+-                break;
+-            case 43:
+-                name = "phantom_assassin";
+-                break;
+-            case 44:
+-                name = "pugna";
+-                break;
+-            case 45:
+-                name = "templar_assassin";
+-                break;
+-            case 46:
+-                name = "viper";
+-                break;
+-            case 47:
+-                name = "luna";
+-                break;
+-            case 48:
+-                name = "dragon_knight";
+-                break;
+-            case 49:
+-                name = "dazzle";
+-                break;
+-            case 50:
+-                name = "rattletrap";
+-                break;
+-            case 51:
+-                name = "leshrac";
+-                break;
+-            case 52:
+-                name = "furion";
+-                break;
+-            case 53:
+-                name = "life_stealer";
+-                break;
+-            case 54:
+-                name = "dark_seer";
+-                break;
+-            case 55:
+-                name = "clinkz";
+-                break;
+-            case 56:
+-                name = "omniknight";
+-                break;
+-            case 57:
+-                name = "enchantress";
+-                break;
+-            case 58:
+-                name = "huskar";
+-                break;
+-            case 59:
+-                name = "night_stalker";
+-                break;
+-            case 60:
+-                name = "broodmother";
+-                break;
+-            case 61:
+-                name = "bounty_hunter";
+-                break;
+-            case 62:
+-                name = "weaver";
+-                break;
+-            case 63:
+-                name = "jakiro";
+-                break;
+-            case 64:
+-                name = "batrider";
+-                break;
+-            case 65:
+-                name = "chen";
+-                break;
+-            case 66:
+-                name = "spectre";
+-                break;
+-            case 67:
+-                name = "ancient_apparition";
+-                break;
+-            case 68:
+-                name = "doom_bringer";
+-                break;
+-            case 69:
+-                name = "ursa";
+-                break;
+-            case 70:
+-                name = "spirit_breaker";
+-                break;
+-            case 71:
+-                name = "gyrocopter";
+-                break;
+-            case 72:
+-                name = "alchemist";
+-                break;
+-            case 73:
+-                name = "invoker";
+-                break;
+-            case 74:
+-                name = "silencer";
+-                break;
+-            case 75:
+-                name = "obsidian_destroyer";
+-                break;
+-            case 76:
+-                name = "lycan";
+-                break;
+-            case 77:
+-                name = "brewmaster";
+-                break;
+-            case 78:
+-                name = "shadow_demon";
+-                break;
+-            case 79:
+-                name = "treant";
+-                break;
+-            case 80:
+-                name = "ogre_magi";
+-                break;
+-            case 81:
+-                name = "undying";
+-                break;
+-            case 82:
+-                name = "rubick";
+-                break;
+-            case 83:
+-                name = "disruptor";
+-                break;
+-            case 84:
+-                name = "nyx_assassin";
+-                break;
+-            case 85:
+-                name = "keeper_of_the_light";
+-                break;
+-            case 86:
+-                name = "wisp";
+-                break;
+-            case 87:
+-                name = "visage";
+-                break;
+-            case 88:
+-                name = "slark";
+-                break;
+-            case 89:
+-                name = "medusa";
+-                break;
+-            case 90:
+-                name = "troll_warlord";
+-                break;
+-            case 91:
+-                name = "centaur";
+-                break;
+-            case 92:
+-                name = "terrorblade";
+-                break;
+-            case 93:
+-                name = "phoenix";
+-                break;
+-            case 94:
+-                name = "techies";
+-                break;
+-            case 95:
+-                name = "ember_spirit";
+-                break;
+-            case 96:
+-                name = "earth_spirit";
+-                break;
+-            case 97:
+-                name = "oracle";
+-                break;
+-            case 98:
+-                name = "winter_wyvern";
+-                break;
+-            case 99:
+-                name = "monkey_king";
+-                break;
+-            case 100:
+-                name = "pangolier";
+-                break;
+-            case 101:
+-                name = "grimstroke";
+-                break;
+-            case 102:
+-                name = "void_spirit";
+-                break;
+-            case 103:
+-                name = "snapfire";
+-                break;
+-            case 104:
+-                name = "mars";
+-                break;
+-            case 105:
+-                name = "hoodwink";
+-                break;
+-            case 106:
+-                name = "dawnbreaker";
+-                break;
+-            case 135:
+-                name = "dawnbreaker";
+-                break;
+-            default:
+-                name = "Unknown Hero";
+-                break;
+-        }
+-        return name;
+-    }
+-
+-}
+\ No newline at end of file
+Index: app/src/main/java/vn/edu/usth/opendota/matches/MatchesFrameFragment.java
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/matches/MatchesFrameFragment.java b/app/src/main/java/vn/edu/usth/opendota/matches/MatchesFrameFragment.java
+deleted file mode 100644
+--- a/app/src/main/java/vn/edu/usth/opendota/matches/MatchesFrameFragment.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ /dev/null	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
+@@ -1,23 +0,0 @@
+-package vn.edu.usth.opendota.matches;
+-
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-
+-import androidx.fragment.app.Fragment;
+-
+-import vn.edu.usth.opendota.R;
+-
+-public class MatchesFrameFragment extends Fragment {
+-
+-    @Override
+-    public void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-    }
+-
+-    @Override
+-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+-        return inflater.inflate(R.layout.fragment_matches_frame, container, false);
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/heroes_frame.xml
+===================================================================
+diff --git a/app/src/main/res/layout/heroes_frame.xml b/app/src/main/res/layout/heroes_frame.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/heroes_frame.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ /dev/null	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
+@@ -1,90 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:id="@+id/fragment_heros"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    android:background="?attr/background"
+-    android:fillViewport="true"
+-    tools:ignore="HardcodedText">
+-
+-    <LinearLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:orientation="vertical"
+-        android:background="?attr/background">
+-
+-        <androidx.cardview.widget.CardView
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:id="@+id/hero_1">
+-
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_marginBottom="4dp"
+-                android:background="@color/onyx"
+-                android:orientation="vertical">
+-
+-                <TextView
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:text="Obisidian Destroyer"
+-                    android:textSize="20sp"
+-                    android:textColor="@color/white"
+-                    android:textAlignment="center"
+-                    android:layout_gravity="center"
+-                    android:layout_marginTop="10dp"
+-                    android:layout_marginBottom="10dp"/>
+-
+-                <LinearLayout
+-                    android:layout_width="match_parent"
+-                    android:layout_height="1dp"
+-                    android:background="@color/white">
+-                </LinearLayout>
+-
+-
+-                <LinearLayout
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content">
+-                    <de.hdodenhof.circleimageview.CircleImageView
+-                        android:layout_width="45dp"
+-                        android:layout_height="45dp"
+-                        android:layout_weight="0.25"
+-                        android:gravity="center"
+-                        android:src="@drawable/obsidian_destroyer_full"
+-                        android:layout_marginTop="10dp"
+-                        android:layout_marginBottom="10dp"
+-                        />
+-                    <TextView
+-                        android:layout_width="45dp"
+-                        android:layout_height="wrap_content"
+-                        android:layout_weight="0.25"
+-                        android:text="425"
+-                        android:paddingLeft="20dp"
+-                        android:textColor="@color/white"
+-                        android:layout_gravity="center"/>
+-                    <TextView
+-                        android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
+-                        android:text="57.14%"
+-                        android:textColor="@color/white"
+-                        android:layout_weight="0.25"
+-                        android:layout_gravity="center_vertical"
+-                        />
+-                    <TextView
+-                        android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
+-                        android:text="13 days"
+-                        android:textColor="@color/white"
+-                        android:layout_weight="0.25"
+-                        android:layout_gravity="center_vertical"
+-                        />
+-                </LinearLayout>
+-
+-            </LinearLayout>
+-
+-        </androidx.cardview.widget.CardView>
+-    </LinearLayout>
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/other.xml
+===================================================================
+diff --git a/.idea/other.xml b/.idea/other.xml
+deleted file mode 100644
+--- a/.idea/other.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ /dev/null	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
+@@ -1,329 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="direct_access_persist.xml">
+-    <option name="deviceSelectionList">
+-      <list>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="27" />
+-          <option name="brand" value="DOCOMO" />
+-          <option name="codename" value="F01L" />
+-          <option name="id" value="F01L" />
+-          <option name="manufacturer" value="FUJITSU" />
+-          <option name="name" value="F-01L" />
+-          <option name="screenDensity" value="360" />
+-          <option name="screenX" value="720" />
+-          <option name="screenY" value="1280" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="28" />
+-          <option name="brand" value="DOCOMO" />
+-          <option name="codename" value="SH-01L" />
+-          <option name="id" value="SH-01L" />
+-          <option name="manufacturer" value="SHARP" />
+-          <option name="name" value="AQUOS sense2 SH-01L" />
+-          <option name="screenDensity" value="480" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2160" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="Lenovo" />
+-          <option name="codename" value="TB370FU" />
+-          <option name="id" value="TB370FU" />
+-          <option name="manufacturer" value="Lenovo" />
+-          <option name="name" value="Tab P12" />
+-          <option name="screenDensity" value="340" />
+-          <option name="screenX" value="1840" />
+-          <option name="screenY" value="2944" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="31" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="a51" />
+-          <option name="id" value="a51" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy A51" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2400" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="akita" />
+-          <option name="id" value="akita" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 8a" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2400" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="33" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="b0q" />
+-          <option name="id" value="b0q" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy S22 Ultra" />
+-          <option name="screenDensity" value="600" />
+-          <option name="screenX" value="1440" />
+-          <option name="screenY" value="3088" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="32" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="bluejay" />
+-          <option name="id" value="bluejay" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 6a" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2400" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="caiman" />
+-          <option name="id" value="caiman" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 9 Pro" />
+-          <option name="screenDensity" value="360" />
+-          <option name="screenX" value="960" />
+-          <option name="screenY" value="2142" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="comet" />
+-          <option name="id" value="comet" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 9 Pro Fold" />
+-          <option name="screenDensity" value="390" />
+-          <option name="screenX" value="2076" />
+-          <option name="screenY" value="2152" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="29" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="crownqlteue" />
+-          <option name="id" value="crownqlteue" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy Note9" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="2220" />
+-          <option name="screenY" value="1080" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="dm3q" />
+-          <option name="id" value="dm3q" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy S23 Ultra" />
+-          <option name="screenDensity" value="600" />
+-          <option name="screenX" value="1440" />
+-          <option name="screenY" value="3088" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="e1q" />
+-          <option name="id" value="e1q" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy S24" />
+-          <option name="screenDensity" value="480" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2340" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="33" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="felix" />
+-          <option name="id" value="felix" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel Fold" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="2208" />
+-          <option name="screenY" value="1840" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="felix" />
+-          <option name="id" value="felix" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel Fold" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="2208" />
+-          <option name="screenY" value="1840" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="33" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="felix_camera" />
+-          <option name="id" value="felix_camera" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel Fold (Camera-enabled)" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="2208" />
+-          <option name="screenY" value="1840" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="33" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="gts8uwifi" />
+-          <option name="id" value="gts8uwifi" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy Tab S8 Ultra" />
+-          <option name="screenDensity" value="320" />
+-          <option name="screenX" value="1848" />
+-          <option name="screenY" value="2960" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="husky" />
+-          <option name="id" value="husky" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 8 Pro" />
+-          <option name="screenDensity" value="390" />
+-          <option name="screenX" value="1008" />
+-          <option name="screenY" value="2244" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="30" />
+-          <option name="brand" value="motorola" />
+-          <option name="codename" value="java" />
+-          <option name="id" value="java" />
+-          <option name="manufacturer" value="Motorola" />
+-          <option name="name" value="G20" />
+-          <option name="screenDensity" value="280" />
+-          <option name="screenX" value="720" />
+-          <option name="screenY" value="1600" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="komodo" />
+-          <option name="id" value="komodo" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 9 Pro XL" />
+-          <option name="screenDensity" value="360" />
+-          <option name="screenX" value="1008" />
+-          <option name="screenY" value="2244" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="33" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="lynx" />
+-          <option name="id" value="lynx" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 7a" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2400" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="31" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="oriole" />
+-          <option name="id" value="oriole" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 6" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2400" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="33" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="panther" />
+-          <option name="id" value="panther" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 7" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2400" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="q5q" />
+-          <option name="id" value="q5q" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy Z Fold5" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1812" />
+-          <option name="screenY" value="2176" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="30" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="r11" />
+-          <option name="id" value="r11" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel Watch" />
+-          <option name="screenDensity" value="320" />
+-          <option name="screenX" value="384" />
+-          <option name="screenY" value="384" />
+-          <option name="type" value="WEAR_OS" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="30" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="redfin" />
+-          <option name="id" value="redfin" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 5" />
+-          <option name="screenDensity" value="440" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2340" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="shiba" />
+-          <option name="id" value="shiba" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 8" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2400" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="33" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="tangorpro" />
+-          <option name="id" value="tangorpro" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel Tablet" />
+-          <option name="screenDensity" value="320" />
+-          <option name="screenX" value="1600" />
+-          <option name="screenY" value="2560" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="34" />
+-          <option name="brand" value="google" />
+-          <option name="codename" value="tokay" />
+-          <option name="id" value="tokay" />
+-          <option name="manufacturer" value="Google" />
+-          <option name="name" value="Pixel 9" />
+-          <option name="screenDensity" value="420" />
+-          <option name="screenX" value="1080" />
+-          <option name="screenY" value="2424" />
+-        </PersistentDeviceSelectionData>
+-        <PersistentDeviceSelectionData>
+-          <option name="api" value="29" />
+-          <option name="brand" value="samsung" />
+-          <option name="codename" value="x1q" />
+-          <option name="id" value="x1q" />
+-          <option name="manufacturer" value="Samsung" />
+-          <option name="name" value="Galaxy S20" />
+-          <option name="screenDensity" value="480" />
+-          <option name="screenX" value="1440" />
+-          <option name="screenY" value="3200" />
+-        </PersistentDeviceSelectionData>
+-      </list>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: app/src/main/java/vn/edu/usth/opendota/retrofit/ApiService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.retrofit;\r\n\r\nimport java.util.List;\r\n\r\nimport retrofit2.Call;\r\nimport retrofit2.http.GET;\r\nimport retrofit2.http.Path;\r\nimport vn.edu.usth.opendota.models.Matches;\r\n\r\npublic interface ApiService {\r\n\r\n    @GET(\"players/{id}/recentMatches\")\r\n    Call<List<Matches>> getMatches(@Path(\"id\") String id);\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/retrofit/ApiService.java b/app/src/main/java/vn/edu/usth/opendota/retrofit/ApiService.java
+--- a/app/src/main/java/vn/edu/usth/opendota/retrofit/ApiService.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/java/vn/edu/usth/opendota/retrofit/ApiService.java	(date 1728373425023)
+@@ -5,6 +5,7 @@
+ import retrofit2.Call;
+ import retrofit2.http.GET;
+ import retrofit2.http.Path;
++import vn.edu.usth.opendota.models.Heroes;
+ import vn.edu.usth.opendota.models.Matches;
+ 
+ public interface ApiService {
+@@ -12,5 +13,8 @@
+     @GET("players/{id}/recentMatches")
+     Call<List<Matches>> getMatches(@Path("id") String id);
+ 
++    @GET("players/{id}/heroes")
++    Call<List<Heroes>> getHeroes(@Path("id") String id);
++
+ }
+ 
+Index: app/src/main/java/vn/edu/usth/opendota/models/Matches.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.models;\r\n\r\npublic class Matches {\r\n    private long matchID;\r\n    private long playerSlot;\r\n    private boolean radiantWin;\r\n    private long hero_id;\r\n    private long start_time;\r\n    private long duration;\r\n    private long gameMode;\r\n    private long lobbyType;\r\n    private Long version;\r\n    private long kills;\r\n    private long deaths;\r\n    private long assists;\r\n    private long averageRank;\r\n    private long xpPerMin;\r\n    private long goldPerMin;\r\n    private long heroDamage;\r\n    private long towerDamage;\r\n    private long heroHealing;\r\n    private long lastHits;\r\n    private Long lane;\r\n    private Long laneRole;\r\n    private Boolean isRoaming;\r\n    private long cluster;\r\n    private long leaverStatus;\r\n    private Long partySize;\r\n    private long heroVariant;\r\n\r\n    public long getMatchID() { return matchID; }\r\n    public void setMatchID(long value) { this.matchID = value; }\r\n\r\n    public long getPlayerSlot() { return playerSlot; }\r\n    public void setPlayerSlot(long value) { this.playerSlot = value; }\r\n\r\n    public boolean getRadiantWin() { return radiantWin; }\r\n    public void setRadiantWin(boolean value) { this.radiantWin = value; }\r\n\r\n    public long getHeroID() { return hero_id; }\r\n    public void setHeroID(long value) { this.hero_id = hero_id; }\r\n\r\n    public long getStartTime() { return start_time; }\r\n    public void setStartTime(long value) { this.start_time = start_time; }\r\n\r\n    public long getDuration() { return duration; }\r\n    public void setDuration(long value) { this.duration = value; }\r\n\r\n    public long getGameMode() { return gameMode; }\r\n    public void setGameMode(long value) { this.gameMode = value; }\r\n\r\n    public long getLobbyType() { return lobbyType; }\r\n    public void setLobbyType(long value) { this.lobbyType = value; }\r\n\r\n    public Long getVersion() { return version; }\r\n    public void setVersion(Long value) { this.version = value; }\r\n\r\n    public long getKills() { return kills; }\r\n    public void setKills(long value) { this.kills = value; }\r\n\r\n    public long getDeaths() { return deaths; }\r\n    public void setDeaths(long value) { this.deaths = value; }\r\n\r\n    public long getAssists() { return assists; }\r\n    public void setAssists(long value) { this.assists = value; }\r\n\r\n    public long getAverageRank() { return averageRank; }\r\n    public void setAverageRank(long value) { this.averageRank = value; }\r\n\r\n    public long getXPPerMin() { return xpPerMin; }\r\n    public void setXPPerMin(long value) { this.xpPerMin = value; }\r\n\r\n    public long getGoldPerMin() { return goldPerMin; }\r\n    public void setGoldPerMin(long value) { this.goldPerMin = value; }\r\n\r\n    public long getHeroDamage() { return heroDamage; }\r\n    public void setHeroDamage(long value) { this.heroDamage = value; }\r\n\r\n    public long getTowerDamage() { return towerDamage; }\r\n    public void setTowerDamage(long value) { this.towerDamage = value; }\r\n\r\n    public long getHeroHealing() { return heroHealing; }\r\n    public void setHeroHealing(long value) { this.heroHealing = value; }\r\n\r\n    public long getLastHits() { return lastHits; }\r\n    public void setLastHits(long value) { this.lastHits = value; }\r\n\r\n    public Long getLane() { return lane; }\r\n    public void setLane(Long value) { this.lane = value; }\r\n\r\n    public Long getLaneRole() { return laneRole; }\r\n    public void setLaneRole(Long value) { this.laneRole = value; }\r\n\r\n    public Boolean getIsRoaming() { return isRoaming; }\r\n    public void setIsRoaming(Boolean value) { this.isRoaming = value; }\r\n\r\n    public long getCluster() { return cluster; }\r\n    public void setCluster(long value) { this.cluster = value; }\r\n\r\n    public long getLeaverStatus() { return leaverStatus; }\r\n    public void setLeaverStatus(long value) { this.leaverStatus = value; }\r\n\r\n    public Long getPartySize() { return partySize; }\r\n    public void setPartySize(Long value) { this.partySize = value; }\r\n\r\n    public long getHeroVariant() { return heroVariant; }\r\n    public void setHeroVariant(long value) { this.heroVariant = value; }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Matches{\" +\r\n                \"matchID=\" + matchID +\r\n                \", playerSlot=\" + playerSlot +\r\n                \", radiantWin=\" + radiantWin +\r\n                \", heroID=\" + hero_id +\r\n                \", startTime=\" + start_time +\r\n                \", duration=\" + duration +\r\n                \", gameMode=\" + gameMode +\r\n                \", lobbyType=\" + lobbyType +\r\n                \", version=\" + version +\r\n                \", kills=\" + kills +\r\n                \", deaths=\" + deaths +\r\n                \", assists=\" + assists +\r\n                \", averageRank=\" + averageRank +\r\n                \", xpPerMin=\" + xpPerMin +\r\n                \", goldPerMin=\" + goldPerMin +\r\n                \", heroDamage=\" + heroDamage +\r\n                \", towerDamage=\" + towerDamage +\r\n                \", heroHealing=\" + heroHealing +\r\n                \", lastHits=\" + lastHits +\r\n                \", lane=\" + lane +\r\n                \", laneRole=\" + laneRole +\r\n                \", isRoaming=\" + isRoaming +\r\n                \", cluster=\" + cluster +\r\n                \", leaverStatus=\" + leaverStatus +\r\n                \", partySize=\" + partySize +\r\n                \", heroVariant=\" + heroVariant +\r\n                '}';\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/models/Matches.java b/app/src/main/java/vn/edu/usth/opendota/models/Matches.java
+--- a/app/src/main/java/vn/edu/usth/opendota/models/Matches.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/java/vn/edu/usth/opendota/models/Matches.java	(date 1728373425022)
+@@ -3,12 +3,12 @@
+ public class Matches {
+     private long matchID;
+     private long playerSlot;
+-    private boolean radiantWin;
++    private boolean radiant_win;
+     private long hero_id;
+     private long start_time;
+     private long duration;
+-    private long gameMode;
+-    private long lobbyType;
++    private long game_mode;
++    private long lobby_type;
+     private Long version;
+     private long kills;
+     private long deaths;
+@@ -34,23 +34,23 @@
+     public long getPlayerSlot() { return playerSlot; }
+     public void setPlayerSlot(long value) { this.playerSlot = value; }
+ 
+-    public boolean getRadiantWin() { return radiantWin; }
+-    public void setRadiantWin(boolean value) { this.radiantWin = value; }
++    public boolean getRadiantWin() { return radiant_win; }
++    public void setRadiantWin(boolean value) { this.radiant_win = value ; }
+ 
+     public long getHeroID() { return hero_id; }
+-    public void setHeroID(long value) { this.hero_id = hero_id; }
++    public void setHeroID(long value) { this.hero_id = value; }
+ 
+     public long getStartTime() { return start_time; }
+-    public void setStartTime(long value) { this.start_time = start_time; }
++    public void setStartTime(long value) { this.start_time = value; }
+ 
+     public long getDuration() { return duration; }
+     public void setDuration(long value) { this.duration = value; }
+ 
+-    public long getGameMode() { return gameMode; }
+-    public void setGameMode(long value) { this.gameMode = value; }
++    public long getGameMode() { return game_mode; }
++    public void setGameMode(long value) { this.game_mode = value; }
+ 
+-    public long getLobbyType() { return lobbyType; }
+-    public void setLobbyType(long value) { this.lobbyType = value; }
++    public long getLobbyType() { return lobby_type; }
++    public void setLobbyType(long value) { this.lobby_type = value; }
+ 
+     public Long getVersion() { return version; }
+     public void setVersion(Long value) { this.version = value; }
+@@ -111,12 +111,12 @@
+         return "Matches{" +
+                 "matchID=" + matchID +
+                 ", playerSlot=" + playerSlot +
+-                ", radiantWin=" + radiantWin +
++                ", radiantWin=" + radiant_win +
+                 ", heroID=" + hero_id +
+                 ", startTime=" + start_time +
+                 ", duration=" + duration +
+-                ", gameMode=" + gameMode +
+-                ", lobbyType=" + lobbyType +
++                ", gameMode=" + game_mode +
++                ", lobbyType=" + lobby_type +
+                 ", version=" + version +
+                 ", kills=" + kills +
+                 ", deaths=" + deaths +
+Index: .idea/deploymentTargetSelector.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"deploymentTargetSelector\">\r\n    <selectionStates>\r\n      <SelectionState runConfigName=\"app\">\r\n        <option name=\"selectionMode\" value=\"DROPDOWN\" />\r\n        <DropdownSelection timestamp=\"2024-09-17T08:02:10.486565400Z\">\r\n          <Target type=\"DEFAULT_BOOT\">\r\n            <handle>\r\n              <DeviceId pluginId=\"LocalEmulator\" identifier=\"path=C:\\Users\\nguye\\.android\\avd\\Pixel_XL_API_35.avd\" />\r\n            </handle>\r\n          </Target>\r\n        </DropdownSelection>\r\n        <DialogSelection />\r\n      </SelectionState>\r\n    </selectionStates>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetSelector.xml b/.idea/deploymentTargetSelector.xml
+--- a/.idea/deploymentTargetSelector.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/.idea/deploymentTargetSelector.xml	(date 1728373425002)
+@@ -4,7 +4,7 @@
+     <selectionStates>
+       <SelectionState runConfigName="app">
+         <option name="selectionMode" value="DROPDOWN" />
+-        <DropdownSelection timestamp="2024-09-17T08:02:10.486565400Z">
++        <DropdownSelection timestamp="2024-10-07T08:18:10.699461900Z">
+           <Target type="DEFAULT_BOOT">
+             <handle>
+               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\nguye\.android\avd\Pixel_XL_API_35.avd" />
+Index: app/src/main/res/layout/fragment_matches_frame.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/khung_trandau\"\r\n    android:layout_width=\"match_parent\"\r\n    android:orientation=\"horizontal\"\r\n    android:layout_height=\"70dp\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"70dp\"\r\n        android:background=\"?attr/colorSecondary\"\r\n        android:orientation=\"horizontal\"\r\n        android:weightSum=\"6\">\r\n\r\n        <de.hdodenhof.circleimageview.CircleImageView\r\n            android:id=\"@+id/avatar\"\r\n            android:layout_width=\"60px\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_weight=\"1\"\r\n            android:gravity=\"center\"\r\n            android:paddingVertical=\"8dp\"\r\n            tools:src=\"@drawable/mars_full\" />\r\n\r\n\r\n        <TextView\r\n            android:id=\"@+id/tv_title\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"2\"\r\n            android:ellipsize=\"end\"\r\n            android:gravity=\"center\"\r\n            android:maxLines=\"2\"\r\n            android:textAlignment=\"center\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            android:textSize=\"12sp\"\r\n            tools:text=\"All Draft Normal\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/tv_time_ended\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_weight=\"1\"\r\n            android:gravity=\"center\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            android:textSize=\"12sp\"\r\n            tools:text=\"14 days\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/id_duration\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_weight=\"1\"\r\n            android:gravity=\"center\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            tools:text=\"47:42\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/tv_kda\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_weight=\"1\"\r\n            android:gravity=\"center\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            tools:text=\"3/5/26\" />\r\n\r\n        <View\r\n            android:id=\"@+id/line_view\"\r\n            android:layout_width=\"6dp\"\r\n            android:layout_alignParentEnd=\"false\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_gravity=\"right\"\r\n            android:background=\"@color/winProgress\" />\r\n    </LinearLayout>\r\n</LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_matches_frame.xml b/app/src/main/res/layout/fragment_matches_frame.xml
+--- a/app/src/main/res/layout/fragment_matches_frame.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/res/layout/fragment_matches_frame.xml	(date 1728373425030)
+@@ -1,21 +1,22 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+-    android:id="@+id/khung_trandau"
++    android:id="@+id/matches_frames"
+     android:layout_width="match_parent"
+     android:orientation="horizontal"
+     android:layout_height="70dp">
+ 
+     <LinearLayout
++        android:id="@+id/line_view"
+         android:layout_width="match_parent"
+         android:layout_height="70dp"
+-        android:background="?attr/colorSecondary"
++        android:background="@drawable/gradient_loss_color"
+         android:orientation="horizontal"
+-        android:weightSum="6">
++        android:weightSum="5">
+ 
+         <de.hdodenhof.circleimageview.CircleImageView
+             android:id="@+id/avatar"
+-            android:layout_width="60px"
++            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="center"
+@@ -25,54 +26,46 @@
+ 
+         <TextView
+             android:id="@+id/tv_title"
+-            android:layout_width="wrap_content"
++            android:layout_width="0dp"
+             android:layout_height="match_parent"
+-            android:layout_weight="2"
++            android:layout_weight="1"
+             android:ellipsize="end"
+             android:gravity="center"
+             android:maxLines="2"
+             android:textAlignment="center"
+-            android:textColor="?attr/textFillColor"
++            android:textColor="@color/white"
+             android:textSize="12sp"
+             tools:text="All Draft Normal" />
+ 
+         <TextView
+             android:id="@+id/tv_time_ended"
+-            android:layout_width="wrap_content"
++            android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_gravity="center_vertical"
+             android:layout_weight="1"
+             android:gravity="center"
+-            android:textColor="?attr/textFillColor"
++            android:textColor="@color/white"
+             android:textSize="12sp"
+             tools:text="14 days" />
+ 
+         <TextView
+             android:id="@+id/id_duration"
+-            android:layout_width="wrap_content"
++            android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_gravity="center_vertical"
+             android:layout_weight="1"
+             android:gravity="center"
+-            android:textColor="?attr/textFillColor"
++            android:textColor="@color/white"
+             tools:text="47:42" />
+ 
+         <TextView
+             android:id="@+id/tv_kda"
+-            android:layout_width="wrap_content"
++            android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_gravity="center_vertical"
+             android:layout_weight="1"
+             android:gravity="center"
+-            android:textColor="?attr/textFillColor"
++            android:textColor="@color/white"
+             tools:text="3/5/26" />
+-
+-        <View
+-            android:id="@+id/line_view"
+-            android:layout_width="6dp"
+-            android:layout_alignParentEnd="false"
+-            android:layout_height="match_parent"
+-            android:layout_gravity="right"
+-            android:background="@color/winProgress" />
+     </LinearLayout>
+ </LinearLayout>
+Index: app/src/main/res/layout/fragment_user_frame.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\"\r\n    xmlns:tool.text=\"http://schemas.android.com/apk/res-auto\"\r\n    android:background=\"@drawable/gradient_bground_white\"\r\n    android:layout_marginBottom=\"5dp\"\r\n    android:padding=\"10dp\">\r\n\r\n    <de.hdodenhof.circleimageview.CircleImageView\r\n        android:id=\"@+id/img_user\"\r\n        android:layout_width=\"60dp\"\r\n        android:layout_height=\"70dp\"\r\n        tools:src=\"@drawable/avarta2\" />\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_toEndOf=\"@+id/img_user\"\r\n        android:layout_marginStart=\"10dp\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/user_profile\"\r\n            android:layout_toEndOf=\"@+id/img\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_weight=\"3\">\r\n\r\n            <TextView\r\n                android:id=\"@+id/name\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                tools:text=\"Namlee\"\r\n                android:singleLine=\"true\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"22dp\"/>\r\n            <View\r\n                style=\"@style/Divider\"\r\n                android:layout_marginTop=\"7dp\"\r\n                android:layout_marginBottom=\"5dp\"/>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\">\r\n                <TextView\r\n                    android:id=\"@+id/ID\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_below=\"@+id/txt\"\r\n                    android:singleLine=\"true\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textSize=\"22dp\"\r\n                    android:layout_marginEnd=\"5dp\"\r\n                    android:text=\"ID:\" />\r\n\r\n                <TextView\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    tools:text=\"123746324234\"\r\n                    android:singleLine=\"true\"\r\n                    android:textColor=\"@color/white\"\r\n                    android:textSize=\"22dp\"/>\r\n            </LinearLayout>\r\n        </LinearLayout>\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/user_imagerank\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"60dp\"\r\n            android:src=\"@drawable/heart_icon\"\r\n            android:background=\"@android:color/transparent\"\r\n            android:layout_marginRight=\"10dp\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:layout_gravity=\"center_vertical\"\r\n            android:layout_weight=\"1\"\r\n            tools:ignore=\"ObsoleteLayoutParam\" />\r\n    </LinearLayout>\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_user_frame.xml b/app/src/main/res/layout/fragment_user_frame.xml
+--- a/app/src/main/res/layout/fragment_user_frame.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/res/layout/fragment_user_frame.xml	(date 1728373425031)
+@@ -1,11 +1,13 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/user_frame"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+-    xmlns:tool.text="http://schemas.android.com/apk/res-auto"
+     android:background="@drawable/gradient_bground_white"
+     android:layout_marginBottom="5dp"
++    android:layout_marginStart="10dp"
++    android:layout_marginEnd="10dp"
+     android:padding="10dp">
+ 
+     <de.hdodenhof.circleimageview.CircleImageView
+@@ -34,7 +36,7 @@
+                 android:id="@+id/name"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+-                tools:text="Namlee"
++                android:text="Namlee"
+                 android:singleLine="true"
+                 android:textColor="@color/white"
+                 android:textSize="22dp"/>
+@@ -61,7 +63,7 @@
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+-                    tools:text="123746324234"
++                    android:text="123746324234"
+                     android:singleLine="true"
+                     android:textColor="@color/white"
+                     android:textSize="22dp"/>
+Index: app/src/main/res/layout/fragment_overview.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:fillViewport=\"true\"\r\n    android:background=\"?attr/backgroundColor\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"vertical\"\r\n        tools:context=\".searchplayerfragment.MatchesHistoryFragment\"\r\n        android:padding=\"15dp\">\r\n\r\n        <LinearLayout\r\n            android:id=\"@+id/header\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:background=\"?attr/colorOnSecondary\">\r\n\r\n            <de.hdodenhof.circleimageview.CircleImageView\r\n                android:id=\"@+id/A_image\"\r\n                android:layout_width=\"90dp\"\r\n                android:layout_height=\"90dp\"\r\n                android:src=\"@drawable/avatar_1\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                tools:ignore=\"MissingClass\" />\r\n            <TextView\r\n                android:id=\"@+id/A_name\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Minh\"\r\n                android:textStyle=\"bold\"\r\n                android:textColor=\"@color/white\"\r\n                android:textAlignment=\"center\"\r\n                android:textSize=\"25sp\"/>\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"horizontal\"\r\n                android:weightSum=\"9\"\r\n                android:layout_marginTop=\"10dp\">\r\n                <TextView\r\n                    android:id=\"@+id/tv_win\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"3\"\r\n                    android:textColor=\"@color/wins_winrate\"\r\n                    android:text=\"WINS\\n211\"\r\n                    android:textSize=\"@dimen/wins_loses_winrate\"\r\n                    android:textAlignment=\"center\"/>\r\n                <TextView\r\n                    android:id=\"@+id/losses\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"3\"\r\n                    android:text=\"LOSSES\\n207\"\r\n                    android:textColor=\"@color/lose_winrate\"\r\n                    android:textSize=\"@dimen/wins_loses_winrate\"\r\n                    android:textAlignment=\"center\"/>\r\n                <TextView\r\n                    android:id=\"@+id/winrate\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_weight=\"3\"\r\n                    android:text=\"WINRATE\\n50.48%\"\r\n                    android:textColor=\"@color/wins_winrate\"\r\n                    android:textSize=\"@dimen/wins_loses_winrate\"\r\n                    android:textAlignment=\"center\"/>\r\n            </LinearLayout>\r\n            <de.hdodenhof.circleimageview.CircleImageView\r\n                android:layout_width=\"70dp\"\r\n                android:layout_height=\"65dp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:src=\"@drawable/rank_icon_8\"\r\n                />\r\n            <ProgressBar\r\n                android:id=\"@+id/progressBar\"\r\n                android:paddingTop=\"18dp\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"25dp\"\r\n                android:max=\"100\"\r\n                android:progress=\"50\"\r\n                android:secondaryProgress=\"100\"\r\n                android:progressTint=\"@color/winProgress\"\r\n                android:secondaryProgressTint=\"@color/looseProgress\"\r\n                style=\"@android:style/Widget.ProgressBar.Horizontal\"/>\r\n            <TextView\r\n                android:id=\"@+id/profile_steam\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"@string/link_steamid\"\r\n                android:textColorLink=\"@color/white\"\r\n                android:padding=\"15dp\"\r\n                android:textSize=\"15sp\"\r\n                android:textColor=\"@color/white\"\r\n                android:autoLink=\"web\"\r\n                android:linksClickable=\"true\"/>\r\n        </LinearLayout>\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/Matches_recyclerview\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\r\n            tools:listitem=\"@layout/fragment_matches_frame\" />\r\n\r\n    </LinearLayout>\r\n</androidx.coordinatorlayout.widget.CoordinatorLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_overview.xml b/app/src/main/res/layout/fragment_overview.xml
+--- a/app/src/main/res/layout/fragment_overview.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/res/layout/fragment_overview.xml	(date 1728373425030)
+@@ -103,12 +103,6 @@
+                 android:linksClickable="true"/>
+         </LinearLayout>
+ 
+-        <androidx.recyclerview.widget.RecyclerView
+-            android:id="@+id/Matches_recyclerview"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+-            tools:listitem="@layout/fragment_matches_frame" />
+-
++        <include layout="@layout/recycleview_match"/>
+     </LinearLayout>
+ </androidx.coordinatorlayout.widget.CoordinatorLayout>
+\ No newline at end of file
+Index: app/src/main/java/vn/edu/usth/opendota/adapters/MatchesAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.adapters;\r\n\r\nimport static android.content.ContentValues.TAG;\r\n\r\nimport static vn.edu.usth.opendota.utils.HeroesDb.getHeroNameById;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.squareup.picasso.Picasso;\r\n\r\nimport java.text.SimpleDateFormat;\r\nimport java.util.ArrayList;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\nimport vn.edu.usth.opendota.R;\r\nimport vn.edu.usth.opendota.models.Matches;\r\n\r\npublic class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {\r\n\r\n    private List<Matches> matches = new ArrayList<>();\r\n\r\n    @SuppressLint(\"NotifyDataSetChanged\")\r\n    public void submit(List<Matches> newList) {\r\n        matches = newList;\r\n        notifyDataSetChanged();\r\n    }\r\n\r\n    @NonNull\r\n    @Override\r\n    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        LayoutInflater inflater = LayoutInflater.from(parent.getContext());\r\n        View view = inflater.inflate(R.layout.fragment_matches_frame, parent, false);\r\n        return new ViewHolder(view);\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(@NonNull MatchesAdapter.ViewHolder holder, int position) {\r\n        Matches item = matches.get(position);\r\n\r\n        Log.d(TAG, \"Match Details: \" + item.toString());\r\n\r\n        holder.tvTitle.setText(\"All Draft Normal\");\r\n\r\n        String kda = item.getKills() + \"/\" + item.getDeaths() + \"/\" + item.getAssists();\r\n        holder.tvKda.setText(kda);\r\n        Log.d(TAG, \"kda: \" + kda);\r\n\r\n        Date date = new Date(item.getStartTime() * 1000);\r\n        @SuppressLint(\"SimpleDateFormat\") SimpleDateFormat sdf = new SimpleDateFormat(\"dd/MM/yyyy\");\r\n        String formattedDate = sdf.format(date);\r\n        holder.tvTimeEnded.setText(formattedDate);\r\n\r\n        int minutes = (int) (item.getDuration() / 60);\r\n        int seconds = (int) (item.getDuration() % 60);\r\n        @SuppressLint(\"DefaultLocale\") String formattedTime = String.format(\"%02d:%02d\", minutes, seconds);\r\n        holder.idDuration.setText(formattedTime);\r\n\r\n        int heroId = (int) item.getHeroID();\r\n        String heroName = getHeroNameById(heroId);\r\n        String imageUrl = \"https://cdn.dota2.com/apps/dota2/images/heroes/\"+heroName+\"_full.png\";\r\n        Picasso.get().load(imageUrl).into(holder.avatar);\r\n    }\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        return matches.size();\r\n    }\r\n\r\n    public static class ViewHolder extends RecyclerView.ViewHolder {\r\n        private final TextView tvTitle;\r\n        private final TextView tvKda;\r\n        private final TextView tvTimeEnded;\r\n        private final TextView idDuration;\r\n        private final ImageView avatar;\r\n\r\n        public ViewHolder(@NonNull View itemView) {\r\n            super(itemView);\r\n\r\n            tvTitle = itemView.findViewById(R.id.tv_title);\r\n            tvKda = itemView.findViewById(R.id.tv_kda);\r\n            tvTimeEnded = itemView.findViewById(R.id.tv_time_ended);\r\n            idDuration = itemView.findViewById(R.id.id_duration);\r\n            avatar = itemView.findViewById(R.id.avatar);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/adapters/MatchesAdapter.java b/app/src/main/java/vn/edu/usth/opendota/adapters/MatchesAdapter.java
+--- a/app/src/main/java/vn/edu/usth/opendota/adapters/MatchesAdapter.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/java/vn/edu/usth/opendota/adapters/MatchesAdapter.java	(date 1728373425021)
+@@ -2,7 +2,9 @@
+ 
+ import static android.content.ContentValues.TAG;
+ 
+-import static vn.edu.usth.opendota.utils.HeroesDb.getHeroNameById;
++import static vn.edu.usth.opendota.utils.Db.getGameModeNameById;
++import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
++import static vn.edu.usth.opendota.utils.Db.getLobbyTypeNameById;
+ 
+ import android.annotation.SuppressLint;
+ import android.util.Log;
+@@ -43,13 +45,44 @@
+         return new ViewHolder(view);
+     }
+ 
++    public static class ViewHolder extends RecyclerView.ViewHolder {
++
++        private final TextView tvTitle;
++
++        private final TextView tvKda;
++        private final TextView tvTimeEnded;
++        private final TextView idDuration;
++        private final ImageView avatar;
++        private final View lineview;
++        public ViewHolder(@NonNull View itemView) {
++            super(itemView);
++
++            tvTitle = itemView.findViewById(R.id.tv_title);
++            tvKda = itemView.findViewById(R.id.tv_kda);
++            tvTimeEnded = itemView.findViewById(R.id.tv_time_ended);
++            idDuration = itemView.findViewById(R.id.id_duration);
++            avatar = itemView.findViewById(R.id.avatar);
++            lineview = itemView.findViewById(R.id.line_view);
++        }
++
++
++    }
++    @Override
++    public int getItemCount() {
++        return matches.size();
++    }
++
++    @SuppressLint("ResourceAsColor")
+     @Override
+     public void onBindViewHolder(@NonNull MatchesAdapter.ViewHolder holder, int position) {
+         Matches item = matches.get(position);
+ 
+         Log.d(TAG, "Match Details: " + item.toString());
+ 
+-        holder.tvTitle.setText("All Draft Normal");
++        int lobbytype = (int) item.getLobbyType();
++        int gamemode = (int) item.getGameMode();
++        String mode =  getGameModeNameById(gamemode) + " " +getLobbyTypeNameById(lobbytype);
++        holder.tvTitle.setText(mode);
+ 
+         String kda = item.getKills() + "/" + item.getDeaths() + "/" + item.getAssists();
+         holder.tvKda.setText(kda);
+@@ -66,31 +99,16 @@
+         holder.idDuration.setText(formattedTime);
+ 
+         int heroId = (int) item.getHeroID();
+-        String heroName = getHeroNameById(heroId);
++        String heroName = getHeroNameByID(heroId);
+         String imageUrl = "https://cdn.dota2.com/apps/dota2/images/heroes/"+heroName+"_full.png";
+         Picasso.get().load(imageUrl).into(holder.avatar);
+-    }
+ 
+-    @Override
+-    public int getItemCount() {
+-        return matches.size();
+-    }
++        if (item.getRadiantWin()) {
++            holder.lineview.setBackgroundResource(R.drawable.gradient_win_color);
++        } else {
++            holder.lineview.setBackgroundResource(R.drawable.gradient_loss_color);
++        }
+ 
+-    public static class ViewHolder extends RecyclerView.ViewHolder {
+-        private final TextView tvTitle;
+-        private final TextView tvKda;
+-        private final TextView tvTimeEnded;
+-        private final TextView idDuration;
+-        private final ImageView avatar;
+ 
+-        public ViewHolder(@NonNull View itemView) {
+-            super(itemView);
+-
+-            tvTitle = itemView.findViewById(R.id.tv_title);
+-            tvKda = itemView.findViewById(R.id.tv_kda);
+-            tvTimeEnded = itemView.findViewById(R.id.tv_time_ended);
+-            idDuration = itemView.findViewById(R.id.id_duration);
+-            avatar = itemView.findViewById(R.id.avatar);
+-        }
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_heroes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.coordinatorlayout.widget.CoordinatorLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/fragment_heros\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:fillViewport=\"true\"\r\n    tools:ignore=\"HardcodedText\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\"\r\n        android:background=\"?attr/backgroundColor\">\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_margin=\"10dp\"\r\n            android:layout_height=\"45dp\"\r\n            android:layout_gravity=\"center\"\r\n            android:textSize=\"14sp\"\r\n            android:gravity=\"center\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            android:text=\"@string/player_profile1\"\r\n            android:textColor=\"?attr/textFillColor\">\r\n        </TextView>\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"HEROES\"\r\n            android:textAlignment=\"center\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            android:textSize=\"30sp\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_marginEnd=\"10dp\"/>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\"\r\n            android:layout_marginTop=\"5dp\"\r\n            android:layout_marginStart=\"10dp\"\r\n            android:layout_marginEnd=\"10dp\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            android:weightSum=\"4\">\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Hero\"\r\n                android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                android:textColor=\"?attr/textFillColor\"/>\r\n            <TextView\r\n                android:layout_width=\"fill_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Played\"\r\n                android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                android:textColor=\"?attr/textFillColor\"/>\r\n            <TextView\r\n                android:layout_width=\"fill_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Win%\"\r\n                android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                android:textColor=\"?attr/textFillColor\"/>\r\n            <TextView\r\n                android:layout_width=\"fill_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Last Played\"\r\n                android:textSize=\"@dimen/Maches_hero_mode_ended_length_KDA_textsize\"\r\n                android:textColor=\"?attr/textFillColor\"/>\r\n\r\n        </LinearLayout>\r\n\r\n    </LinearLayout>\r\n\r\n\r\n</androidx.coordinatorlayout.widget.CoordinatorLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_heroes.xml b/app/src/main/res/layout/fragment_heroes.xml
+--- a/app/src/main/res/layout/fragment_heroes.xml	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/res/layout/fragment_heroes.xml	(date 1728373425028)
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<androidx.coordinatorlayout.widget.CoordinatorLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
++<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/fragment_heros"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+@@ -12,11 +12,13 @@
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical"
++        android:layout_marginStart="10dp"
++        android:layout_marginEnd="10dp"
+         android:background="?attr/backgroundColor">
+ 
+         <TextView
+             android:layout_width="match_parent"
+-            android:layout_margin="10dp"
++            android:layout_marginBottom="10dp"
+             android:layout_height="45dp"
+             android:layout_gravity="center"
+             android:textSize="14sp"
+@@ -34,16 +36,14 @@
+             android:background="?attr/colorOnSecondary"
+             android:textSize="30sp"
+             android:textColor="?attr/textFillColor"
+-            android:layout_marginStart="10dp"
+-            android:layout_marginEnd="10dp"/>
++            />
+ 
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_marginTop="5dp"
+-            android:layout_marginStart="10dp"
+-            android:layout_marginEnd="10dp"
++            android:layout_marginBottom="10dp"
+             android:background="?attr/colorOnSecondary"
+             android:weightSum="4">
+             <TextView
+@@ -81,6 +81,16 @@
+ 
+         </LinearLayout>
+ 
++        <androidx.recyclerview.widget.RecyclerView
++            android:id="@+id/Heroes_recyclerview"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:scrollbars="vertical"
++            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
++            tools:listitem="@layout/fragment_heroes_frame"
++            tools:ignore="MissingConstraints" />
++
++
+     </LinearLayout>
+ 
+ 
+Index: app/src/main/java/vn/edu/usth/opendota/ui/my_profile/MatchesFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.ui.my_profile;\r\n\r\nimport static android.content.ContentValues.TAG;\r\n\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport java.util.List;\r\n\r\nimport retrofit2.Call;\r\nimport retrofit2.Callback;\r\nimport retrofit2.Response;\r\nimport vn.edu.usth.opendota.R;\r\nimport vn.edu.usth.opendota.adapters.MatchesAdapter;\r\nimport vn.edu.usth.opendota.models.Matches;\r\nimport vn.edu.usth.opendota.retrofit.MatchesClient;\r\n\r\npublic class MatchesFragment extends Fragment {\r\n    private final MatchesAdapter matchesAdapter = new MatchesAdapter();\r\n    private MatchesClient client;\r\n    private RecyclerView recyclerView;\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {\r\n        return inflater.inflate(R.layout.fragment_matches, container, false);\r\n    }\r\n\r\n    public static MatchesFragment newInstance() {\r\n        MatchesFragment my_profilefrag2 = new MatchesFragment();\r\n        return my_profilefrag2;\r\n    }\r\n    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {\r\n        super.onViewCreated(view, savedInstanceState);\r\n        client = MatchesClient.getInstance(getContext());\r\n        recyclerView = view.findViewById(R.id.Matches_recyclerview);\r\n        setViews();\r\n        listeners();\r\n    }\r\n\r\n    private void setViews() {\r\n        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));\r\n        recyclerView.setAdapter(matchesAdapter);\r\n    }\r\n\r\n    private void listeners() {\r\n        client.getAPIService().getMatches(\"1296625\").enqueue(new Callback<List<Matches>>() {\r\n            @Override\r\n            public void onResponse(@NonNull Call<List<Matches>> call, @NonNull Response<List<Matches>> response) {\r\n                Log.d(TAG, \"onResponse: \" + response.body());\r\n                if (response.isSuccessful()) {\r\n                    List<Matches> matches = response.body();\r\n                    assert matches != null;\r\n                    for (Matches match : matches) {\r\n                        Log.d(TAG, \"hero ID: \" + match.getHeroID() + \", Kills: \" + match.getKills());\r\n                    }\r\n                    matchesAdapter.submit(matches);\r\n                } else {\r\n                    Log.e(TAG, \"Error code: \" + response.code() + \"Error Message:\" + response.message());\r\n                }\r\n            }\r\n\r\n            @Override\r\n            public void onFailure(@NonNull Call<List<Matches>> call, @NonNull Throwable t) {\r\n                Log.e(TAG, \"Failure: \" + t.getMessage());\r\n            }\r\n        });\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/MatchesFragment.java b/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/MatchesFragment.java
+--- a/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/MatchesFragment.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/MatchesFragment.java	(date 1728373425024)
+@@ -22,11 +22,11 @@
+ import vn.edu.usth.opendota.R;
+ import vn.edu.usth.opendota.adapters.MatchesAdapter;
+ import vn.edu.usth.opendota.models.Matches;
+-import vn.edu.usth.opendota.retrofit.MatchesClient;
++import vn.edu.usth.opendota.retrofit.ApiClient;
+ 
+ public class MatchesFragment extends Fragment {
+     private final MatchesAdapter matchesAdapter = new MatchesAdapter();
+-    private MatchesClient client;
++    private ApiClient client;
+     private RecyclerView recyclerView;
+ 
+     @Override
+@@ -45,7 +45,7 @@
+     }
+     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+         super.onViewCreated(view, savedInstanceState);
+-        client = MatchesClient.getInstance(getContext());
++        client = ApiClient.getInstance();
+         recyclerView = view.findViewById(R.id.Matches_recyclerview);
+         setViews();
+         listeners();
+@@ -64,9 +64,6 @@
+                 if (response.isSuccessful()) {
+                     List<Matches> matches = response.body();
+                     assert matches != null;
+-                    for (Matches match : matches) {
+-                        Log.d(TAG, "hero ID: " + match.getHeroID() + ", Kills: " + match.getKills());
+-                    }
+                     matchesAdapter.submit(matches);
+                 } else {
+                     Log.e(TAG, "Error code: " + response.code() + "Error Message:" + response.message());
+Index: app/src/main/java/vn/edu/usth/opendota/ui/my_profile/HeroesFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.ui.my_profile;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport vn.edu.usth.opendota.R;\r\n\r\npublic class HeroesFragment extends Fragment {\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {\r\n        return inflater.inflate(R.layout.fragment_heroes, container, false);\r\n    }\r\n\r\n    public static HeroesFragment newInstance() {\r\n        HeroesFragment my_profilefrag3 = new HeroesFragment();\r\n        return my_profilefrag3;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/HeroesFragment.java b/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/HeroesFragment.java
+--- a/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/HeroesFragment.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/HeroesFragment.java	(date 1728373425024)
+@@ -1,15 +1,33 @@
+ package vn.edu.usth.opendota.ui.my_profile;
+ 
++import static android.content.ContentValues.TAG;
++
+ import android.os.Bundle;
++import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
+ import androidx.fragment.app.Fragment;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
+ 
++import java.util.List;
++
++import retrofit2.Call;
++import retrofit2.Callback;
++import retrofit2.Response;
+ import vn.edu.usth.opendota.R;
++import vn.edu.usth.opendota.adapters.HeroesAdapters;
++import vn.edu.usth.opendota.models.Heroes;
++import vn.edu.usth.opendota.retrofit.ApiClient;
+ 
+ public class HeroesFragment extends Fragment {
++    private HeroesAdapters heroesAdapter = new HeroesAdapters();
++    private ApiClient client;
++    private RecyclerView recyclerView;
+ 
+     @Override
+     public void onCreate(Bundle savedInstanceState) {
+@@ -22,7 +40,42 @@
+     }
+ 
+     public static HeroesFragment newInstance() {
+-        HeroesFragment my_profilefrag3 = new HeroesFragment();
+-        return my_profilefrag3;
++        return new HeroesFragment();
+     }
+-}
+\ No newline at end of file
++
++    @Override
++    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
++        super.onViewCreated(view, savedInstanceState);
++        client = ApiClient.getInstance();
++        recyclerView = view.findViewById(R.id.Heroes_recyclerview);
++        setViews();
++        listeners();
++    }
++
++    private void setViews() {
++        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
++        recyclerView.setAdapter(heroesAdapter);
++    }
++
++    private void listeners() {
++        client.getAPIService().getHeroes("1296625").enqueue(new Callback<List<Heroes>>() {
++            @Override
++            public void onResponse(@NonNull Call<List<Heroes>> call, @NonNull Response<List<Heroes>> response) {
++                Log.d(TAG, "onResponse: " + response.body());
++                if (response.isSuccessful()) {
++                    List<Heroes> heroes = response.body();
++                    if (heroes != null) {
++                        heroesAdapter.submit(heroes);
++                    }
++                } else {
++                    Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
++                }
++            }
++
++            @Override
++            public void onFailure(@NonNull Call<List<Heroes>> call, @NonNull Throwable t) {
++                Log.e(TAG, "Failure: " + t.getMessage());
++            }
++        });
++    }
++}
+Index: app/src/main/java/vn/edu/usth/opendota/ui/my_profile/OverviewFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.ui.my_profile;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport vn.edu.usth.opendota.R;\r\n\r\npublic class OverviewFragment extends Fragment {\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {\r\n        return inflater.inflate(R.layout.fragment_overview, container, false);\r\n    }\r\n\r\n    public static OverviewFragment newInstance() {\r\n        OverviewFragment my_profilefrag1 = new OverviewFragment();\r\n        return my_profilefrag1;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/OverviewFragment.java b/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/OverviewFragment.java
+--- a/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/OverviewFragment.java	(revision 18e56eb2c62f35ff58fdb6785b18631f5a23b6c1)
++++ b/app/src/main/java/vn/edu/usth/opendota/ui/my_profile/OverviewFragment.java	(date 1728373425025)
+@@ -1,28 +1,83 @@
+ package vn.edu.usth.opendota.ui.my_profile;
+ 
+ import android.os.Bundle;
++import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
+ import androidx.fragment.app.Fragment;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
+ 
++import java.util.List;
++
++import retrofit2.Call;
++import retrofit2.Callback;
++import retrofit2.Response;
+ import vn.edu.usth.opendota.R;
++import vn.edu.usth.opendota.adapters.MatchesAdapter;
++import vn.edu.usth.opendota.models.Matches;
++import vn.edu.usth.opendota.retrofit.ApiClient;
++import vn.edu.usth.opendota.retrofit.ApiService;
+ 
+ public class OverviewFragment extends Fragment {
+ 
++    private RecyclerView recyclerView;
++    private MatchesAdapter matchesAdapter;
++
+     @Override
+     public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+     }
+ 
++    @Nullable
+     @Override
+-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+-        return inflater.inflate(R.layout.fragment_overview, container, false);
++    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
++        View view = inflater.inflate(R.layout.fragment_overview, container, false);
++
++        recyclerView = view.findViewById(R.id.Matches_recyclerview);
++        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
++
++        matchesAdapter = new MatchesAdapter();
++        recyclerView.setAdapter(matchesAdapter);
++
++        String playerId = "1296625";
++        fetchMatchesData(playerId);
++
++        return view;
++    }
++
++    private void fetchMatchesData(String playerId) {
++        ApiService apiService = ApiClient.getInstance().getAPIService();
++        Call<List<Matches>> call = apiService.getMatches(playerId);
++
++        call.enqueue(new Callback<List<Matches>>() {
++            @Override
++            public void onResponse(@NonNull Call<List<Matches>> call, @NonNull Response<List<Matches>> response) {
++                if (response.isSuccessful()) {
++                    List<Matches> matches = response.body();
++                    if (matches != null) {
++                        for (Matches match : matches) {
++                            Log.d("OverviewFragment", "Hero ID: " + match.getHeroID() + ", Kills: " + match.getKills());
++                        }
++                        matchesAdapter.submit(matches);
++                    }
++                } else {
++                    Log.e("OverviewFragment", "Error code: " + response.code() + " Error Message: " + response.message());
++                }
++            }
++
++            @Override
++            public void onFailure(@NonNull Call<List<Matches>> call, @NonNull Throwable t) {
++                Log.e("OverviewFragment", "Failure: " + t.getMessage());
++            }
++        });
+     }
+ 
+     public static OverviewFragment newInstance() {
+-        OverviewFragment my_profilefrag1 = new OverviewFragment();
+-        return my_profilefrag1;
++        return new OverviewFragment();
+     }
+-}
+\ No newline at end of file
++}

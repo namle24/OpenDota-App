@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/backgroundColor"
     android:fillViewport="true"
     android:orientation="vertical">
 
@@ -64,7 +63,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="Mode"
                 android:textSize="15sp"
@@ -103,12 +102,7 @@
             android:layout_height="1dp"
             android:background="?attr/colorOnSecondary" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/Matches_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/fragment_matches_frame" />
+        <include layout="@layout/recycleview_match"/>
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
