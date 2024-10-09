@@ -31,7 +31,7 @@ public class SearchFragment extends Fragment {
     private ApiClient client;
     private RecyclerView recyclerView;
     private SearchView searchView;
-    private List<Profile> profileList = new ArrayList<>();  // Lưu danh sách người chơi
+    private List<Profile> profileList = new ArrayList<>();
 
     public static SearchFragment newInstance() {
         return new SearchFragment();
@@ -47,10 +47,10 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
-        searchView = view.findViewById(R.id.search_view); // Lấy SearchView từ layout
+        searchView = view.findViewById(R.id.search_view);
         setViews();
         listeners();
-        setupSearch();  // Thiết lập lắng nghe tìm kiếm
+        setupSearch();
     }
 
     private void setViews() {
@@ -70,7 +70,7 @@ public class SearchFragment extends Fragment {
                             profileList = profileList.subList(0, 30);
                         }
                     }
-                    profileAdapters.submit(profileList); // Hiển thị danh sách ban đầu
+                    profileAdapters.submit(profileList);
                 } else {
                     Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
                 }
@@ -87,18 +87,17 @@ public class SearchFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;  // Không xử lý gì khi nhấn "submit"
+                return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filterProfiles(newText);  // Lọc danh sách khi người dùng nhập liệu
+                filterProfiles(newText);
                 return true;
             }
         });
     }
 
-    // Hàm lọc danh sách người chơi
     private void filterProfiles(String query) {
         List<Profile> filteredList = new ArrayList<>();
         for (Profile profile : profileList) {
@@ -106,6 +105,6 @@ public class SearchFragment extends Fragment {
                 filteredList.add(profile);
             }
         }
-        profileAdapters.submit(filteredList);  // Cập nhật lại danh sách hiển thị
+        profileAdapters.submit(filteredList);
     }
 }

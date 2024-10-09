@@ -28,9 +28,9 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
 
     @SuppressLint("NotifyDataSetChanged")
     public void submit(List<Profile> newList) {
-        profiles.clear();  // Clear the current list
-        profiles.addAll(newList);  // Add the new list items
-        notifyDataSetChanged();  // Update the UI
+        profiles.clear();
+        profiles.addAll(newList);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -82,7 +82,6 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
 
         holder.heart.setSelected(item.getFavourite());
 
-        // Toggle favorite state on heart button click
         holder.heart.setOnClickListener(v -> {
             boolean newState = !holder.heart.isSelected();
             holder.heart.setSelected(newState);
