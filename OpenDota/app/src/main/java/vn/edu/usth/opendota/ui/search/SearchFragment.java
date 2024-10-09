@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,6 +30,8 @@ public class SearchFragment extends Fragment {
     private final ProfileAdapters profileAdapters = new ProfileAdapters();
     private ApiClient client;
     private RecyclerView recyclerView;
+    private SearchView searchView;
+    private List<Profile> profileList = new ArrayList<>();
 
     public static SearchFragment newInstance() {
         return new SearchFragment();
@@ -43,8 +47,10 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
+        searchView = view.findViewById(R.id.search_view);
         setViews();
         listeners();
+        setupSearch();
     }
 
     private void setViews() {
@@ -58,15 +64,15 @@ public class SearchFragment extends Fragment {
             public void onResponse(@NonNull Call<List<Profile>> call, @NonNull Response<List<Profile>> response) {
                 Log.d(TAG, "onResponse: " + response.body());
                 if (response.isSuccessful()) {
-                    List<Profile> profile = response.body();
-                    if (profile != null) {
-                        if (profile.size() > 15) {
-                            profile = profile.subList(0, 15);
+                    profileList = response.body();
+                    if (profileList != null) {
+                        if (profileList.size() > 30) {
+                            profileList = profileList.subList(0, 30);
                         }
                     }
-                    profileAdapters.submit(profile);
+                    profileAdapters.submit(profileList);
                 } else {
-                    Log.e(TAG, "Error code: " + response.code() + "Error Message:" + response.message());
+                    Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
                 }
             }
 
@@ -75,5 +81,30 @@ public class SearchFragment extends Fragment {
                 Log.e(TAG, "Failure: " + t.getMessage());
             }
         });
+    }
+
+    private void setupSearch() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterProfiles(newText);
+                return true;
+            }
+        });
+    }
+
+    private void filterProfiles(String query) {
+        List<Profile> filteredList = new ArrayList<>();
+        for (Profile profile : profileList) {
+            if (profile.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(profile);
+            }
+        }
+        profileAdapters.submit(filteredList);
     }
 }

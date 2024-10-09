@@ -28,7 +28,8 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
 
     @SuppressLint("NotifyDataSetChanged")
     public void submit(List<Profile> newList) {
-        profiles = newList;
+        profiles.clear();
+        profiles.addAll(newList);
         notifyDataSetChanged();
     }
 
@@ -45,7 +46,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         public final ImageView profile_avar;
         private final TextView profile_id;
         private final TextView profile_name;
-        private ImageButton heart;
+        private final ImageButton heart;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,11 +86,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
             boolean newState = !holder.heart.isSelected();
             holder.heart.setSelected(newState);
             item.setFavourite(newState);
-            Log.d(TAG, "Heart button clicked");
+            Log.d(TAG, "Heart button clicked, new state: " + newState);
         });
-
-
-
     }
-
 }
