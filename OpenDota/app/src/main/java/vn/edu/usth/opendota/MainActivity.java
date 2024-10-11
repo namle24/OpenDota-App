@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
-import vn.edu.usth.opendota.ui.favourite.FavouriteFragment;
+import vn.edu.usth.opendota.ui.favourite.FavoriteFragment;
 import vn.edu.usth.opendota.ui.home.HomeFragment;
 import vn.edu.usth.opendota.ui.my_profile.MyProfileFragment;
 import vn.edu.usth.opendota.ui.search.SearchFragment;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new MyProfileFragment());
                     toolbar.setTitle("My Profile");
                 } else if (id == R.id.nav_favourite) {
-                    replaceFragment(new FavouriteFragment());
+                    replaceFragment(new FavoriteFragment());
                     toolbar.setTitle("Favourite");
                 } else if (id == R.id.nav_search) {
                     replaceFragment(new SearchFragment());

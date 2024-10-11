@@ -4,11 +4,10 @@
     android:id="@+id/profile_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/gradient_bground_white"
+    android:background="?attr/colorSecondary"
     android:layout_marginBottom="5dp"
     android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:padding="10dp">
+    android:layout_marginEnd="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_avar"
@@ -37,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="Namlee"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textSize="22dp"/>
             <View
                 style="@style/Divider"
@@ -54,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/textFillColor"
                     android:textSize="22dp"
                     android:layout_marginEnd="5dp"
                     android:text="ID:" />
@@ -65,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:text="123746324234"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/textFillColor"
                     android:textSize="22dp"/>
             </LinearLayout>
         </LinearLayout>
@@ -74,6 +73,7 @@
             android:id="@+id/heart_button"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
+            android:contentDescription="fav"
             android:src="@drawable/heart_icon"
             android:background="@android:color/transparent"
             android:layout_marginRight="10dp"

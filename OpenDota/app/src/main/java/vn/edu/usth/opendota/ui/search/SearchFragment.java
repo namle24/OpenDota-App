@@ -2,6 +2,7 @@ package vn.edu.usth.opendota.ui.search;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ import vn.edu.usth.opendota.models.Profile;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class SearchFragment extends Fragment {
-    private final ProfileAdapters profileAdapters = new ProfileAdapters();
+    private ProfileAdapters profileAdapters;
     private ApiClient client;
     private RecyclerView recyclerView;
     private SearchView searchView;
@@ -48,6 +49,7 @@ public class SearchFragment extends Fragment {
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
         searchView = view.findViewById(R.id.search_view);
+        profileAdapters = new ProfileAdapters(requireContext());
         setViews();
         listeners();
         setupSearch();
