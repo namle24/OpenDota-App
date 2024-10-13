@@ -3,14 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/backgroundColor">
 
    <androidx.appcompat.widget.SearchView
        android:id="@+id/search_view"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:iconifiedByDefault="false"
-       android:queryHint="Search Users" />
+       android:queryHint="Search Users"
+       android:background="?attr/colorSecondary"
+       android:text="?attr/textFillColor"/>
 
 
    <androidx.recyclerview.widget.RecyclerView
@@ -19,6 +22,7 @@
        android:id="@+id/Matches_recyclerview"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:background="?attr/backgroundColor"
        android:scrollbars="vertical"
        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
        tools:listitem="@layout/fragment_profile_frame"

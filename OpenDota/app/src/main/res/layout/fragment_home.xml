@@ -12,9 +12,9 @@
     <RelativeLayout
         android:id="@+id/khunghome_1"
         android:layout_width="match_parent"
-        android:layout_height="195sp"
+        android:layout_height="220dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:background="?attr/colorOnSecondary"
         tools:ignore="MissingConstraints">
@@ -41,63 +41,60 @@
         </ImageView>
 
         <TextView
-            android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="90sp"
-            android:layout_marginEnd="20sp"
-            android:layout_marginBottom="17sp"
             android:text="Open source Dota 2 data platform"
             android:textAlignment="center"
             android:textColor="?attr/textFillColor"
-            android:textSize="25sp">
+            android:textSize="22sp">
         </TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_below="@+id/text1"
-            app:cardBackgroundColor="@color/white"
-            android:layout_marginEnd="20dp">
+            android:layout_marginTop="160dp"
+            android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:background="@drawable/steam_icon"
-                android:contentDescription="Login">
+                android:src="@drawable/steam_icon"
+                app:tint="@color/black">
             </ImageView>
 
             <Button
                 android:id="@+id/btnSteamLogin"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:text="Login for automatic replay parsing "
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="Login for automatic replay parsing"
                 android:textColor="?attr/textFillColor"
-                android:textSize="18sp">
+                android:textSize="20sp">
             </Button>
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
         </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
-        android:weightSum="2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_below="@+id/khunghome_1"
         android:id="@+id/khunghome_2">
 
         <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="220dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="288dp"
             android:background="?attr/colorOnSecondary"
@@ -122,20 +119,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
-                android:maxLines="5"
                 android:text="All project code is open source and available for contributors to improve and modify."
                 android:textColor="?attr/textFillColor"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
+            android:layout_below="@+id/khunghome_1"
+            android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
             android:background="?attr/colorOnSecondary"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -162,29 +160,27 @@
                 android:text="Parsing replay files provides highly detailed match data."
                 android:textAlignment="center"
                 android:textColor="?attr/textFillColor"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
     </LinearLayout>
 
 
 
-    <LinearLayout
-        android:layout_below="@+id/khunghome_2"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:background="?attr/colorOnSecondary">
 
         <ImageView
             android:id="@+id/magic"
-            android:layout_width="65dp"
+            android:layout_width="97dp"
             android:layout_height="67dp"
-            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:src="@drawable/magic_icon" />
 
@@ -192,7 +188,8 @@
             android:id="@+id/text9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:gravity="top"
             android:text="Free of Charge"
             android:textColor="#03A9F4"
             android:textSize="24sp" />
@@ -201,15 +198,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text9"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:text="Server are funded by sponsors and volunteers maintain the code, so the service is offered free of charge."
             android:textColor="?attr/textFillColor"
             android:textSize="18sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

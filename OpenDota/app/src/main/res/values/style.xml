@@ -31,7 +31,7 @@
     </style>
 
     <style name="AppTheme.ClassicDark" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="colorPrimary">#DC1D1D1D</item>
+        <item name="colorPrimary">#DC2F2E2E</item>
         <item name="colorPrimaryVariant">#3700b3</item>
         <item name="colorOnPrimary">#ffffff</item>
         <item name="colorSecondary">#353935</item>
@@ -41,12 +41,12 @@
     </style>
 
     <style name="AppTheme.PearlDark" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="colorPrimary">#B2DFDB</item>
+        <item name="colorPrimary">#4A9287</item>
         <item name="colorPrimaryVariant">#0f172a</item>
         <item name="colorOnPrimary">#000000</item>
         <item name="colorSecondary">#637272</item>
         <item name="colorOnSecondary">#1e3434</item>
-        <item name="textFillColor">#ffffff</item>
+        <item name="textFillColor">#000000</item>
         <item name="backgroundColor">#0d2424</item>
     </style>
 </resources>
