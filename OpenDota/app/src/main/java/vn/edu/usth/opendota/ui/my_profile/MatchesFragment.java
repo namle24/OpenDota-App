@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,7 +26,7 @@ import vn.edu.usth.opendota.models.Matches;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class MatchesFragment extends Fragment {
-    private final MatchesAdapter matchesAdapter = new MatchesAdapter();
+    private final MatchesAdapter matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
     private ApiClient client;
     private RecyclerView recyclerView;
 

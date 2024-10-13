@@ -1,85 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorSecondary"
-    android:layout_marginBottom="5dp"
     android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp">
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="5dp"
+    android:background="?attr/colorSecondary">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_avar"
-        android:layout_width="60dp"
-        android:layout_height="70dp"
-        tools:src="@drawable/avarta2" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/profile_avar"
-        android:layout_marginStart="10dp"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_toEndOf="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="3">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_avar"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            tools:src="@drawable/avarta2" />
 
-            <TextView
-                android:id="@+id/profile_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Namlee"
-                android:singleLine="true"
-                android:textColor="?attr/textFillColor"
-                android:textSize="22dp"/>
-            <View
-                style="@style/Divider"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/profile_avar"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/ID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt"
-                    android:singleLine="true"
-                    android:textColor="?attr/textFillColor"
-                    android:textSize="22dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="ID:" />
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/img"
+                android:layout_weight="3"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profile_id"
+                    android:id="@+id/profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="123746324234"
                     android:singleLine="true"
+                    android:text="Namlee"
                     android:textColor="?attr/textFillColor"
-                    android:textSize="22dp"/>
+                    android:textSize="22dp" />
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="5dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/ID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt"
+                        android:layout_marginEnd="5dp"
+                        android:singleLine="true"
+                        android:text="ID:"
+                        android:textColor="?attr/textFillColor"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/profile_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="123746324234"
+                        android:textColor="?attr/textFillColor"
+                        android:textSize="22dp" />
+                </LinearLayout>
             </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/heart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:contentDescription="fav"
+                android:src="@drawable/heart_icon"
+                tools:ignore="ObsoleteLayoutParam" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/heart_button"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:contentDescription="fav"
-            android:src="@drawable/heart_icon"
-            android:background="@android:color/transparent"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            tools:ignore="ObsoleteLayoutParam" />
     </LinearLayout>
-</RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -7,6 +7,7 @@ import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
 import static vn.edu.usth.opendota.utils.Db.getLobbyTypeNameById;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,12 @@ import vn.edu.usth.opendota.models.Matches;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
 
+    private final ArrayList<Matches> listRecentMatches;
     private List<Matches> matches = new ArrayList<>();
+
+    public MatchesAdapter(Context context, ArrayList<Matches> listRecentMatches) {
+        this.listRecentMatches = listRecentMatches;
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     public void submit(List<Matches> newList) {

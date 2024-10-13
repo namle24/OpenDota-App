@@ -2,7 +2,6 @@ package vn.edu.usth.opendota.ui.search;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.ProfileAdapters;
-import vn.edu.usth.opendota.models.Profile;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class SearchFragment extends Fragment {
@@ -32,7 +31,7 @@ public class SearchFragment extends Fragment {
     private ApiClient client;
     private RecyclerView recyclerView;
     private SearchView searchView;
-    private List<Profile> profileList = new ArrayList<>();
+    private List<ProPlayerProfile> proPlayerProfileList = new ArrayList<>();
 
     public static SearchFragment newInstance() {
         return new SearchFragment();
@@ -61,25 +60,25 @@ public class SearchFragment extends Fragment {
     }
 
     private void listeners() {
-        client.getAPIService().getProfile().enqueue(new Callback<List<Profile>>() {
+        client.getAPIService().getProfile().enqueue(new Callback<List<ProPlayerProfile>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Profile>> call, @NonNull Response<List<Profile>> response) {
+            public void onResponse(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Response<List<ProPlayerProfile>> response) {
                 Log.d(TAG, "onResponse: " + response.body());
                 if (response.isSuccessful()) {
-                    profileList = response.body();
-                    if (profileList != null) {
-                        if (profileList.size() > 30) {
-                            profileList = profileList.subList(0, 30);
+                    proPlayerProfileList = response.body();
+                    if (proPlayerProfileList != null) {
+                        if (proPlayerProfileList.size() > 30) {
+                            proPlayerProfileList = proPlayerProfileList.subList(0, 30);
                         }
                     }
-                    profileAdapters.submit(profileList);
+                    profileAdapters.submit(proPlayerProfileList);
                 } else {
                     Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Profile>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Failure: " + t.getMessage());
             }
         });
@@ -101,10 +100,10 @@ public class SearchFragment extends Fragment {
     }
 
     private void filterProfiles(String query) {
-        List<Profile> filteredList = new ArrayList<>();
-        for (Profile profile : profileList) {
-            if (profile.getName().toLowerCase().contains(query.toLowerCase())) {
-                filteredList.add(profile);
+        List<ProPlayerProfile> filteredList = new ArrayList<>();
+        for (ProPlayerProfile proPlayerProfile : proPlayerProfileList) {
+            if (proPlayerProfile.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(proPlayerProfile);
             }
         }
         profileAdapters.submit(filteredList);

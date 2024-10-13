@@ -21,7 +21,7 @@ import java.util.List;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.ProfileAdapters;
-import vn.edu.usth.opendota.models.Profile;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public class FavoriteFragment extends Fragment {
 
@@ -46,18 +46,18 @@ public class FavoriteFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Load danh sách yêu thích
-        List<Profile> favouriteProfiles = getFavourites();
-        adapter.submit(favouriteProfiles);
+        List<ProPlayerProfile> favouriteProPlayerProfiles = getFavourites();
+        adapter.submit(favouriteProPlayerProfiles);
     }
 
 
     // Lấy danh sách profile yêu thích từ SharedPreferences
-    private List<Profile> getFavourites() {
+    private List<ProPlayerProfile> getFavourites() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("favorite_profiles", getContext().MODE_PRIVATE);
         String json = sharedPreferences.getString("favorites_list", null);
         if (json != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<Profile>>() {}.getType();
+            Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
             return gson.fromJson(json, type);
         }
         return new ArrayList<>();

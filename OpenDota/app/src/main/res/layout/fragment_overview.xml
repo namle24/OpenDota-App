@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".searchplayerfragment.MatchesHistoryFragment"
-        android:padding="15dp">
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:id="@+id/header"
@@ -22,18 +22,18 @@
             android:background="?attr/colorOnSecondary">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/A_image"
+                android:id="@+id/ow_avar"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/avatar_1"
+                tools:src="@drawable/avatar_1"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 tools:ignore="MissingClass" />
             <TextView
-                android:id="@+id/A_name"
+                android:id="@+id/ow_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Minh"
+                tools:text="Minh"
                 android:textStyle="bold"
                 android:textColor="?attr/textFillColor"
                 android:textAlignment="center"
@@ -45,39 +45,40 @@
                 android:weightSum="9"
                 android:layout_marginTop="10dp">
                 <TextView
-                    android:id="@+id/tv_win"
+                    android:id="@+id/ow_win"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:textColor="@color/wins_winrate"
-                    android:text="WINS\n211"
+                    tools:text="WINS\n211"
                     android:textSize="@dimen/wins_loses_winrate"
                     android:textAlignment="center"/>
                 <TextView
-                    android:id="@+id/losses"
+                    android:id="@+id/ow_lose"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="LOSSES\n207"
+                    tools:text="LOSSES\n207"
                     android:textColor="@color/lose_winrate"
                     android:textSize="@dimen/wins_loses_winrate"
                     android:textAlignment="center"/>
                 <TextView
-                    android:id="@+id/winrate"
+                    android:id="@+id/ow_winrate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="WINRATE\n50.48%"
+                    tools:text="WINRATE\n50.48%"
                     android:textColor="@color/wins_winrate"
                     android:textSize="@dimen/wins_loses_winrate"
                     android:textAlignment="center"/>
             </LinearLayout>
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ow_ranked"
                 android:layout_width="70dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/rank_icon_8"
+                tools:src="@drawable/rank_icon_8"
                 />
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -91,10 +92,10 @@
                 android:secondaryProgressTint="@color/looseProgress"
                 style="@android:style/Widget.ProgressBar.Horizontal"/>
             <TextView
-                android:id="@+id/profile_steam"
+                android:id="@+id/ow_profile_steam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/link_steamid"
+                tools:text="@string/link_steamid"
                 android:textColorLink="?attr/textFillColor"
                 android:padding="15dp"
                 android:textSize="15sp"
@@ -102,7 +103,5 @@
                 android:autoLink="web"
                 android:linksClickable="true"/>
         </LinearLayout>
-
-        <include layout="@layout/recycleview_match"/>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

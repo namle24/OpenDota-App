@@ -1,11 +1,8 @@
 package vn.edu.usth.opendota.adapters;
 
-import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,22 +22,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.usth.opendota.R;
-import vn.edu.usth.opendota.models.Profile;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHolder> {
 
-    private List<Profile> profiles = new ArrayList<>();
+    private List<ProPlayerProfile> proPlayerProfiles = new ArrayList<>();
     private Context context;
 
     public ProfileAdapters(Context context) {
         this.context = context;
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void submit(List<Profile> newList) {
-        profiles.clear();
-        profiles.addAll(newList);
+    public void submit(List<ProPlayerProfile> newList) {
+        proPlayerProfiles.clear();
+        proPlayerProfiles.addAll(newList);
         notifyDataSetChanged();
     }
 
@@ -61,79 +57,66 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             profile_name = itemView.findViewById(R.id.profile_name);
             profile_avar = itemView.findViewById(R.id.profile_avar);
             profile_id = itemView.findViewById(R.id.profile_id);
             heart = itemView.findViewById(R.id.heart_button);
         }
-
     }
 
     @Override
     public int getItemCount() {
-        return profiles.size();
+        return proPlayerProfiles.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProfileAdapters.ViewHolder holder, int position) {
-        Profile item = profiles.get(position);
-
-        // Hiển thị thông tin người dùng
+        ProPlayerProfile item = proPlayerProfiles.get(position);
         holder.profile_id.setText(String.valueOf(item.getAccountID()));
         holder.profile_name.setText(item.getName());
-        String avatarUrl = (String) item.getAvatarfull(); // Ép kiểu Object thành String
+        String avatarUrl = (String) item.getAvatarfull();
         if (avatarUrl != null && !avatarUrl.isEmpty()) {
             Picasso.get().load(avatarUrl).into(holder.profile_avar);
         } else {
-            // Nếu avatar URL không hợp lệ, dùng ảnh mặc định
             holder.profile_avar.setImageResource(R.drawable.no_item);
-        };
-
-        // Kiểm tra xem profile này có phải là yêu thích không
+        }
         boolean isFavourite = checkIfFavourite(item);
         holder.heart.setSelected(isFavourite);
 
-        // Xử lý sự kiện khi bấm vào nút trái tim
         holder.heart.setOnClickListener(v -> {
             boolean newState = !holder.heart.isSelected();
             holder.heart.setSelected(newState);
 
             if (newState) {
-                // Thêm profile vào danh sách yêu thích
                 addToFavourites(item);
             } else {
-                // Bỏ profile khỏi danh sách yêu thích
                 removeFromFavourites(item);
             }
         });
     }
 
-    // Hàm kiểm tra nếu profile đã nằm trong danh sách yêu thích
-    private boolean checkIfFavourite(Profile profile) {
-        List<Profile> favourites = getFavourites();
-        for (Profile fav : favourites) {
-            if (fav.getAccountID() == profile.getAccountID()) {
+    private boolean checkIfFavourite(ProPlayerProfile proPlayerProfile) {
+        List<ProPlayerProfile> favourites = getFavourites();
+        for (ProPlayerProfile fav : favourites) {
+            if (fav.getAccountID() == proPlayerProfile.getAccountID()) {
                 return true;
             }
         }
         return false;
     }
 
-    // Lấy danh sách profile yêu thích từ SharedPreferences
-    private List<Profile> getFavourites() {
+    private List<ProPlayerProfile> getFavourites() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("favorite_profiles", Context.MODE_PRIVATE);
         String json = sharedPreferences.getString("favorites_list", null);
         if (json != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<Profile>>() {}.getType();
+            Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
             return gson.fromJson(json, type);
         }
         return new ArrayList<>();
     }
 
-    // Lưu danh sách yêu thích vào SharedPreferences
-    private void saveFavourites(List<Profile> favourites) {
+    private void saveFavourites(List<ProPlayerProfile> favourites) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("favorite_profiles", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
@@ -142,17 +125,15 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         editor.apply();
     }
 
-    // Thêm profile vào danh sách yêu thích
-    private void addToFavourites(Profile profile) {
-        List<Profile> favourites = getFavourites();
-        favourites.add(profile);
+    private void addToFavourites(ProPlayerProfile proPlayerProfile) {
+        List<ProPlayerProfile> favourites = getFavourites();
+        favourites.add(proPlayerProfile);
         saveFavourites(favourites);
     }
 
-    // Xóa profile khỏi danh sách yêu thích
-    private void removeFromFavourites(Profile profile) {
-        List<Profile> favourites = getFavourites();
-        favourites.removeIf(fav -> fav.getAccountID() == profile.getAccountID());
+    private void removeFromFavourites(ProPlayerProfile proPlayerProfile) {
+        List<ProPlayerProfile> favourites = getFavourites();
+        favourites.removeIf(fav -> fav.getAccountID() == proPlayerProfile.getAccountID());
         saveFavourites(favourites);
     }
 }
