@@ -1,520 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_item_file"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    app:cardElevation="10dp"
+    android:padding="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="4dp"
-        app:cardElevation="10dp"
-        android:padding="3dp">
+        android:background="#DD262738"
+        android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hero_1">
+            android:text="Pudge"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@color/onyx"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Obisidian Destroyer"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/white">
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="0.25"
-                        android:gravity="center"
-                        android:src="@drawable/obsidian_destroyer_full"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="425"
-                        android:paddingLeft="20dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="57.14%"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="13 days"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/hero_2">
+            android:layout_height="3dp"
+            android:background="@color/light_blue">
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@color/onyx"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Crystal Maiden"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/white">
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="0.25"
-                        android:gravity="center"
-                        android:src="@drawable/crystal_maiden_full"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="316"
-                        android:paddingLeft="20dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="56.69%"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="14 days"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/hero_3">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/rm_hero"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:src="@drawable/antim"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                />
+            <TextView
+                android:id="@+id/re_mode"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@color/onyx"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mirana"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/white">
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="0.25"
-                        android:gravity="center"
-                        android:src="@drawable/mirana_full"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="106"
-                        android:paddingLeft="20dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="17.14%"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="14 days"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/hero_4">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_weight="0.25"
+                android:text="7"
+                android:paddingLeft="20dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/rm_ended"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@color/onyx"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mars"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/white">
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="0.25"
-                        android:gravity="center"
-                        android:src="@drawable/mars_full"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="211"
-                        android:paddingLeft="20dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="47.34%"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="14 days"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/hero_5">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:text="57.14%"
+                android:textColor="@color/white"
+                android:layout_weight="0.25"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/rm_length"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@color/onyx"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phoenix"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/white">
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="0.25"
-                        android:gravity="center"
-                        android:src="@drawable/phoenix_full"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="125"
-                        android:paddingLeft="20dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="53.24%"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="14 days"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/hero_6">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@color/onyx"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Antim"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/white">
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="0.25"
-                        android:gravity="center"
-                        android:src="@drawable/antim"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="93"
-                        android:paddingLeft="20dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="42.24%"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="16 days"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/hero_7">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@color/onyx"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Slardar"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="@color/white">
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="0.25"
-                        android:gravity="center"
-                        android:src="@drawable/slardar_full"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        />
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="80"
-                        android:paddingLeft="20dp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="50.24%"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="16 days"
-                        android:textColor="@color/white"
-                        android:layout_weight="0.25"
-                        android:layout_gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:text="6 year"
+                android:textColor="@color/white"
+                android:layout_weight="0.25"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 
 
-</ScrollView>
+</androidx.cardview.widget.CardView>

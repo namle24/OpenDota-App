@@ -1,94 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout1"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/CARD"
-    android:orientation="vertical">
+    android:background="@color/background"
+    android:clipToOutline="true">
 
     <RelativeLayout
-        android:id="@+id/khunghome_1"
+        android:id="@+id/rectangle_2"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="5dp"
-        android:background="@color/licorice"
-        tools:ignore="MissingConstraints">
+        android:layout_height="200dp"
+        android:background="@color/item">
 
         <TextView
+            android:id="@+id/text2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="45dp"
-            android:text="OPENDOTA"
-            android:gravity="left"
-            android:textColor="@color/white"
-            android:textSize="35sp">
-        </TextView>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="63dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="50dp"
-            android:src="@drawable/dota_2">
-
-        </ImageView>
-
-        <TextView
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="90sp"
-            android:text="Open source Dota 2 data platform"
-            android:textAlignment="center"
+            android:layout_marginTop="40dp"
+            android:gravity="top"
+            android:text="OPENDOTA"
             android:textColor="@color/white"
-            android:textSize="22sp">
-        </TextView>
+            android:textSize="40sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="20dp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="95dp"
+            android:gravity="top"
+            android:text="Open source Dota 2 data platform"
+            android:textColor="@color/white"
+            android:textSize="19sp" />
+
+        <RelativeLayout
+            android:id="@+id/frame_1"
+            android:layout_width="352dp"
+            android:layout_height="39dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="135dp"
+            android:background="@drawable/my_border"
+            android:clipToOutline="true">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/steam_icon">
-            </ImageView>
+                android:id="@+id/login_1"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/login_icon" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/text4"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="12dp"
+                android:gravity="top"
                 android:text="Login for automatic replay parsing"
                 android:textColor="@color/white"
-                android:textSize="20sp">
-            </TextView>
-        </LinearLayout>
+                android:textSize="18sp" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/ll_os_idd"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:id="@+id/khunghome_2">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rectangle_2"
+        android:layout_marginTop="5dp">
+
 
         <LinearLayout
-            android:layout_width="195dp"
-            android:layout_height="220dp"
-            android:layout_marginStart="5dp"
-
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="288dp"
-            android:background="@color/licorice"
+            android:id="@+id/rectangle_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/item"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -100,17 +93,20 @@
                 android:src="@drawable/open_source_icon" />
 
             <TextView
+                android:id="@+id/text5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="top"
                 android:text="Open Source"
-                android:textColor="#03A9F4"
+                android:textColor="@color/light_blue"
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/text6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 android:text="All project code is open source and available for contributors to improve and modify."
                 android:textColor="@color/white"
@@ -118,53 +114,53 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="195dp"
-            android:layout_height="220dp"
-            android:layout_below="@+id/khunghome_1"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:background="@color/licorice"
+            android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:id="@+id/rectangle_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@color/item">
 
             <ImageView
+                android:id="@+id/data_chart"
                 android:layout_width="65dp"
-                android:layout_height="75dp"
+                android:layout_height="67dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/stats_icon" />
+                android:src="@drawable/data_chart_icon" />
 
             <TextView
+                android:id="@+id/text7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="top"
-                android:text="In-Depth Data"
-                android:textColor="#03A9F4"
+                android:text="In_depth Data"
+                android:textColor="@color/light_blue"
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/text8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:text="Parsing replay files provides highly detailed match data."
-                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
-        </LinearLayout>
 
+        </LinearLayout>
     </LinearLayout>
 
 
-
     <RelativeLayout
+        android:id="@+id/rectangle_5"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@color/licorice">
+        android:layout_below="@id/ll_os_idd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@color/item">
 
         <ImageView
             android:id="@+id/magic"
@@ -181,7 +177,7 @@
             android:layout_centerInParent="true"
             android:gravity="top"
             android:text="Free of Charge"
-            android:textColor="#03A9F4"
+            android:textColor="@color/light_blue"
             android:textSize="24sp" />
 
         <TextView
@@ -197,6 +193,4 @@
             android:textSize="18sp" />
 
     </RelativeLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

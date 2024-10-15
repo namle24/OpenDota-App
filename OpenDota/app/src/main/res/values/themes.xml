@@ -1,8 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.OpenDota" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.OpenDota" parent="Base.Theme.OpenDota" />
@@ -17,7 +15,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.USTHOpenDotaClient.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.OpenDotaClient.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.USTHOpenDotaClient.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.OpenDotaClient.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

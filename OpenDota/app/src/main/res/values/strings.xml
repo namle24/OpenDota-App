@@ -14,5 +14,23 @@
     <string name="player_profile12">9 months</string>
     <string name="win">Win</string>
     <string name="item">item</string>
+    <string name="title_activity_favourites">Favourites</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_player_profile">playerProfile_Activity</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="favourites_toolbar">Favourites</string>
+
+    <string name="title_activity_search">Search_Activity</string>
+    <string name="title_activity_setting_fragment">SettingFragment</string>
+    <string name="title_activity_setting">SettingActivity</string>
 
 </resources>
