@@ -1,10 +1,13 @@
 package vn.edu.usth.opendota.ui.my_profile;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,8 +15,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,6 +33,8 @@ public class OverviewFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private MatchesAdapter matchesAdapter;
+    private TextView tvSteamName;
+    private CircleImageView ivAvatar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,23 @@ public class OverviewFragment extends Fragment {
 
         matchesAdapter = new MatchesAdapter();
         recyclerView.setAdapter(matchesAdapter);
+
+        tvSteamName = view.findViewById(R.id.tvSteamName);
+        ivAvatar = view.findViewById(R.id.ivAvatar);
+
+        // Lấy thông tin từ SharedPreferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("SteamPrefs", getActivity().MODE_PRIVATE);
+        String steamId = sharedPreferences.getString("steamId", "N/A");
+        String avatarUrl = sharedPreferences.getString("avatarUrl", "N/A");
+
+        // Hiển thị thông tin
+        tvSteamName.setText(steamId);
+        Glide.with(this).load(avatarUrl).into(ivAvatar);
+
+
+        tvSteamName.setText(steamId);
+        Glide.with(this).load(avatarUrl).into(ivAvatar);
+
 
         String playerId = "1296625";
         fetchMatchesData(playerId);

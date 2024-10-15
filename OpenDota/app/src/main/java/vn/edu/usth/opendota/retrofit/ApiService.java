@@ -20,5 +20,7 @@ public interface ApiService {
     @GET("proPlayers")
     Call<List<Profile>> getProfile();
 
+    @GET("profile/{accountId}")
+    Call<Profile> getProfileById(@Path("accountId") long accountId);
 }
 

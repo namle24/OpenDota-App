@@ -46,7 +46,7 @@
         <item name="colorOnPrimary">#000000</item>
         <item name="colorSecondary">#637272</item>
         <item name="colorOnSecondary">#1e3434</item>
-        <item name="textFillColor">#000000</item>
+        <item name="textFillColor">#E4E2E2</item>
         <item name="backgroundColor">#0d2424</item>
     </style>
 </resources>

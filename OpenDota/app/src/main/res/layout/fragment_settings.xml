@@ -2,7 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="?attr/backgroundColor">
 
     <RadioGroup
         android:id="@+id/theme_radio_group"
@@ -13,17 +14,20 @@
             android:id="@+id/theme_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textFillColor"
             android:text="Light" />
 
         <RadioButton
             android:id="@+id/theme_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textFillColor"
             android:text="Dark" />
 
         <RadioButton
             android:id="@+id/theme_classicLight"
             android:layout_width="wrap_content"
+            android:textColor="?attr/textFillColor"
             android:layout_height="wrap_content"
             android:text="Classic Light" />
 
@@ -31,12 +35,14 @@
             android:id="@+id/theme_classicDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textFillColor"
             android:text="Classic Dark" />
 
         <RadioButton
             android:id="@+id/theme_pearlDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textFillColor"
             android:text="Pearl Dark" />
     </RadioGroup>
 
