@@ -36,11 +36,6 @@ public class MainActivity extends AppCompatActivity {
         storedColor = sharedPreferences.getInt("selected_color", getResources().getColor(R.color.background));
         relativeLayoutSearch.setBackgroundColor(storedColor);
 
-//        // Player heroes fragment initial
-//        PlayerHeroesFragment firstFragment = new PlayerHeroesFragment();
-//        getSupportFragmentManager().beginTransaction().add(
-//                R.id.container, firstFragment
-//        ).commit();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,17 +56,15 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (id == R.id.nav_home) {
-//                    Toast toast = Toast.makeText(MainActivity.this, " Homw has been clicked", Toast.LENGTH_SHORT);
-//                    toast.show();
                     Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                if (id == R.id.nav_favourite) {
-                    Intent intent = new Intent(MainActivity.this, FavouritesActivity.class);
                     startActivity(intent);
                 }
                 if (id == R.id.nav_search) {
                     Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                    startActivity(intent);
+                }
+                if (id == R.id.nav_favourite) {
+                    Intent intent = new Intent(MainActivity.this, FavouritesActivity.class);
                     startActivity(intent);
                 }
                 if (id == R.id.nav_setting) {

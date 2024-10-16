@@ -41,12 +41,10 @@ android:background="@color/background">
     android:layout_height="match_parent"
     app:menu="@menu/navigation_item"
     app:itemTextColor="@color/white"
-    app:itemIconSize="45dp"
+    app:itemIconTint="@color/white"
     android:background="@color/item"
-    app:itemIconTint="@color/icon_color"
     app:insetForeground="#FFEB3B"
     android:layout_gravity="start"
-    android:theme="@style/NavigationView_line"
     android:fitsSystemWindows="true"
     tools:ignore="MissingConstraints"/>
 

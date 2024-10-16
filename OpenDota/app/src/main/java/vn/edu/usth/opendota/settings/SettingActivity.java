@@ -2,6 +2,7 @@ package vn.edu.usth.opendota.settings;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
@@ -52,6 +53,9 @@ public class SettingActivity extends AppCompatActivity {
                 int color = 0;
                 int text_color = 0;
                 int tool_bar_color = 0;
+                int background_color = 0;
+                int navigation_color = 0;
+                int navigation_icon_color = 0;
 
                 if (checkedId == R.id.Theme_Hyperfuse) {
                     color = getResources().getColor(R.color.hyper_fuse);
@@ -74,26 +78,32 @@ public class SettingActivity extends AppCompatActivity {
                     tool_bar_color = getResources().getColor(R.color.invisibility_bar);
                     Toast.makeText(SettingActivity.this, "Invisibility selected", Toast.LENGTH_SHORT).show();
                 } else if (checkedId == R.id.Theme_FUWA_FUWA_PINK) {
-                    color = getResources().getColor(R.color.pink);
+                    color = getResources().getColor(R.color.white);
                     text_color = getResources().getColor(R.color.black);
-                    tool_bar_color = getResources().getColor(R.color.pink_bar);
+                    tool_bar_color = getResources().getColor(R.color.pink);
+                    background_color = getResources().getColor(R.color.white);
+                    navigation_color = getResources().getColor(R.color.pink);
+                    navigation_icon_color = getResources().getColor(R.color.black);
                     Toast.makeText(SettingActivity.this, "Fuwa Fuwa pink selected", Toast.LENGTH_SHORT).show();
                 } else if (checkedId == R.id.Theme_NightDota) {
-                    color = getResources().getColor(R.color.night_dota);
+                    color = getResources().getColor(R.color.white);
                     text_color = getResources().getColor(R.color.white);
-                    tool_bar_color = getResources().getColor(R.color.night_dota_bar);
+                    tool_bar_color = getResources().getColor(R.color.licorice);
+                    background_color = getResources().getColor(R.color.black);
+                    navigation_color = getResources().getColor(R.color.CARD);
+                    navigation_icon_color = getResources().getColor(R.color.white);
                     Toast.makeText(SettingActivity.this, "Night dota selected", Toast.LENGTH_SHORT).show();
                 }
 
-                relativeLayoutSetting.setBackgroundColor(color);
+                relativeLayoutSetting.setBackgroundColor(background_color);
 
 
                 setRadioButtonsTextColor(text_color);
                 setToolbarBackgroundColor(tool_bar_color);
-
+                updateNavigationViewColors(navigation_color, navigation_icon_color);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("selected_color", color);
-//                editor.putInt("selected_text_color", text_color);
+                editor.putInt("selected_color", background_color);
+                editor.putInt("selected_text_color", text_color);
                 editor.apply();
             }
         });
@@ -161,6 +171,12 @@ public class SettingActivity extends AppCompatActivity {
     private void setToolbarBackgroundColor(int color) {
         Toolbar toolbar = findViewById(R.id.setting_toolbar);
         toolbar.setBackgroundColor(color);
+    }
+
+    private void updateNavigationViewColors(int navigation_color, int navigation_icon_color) {
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+        navigationView.setBackgroundColor(navigation_color);
+        navigationView.setItemIconTintList(ColorStateList.valueOf(navigation_icon_color));
     }
 }
 
