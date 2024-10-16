@@ -2,6 +2,9 @@ package vn.edu.usth.opendota.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.models.ProPlayerObj;
 import vn.edu.usth.opendota.ui.my_profile.overview.RecentMatchesAdapter;
 
-public abstract class SearchAdapters extends RecyclerView.Adapter<SearchAdapters.MyHolder>{
+
+public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyHolder>{
     private Context context;
     private ArrayList<ProPlayerObj> arrayListUser;
     private RecentMatchesAdapter recentMatchesAdapter;
@@ -29,9 +37,9 @@ public abstract class SearchAdapters extends RecyclerView.Adapter<SearchAdapters
 
 
 
-    private final String TAG = SearchAdapters.class.getSimpleName();
+    private final String TAG = SearchAdapter.class.getSimpleName();
 
-    public SearchAdapters(Context context, ArrayList<ProPlayerObj> arrayListUser, IOnSearchAdapterListener listener){
+    public SearchAdapter(Context context, ArrayList<ProPlayerObj> arrayListUser, IOnSearchAdapterListener listener){
         this.context = context;
         this.arrayListUser = arrayListUser;
         this.listener = listener;

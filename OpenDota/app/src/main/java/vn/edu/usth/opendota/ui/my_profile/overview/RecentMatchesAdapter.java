@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import vn.edu.usth.opendota.R;
-import vn.edu.usth.opendota.adapters.SearchAdapters;
+import vn.edu.usth.opendota.adapters.SearchAdapter;
 import vn.edu.usth.opendota.models.ProPlayerObj;
 import vn.edu.usth.opendota.models.RecentMatchesObj;
 
@@ -23,7 +23,7 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
     private Context context;
     private ArrayList<ProPlayerObj> arrayListUser;
     private ArrayList<RecentMatchesObj> arrayRecentMatches;
-    private final String TAG = SearchAdapters.class.getSimpleName();
+    private final String TAG = SearchAdapter.class.getSimpleName();
 
     public RecentMatchesAdapter(Context context, ArrayList<RecentMatchesObj> arrayRecentMatches) {
         this.context = context;
@@ -66,7 +66,7 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
         private TextView rmKDA;
 
 
-        public MyRecentMatchHolder(@NonNull View itemView) { // khai bao thanh phan co trong item_file
+        public MyRecentMatchHolder(@NonNull View itemView) {
             super(itemView);
             rmHero = itemView.findViewById(R.id.img);
             rmMode = itemView.findViewById(R.id.ID);

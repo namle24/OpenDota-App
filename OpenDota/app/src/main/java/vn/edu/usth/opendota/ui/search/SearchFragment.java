@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
-import vn.edu.usth.opendota.adapters.SearchAdapters;
+import vn.edu.usth.opendota.adapters.SearchAdapter;
 import vn.edu.usth.opendota.models.PlayerObj;
 import vn.edu.usth.opendota.models.PlayerWinLoss;
 import vn.edu.usth.opendota.models.ProPlayerObj;
@@ -32,7 +32,7 @@ public class SearchFragment extends Fragment {
     private final String TAG = SearchFragment.class.getSimpleName();
     private SearchView searchView;
     private RecyclerView recyclerView;
-    private SearchAdapters searchAdapter;
+    private SearchAdapter searchAdapter; // Corrected type
     private List<ProPlayerObj> listPlayer;
     private ArrayList<ProPlayerObj> arrayList;
     private List<ProPlayerObj> listFavorited;
@@ -42,17 +42,17 @@ public class SearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        recyclerView = view.findViewById(R.id.Matches_recyclerview);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());  // Fixed context issue
+        recyclerView = view.findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        searchView = view.findViewById(R.id.search_view);
+        searchView = view.findViewById(R.id.searchView);
         searchView.setIconified(false);
         searchView.clearFocus();
 
         listPlayer = new ArrayList<>();
         arrayList = new ArrayList<>();
-        searchAdapter = new SearchAdapters(requireContext(), arrayList, new SearchAdapters.IOnSearchAdapterListener() {
+        searchAdapter = new SearchAdapter(requireContext(), arrayList, new SearchAdapter.IOnSearchAdapterListener() {
             @Override
             public void onClickItem(ProPlayerObj user) {
                 onClickGoToDetail(user);
@@ -67,7 +67,7 @@ public class SearchFragment extends Fragment {
                     PrefUtil.addToFavorites(requireContext(), user);
                     user.setFavorited(true);
                 }
-                searchAdapter.notifyDataSetChanged();
+                searchAdapter.notifyDataSetChanged(); // This is now correct
             }
         }) {
             @Override
@@ -96,11 +96,11 @@ public class SearchFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 arrayList.clear();
                 for (ProPlayerObj item : listPlayer) {
-                    if (item.getName().contains(newText)) {
+                    if (item.getName().toLowerCase().contains(newText.toLowerCase())) {
                         arrayList.add(item);
                     }
                 }
-                searchAdapter.notifyDataSetChanged();
+                searchAdapter.notifyDataSetChanged(); // This is now correct
                 return false;
             }
         });
@@ -125,7 +125,7 @@ public class SearchFragment extends Fragment {
                         listPlayer.add(item);
                         arrayList.add(item);
                     }
-                    searchAdapter.notifyDataSetChanged();
+                    searchAdapter.notifyDataSetChanged(); // This is now correct
                 }
             }
 
@@ -176,12 +176,19 @@ public class SearchFragment extends Fragment {
             public void onResponse(Call<PlayerWinLoss> call, Response<PlayerWinLoss> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     playerObj.setWinLoss(response.body());
-                    Intent intent = new Intent(getActivity(), MyProfileFragment.class);
+
+                    // Here we replace the fragment instead of starting an activity
+                    MyProfileFragment myProfileFragment = new MyProfileFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("player_data", playerObj);
                     bundle.putSerializable("player_recent_matches", new ArrayList<>(recentMatchesList));
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                    myProfileFragment.setArguments(bundle);
+
+                    // Use FragmentTransaction to replace the current fragment
+                    requireActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.framelayout, myProfileFragment) // Use your actual container ID
+                            .addToBackStack(null) // Optional: Add to back stack
+                            .commit();
                 }
             }
 
