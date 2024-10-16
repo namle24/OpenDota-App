@@ -14,5 +14,8 @@
     <string name="player_profile12">9 months</string>
     <string name="win">Win</string>
     <string name="item">item</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="steam_api_key">YOUR_STEAM_API_KEY_HERE</string>
+
 
 </resources>

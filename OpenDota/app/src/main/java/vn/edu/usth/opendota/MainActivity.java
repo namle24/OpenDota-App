@@ -1,9 +1,10 @@
 package vn.edu.usth.opendota;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,39 +13,31 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 
-import vn.edu.usth.opendota.adapter.player_adapter;
-import vn.edu.usth.opendota.favourite.FavouriteFragment;
-import vn.edu.usth.opendota.home.HomeFragment;
-import vn.edu.usth.opendota.search.SearchFragment;
-import vn.edu.usth.opendota.settings.SettingsFragment;
+import vn.edu.usth.opendota.ui.favourite.FavoriteFragment;
+import vn.edu.usth.opendota.ui.home.HomeFragment;
+import vn.edu.usth.opendota.ui.my_profile.MyProfileFragment;
+import vn.edu.usth.opendota.ui.search.SearchFragment;
+import vn.edu.usth.opendota.ui.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    private MaterialToolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applyThemeFromPreferences();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MaterialToolbar toolbar = findViewById(R.id.TopAppBar);
+
+        toolbar = findViewById(R.id.topappbar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
-
-        ViewPager viewPager = findViewById(R.id.viewpager);
-        PagerAdapter adapter_1 = new player_adapter(getSupportFragmentManager());
-        viewPager.setOffscreenPageLimit(3);
-        viewPager.setAdapter(adapter_1);
-
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
-
-        TextView toolbarTitle = findViewById(R.id.toolbar_title);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         if (savedInstanceState == null) {
             replaceFragment(new HomeFragment());
+            toolbar.setTitle("Home");
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
@@ -64,18 +59,22 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 item.setChecked(true);
                 drawerLayout.closeDrawer(GravityCompat.START);
+
                 if (id == R.id.nav_home) {
                     replaceFragment(new HomeFragment());
-                    toolbarTitle.setText("Home");
+                    toolbar.setTitle("Home");
+                } else if (id == R.id.nav_myprofile) {
+                    replaceFragment(new MyProfileFragment());
+                    toolbar.setTitle("My Profile");
                 } else if (id == R.id.nav_favourite) {
-                    replaceFragment(new FavouriteFragment());
-                    toolbarTitle.setText("Favourite");
+                    replaceFragment(new FavoriteFragment());
+                    toolbar.setTitle("Favourite");
                 } else if (id == R.id.nav_search) {
                     replaceFragment(new SearchFragment());
-                    toolbarTitle.setText("Search");
+                    toolbar.setTitle("Search");
                 } else if (id == R.id.nav_settings) {
                     replaceFragment(new SettingsFragment());
-                    toolbarTitle.setText("Settings");
+                    toolbar.setTitle("Settings");
                 } else {
                     return true;
                 }
@@ -87,7 +86,31 @@ public class MainActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main, fragment);
+        fragmentTransaction.replace(R.id.framelayout, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    private void applyThemeFromPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String theme = sharedPreferences.getString("theme_key", "Light");
+
+        switch (theme) {
+            case "Dark":
+                setTheme(R.style.AppTheme_Dark);
+                break;
+            case "Classic Light":
+                setTheme(R.style.AppTheme_ClassicLight);
+                break;
+            case "ClassicDark":
+                setTheme(R.style.AppTheme_ClassicDark);
+                break;
+            case "PearlDark":
+                setTheme(R.style.AppTheme_PearlDark);
+                break;
+            default:
+                setTheme(R.style.AppTheme_Light);
+                break;
+        }
     }
 }

@@ -1,170 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_layout_search"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/backgroundColor">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#131623"
-        android:orientation="vertical">
+   <androidx.appcompat.widget.SearchView
+       android:id="@+id/search_view"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:iconifiedByDefault="false"
+       android:queryHint="Search Users"
+       android:background="?attr/colorSecondary"
+       android:text="?attr/textFillColor"/>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            android:background="#262738"
-            android:orientation="horizontal"
-            app:cardCornerRadius="10dp">
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_marginTop="10dp"
+       android:layout_below="@+id/search_view"
+       android:id="@+id/Matches_recyclerview"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="?attr/backgroundColor"
+       android:scrollbars="vertical"
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+       tools:listitem="@layout/fragment_profile_frame"
+       tools:ignore="MissingConstraints" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="50dp"
-                android:src="@drawable/phoenix_full"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="left|center"
-                android:layout_marginLeft="15dp"
-                android:text="Search player"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:background="#262738"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Your Following"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:gravity="center"
-                />
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/white"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="0dp"
-            android:background="#212A3E"
-            android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:src="@drawable/avatar_1" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="TopGod\nSteam ID: 94054712"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/rank_icon_8"
-                android:layout_marginHorizontal="70dp"/>
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#295F98"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#212A3E"
-            android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:src="@drawable/open_source_icon" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="godblessurmom\nSteam ID: 10373754"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/huskar_full"
-                android:layout_marginHorizontal="70dp"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#295F98"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#212A3E"
-            android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:src="@drawable/kindpng_3002377" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="MahSunShine\nSteam ID: 31136082"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/return_icon"
-                android:layout_marginHorizontal="70dp"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#295F98"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#212A3E"
-            android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:src="@drawable/back_icon_color" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="suchizlife\nSteam ID: 19672345"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/rounded_heroes"
-                android:layout_marginHorizontal="70dp"/>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

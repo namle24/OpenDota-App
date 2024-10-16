@@ -5,8 +5,7 @@
     android:id="@+id/layout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/CARD"
+    android:background="?attr/backgroundColor"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:background="@color/licorice"
+        android:background="?attr/colorOnSecondary"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -26,7 +25,7 @@
             android:layout_marginStart="45dp"
             android:text="OPENDOTA"
             android:gravity="left"
-            android:textColor="@color/white"
+            android:textColor="?attr/textFillColor"
             android:textSize="35sp">
         </TextView>
 
@@ -47,7 +46,7 @@
             android:layout_marginTop="90sp"
             android:text="Open source Dota 2 data platform"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="?attr/textFillColor"
             android:textSize="22sp">
         </TextView>
 
@@ -55,24 +54,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="20dp">
+            android:layout_marginTop="120dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/steam_icon">
+                android:contentDescription="Login"
+                android:background="@drawable/steam_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" >
             </ImageView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/btnSteamLogin"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Login for automatic replay parsing"
-                android:textColor="@color/white"
-                android:textSize="20sp">
-            </TextView>
+                android:contentDescription="Login"
+                android:background="@drawable/steam_icon"
+                android:text="Login with Steam"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
     </RelativeLayout>
 
@@ -82,13 +87,13 @@
         android:id="@+id/khunghome_2">
 
         <LinearLayout
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_marginStart="5dp"
-
+            android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="288dp"
-            android:background="@color/licorice"
+            android:background="?attr/colorOnSecondary"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -113,18 +118,19 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
                 android:text="All project code is open source and available for contributors to improve and modify."
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_below="@+id/khunghome_1"
+            android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            android:background="@color/licorice"
+            android:background="?attr/colorOnSecondary"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -149,7 +155,7 @@
                 android:gravity="center"
                 android:text="Parsing replay files provides highly detailed match data."
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -164,7 +170,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:background="@color/licorice">
+        android:background="?attr/colorOnSecondary">
 
         <ImageView
             android:id="@+id/magic"
@@ -193,7 +199,7 @@
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
             android:text="Server are funded by sponsors and volunteers maintain the code, so the service is offered free of charge."
-            android:textColor="@color/white"
+            android:textColor="?attr/textFillColor"
             android:textSize="18sp" />
 
     </RelativeLayout>
