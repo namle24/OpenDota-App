@@ -1,5 +1,7 @@
 package vn.edu.usth.opendota.adapters;
 
+import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.models.RecentMatchesObj;
 import vn.edu.usth.opendota.utils.Db;
@@ -39,7 +44,11 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.matchesV
     // bind data len list
     public void onBindViewHolder(@NonNull matchesViewHolder holder, int position) {
         RecentMatchesObj model = listMatches.get(position);
-        holder.mode.setText(Util.getGameModeNameById(model.getGame_mode())+"\n"+Util.getLobbyTypeNameById(model.getLobby_type()));
+        int heroId = (int) model.getHero_id();
+        String heroName = getHeroNameByID(heroId);
+        String imageUrl = "https://cdn.dota2.com/apps/dota2/images/heroes/"+heroName+"_full.png";
+        Picasso.get().load(imageUrl).into(holder.hero);
+        holder.mode.setText(Db.getGameModeNameById(model.getGame_mode())+"\n"+Util.getLobbyTypeNameById(model.getLobby_type()));
         holder.ended.setText(Util.getDateByTimeStamp(model.getStart_time()));
         holder.length.setText(Util.getDurationStr(model.getDuration()));
         holder.KDA.setText(model.getKills() + "/" + model.getDeaths() + "/" + model.getAssists());
@@ -55,7 +64,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.matchesV
 
     public static class matchesViewHolder extends RecyclerView.ViewHolder {
         private CardView cardViewItem;
-        private ImageView hero;
+        private CircleImageView hero;
         private TextView mode;
         private TextView ended;
         private TextView length;

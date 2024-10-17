@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.SearchAdapter;
 import vn.edu.usth.opendota.models.ProPlayerObj;
@@ -59,7 +60,7 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
 
     public class MyRecentMatchHolder extends RecyclerView.ViewHolder {
         private CardView cardViewItem;
-        private ImageView rmHero;
+        private CircleImageView rmHero;
         private TextView rmMode;
         private TextView rmEnded;
         private TextView rmLength;
@@ -68,7 +69,7 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
 
         public MyRecentMatchHolder(@NonNull View itemView) {
             super(itemView);
-            rmHero = itemView.findViewById(R.id.img);
+            rmHero = itemView.findViewById(R.id.rm_hero);
             rmMode = itemView.findViewById(R.id.ID);
             rmEnded = itemView.findViewById(R.id.ID);
             rmLength = itemView.findViewById(R.id.ID);

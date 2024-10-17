@@ -9,12 +9,13 @@
     app:cardCornerRadius="10dp"
     android:padding="3dp"
     android:layout_height="wrap_content"
+    android:background="?attr/colorSecondary"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/item"
+        android:background="?attr/colorSecondary"
         android:orientation="horizontal">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -45,9 +46,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textSize="25dp"
-                android:text="jojo"/>
+                android:text="NamLe"/>
             <View
                 style="@style/Divider"
                 android:layout_marginTop="7dp"
@@ -59,7 +60,7 @@
                 android:layout_below="@+id/txt"
                 android:singleLine="true"
                 android:text="ID: 185476982"
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textSize="25dp" />
         </LinearLayout>
         <ImageButton
@@ -69,7 +70,7 @@
             android:background="?attr/selectableItemBackground"
             android:layout_toEndOf="@id/name_id"
             android:src="@drawable/baseline_favorite_border_24"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
