@@ -161,7 +161,6 @@ public class Search_Activity extends AppCompatActivity {
                     }
                     searchAdapter.notifyDataSetChanged();
                 }
-                //TODO: remove bot giu lai 20 items
             }
 
             @Override

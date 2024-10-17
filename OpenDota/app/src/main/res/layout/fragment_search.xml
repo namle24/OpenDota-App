@@ -21,14 +21,18 @@
           android:id="@+id/searchView"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@color/white"
-          app:queryHint="Search player" />
+          android:iconifiedByDefault="false"
+          android:queryHint="Search Users"
+          app:searchIcon="?attr/textFillColor"
+          android:background="?attr/colorSecondary"
+          android:text="?attr/textFillColor"/>
    </androidx.cardview.widget.CardView>
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recyclerView"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+       android:background="?attr/backgroundColor"
        android:layout_below="@+id/card"
        android:layout_marginStart="10dp"
        android:layout_marginTop="10dp"

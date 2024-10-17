@@ -39,7 +39,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.matchesV
     // bind data len list
     public void onBindViewHolder(@NonNull matchesViewHolder holder, int position) {
         RecentMatchesObj model = listMatches.get(position);
-        holder.mode.setText(Db.getGameModeNameById(model.getGame_mode())+"\n"+Db.getLobbyTypeNameById(model.getLobby_type()));
+        holder.mode.setText(Util.getGameModeNameById(model.getGame_mode())+"\n"+Util.getLobbyTypeNameById(model.getLobby_type()));
         holder.ended.setText(Util.getDateByTimeStamp(model.getStart_time()));
         holder.length.setText(Util.getDurationStr(model.getDuration()));
         holder.KDA.setText(model.getKills() + "/" + model.getDeaths() + "/" + model.getAssists());

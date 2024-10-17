@@ -24,6 +24,7 @@ public class MyProfileAdapters extends FragmentPagerAdapter {
         this.recentMatchList= recentMatchList;
     }
 
+
     @NonNull
     @Override
     public Fragment getItem(int page) {

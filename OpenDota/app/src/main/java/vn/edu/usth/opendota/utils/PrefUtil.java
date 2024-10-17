@@ -23,28 +23,24 @@ public class PrefUtil {
         Type type = new TypeToken<List<ProPlayerObj>>() {}.getType();
         List<ProPlayerObj> favorites = new Gson().fromJson(json, type);
 
-        // Add the player only if it's not already in the favorites
         if (!favorites.contains(player)) {
             favorites.add(player);
         }
 
-        // Save the updated list
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(KEY_FAVORITES, new Gson().toJson(favorites));
         editor.apply();
     }
 
-    // Remove a player from the favorites list
+
     public static void removeFavorite(Context context, ProPlayerObj player) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(KEY_FAVORITES, "[]");
         Type type = new TypeToken<List<ProPlayerObj>>() {}.getType();
         List<ProPlayerObj> favorites = new Gson().fromJson(json, type);
 
-        // Remove the player if it's in the favorites
-        favorites.remove(player);  // Ensure equals() is implemented in ProPlayerObj
+        favorites.remove(player);
 
-        // Save the updated list
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(KEY_FAVORITES, new Gson().toJson(favorites));
         editor.apply();
@@ -59,10 +55,10 @@ public class PrefUtil {
 
         for (ProPlayerObj player : favorites) {
             if (player.getAccountId() == accountId) {
-                return true; // Player is a favorite
+                return true;
             }
         }
-        return false; // Player not found in favorites
+        return false;
     }
 
     public static List<ProPlayerObj> getListFavorite(Context context) {

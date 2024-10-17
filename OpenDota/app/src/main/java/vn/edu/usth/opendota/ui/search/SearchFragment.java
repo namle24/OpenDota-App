@@ -67,7 +67,7 @@ public class SearchFragment extends Fragment {
                     PrefUtil.addToFavorites(requireContext(), user);
                     user.setFavorited(true);
                 }
-                searchAdapter.notifyDataSetChanged(); // This is now correct
+                searchAdapter.notifyDataSetChanged();
             }
         }) {
             @Override
@@ -177,17 +177,15 @@ public class SearchFragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null) {
                     playerObj.setWinLoss(response.body());
 
-                    // Here we replace the fragment instead of starting an activity
                     MyProfileFragment myProfileFragment = new MyProfileFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("player_data", playerObj);
                     bundle.putSerializable("player_recent_matches", new ArrayList<>(recentMatchesList));
                     myProfileFragment.setArguments(bundle);
 
-                    // Use FragmentTransaction to replace the current fragment
                     requireActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framelayout, myProfileFragment) // Use your actual container ID
-                            .addToBackStack(null) // Optional: Add to back stack
+                            .replace(R.id.framelayout, myProfileFragment)
+                            .addToBackStack(null)
                             .commit();
                 }
             }
