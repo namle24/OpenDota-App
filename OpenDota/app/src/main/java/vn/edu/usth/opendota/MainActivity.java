@@ -63,9 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 if (id == R.id.nav_home) {
                     replaceFragment(new HomeFragment());
                     toolbar.setTitle("Home");
-                } else if (id == R.id.nav_myprofile) {
-                    replaceFragment(new MyProfileFragment());
-                    toolbar.setTitle("My Profile");
                 } else if (id == R.id.nav_favourite) {
                     replaceFragment(new FavoriteFragment());
                     toolbar.setTitle("Favourite");

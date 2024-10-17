@@ -17,6 +17,21 @@
             android:name=".ui.login.SteamLoginActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.search.Search_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.favourite.Favourites_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.my_profile.playerProfile_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop">

@@ -62,10 +62,10 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profile_name = itemView.findViewById(R.id.profile_name);
-            profile_avar = itemView.findViewById(R.id.profile_avar);
-            profile_id = itemView.findViewById(R.id.profile_id);
-            heart = itemView.findViewById(R.id.heart_button);
+            profile_name = itemView.findViewById(R.id.name);
+            profile_avar = itemView.findViewById(R.id.img);
+            profile_id = itemView.findViewById(R.id.ID);
+            heart = itemView.findViewById(R.id.favorite_button);
         }
 
     }

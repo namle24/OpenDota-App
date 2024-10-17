@@ -1,18 +1,37 @@
 package vn.edu.usth.opendota.adapters;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import vn.edu.usth.opendota.ui.my_profile.HeroesFragment;
-import vn.edu.usth.opendota.ui.my_profile.MatchesFragment;
-import vn.edu.usth.opendota.ui.my_profile.OverviewFragment;
+import java.util.ArrayList;
+
+import vn.edu.usth.opendota.models.PlayerObj;
+import vn.edu.usth.opendota.models.RecentMatchesObj;
+import vn.edu.usth.opendota.ui.my_profile.heroes.HeroesFragment;
+import vn.edu.usth.opendota.ui.my_profile.matches.MatchesFragment;
+import vn.edu.usth.opendota.ui.my_profile.overview.OverviewFragment;
 
 public class MyProfileAdapters extends FragmentPagerAdapter {
-    private final String[] titles = new String[]{"Overview", "Matches", "Heroes"};
+    private String titles[]=new String[]{"Overview","Matches","Heroes"};
+    PlayerObj user;
+    ArrayList<RecentMatchesObj> recentMatchList;
+    public MyProfileAdapters(@NonNull FragmentManager fm, int behavior, PlayerObj user, ArrayList<RecentMatchesObj> recentMatchList) {
+        super(fm,behavior);
+        this.user=user;
+        this.recentMatchList= recentMatchList;
+    }
 
-    public MyProfileAdapters(FragmentManager fm) {
-        super(fm);
+    @NonNull
+    @Override
+    public Fragment getItem(int page) {
+        switch (page){
+            case 1: return new MatchesFragment(recentMatchList);
+            case 2: return new HeroesFragment();
+            default: return new OverviewFragment(user,recentMatchList);
+        }
     }
 
     @Override
@@ -20,21 +39,10 @@ public class MyProfileAdapters extends FragmentPagerAdapter {
         return 3;
     }
 
+    @Nullable
     @Override
-    public Fragment getItem(int page) {
-        switch (page) {
-            case 0:
-                return OverviewFragment.newInstance();
-            case 1:
-                return MatchesFragment.newInstance();
-            case 2:
-                return HeroesFragment.newInstance();
-        }
-        return null;
-    }
+    public CharSequence getPageTitle(int page) {
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return titles[position];
+        return titles[page];
     }
 }

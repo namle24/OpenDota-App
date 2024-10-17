@@ -16,7 +16,7 @@
         android:weightSum="5">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar"
+            android:id="@+id/rm_hero"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -26,7 +26,7 @@
 
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/re_mode"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -39,7 +39,7 @@
             tools:text="All Draft Normal" />
 
         <TextView
-            android:id="@+id/tv_time_ended"
+            android:id="@+id/rm_ended"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -50,7 +50,7 @@
             tools:text="14 days" />
 
         <TextView
-            android:id="@+id/id_duration"
+            android:id="@+id/rm_length"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
             tools:text="47:42" />
 
         <TextView
-            android:id="@+id/tv_kda"
+            android:id="@+id/rm_K_D_A"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"

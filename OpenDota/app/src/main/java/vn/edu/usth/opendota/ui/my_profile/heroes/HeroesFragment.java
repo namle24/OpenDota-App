@@ -1,4 +1,4 @@
-package vn.edu.usth.opendota.ui.my_profile;
+package vn.edu.usth.opendota.ui.my_profile.heroes;
 
 import static android.content.ContentValues.TAG;
 

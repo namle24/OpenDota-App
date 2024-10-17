@@ -22,7 +22,7 @@
             android:background="?attr/colorOnSecondary">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivAvatar"
+                android:id="@+id/A_image"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/avatar_1"
@@ -30,7 +30,7 @@
                 android:layout_gravity="center_horizontal"
                 tools:ignore="MissingClass" />
             <TextView
-                android:id="@+id/tvSteamName"
+                android:id="@+id/A_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Minh"
@@ -73,6 +73,7 @@
                     android:textAlignment="center"/>
             </LinearLayout>
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/tvRank"
                 android:layout_width="70dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center_horizontal"
