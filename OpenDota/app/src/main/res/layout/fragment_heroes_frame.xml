@@ -37,8 +37,10 @@
                 android:background="@color/white"/>
 
             <LinearLayout
+                android:id="@+id/line_view"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:orientation="horizontal"
                 android:weightSum="4">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -50,37 +52,42 @@
                     android:paddingVertical="8dp"
                     tools:src="@drawable/mars_full" />
 
+
                 <TextView
                     android:id="@+id/heroes_played"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text="425"
-                    android:textColor="@color/white" />
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="240" />
 
                 <TextView
                     android:id="@+id/heroes_winrate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text="57.14%"
-                    android:textColor="@color/white" />
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    tools:text="47.98%" />
 
                 <TextView
                     android:id="@+id/heroes_lastplay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="13 days ago"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="10000 days ago" />
 
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
