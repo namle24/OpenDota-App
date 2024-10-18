@@ -18,32 +18,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
-import vn.edu.usth.opendota.adapters.MatchesAdapter;
-import vn.edu.usth.opendota.adapters.OverviewAdapters;
 import vn.edu.usth.opendota.models.Matches;
 import vn.edu.usth.opendota.models.Overview;
 import vn.edu.usth.opendota.models.Winlose;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class OverviewFragment extends Fragment {
-    private OverviewAdapters overviewAdapters = new OverviewAdapters();
     private ApiClient client;
-    private RecyclerView recyclerView;
     private CircleImageView ow_avar;
     private TextView ow_name, ow_win, ow_lose, ow_winrate, ow_url;
-    private final ArrayList<Matches> listRecentMatches;
 
     public OverviewFragment() {
-        this.listRecentMatches = new ArrayList<>();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,12 +59,6 @@ public class OverviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
-        recyclerView = view.findViewById(R.id.Matches_recyclerview);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        MatchesAdapter MatchesAdapter = new MatchesAdapter(getContext(), listRecentMatches);
-        recyclerView.setAdapter(MatchesAdapter);
-        MatchesAdapter.notifyDataSetChanged();
 
         String id = String.valueOf(1296625);
         fetchOverviewData(id);
@@ -94,7 +80,6 @@ public class OverviewFragment extends Fragment {
                             if (response.isSuccessful() && response.body() != null) {
                                 Winlose winlose = response.body();
                                 overview.setWinlose(winlose);
-                                overviewAdapters.submit(List.of(overview));
                                 updateUI(overview);
                             } else {
                                 Log.e(TAG, "Error fetching winlose data");
@@ -119,7 +104,6 @@ public class OverviewFragment extends Fragment {
         });
     }
 
-
     private void updateUI(Overview overview) {
         ow_name.setText(overview.getProfile().getName());
         Picasso.get().load(overview.getProfile().getAvatarmedium()).into(ow_avar);
@@ -129,7 +113,6 @@ public class OverviewFragment extends Fragment {
         String lose = String.valueOf(overview.getWinlose().getLose());
         int total = Integer.parseInt(String.valueOf(overview.getWinlose().getWin() + overview.getWinlose().getLose()));
         String winrate = (total > 0) ? String.format("%.2f%%", (double) overview.getWinlose().getWin() / total * 100) : "N/A";
-
 
         ow_win.setText("WINS\n" + wins);
         ow_lose.setText("LOSSES\n" + lose);
