@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class OverviewFragment extends Fragment {
     private ApiClient client;
     private CircleImageView ow_avar;
     private TextView ow_name, ow_win, ow_lose, ow_winrate, ow_url;
+    private LottieAnimationView animationView;
 
     public OverviewFragment() {
     }
@@ -48,6 +50,8 @@ public class OverviewFragment extends Fragment {
         ow_winrate = view.findViewById(R.id.ow_winrate);
         ow_url = view.findViewById(R.id.ow_profile_steam);
 
+
+
         return view;
     }
 
@@ -59,6 +63,8 @@ public class OverviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
+        animationView = view.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);;
 
         String id = String.valueOf(1296625);
         fetchOverviewData(id);
@@ -81,6 +87,7 @@ public class OverviewFragment extends Fragment {
                                 Winlose winlose = response.body();
                                 overview.setWinlose(winlose);
                                 updateUI(overview);
+                                animationView.setVisibility(View.GONE);
                             } else {
                                 Log.e(TAG, "Error fetching winlose data");
                             }
@@ -89,6 +96,7 @@ public class OverviewFragment extends Fragment {
                         @Override
                         public void onFailure(@NonNull Call<Winlose> call, @NonNull Throwable t) {
                             Log.e(TAG, "Failed to fetch winlose: " + t.getMessage());
+
                         }
                     });
 
@@ -100,6 +108,8 @@ public class OverviewFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<Overview> call, @NonNull Throwable t) {
                 Log.e(TAG, "Failed to fetch overview: " + t.getMessage());
+                animationView.setVisibility(View.GONE);
+
             }
         });
     }

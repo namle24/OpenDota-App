@@ -31,7 +31,6 @@ public class MatchesFragment extends Fragment {
     private final MatchesAdapter matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
     private ApiClient client;
     private RecyclerView recyclerView;
-    private LottieAnimationView loadingAnimation;
 
 
     @Override
@@ -52,8 +51,7 @@ public class MatchesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
-        loadingAnimation = view.findViewById(R.id.animationView);
-        loadingAnimation.setVisibility(View.VISIBLE);
+
 
         setViews();
         listeners();
@@ -73,7 +71,6 @@ public class MatchesFragment extends Fragment {
                     List<Matches> matches = response.body();
                     assert matches != null;
                     matchesAdapter.submit(matches);
-                    loadingAnimation.setVisibility(View.GONE);
 
                 } else {
                     Log.e(TAG, "Error code: " + response.code() + "Error Message:" + response.message());
@@ -86,7 +83,6 @@ public class MatchesFragment extends Fragment {
             public void onFailure(@NonNull Call<List<Matches>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Failure: " + t.getMessage());
 
-                loadingAnimation.setVisibility(View.GONE);
             }
         });
     }
