@@ -149,9 +149,5 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         saveFavourites(favourites);
     }
 
-    public void updateHeartState(ProPlayerProfile proPlayerProfile) {
-        notifyDataSetChanged();
-    }
-
 
 }
