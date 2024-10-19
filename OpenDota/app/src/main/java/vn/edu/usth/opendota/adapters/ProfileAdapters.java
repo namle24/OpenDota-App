@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,9 +26,9 @@ import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHolder> {
 
-    private List<ProPlayerProfile> proPlayerProfiles = new ArrayList<>();
-    private Context context;
-    private OnItemClickListener onItemClickListener;
+    private final List<ProPlayerProfile> proPlayerProfiles = new ArrayList<>();
+    private final Context context;
+    private final OnItemClickListener onItemClickListener;
 
 
     public ProfileAdapters(Context context, OnItemClickListener onItemClickListener) {
@@ -53,26 +52,6 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         return new ViewHolder(view);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        public final ImageView profile_avar;
-        private final TextView profile_id;
-        private final TextView profile_name;
-        private final ImageButton heart;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            profile_name = itemView.findViewById(R.id.profile_name);
-            profile_avar = itemView.findViewById(R.id.profile_avar);
-            profile_id = itemView.findViewById(R.id.profile_id);
-            heart = itemView.findViewById(R.id.heart_button);
-        }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(ProPlayerProfile proPlayerProfile);
-    }
-
     @Override
     public int getItemCount() {
         return proPlayerProfiles.size();
@@ -90,8 +69,6 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
             holder.profile_avar.setImageResource(R.drawable.no_item);
         }
 
-        holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(item));
-
         boolean isFavourite = checkIfFavourite(item);
         holder.heart.setSelected(isFavourite);
 
@@ -105,6 +82,8 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
                 removeFromFavourites(item);
             }
         });
+
+        holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(item));
     }
 
     private boolean checkIfFavourite(ProPlayerProfile proPlayerProfile) {
@@ -122,7 +101,8 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         String json = sharedPreferences.getString("favorites_list", null);
         if (json != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
+            Type type = new TypeToken<List<ProPlayerProfile>>() {
+            }.getType();
             return gson.fromJson(json, type);
         }
         return new ArrayList<>();
@@ -147,6 +127,26 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         List<ProPlayerProfile> favourites = getFavourites();
         favourites.removeIf(fav -> fav.getAccountID() == proPlayerProfile.getAccountID());
         saveFavourites(favourites);
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(ProPlayerProfile proPlayerProfile);
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public final ImageView profile_avar;
+        private final TextView profile_id;
+        private final TextView profile_name;
+        private final ImageButton heart;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            profile_name = itemView.findViewById(R.id.profile_name);
+            profile_avar = itemView.findViewById(R.id.profile_avar);
+            profile_id = itemView.findViewById(R.id.profile_id);
+            heart = itemView.findViewById(R.id.heart_button);
+        }
     }
 
 

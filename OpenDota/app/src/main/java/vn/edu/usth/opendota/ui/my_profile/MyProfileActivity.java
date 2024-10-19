@@ -24,9 +24,9 @@ public class MyProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applyThemeFromPreferences();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
-        applyThemeFromPreferences();
 
         Toolbar toolbar = findViewById(R.id.profile_toolbar);
         setSupportActionBar(toolbar);
@@ -42,7 +42,6 @@ public class MyProfileActivity extends AppCompatActivity {
             return;
         }
 
-        Log.d(TAG, "Player: " + profile.getName() + " - ID: " + profile.getAccountID());
 
         ViewPager viewPager = findViewById(R.id.profile_viewpager);
         MyProfileAdapters adapter = new MyProfileAdapters(getSupportFragmentManager(), profile);
