@@ -80,7 +80,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         Profile item = profiles.get(position);
 
         // Hiển thị thông tin người dùng
-        holder.profile_id.setText(String.valueOf(item.getAccountID()));
+        holder.profile_id.setText(String.valueOf(item.getAccountId()));
         holder.profile_name.setText(item.getName());
         String avatarUrl = (String) item.getAvatarfull(); // Ép kiểu Object thành String
         if (avatarUrl != null && !avatarUrl.isEmpty()) {
@@ -113,7 +113,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
     private boolean checkIfFavourite(Profile profile) {
         List<Profile> favourites = getFavourites();
         for (Profile fav : favourites) {
-            if (fav.getAccountID() == profile.getAccountID()) {
+            if (fav.getAccountId() == profile.getAccountId()) {
                 return true;
             }
         }
@@ -152,7 +152,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
     // Xóa profile khỏi danh sách yêu thích
     private void removeFromFavourites(Profile profile) {
         List<Profile> favourites = getFavourites();
-        favourites.removeIf(fav -> fav.getAccountID() == profile.getAccountID());
+        favourites.removeIf(fav -> fav.getAccountId() == profile.getAccountId());
         saveFavourites(favourites);
     }
 }

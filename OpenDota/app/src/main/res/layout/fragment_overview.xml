@@ -105,5 +105,6 @@
         </LinearLayout>
 
         <include layout="@layout/recycleview_match"/>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

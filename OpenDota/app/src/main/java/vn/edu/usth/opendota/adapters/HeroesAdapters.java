@@ -5,6 +5,7 @@ import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
 import static vn.edu.usth.opendota.utils.Db.getLocalizedNameByID;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -22,18 +24,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.models.Heroes;
+import vn.edu.usth.opendota.models.PlayerObj;
+import vn.edu.usth.opendota.models.ProPlayerObj;
+import vn.edu.usth.opendota.models.RecentMatchesObj;
+import vn.edu.usth.opendota.utils.Db;
+import vn.edu.usth.opendota.utils.Util;
 
 public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHolder> {
+    ArrayList<RecentMatchesObj> listRecentMatches;
+    private Context context;
 
-    private List<Heroes> heroes = new ArrayList<>();
-
-    @SuppressLint("NotifyDataSetChanged")
-    public void submit(List<Heroes> newList) {
-        heroes = newList;
-        notifyDataSetChanged();
+    public HeroesAdapters(Context context, ArrayList<RecentMatchesObj> listRecentMatches) {
+        this.listRecentMatches = listRecentMatches;
+        this.context = context;
     }
+
 
     @NonNull
     @Override
@@ -65,13 +73,13 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
 
     @Override
     public int getItemCount() {
-        return heroes.size();
+        return listRecentMatches.size();
     }
 
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull HeroesAdapters.ViewHolder holder, int position) {
-        Heroes item = heroes.get(position);
+        RecentMatchesObj item = listRecentMatches.get(position);
 
         Log.d(TAG, "Heroes Details: " + item.toString());
 
@@ -104,3 +112,4 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
     }
 
 }
+

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/matches_frames"
     android:layout_width="match_parent"
@@ -69,4 +69,4 @@
             android:textColor="@color/white"
             tools:text="3/5/26" />
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>

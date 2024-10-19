@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.MyProfileAdapters;
+import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.models.PlayerObj;
 import vn.edu.usth.opendota.models.PlayerWinLoss;
 import vn.edu.usth.opendota.models.ProPlayerObj;
@@ -52,6 +53,7 @@ public class MyProfileFragment extends Fragment {
 
         PlayerObj user = (PlayerObj) bundle.get("player_data");
         ArrayList<RecentMatchesObj> rcMatchesList = (ArrayList<RecentMatchesObj>) bundle.get("player_recent_matches");
+
 
         MyProfileAdapters viewPagerAdapter = new MyProfileAdapters(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, user, rcMatchesList);
         myViewPager.setOffscreenPageLimit(3);

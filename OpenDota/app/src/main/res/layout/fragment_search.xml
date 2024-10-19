@@ -39,4 +39,13 @@
        android:layout_marginEnd="10dp"
        android:layout_marginBottom="10dp" />
 
+   <com.airbnb.lottie.LottieAnimationView
+       android:id="@+id/animationView"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/black"
+       app:lottie_rawRes="@raw/loading_dino"
+       app:lottie_autoPlay="true"
+       app:lottie_loop="true"/>
+
 </RelativeLayout>

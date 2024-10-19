@@ -52,6 +52,13 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.matchesV
         holder.ended.setText(Util.getDateByTimeStamp(model.getStart_time()));
         holder.length.setText(Util.getDurationStr(model.getDuration()));
         holder.KDA.setText(model.getKills() + "/" + model.getDeaths() + "/" + model.getAssists());
+
+        if (model.isRadiant_win()) {
+            holder.lineview.setBackgroundResource(R.drawable.gradient_win_color);
+        } else {
+            holder.lineview.setBackgroundResource(R.drawable.gradient_loss_color);
+        }
+
     }
 
     @Override
@@ -69,6 +76,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.matchesV
         private TextView ended;
         private TextView length;
         private TextView KDA;
+        private final View lineview;
 
         public matchesViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,6 +86,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.matchesV
             ended=itemView.findViewById(R.id.rm_ended);
             length=itemView.findViewById(R.id.rm_length);
             KDA=itemView.findViewById(R.id.rm_K_D_A);
+            lineview = itemView.findViewById(R.id.line_view);
         }
     }
 }

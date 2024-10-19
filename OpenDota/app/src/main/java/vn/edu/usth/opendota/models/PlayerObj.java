@@ -10,6 +10,7 @@ public class PlayerObj implements Serializable {
     private MmrEstimate mmr_estimate;
     private ProPlayerObj profile;
     private PlayerWinLoss winLoss;
+    private Heroes heroes;
 
     public PlayerWinLoss getWinLoss() {
         return winLoss;
@@ -57,6 +58,14 @@ public class PlayerObj implements Serializable {
 
     public void setProfile(ProPlayerObj profile) {
         this.profile = profile;
+    }
+
+    public Heroes getHeroes() {
+        return heroes;
+    }
+
+    public void setHeroes(Heroes heroes) {
+        this.heroes = heroes;
     }
 
     public MmrEstimate getMmr_estimate() {

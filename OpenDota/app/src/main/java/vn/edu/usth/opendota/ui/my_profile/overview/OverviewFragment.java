@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class OverviewFragment extends Fragment {
     private RecentMatchesAdapter RecentMatchesAdapter;
     private RecyclerView recyclerView;
     private ArrayList<RecentMatchesObj> listRecentMatches;
+    private LottieAnimationView animationView;
 
 
     public OverviewFragment(PlayerObj user, ArrayList<RecentMatchesObj> listRecentMatches) {

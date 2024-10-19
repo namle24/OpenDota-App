@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
+import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.models.PlayerObj;
+import vn.edu.usth.opendota.models.ProPlayerObj;
 import vn.edu.usth.opendota.models.RecentMatchesObj;
 import vn.edu.usth.opendota.ui.my_profile.heroes.HeroesFragment;
 import vn.edu.usth.opendota.ui.my_profile.matches.MatchesFragment;
@@ -18,6 +20,9 @@ public class MyProfileAdapters extends FragmentPagerAdapter {
     private String titles[]=new String[]{"Overview","Matches","Heroes"};
     PlayerObj user;
     ArrayList<RecentMatchesObj> recentMatchList;
+
+
+
     public MyProfileAdapters(@NonNull FragmentManager fm, int behavior, PlayerObj user, ArrayList<RecentMatchesObj> recentMatchList) {
         super(fm,behavior);
         this.user=user;
@@ -30,7 +35,7 @@ public class MyProfileAdapters extends FragmentPagerAdapter {
     public Fragment getItem(int page) {
         switch (page){
             case 1: return new MatchesFragment(recentMatchList);
-            case 2: return new HeroesFragment();
+            case 2: return new HeroesFragment(recentMatchList);
             default: return new OverviewFragment(user,recentMatchList);
         }
     }

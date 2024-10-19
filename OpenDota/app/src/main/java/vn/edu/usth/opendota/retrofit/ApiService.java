@@ -22,5 +22,7 @@ public interface ApiService {
 
     @GET("profile/{accountId}")
     Call<Profile> getProfileById(@Path("accountId") long accountId);
+
+
 }
 

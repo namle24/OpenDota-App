@@ -1,82 +1,181 @@
 package vn.edu.usth.opendota.models;
 
-public class Profile {
-    private long account_id;
-    private Object steamid;
-    private Object avatar;
-    private Object avatarmedium;
-    private Object avatarfull;
-    private Object profileurl;
-    private Object personaname;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class Profile implements Serializable {
+    @SerializedName("profileurl")
+    private String profileurl;
+
+    @SerializedName("last_login")
     private Object lastLogin;
-    private Object fullHistoryTime;
-    private Object cheese;
-    private Object fhUnavailable;
-    private Object loccountrycode;
-    private Object lastMatchTime;
-    private Object plus;
-    private String name;
-    private String countryCode;
-    private long fantasyRole;
-    private long teamID;
-    private String teamName;
+
+    @SerializedName("avatarfull")
+    private String avatarfull;
+
+    @SerializedName("fh_unavailable")
+    private boolean fhUnavailable;
+
+    @SerializedName("team_tag")
     private String teamTag;
-    private boolean isLocked;
-    private boolean isPro;
+
+    @SerializedName("avatarmedium")
+    private String avatarmedium;
+
+    @SerializedName("locked_until")
     private Object lockedUntil;
-    private boolean isFavourite;
 
-    public boolean getFavourite() {
-        return isFavourite;
+    @SerializedName("avatar")
+    private String avatar;
+
+    @SerializedName("personaname")
+    private String personaname;
+
+    @SerializedName("plus")
+    private boolean plus;
+
+    @SerializedName("team_name")
+    private String teamName;
+
+    @SerializedName("full_history_time")
+    private String fullHistoryTime;
+
+    @SerializedName("cheese")
+    private int cheese;
+
+    @SerializedName("steamid")
+    private String steamid;
+
+    @SerializedName("last_match_time")
+    private String lastMatchTime;
+
+    @SerializedName("country_code")
+    private String countryCode;
+
+    @SerializedName("account_id")
+    private int accountId;
+
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("loccountrycode")
+    private String loccountrycode;
+
+    @SerializedName("is_contributor")
+    private boolean is_contributor;
+
+    @SerializedName("is_contributor")
+    private boolean is_subscriber;
+
+    @SerializedName("isFavorited")
+    private boolean isFavorited;
+
+    public boolean isFavorited() {
+        return isFavorited;
     }
 
-    public void setFavourite(boolean isFavourite) {
-        this.isFavourite = isFavourite;
+    public void setFavorited(boolean favorited) {
+        isFavorited = favorited;
     }
 
 
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+    public int getAccountId() {
+        return accountId;
+    }
 
-    public long getAccountID() { return account_id; }
-    public void setAccountID(long value) { this.account_id = value; }
+    public void setSteamid(String steamid) {
+        this.steamid = steamid;
+    }
+    public String getSteamid() {
+        return steamid;
+    }
 
-    public Object getSteamid() { return steamid; }
-    public void setSteamid(Object value) { this.steamid = value; }
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+    public String getAvatar() {
+        return avatar;
+    }
 
-    public Object getAvatar() { return avatar; }
-    public void setAvatar(Object value) { this.avatar = value; }
+    public void setAvatarmedium(String avatarmedium) {
+        this.avatarmedium = avatarmedium;
+    }
+    public String getAvatarmedium() {
+        return avatarmedium;
+    }
 
-    public Object getAvatarmedium() { return avatarmedium; }
-    public void setAvatarmedium(Object value) { this.avatarmedium = value; }
+    public void setAvatarfull(String avatarfull) {
+        this.avatarfull = avatarfull;
+    }
+    public String getAvatarfull() {
+        return avatarfull;
+    }
 
-    public Object getAvatarfull() { return avatarfull; }
-    public void setAvatarfull(Object value) { this.avatarfull = value; }
+    public void setProfileurl(String profileurl) {
+        this.profileurl = profileurl;
+    }
+    public String getProfileurl() {
+        return profileurl;
+    }
 
-    public Object getProfileurl() { return profileurl; }
-    public void setProfileurl(Object value) { this.profileurl = value; }
-
-    public Object getPersonaname() { return personaname; }
-    public void setPersonaname(Object value) { this.personaname = value; }
+    public void setPersonaname(String personaname) {
+        this.personaname = personaname;
+    }
+    public String getPersonaname() {
+        return personaname;
+    }
 
     public Object getLastLogin() { return lastLogin; }
     public void setLastLogin(Object value) { this.lastLogin = value; }
 
-    public Object getFullHistoryTime() { return fullHistoryTime; }
-    public void setFullHistoryTime(Object value) { this.fullHistoryTime = value; }
+    public void setFullHistoryTime(String fullHistoryTime) {
+        this.fullHistoryTime = fullHistoryTime;
+    }
+    public String getFullHistoryTime() {
+        return fullHistoryTime;
+    }
 
-    public Object getCheese() { return cheese; }
-    public void setCheese(Object value) { this.cheese = value; }
+    public void setCheese(int cheese) {
+        this.cheese = cheese;
+    }
+    public int getCheese() {
+        return cheese;
+    }
 
-    public Object getFhUnavailable() { return fhUnavailable; }
-    public void setFhUnavailable(Object value) { this.fhUnavailable = value; }
+    public void setFhUnavailable(boolean fhUnavailable) {
+        this.fhUnavailable = fhUnavailable;
+    }
+    public boolean isFhUnavailable() {
+        return fhUnavailable;
+    }
 
-    public Object getLoccountrycode() { return loccountrycode; }
-    public void setLoccountrycode(Object value) { this.loccountrycode = value; }
+    public boolean getIsContributor() { return is_contributor; }
+    public void setIsContributor(boolean value) { this.is_contributor = value; }
 
-    public Object getLastMatchTime() { return lastMatchTime; }
-    public void setLastMatchTime(Object value) { this.lastMatchTime = value; }
+    public void setLoccountrycode(String loccountrycode) {
+        this.loccountrycode = loccountrycode;
+    }
+    public String getLoccountrycode() {
+        return loccountrycode;
+    }
 
-    public Object getPlus() { return plus; }
-    public void setPlus(Object value) { this.plus = value; }
+    public void setLastMatchTime(String lastMatchTime) {
+        this.lastMatchTime = lastMatchTime;
+    }
+    public String getLastMatchTime() {
+        return lastMatchTime;
+    }
+
+    public void setPlus(boolean plus) {
+        this.plus = plus;
+    }
+    public boolean isPlus() {
+        return plus;
+    }
 
     public String getName() { return name; }
     public void setName(String value) { this.name = value; }
@@ -84,11 +183,6 @@ public class Profile {
     public String getCountryCode() { return countryCode; }
     public void setCountryCode(String value) { this.countryCode = value; }
 
-    public long getFantasyRole() { return fantasyRole; }
-    public void setFantasyRole(long value) { this.fantasyRole = value; }
-
-    public long getTeamID() { return teamID; }
-    public void setTeamID(long value) { this.teamID = value; }
 
     public String getTeamName() { return teamName; }
     public void setTeamName(String value) { this.teamName = value; }
@@ -96,12 +190,28 @@ public class Profile {
     public String getTeamTag() { return teamTag; }
     public void setTeamTag(String value) { this.teamTag = value; }
 
-    public boolean getIsLocked() { return isLocked; }
-    public void setIsLocked(boolean value) { this.isLocked = value; }
+    public boolean getIsSubscriber() { return is_subscriber; }
+    public void setIsSubscriber(boolean value) { this.is_subscriber = value; }
 
-    public boolean getIsPro() { return isPro; }
-    public void setIsPro(boolean value) { this.isPro = value; }
 
-    public Object getLockedUntil() { return lockedUntil; }
-    public void setLockedUntil(Object value) { this.lockedUntil = value; }
+    @Override
+    public String toString() {
+        return "Profile{" +
+                "name='" + name + '\'' +
+                ", isFavorited=" + isFavorited + // Hiển thị trạng thái favorited
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Profile that = (Profile) obj;
+        return accountId == that.accountId; // Assuming accountId uniquely identifies a player
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(accountId); // Use accountId for hash code
+    }
 }

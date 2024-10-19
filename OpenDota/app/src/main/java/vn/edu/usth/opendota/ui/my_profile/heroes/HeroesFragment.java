@@ -2,81 +2,69 @@ package vn.edu.usth.opendota.ui.my_profile.heroes;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.HeroesAdapters;
+import vn.edu.usth.opendota.adapters.MatchesAdapter;
+import vn.edu.usth.opendota.adapters.MyProfileAdapters;
 import vn.edu.usth.opendota.models.Heroes;
+import vn.edu.usth.opendota.models.PlayerObj;
+import vn.edu.usth.opendota.models.ProPlayerObj;
+import vn.edu.usth.opendota.models.RecentMatchesObj;
 import vn.edu.usth.opendota.retrofit.ApiClient;
+import vn.edu.usth.opendota.retrofit.IAPINetwork;
 
 public class HeroesFragment extends Fragment {
-    private HeroesAdapters heroesAdapter = new HeroesAdapters();
-    private ApiClient client;
     private RecyclerView recyclerView;
+    private ArrayList<RecentMatchesObj> listRecentMatches;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public HeroesFragment(ArrayList<RecentMatchesObj> listRecentMatches){
+        this.listRecentMatches=listRecentMatches;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_heroes, container, false);
-    }
-
-    public static HeroesFragment newInstance() {
-        return new HeroesFragment();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_matches, container, false);
+        return v;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        client = ApiClient.getInstance();
-        recyclerView = view.findViewById(R.id.Heroes_recyclerview);
-        setViews();
-        listeners();
-    }
 
-    private void setViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(heroesAdapter);
-    }
+        recyclerView=view.findViewById(R.id.rm_recycleview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        HeroesAdapters HeroesAdapters = new HeroesAdapters(getContext(), listRecentMatches);
+        recyclerView.setAdapter(HeroesAdapters);
+        HeroesAdapters.notifyDataSetChanged();
 
-    private void listeners() {
-        client.getAPIService().getHeroes("1296625").enqueue(new Callback<List<Heroes>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<Heroes>> call, @NonNull Response<List<Heroes>> response) {
-                Log.d(TAG, "onResponse: " + response.body());
-                if (response.isSuccessful()) {
-                    List<Heroes> heroes = response.body();
-                    if (heroes != null) {
-
-                        heroesAdapter.submit(heroes);
-                    }
-                } else {
-                    Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<List<Heroes>> call, @NonNull Throwable t) {
-                Log.e(TAG, "Failure: " + t.getMessage());
-            }
-        });
     }
 }

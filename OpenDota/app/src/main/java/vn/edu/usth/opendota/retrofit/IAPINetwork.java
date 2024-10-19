@@ -10,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.models.PlayerObj;
 import vn.edu.usth.opendota.models.PlayerWinLoss;
 import vn.edu.usth.opendota.models.ProPlayerObj;
@@ -52,7 +53,9 @@ public class IAPINetwork {
     public static Call<PlayerObj> getPlayerData(int account_id){
         return getAPIBuilder().playerData(account_id);
     }
-
+    public static Call<List<Heroes>> getHeroData(int account_id){
+        return getAPIBuilder().heroData(account_id);
+    }
     public static Call<PlayerWinLoss> getPlayerWinLoss(int account_id){
         return getAPIBuilder().playerWinLoss(account_id);
     }

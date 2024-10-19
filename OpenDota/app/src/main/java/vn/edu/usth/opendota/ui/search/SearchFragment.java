@@ -1,5 +1,7 @@
 package vn.edu.usth.opendota.ui.search;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
+
+import com.airbnb.lottie.LottieAnimationView;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -20,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.SearchAdapter;
+import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.models.PlayerObj;
 import vn.edu.usth.opendota.models.PlayerWinLoss;
 import vn.edu.usth.opendota.models.ProPlayerObj;
@@ -36,12 +43,15 @@ public class SearchFragment extends Fragment {
     private List<ProPlayerObj> listPlayer;
     private ArrayList<ProPlayerObj> arrayList;
     private List<ProPlayerObj> listFavorited;
+    private List<Heroes> listHero;
+    private LottieAnimationView animationView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-
+        animationView = view.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
         recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -49,7 +59,7 @@ public class SearchFragment extends Fragment {
         searchView = view.findViewById(R.id.searchView);
         searchView.setIconified(false);
         searchView.clearFocus();
-
+        listHero = new ArrayList<>();
         listPlayer = new ArrayList<>();
         arrayList = new ArrayList<>();
         searchAdapter = new SearchAdapter(requireContext(), arrayList, new SearchAdapter.IOnSearchAdapterListener() {
@@ -57,6 +67,7 @@ public class SearchFragment extends Fragment {
             public void onClickItem(ProPlayerObj user) {
                 onClickGoToDetail(user);
             }
+
 
             @Override
             public void onClickFavorite(ProPlayerObj user) {
@@ -125,7 +136,8 @@ public class SearchFragment extends Fragment {
                         listPlayer.add(item);
                         arrayList.add(item);
                     }
-                    searchAdapter.notifyDataSetChanged(); // This is now correct
+                    searchAdapter.notifyDataSetChanged();
+                    animationView.setVisibility(View.GONE);// This is now correct
                 }
             }
 
@@ -196,4 +208,7 @@ public class SearchFragment extends Fragment {
             }
         });
     }
+
+
+
 }
