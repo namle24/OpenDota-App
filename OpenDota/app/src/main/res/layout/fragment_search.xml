@@ -28,4 +28,12 @@
        tools:listitem="@layout/fragment_profile_frame"
        tools:ignore="MissingConstraints" />
 
+   <com.airbnb.lottie.LottieAnimationView
+       android:id="@+id/animationView"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:lottie_rawRes="@raw/loading"
+       app:lottie_autoPlay="true"
+       app:lottie_loop="true"/>
+
 </RelativeLayout>

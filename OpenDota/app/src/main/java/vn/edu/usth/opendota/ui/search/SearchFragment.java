@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
     private SearchView searchView;
     private List<ProPlayerProfile> proPlayerProfileList = new ArrayList<>();
+    private LottieAnimationView animationView;
 
     public static SearchFragment newInstance() {
         return new SearchFragment();
@@ -49,6 +52,8 @@ public class SearchFragment extends Fragment {
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
         searchView = view.findViewById(R.id.search_view);
         profileAdapters = new ProfileAdapters(requireContext());
+        animationView = view.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);;
         setViews();
         listeners();
         setupSearch();
@@ -72,6 +77,7 @@ public class SearchFragment extends Fragment {
                         }
                     }
                     profileAdapters.submit(proPlayerProfileList);
+                    animationView.setVisibility(View.GONE);
                 } else {
                     Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
                 }
@@ -80,6 +86,8 @@ public class SearchFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Failure: " + t.getMessage());
+
+                animationView.setVisibility(View.GONE);
             }
         });
     }

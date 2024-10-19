@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,8 @@ public class MatchesFragment extends Fragment {
     private final MatchesAdapter matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
     private ApiClient client;
     private RecyclerView recyclerView;
+    private LottieAnimationView loadingAnimation;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,9 @@ public class MatchesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
+        loadingAnimation = view.findViewById(R.id.animationView);
+        loadingAnimation.setVisibility(View.VISIBLE);
+
         setViews();
         listeners();
     }
@@ -66,14 +73,20 @@ public class MatchesFragment extends Fragment {
                     List<Matches> matches = response.body();
                     assert matches != null;
                     matchesAdapter.submit(matches);
+                    loadingAnimation.setVisibility(View.GONE);
+
                 } else {
                     Log.e(TAG, "Error code: " + response.code() + "Error Message:" + response.message());
                 }
             }
 
+
+
             @Override
             public void onFailure(@NonNull Call<List<Matches>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Failure: " + t.getMessage());
+
+                loadingAnimation.setVisibility(View.GONE);
             }
         });
     }
