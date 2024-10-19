@@ -2,6 +2,7 @@ package vn.edu.usth.opendota.ui.my_profile;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,12 +20,14 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
+import vn.edu.usth.opendota.adapters.MatchesAdapter;
 import vn.edu.usth.opendota.models.Matches;
 import vn.edu.usth.opendota.models.Overview;
 import vn.edu.usth.opendota.models.Winlose;
@@ -35,9 +38,10 @@ public class OverviewFragment extends Fragment {
     private CircleImageView ow_avar;
     private TextView ow_name, ow_win, ow_lose, ow_winrate, ow_url;
     private LottieAnimationView animationView;
+    private RecyclerView recyclerView;
+    private final MatchesAdapter matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
+    private String id;
 
-    public OverviewFragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,22 +59,30 @@ public class OverviewFragment extends Fragment {
         return view;
     }
 
-    public static OverviewFragment newInstance() {
-        return new OverviewFragment();
+    public static OverviewFragment newInstance(String id) {
+        OverviewFragment fragment = new OverviewFragment();
+        Bundle args = new Bundle();
+        args.putString("ID_KEY", id);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
+        recyclerView = view.findViewById(R.id.Matches_recyclerview);
         animationView = view.findViewById(R.id.animationView);
-        animationView.setVisibility(View.VISIBLE);;
+        animationView.setVisibility(View.VISIBLE);
 
-        String id = String.valueOf(1296625);
-        fetchOverviewData(id);
+        id = getArguments() != null ? getArguments().getString("ID_KEY") : "default_id";
+
+        fetchOverviewData();
+        listeners();
+        setViews();
     }
 
-    private void fetchOverviewData(String id) {
+    private void fetchOverviewData() {
         Call<Overview> overviewCall = client.getAPIService().getOverview(id);
         Call<Winlose> winloseCall = client.getAPIService().getWinlose(id);
 
@@ -114,6 +126,7 @@ public class OverviewFragment extends Fragment {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateUI(Overview overview) {
         ow_name.setText(overview.getProfile().getName());
         Picasso.get().load(overview.getProfile().getAvatarmedium()).into(ow_avar);
@@ -122,10 +135,40 @@ public class OverviewFragment extends Fragment {
         String wins = String.valueOf(overview.getWinlose().getWin());
         String lose = String.valueOf(overview.getWinlose().getLose());
         int total = Integer.parseInt(String.valueOf(overview.getWinlose().getWin() + overview.getWinlose().getLose()));
-        String winrate = (total > 0) ? String.format("%.2f%%", (double) overview.getWinlose().getWin() / total * 100) : "N/A";
+        @SuppressLint("DefaultLocale") String winrate = (total > 0) ? String.format("%.2f%%", (double) overview.getWinlose().getWin() / total * 100) : "N/A";
 
         ow_win.setText("WINS\n" + wins);
         ow_lose.setText("LOSSES\n" + lose);
         ow_winrate.setText("WINRATE\n" + winrate + "%");
+    }
+
+    private void setViews() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(matchesAdapter);
+    }
+
+    private void listeners() {
+        client.getAPIService().getMatches(id).enqueue(new Callback<List<Matches>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Matches>> call, @NonNull Response<List<Matches>> response) {
+                Log.d(TAG, "onResponse: " + response.body());
+                if (response.isSuccessful()) {
+                    List<Matches> matches = response.body();
+                    assert matches != null;
+                    matchesAdapter.submit(matches);
+
+                } else {
+                    Log.e(TAG, "Error code: " + response.code() + "Error Message:" + response.message());
+                }
+            }
+
+
+
+            @Override
+            public void onFailure(@NonNull Call<List<Matches>> call, @NonNull Throwable t) {
+                Log.e(TAG, "Failure: " + t.getMessage());
+
+            }
+        });
     }
 }

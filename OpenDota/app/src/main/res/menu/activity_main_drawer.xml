@@ -7,22 +7,19 @@
             <item
                 android:id="@+id/nav_home"
                 android:icon="@drawable/ic_home_02_24"
-                android:title="Home" />
-            <item
-                android:id="@+id/nav_myprofile"
-                android:icon="@drawable/ic_profile_02_24"
-                android:title="My Profile" />
+                android:title="@string/nav1" />
+
             <item
                 android:id="@+id/nav_search"
                 android:icon="@drawable/ic_search_02_24"
-                android:title="Search" />
+                android:title="@string/nav2" />
             <item
                 android:id="@+id/nav_favourite"
                 android:icon="@drawable/ic_white_heart_x24"
-                android:title="Favourite" />
+                android:title="@string/nav3" />
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings_02_24"
-                android:title="Settings" />
+                android:title="@string/nav4" />
         </group>
     </menu>

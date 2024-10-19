@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,9 +29,13 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
 
     private List<ProPlayerProfile> proPlayerProfiles = new ArrayList<>();
     private Context context;
+    private OnItemClickListener onItemClickListener;
 
-    public ProfileAdapters(Context context) {
+
+    public ProfileAdapters(Context context, OnItemClickListener onItemClickListener) {
         this.context = context;
+        this.onItemClickListener = onItemClickListener;
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -64,6 +69,10 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         }
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(ProPlayerProfile proPlayerProfile);
+    }
+
     @Override
     public int getItemCount() {
         return proPlayerProfiles.size();
@@ -80,6 +89,9 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         } else {
             holder.profile_avar.setImageResource(R.drawable.no_item);
         }
+
+        holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(item));
+
         boolean isFavourite = checkIfFavourite(item);
         holder.heart.setSelected(isFavourite);
 
@@ -136,4 +148,10 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         favourites.removeIf(fav -> fav.getAccountID() == proPlayerProfile.getAccountID());
         saveFavourites(favourites);
     }
+
+    public void updateHeartState(ProPlayerProfile proPlayerProfile) {
+        notifyDataSetChanged();
+    }
+
+
 }

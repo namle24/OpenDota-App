@@ -2,6 +2,7 @@ package vn.edu.usth.opendota.ui.search;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.ProfileAdapters;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
 import vn.edu.usth.opendota.retrofit.ApiClient;
+import vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;
+import vn.edu.usth.opendota.ui.my_profile.OverviewFragment;
 
 public class SearchFragment extends Fragment {
     private ProfileAdapters profileAdapters;
@@ -35,10 +38,6 @@ public class SearchFragment extends Fragment {
     private SearchView searchView;
     private List<ProPlayerProfile> proPlayerProfileList = new ArrayList<>();
     private LottieAnimationView animationView;
-
-    public static SearchFragment newInstance() {
-        return new SearchFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -51,9 +50,10 @@ public class SearchFragment extends Fragment {
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
         searchView = view.findViewById(R.id.search_view);
-        profileAdapters = new ProfileAdapters(requireContext());
         animationView = view.findViewById(R.id.animationView);
-        animationView.setVisibility(View.VISIBLE);;
+        animationView.setVisibility(View.VISIBLE);
+
+        profileAdapters = new ProfileAdapters(requireContext(), this::navigateToProfileDetail);
         setViews();
         listeners();
         setupSearch();
@@ -115,5 +115,11 @@ public class SearchFragment extends Fragment {
             }
         }
         profileAdapters.submit(filteredList);
+    }
+
+    private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {
+        Intent intent = new Intent(getContext(), MyProfileActivity.class);
+        intent.putExtra("profile_data",  proPlayerProfile);
+        startActivity(intent);
     }
 }

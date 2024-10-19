@@ -1,7 +1,10 @@
 package vn.edu.usth.opendota.models;
 
-public class ProPlayerProfile {
-    private long account_id;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ProPlayerProfile implements Parcelable {
+    private String account_id;
     private Object steamid;
     private Object avatar;
     private Object avatarmedium;
@@ -26,6 +29,31 @@ public class ProPlayerProfile {
     private Object lockedUntil;
     private boolean isFavourite;
 
+    protected ProPlayerProfile(Parcel in) {
+        account_id = String.valueOf(in.readLong());
+        name = in.readString();
+        countryCode = in.readString();
+        fantasyRole = in.readLong();
+        teamID = in.readLong();
+        teamName = in.readString();
+        teamTag = in.readString();
+        isLocked = in.readByte() != 0;
+        isPro = in.readByte() != 0;
+        isFavourite = in.readByte() != 0;
+    }
+
+    public static final Creator<ProPlayerProfile> CREATOR = new Creator<ProPlayerProfile>() {
+        @Override
+        public ProPlayerProfile createFromParcel(Parcel in) {
+            return new ProPlayerProfile(in);
+        }
+
+        @Override
+        public ProPlayerProfile[] newArray(int size) {
+            return new ProPlayerProfile[size];
+        }
+    };
+
     public boolean getFavourite() {
         return isFavourite;
     }
@@ -36,8 +64,8 @@ public class ProPlayerProfile {
 
 
 
-    public long getAccountID() { return account_id; }
-    public void setAccountID(long value) { this.account_id = value; }
+    public String getAccountID() { return account_id; }
+    public void setAccountID(long value) { this.account_id = String.valueOf(value); }
 
     public Object getSteamid() { return steamid; }
     public void setSteamid(Object value) { this.steamid = value; }
@@ -104,4 +132,23 @@ public class ProPlayerProfile {
 
     public Object getLockedUntil() { return lockedUntil; }
     public void setLockedUntil(Object value) { this.lockedUntil = value; }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(Long.parseLong(account_id));
+        dest.writeString(name);
+        dest.writeString(countryCode);
+        dest.writeLong(fantasyRole);
+        dest.writeLong(teamID);
+        dest.writeString(teamName);
+        dest.writeString(teamTag);
+        dest.writeByte((byte) (isLocked ? 1 : 0));
+        dest.writeByte((byte) (isPro ? 1 : 0));
+        dest.writeByte((byte) (isFavourite ? 1 : 0));
+    }
 }

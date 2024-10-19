@@ -1,7 +1,9 @@
 package vn.edu.usth.opendota.ui.favourite;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +24,11 @@ import java.util.List;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.ProfileAdapters;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
+import vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;
 
 public class FavoriteFragment extends Fragment {
 
+    private static final String TAG = "FAVOURITE";
     private RecyclerView recyclerView;
     private ProfileAdapters adapter;
 
@@ -41,17 +45,13 @@ public class FavoriteFragment extends Fragment {
         recyclerView = view.findViewById(R.id.favorites_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Truyền context khi khởi tạo adapter
-        adapter = new ProfileAdapters(getContext());
+        adapter = new ProfileAdapters(getContext(), this::navigateToProfileDetail);
         recyclerView.setAdapter(adapter);
 
-        // Load danh sách yêu thích
         List<ProPlayerProfile> favouriteProPlayerProfiles = getFavourites();
         adapter.submit(favouriteProPlayerProfiles);
     }
 
-
-    // Lấy danh sách profile yêu thích từ SharedPreferences
     private List<ProPlayerProfile> getFavourites() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("favorite_profiles", getContext().MODE_PRIVATE);
         String json = sharedPreferences.getString("favorites_list", null);
@@ -61,5 +61,11 @@ public class FavoriteFragment extends Fragment {
             return gson.fromJson(json, type);
         }
         return new ArrayList<>();
+    }
+
+    private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {
+        Intent intent = new Intent(getContext(), MyProfileActivity.class);
+        intent.putExtra("profile_data", proPlayerProfile);
+        startActivity(intent);
     }
 }

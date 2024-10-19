@@ -30,11 +30,9 @@ import vn.edu.usth.opendota.models.Matches;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
 
-    private final ArrayList<Matches> listRecentMatches;
     private List<Matches> matches = new ArrayList<>();
 
     public MatchesAdapter(Context context, ArrayList<Matches> listRecentMatches) {
-        this.listRecentMatches = listRecentMatches;
     }
 
     @SuppressLint("NotifyDataSetChanged")
