@@ -2,7 +2,7 @@ package vn.edu.usth.opendota.models;
 
 public class Matches {
     private long matchID;
-    private long playerSlot;
+    private long player_slot;
     private boolean radiant_win;
     private long hero_id;
     private long start_time;
@@ -31,8 +31,8 @@ public class Matches {
     public long getMatchID() { return matchID; }
     public void setMatchID(long value) { this.matchID = value; }
 
-    public long getPlayerSlot() { return playerSlot; }
-    public void setPlayerSlot(long value) { this.playerSlot = value; }
+    public long getPlayerSlot() { return player_slot; }
+    public void setPlayerSlot(long value) { this.player_slot = value; }
 
     public boolean getRadiantWin() { return radiant_win; }
     public void setRadiantWin(boolean value) { this.radiant_win = value ; }

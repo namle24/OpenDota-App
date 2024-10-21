@@ -27,8 +27,7 @@
             android:text="OPENDOTA"
             android:gravity="left"
             android:textColor="?attr/textFillColor"
-            android:textSize="35sp">
-        </TextView>
+            android:textSize="35sp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -36,9 +35,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="50dp"
-            android:src="@drawable/dota_2">
-
-        </ImageView>
+            android:src="@drawable/dota_2"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -62,9 +59,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/steam_icon"
-                app:tint="@color/black">
-            </ImageView>
+                android:src="@drawable/steam_icon"/>
 
             <Button
                 android:id="@+id/btnSteamLogin"
@@ -76,8 +71,7 @@
                 android:textAlignment="center"
                 android:text="Login for automatic replay parsing"
                 android:textColor="?attr/textFillColor"
-                android:textSize="20sp">
-            </Button>
+                android:textSize="20sp"/>
             <View
                 android:layout_width="40dp"
                 android:layout_height="40dp"/>

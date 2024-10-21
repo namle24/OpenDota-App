@@ -1,509 +1,8 @@
 package vn.edu.usth.opendota.utils;
 
+import vn.edu.usth.opendota.R;
+
 public class Db {
-
-    public static String getHeroNameByID(int id) {
-        switch (id) {
-            case 1:
-                return "antimage";
-            case 2:
-                return "axe";
-            case 3:
-                return "bane";
-            case 4:
-                return "bloodseeker";
-            case 5:
-                return "crystal_maiden";
-            case 6:
-                return "drow_ranger";
-            case 7:
-                return "earthshaker";
-            case 8:
-                return "juggernaut";
-            case 9:
-                return "mirana";
-            case 10:
-                return "morphling";
-            case 11:
-                return "nevermore";
-            case 12:
-                return "phantom_lancer";
-            case 13:
-                return "puck";
-            case 14:
-                return "pudge";
-            case 15:
-                return "razor";
-            case 16:
-                return "sand_king";
-            case 17:
-                return "storm_spirit";
-            case 18:
-                return "sven";
-            case 19:
-                return "tiny";
-            case 20:
-                return "vengefulspirit";
-            case 21:
-                return "windrunner";
-            case 22:
-                return "zuus";
-            case 23:
-                return "kunkka";
-            case 25:
-                return "lina";
-            case 26:
-                return "lion";
-            case 27:
-                return "shadow_shaman";
-            case 28:
-                return "slardar";
-            case 29:
-                return "tidehunter";
-            case 30:
-                return "witch_doctor";
-            case 32:
-                return "riki";
-            case 33:
-                return "enigma";
-            case 34:
-                return "tinker";
-            case 35:
-                return "sniper";
-            case 36:
-                return "necrolyte";
-            case 37:
-                return "warlock";
-            case 38:
-                return "beastmaster";
-            case 39:
-                return "queenofpain";
-            case 40:
-                return "venomancer";
-            case 41:
-                return "faceless_void";
-            case 42:
-                return "skeleton_king";
-            case 43:
-                return "death_prophet";
-            case 44:
-                return "phantom_assassin";
-            case 45:
-                return "pugna";
-            case 46:
-                return "templar_assassin";
-            case 47:
-                return "viper";
-            case 48:
-                return "luna";
-            case 49:
-                return "dragon_knight";
-            case 50:
-                return "dazzle";
-            case 51:
-                return "rattletrap";
-            case 52:
-                return "leshrac";
-            case 53:
-                return "furion";
-            case 54:
-                return "life_stealer";
-            case 55:
-                return "dark_seer";
-            case 56:
-                return "clinkz";
-            case 57:
-                return "omniknight";
-            case 58:
-                return "enchantress";
-            case 59:
-                return "huskar";
-            case 60:
-                return "night_stalker";
-            case 61:
-                return "broodmother";
-            case 62:
-                return "bounty_hunter";
-            case 63:
-                return "weaver";
-            case 64:
-                return "jakiro";
-            case 65:
-                return "batrider";
-            case 66:
-                return "chen";
-            case 67:
-                return "spectre";
-            case 68:
-                return "ancient_apparition";
-            case 69:
-                return "ursa";
-            case 70:
-                return "spirit_breaker";
-            case 71:
-                return "gyrocopter";
-            case 72:
-                return "alchemist";
-            case 73:
-                return "invoker";
-            case 74:
-                return "silencer";
-            case 75:
-                return "obsidian_destroyer";
-            case 76:
-                return "lycan";
-            case 77:
-                return "brewmaster";
-            case 78:
-                return "shadow_demon";
-            case 79:
-                return "lone_druid";
-            case 80:
-                return "chaos_knight";
-            case 81:
-                return "meepo";
-            case 82:
-                return "treant";
-            case 83:
-                return "ogre_magi";
-            case 84:
-                return "undying";
-            case 85:
-                return "rubick";
-            case 86:
-                return "disruptor";
-            case 87:
-                return "nyx_assassin";
-            case 88:
-                return "naga_siren";
-            case 89:
-                return "keeper_of_the_light";
-            case 90:
-                return "wisp";
-            case 91:
-                return "visage";
-            case 92:
-                return "slark";
-            case 93:
-                return "medusa";
-            case 94:
-                return "troll_warlord";
-            case 95:
-                return "centaur";
-            case 96:
-                return "magnataur";
-            case 97:
-                return "shredder";
-            case 98:
-                return "bristleback";
-            case 99:
-                return "tusk";
-            case 100:
-                return "skywrath_mage";
-            case 101:
-                return "abaddon";
-            case 102:
-                return "elder_titan";
-            case 103:
-                return "legion_commander";
-            case 104:
-                return "ember_spirit";
-            case 106:
-                return "earth_spirit";
-            case 107:
-                return "abyssal_underlord";
-            case 108:
-                return "terrorblade";
-            case 109:
-                return "phoenix";
-            case 110:
-                return "techies";
-            case 111:
-                return "oracle";
-            case 112:
-                return "winter_wyvern";
-            case 113:
-                return "npc_dota_hero_arc_warden";
-            case 114:
-                return "monkey_king";
-            case 119:
-                return "dark_willow";
-            case 120:
-                return "pangolier";
-            case 121:
-                return "grimstroke";
-            case 123:
-                return "hoodwink";
-            case 126:
-                return "void_spirit";
-            case 128:
-                return "snapfire";
-            case 129:
-                return "mars";
-            case 135:
-                return "dawnbreaker";
-            case 136:
-                return "marci";
-            case 137:
-                return "primal_beast";
-            case 138:
-                return "muerta";
-            default:
-                return "Unknown Hero";
-        }
-    }
-
-    public static String getLocalizedNameByID(int id) {
-        switch (id) {
-            case 1:
-                return "Anti-Mage";
-            case 2:
-                return "Axe";
-            case 3:
-                return "Bane";
-            case 4:
-                return "Bloodseeker";
-            case 5:
-                return "Crystal Maiden";
-            case 6:
-                return "Drow Ranger";
-            case 7:
-                return "Earthshaker";
-            case 8:
-                return "Juggernaut";
-            case 9:
-                return "Mirana";
-            case 10:
-                return "Morphling";
-            case 11:
-                return "Shadow Fiend";
-            case 12:
-                return "Phantom Lancer";
-            case 13:
-                return "Puck";
-            case 14:
-                return "Pudge";
-            case 15:
-                return "Razor";
-            case 16:
-                return "Sand King";
-            case 17:
-                return "Storm Spirit";
-            case 18:
-                return "Sven";
-            case 19:
-                return "Tiny";
-            case 20:
-                return "Vengeful Spirit";
-            case 21:
-                return "Windranger";
-            case 22:
-                return "Zeus";
-            case 23:
-                return "Kunkka";
-            case 25:
-                return "Lina";
-            case 26:
-                return "Lion";
-            case 27:
-                return "Shadow Shaman";
-            case 28:
-                return "Slardar";
-            case 29:
-                return "Tidehunter";
-            case 30:
-                return "Witch Doctor";
-            case 32:
-                return "Riki";
-            case 33:
-                return "Enigma";
-            case 34:
-                return "Tinker";
-            case 35:
-                return "Sniper";
-            case 36:
-                return "Necrophos";
-            case 37:
-                return "Warlock";
-            case 38:
-                return "Beastmaster";
-            case 39:
-                return "Queen of Pain";
-            case 40:
-                return "Venomancer";
-            case 41:
-                return "Faceless Void";
-            case 42:
-                return "Wraith King";
-            case 43:
-                return "Death Prophet";
-            case 44:
-                return "Phantom Assassin";
-            case 45:
-                return "Pugna";
-            case 46:
-                return "Templar Assassin";
-            case 47:
-                return "Viper";
-            case 48:
-                return "Luna";
-            case 49:
-                return "Dragon Knight";
-            case 50:
-                return "Dazzle";
-            case 51:
-                return "Clockwerk";
-            case 52:
-                return "Leshrac";
-            case 53:
-                return "Nature's Prophet";
-            case 54:
-                return "Lifestealer";
-            case 55:
-                return "Dark Seer";
-            case 56:
-                return "Clinkz";
-            case 57:
-                return "Omniknight";
-            case 58:
-                return "Enchantress";
-            case 59:
-                return "Huskar";
-            case 60:
-                return "Night Stalker";
-            case 61:
-                return "Broodmother";
-            case 62:
-                return "Bounty Hunter";
-            case 63:
-                return "Weaver";
-            case 64:
-                return "Jakiro";
-            case 65:
-                return "Batrider";
-            case 66:
-                return "Chen";
-            case 67:
-                return "Spectre";
-            case 68:
-                return "Ancient Apparition";
-            case 69:
-                return "Ursa";
-            case 70:
-                return "Spirit Breaker";
-            case 71:
-                return "Gyrocopter";
-            case 72:
-                return "Alchemist";
-            case 73:
-                return "Invoker";
-            case 74:
-                return "Silencer";
-            case 75:
-                return "Outworld Destroyer";
-            case 76:
-                return "Lycan";
-            case 77:
-                return "Brewmaster";
-            case 78:
-                return "Shadow Demon";
-            case 79:
-                return "Lone Druid";
-            case 80:
-                return "Chaos Knight";
-            case 81:
-                return "Meepo";
-            case 82:
-                return "Treant Protector";
-            case 83:
-                return "Ogre Magi";
-            case 84:
-                return "Undying";
-            case 85:
-                return "Rubick";
-            case 86:
-                return "Disruptor";
-            case 87:
-                return "Nyx Assassin";
-            case 88:
-                return "Naga Siren";
-            case 89:
-                return "Keeper of the Light";
-            case 90:
-                return "Io";
-            case 91:
-                return "Visage";
-            case 92:
-                return "Slark";
-            case 93:
-                return "Medusa";
-            case 94:
-                return "Troll Warlord";
-            case 95:
-                return "Centaur Warrunner";
-            case 96:
-                return "Magnus";
-            case 97:
-                return "Timbersaw";
-            case 98:
-                return "Bristleback";
-            case 99:
-                return "Tusk";
-            case 100:
-                return "Skywrath Mage";
-            case 101:
-                return "Abaddon";
-            case 102:
-                return "Elder Titan";
-            case 103:
-                return "Legion Commander";
-            case 104:
-                return "Ember Spirit";
-            case 106:
-                return "Earth Spirit";
-            case 107:
-                return "Underlord";
-            case 108:
-                return "Terrorblade";
-            case 109:
-                return "Phoenix";
-            case 110:
-                return "Techies";
-            case 111:
-                return "Oracle";
-            case 112:
-                return "Winter Wyvern";
-            case 113:
-                return "Arc Warden";
-            case 114:
-                return "Monkey King";
-            case 119:
-                return "Dark Willow";
-            case 120:
-                return "Pangolier";
-            case 121:
-                return "Grimstroke";
-            case 123:
-                return "Hoodwink";
-            case 126:
-                return "Void Spirit";
-            case 128:
-                return "Snapfire";
-            case 129:
-                return "Mars";
-            case 135:
-                return "Dawnbreaker";
-            case 136:
-                return "Marci";
-            case 137:
-                return "Primal Beast";
-            case 138:
-                return "Muerta";
-            default:
-                return "Unknown Hero";
-        }
-    }
-
 
     public static String getLobbyTypeNameById(int id) {
         switch (id) {
@@ -599,4 +98,316 @@ public class Db {
         }
     }
 
+    public static String getHeroNameByID(int id) {
+        String[] heroNames = {
+                "Unknown Hero", // 0
+                "antimage", // 1
+                "axe", // 2
+                "bane", // 3
+                "bloodseeker", // 4
+                "crystal_maiden", // 5
+                "drow_ranger", // 6
+                "earthshaker", // 7
+                "juggernaut", // 8
+                "mirana", // 9
+                "morphling", // 10
+                "nevermore", // 11
+                "phantom_lancer", // 12
+                "puck", // 13
+                "pudge", // 14
+                "razor", // 15
+                "sand_king", // 16
+                "storm_spirit", // 17
+                "sven", // 18
+                "tiny", // 19
+                "vengefulspirit", // 20
+                "windrunner", // 21
+                "zuus", // 22
+                "kunkka", // 23
+                "", // 24
+                "lina", // 25
+                "lion", // 26
+                "shadow_shaman", // 27
+                "slardar", // 28
+                "tidehunter", // 29
+                "witch_doctor", // 30
+                "lich", // 31
+                "riki", // 32
+                "enigma", // 33
+                "tinker", // 34
+                "sniper", // 35
+                "necrolyte", // 36
+                "warlock", // 37
+                "beastmaster", // 38
+                "queenofpain", // 39
+                "venomancer", // 40
+                "faceless_void", // 41
+                "skeleton_king", // 42
+                "death_prophet", // 43
+                "phantom_assassin", // 44
+                "pugna", // 45
+                "templar_assassin", // 46
+                "viper", // 47
+                "luna", // 48
+                "dragon_knight", // 49
+                "dazzle", // 50
+                "rattletrap", // 51
+                "leshrac", // 52
+                "furion", // 53
+                "life_stealer", // 54
+                "dark_seer", // 55
+                "clinkz", // 56
+                "omniknight", // 57
+                "enchantress", // 58
+                "huskar", // 59
+                "night_stalker", // 60
+                "broodmother", // 61
+                "bounty_hunter", // 62
+                "weaver", // 63
+                "jakiro", // 64
+                "batrider", // 65
+                "chen", // 66
+                "spectre", // 67
+                "ancient_apparition", // 68
+                "doom_bringer", // 69
+                "ursa", // 70
+                "spirit_breaker", // 71
+                "gyrocopter", // 72
+                "alchemist", // 73
+                "invoker", // 74
+                "silencer", // 75
+                "obsidian_destroyer", // 76
+                "lycan", // 77
+                "brewmaster", // 78
+                "shadow_demon", // 79
+                "lone_druid", // 80
+                "chaos_knight", // 81
+                "meepo", // 82
+                "treant", // 83
+                "ogre_magi", // 84
+                "undying", // 85
+                "rubick", // 86
+                "disruptor", // 87
+                "nyx_assassin", // 88
+                "naga_siren", // 89
+                "keeper_of_the_light", // 90
+                "wisp", // 91
+                "visage", // 92
+                "slark", // 93
+                "medusa", // 94
+                "troll_warlord", // 95
+                "centaur", // 96
+                "magnataur", // 97
+                "shredder", // 98
+                "bristleback", // 99
+                "tusk", // 100
+                "skywrath_mage", // 101
+                "abaddon", // 102
+                "elder_titan", // 103
+                "legion_commander", // 104
+                "techies", // 105
+                "ember_spirit", // 106
+                "earth_spirit", // 107
+                "abyssal_underlord", // 108
+                "terrorblade", // 109
+                "phoenix", // 110
+                "oracle", // 111
+                "winter_wyvern", // 112
+                "arc_warden", // 113
+                "monkey_king", // 114
+                "", // 115
+                "dark_willow", // 119
+                "pangolier", // 120
+                "grimstroke", // 121
+                "", // 122
+                "hoodwink", // 123
+                "", // 124
+                "", // 125
+                "void_spirit", // 126
+                "snapfire", // 128
+                "mars", // 129
+                "", // 130
+                "ringmaster", // 131
+                "", // 132
+                "", // 133
+                "", // 134
+                "dawnbreaker", // 135
+                "marci", // 136
+                "primal_beast", // 137
+                "muerta" // 138
+        };
+
+        if (id < 0 || id >= heroNames.length) {
+            return heroNames[0];
+        }
+        return heroNames[id];
+    }
+
+    public static String getLocalizedNameByID(int id) {
+        String[] localizedHeroNames = {
+                "Unknown Hero", // 0
+                "Anti-Mage", // 1
+                "Axe", // 2
+                "Bane", // 3
+                "Bloodseeker", // 4
+                "Crystal Maiden", // 5
+                "Drow Ranger", // 6
+                "Earthshaker", // 7
+                "Juggernaut", // 8
+                "Mirana", // 9
+                "Morphling", // 10
+                "Shadow Fiend", // 11
+                "Phantom Lancer", // 12
+                "Puck", // 13
+                "Pudge", // 14
+                "Razor", // 15
+                "Sand King", // 16
+                "Storm Spirit", // 17
+                "Sven", // 18
+                "Tiny", // 19
+                "Vengeful Spirit", // 20
+                "Windranger", // 21
+                "Zeus", // 22
+                "Kunkka", // 23
+                "", // 24
+                "Lina", // 25
+                "Lion", // 26
+                "Shadow Shaman", // 27
+                "Slardar", // 28
+                "Tidehunter", // 29
+                "Witch Doctor", // 30
+                "Lich", // 31
+                "Riki", // 32
+                "Enigma", // 33
+                "Tinker", // 34
+                "Sniper", // 35
+                "Necrophos", // 36
+                "Warlock", // 37
+                "Beastmaster", // 38
+                "Queen of Pain", // 39
+                "Venomancer", // 40
+                "Faceless Void", // 41
+                "Wraith King", // 42
+                "Death Prophet", // 43
+                "Phantom Assassin", // 44
+                "Pugna", // 45
+                "Templar Assassin", // 46
+                "Viper", // 47
+                "Luna", // 48
+                "Dragon Knight", // 49
+                "Dazzle", // 50
+                "Clockwerk", // 51
+                "Leshrac", // 52
+                "Nature's Prophet", // 53
+                "Lifestealer", // 54
+                "Dark Seer", // 55
+                "Clinkz", // 56
+                "Omniknight", // 57
+                "Enchantress", // 58
+                "Huskar", // 59
+                "Night Stalker", // 60
+                "Broodmother", // 61
+                "Bounty Hunter", // 62
+                "Weaver", // 63
+                "Jakiro", // 64
+                "Batrider", // 65
+                "Chen", // 66
+                "Spectre", // 67
+                "Ancient Apparition", // 68
+                "Doom Bringer", // 69
+                "Ursa", // 70
+                "Spirit Breaker", // 71
+                "Gyrocopter", // 72
+                "Alchemist", // 73
+                "Invoker", // 74
+                "Silencer", // 75
+                "Obsidian Destroyer", // 76
+                "Lycan", // 77
+                "Brewmaster", // 78
+                "Shadow Demon", // 79
+                "Lone Druid", // 80
+                "Chaos Knight", // 81
+                "Meepo", // 82
+                "Treant Protector", // 83
+                "Ogre Magi", // 84
+                "Undying", // 85
+                "Rubick", // 86
+                "Disruptor", // 87
+                "Nyx Assassin", // 88
+                "Naga Siren", // 89
+                "Keeper of the Light", // 90
+                "Wisp", // 91
+                "Visage", // 92
+                "Slark", // 93
+                "Medusa", // 94
+                "Troll Warlord", // 95
+                "Centaur Warrunner", // 96
+                "Magnus", // 97
+                "Timbersaw", // 98
+                "Bristleback", // 99
+                "Tusk", // 100
+                "Skywrath Mage", // 101
+                "Abaddon", // 102
+                "Elder Titan", // 103
+                "Legion Commander", // 104
+                "Techies", // 105
+                "Ember Spirit", // 106
+                "Earth Spirit", // 107
+                "Abyssal Underlord", // 108
+                "Terrorblade", // 109
+                "Phoenix", // 110
+                "Oracle", // 111
+                "Winter Wyvern", // 112
+                "Arc Warden", // 113
+                "Monkey King", // 114
+                "", // 115
+                "Dark Willow", // 119
+                "Pangolier", // 120
+                "Grimstroke", // 121
+                "", // 122
+                "Hoodwink", // 123
+                "", // 124
+                "", // 125
+                "Void Spirit", // 126
+                "Snapfire", // 128
+                "Mars", // 129
+                "", // 130
+                "Ringmaster", // 131
+                "", // 132
+                "", // 133
+                "", // 134
+                "Dawnbreaker", // 135
+                "Marci", // 136
+                "Primal Beast", // 137
+                "Muerta" // 138
+        };
+
+        if (id < 0 || id >= localizedHeroNames.length) {
+            return localizedHeroNames[0];
+        }
+        return localizedHeroNames[id];
+    }
+
+
+    public static int getRankDrawableId(int rankTier) {
+        if (rankTier >= 11 && rankTier <= 15) {
+            return R.drawable.rank_icon_1;
+        } else if (rankTier >= 21 && rankTier <= 25) {
+            return R.drawable.rank_icon_2;
+        } else if (rankTier >= 31 && rankTier <= 35) {
+            return R.drawable.rank_icon_3;
+        } else if (rankTier >= 41 && rankTier <= 45) {
+            return R.drawable.rank_icon_4;
+        } else if (rankTier >= 51 && rankTier <= 55) {
+            return R.drawable.rank_icon_5;
+        } else if (rankTier >= 61 && rankTier <= 65) {
+            return R.drawable.rank_icon_6;
+        } else if (rankTier >= 71 && rankTier <= 75) {
+            return R.drawable.rank_icon_7;
+        } else if (rankTier == 80) {
+            return R.drawable.rank_icon_8;
+        } else {
+            return R.drawable.rank_icon_0;
+        }
+    }
 }

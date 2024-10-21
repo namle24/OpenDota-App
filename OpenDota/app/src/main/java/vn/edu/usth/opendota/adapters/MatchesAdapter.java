@@ -81,16 +81,13 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     public void onBindViewHolder(@NonNull MatchesAdapter.ViewHolder holder, int position) {
         Matches item = matches.get(position);
 
-        Log.d(TAG, "Match Details: " + item.toString());
-
-        int lobbytype = (int) item.getLobbyType();
         int gamemode = (int) item.getGameMode();
-        String mode =  getGameModeNameById(gamemode) + " " +getLobbyTypeNameById(lobbytype);
+        String mode =  getGameModeNameById(gamemode);
         holder.tvTitle.setText(mode);
 
         String kda = item.getKills() + "/" + item.getDeaths() + "/" + item.getAssists();
         holder.tvKda.setText(kda);
-        Log.d(TAG, "kda: " + kda);
+
 
         Date date = new Date(item.getStartTime() * 1000);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -104,15 +101,23 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
         int heroId = (int) item.getHeroID();
         String heroName = getHeroNameByID(heroId);
+        Log.d(TAG, "Heroes id: "+ item.getHeroID());
         String imageUrl = "https://cdn.dota2.com/apps/dota2/images/heroes/"+heroName+"_full.png";
         Picasso.get().load(imageUrl).into(holder.avatar);
 
-        if (item.getRadiantWin()) {
-            holder.lineview.setBackgroundResource(R.drawable.gradient_win_color);
-        } else {
-            holder.lineview.setBackgroundResource(R.drawable.gradient_loss_color);
+        int playerSlot = (int) item.getPlayerSlot();
+        if (playerSlot >= 0 && playerSlot <= 127) { // Radiant team
+            if (item.getRadiantWin()) {
+                holder.lineview.setBackgroundResource(R.drawable.gradient_win_color); // Radiant wins
+            } else {
+                holder.lineview.setBackgroundResource(R.drawable.gradient_loss_color); // Radiant loses
+            }
+        } else if (playerSlot >= 128 && playerSlot <= 255) { // Dire team
+            if (item.getRadiantWin()) {
+                holder.lineview.setBackgroundResource(R.drawable.gradient_loss_color); // Dire wins
+            } else {
+                holder.lineview.setBackgroundResource(R.drawable.gradient_win_color); // Dire loses
+            }
         }
-
-
     }
 }
