@@ -5,6 +5,7 @@ import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
 import static vn.edu.usth.opendota.utils.Db.getLocalizedNameByID;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,11 @@ import vn.edu.usth.opendota.models.Heroes;
 
 public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHolder> {
 
-    private List<Heroes> heroes = new ArrayList<>();
+    private List<Heroes> heroes;
+
+    public HeroesAdapters(Context context, List<Heroes> heroes) {
+        this.heroes = heroes;
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     public void submit(List<Heroes> newList) {
@@ -44,7 +49,6 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         private final TextView heroes_name;
         public final ImageView heroes_avar;
         private final TextView heroes_played;
@@ -53,14 +57,12 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             heroes_name = itemView.findViewById(R.id.heroes_name);
             heroes_avar = itemView.findViewById(R.id.heroes_avar);
             heroes_played = itemView.findViewById(R.id.heroes_played);
             heroes_lastplay = itemView.findViewById(R.id.heroes_lastplay);
             heroes_winrate = itemView.findViewById(R.id.heroes_winrate);
         }
-
     }
 
     @Override
@@ -72,7 +74,6 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
     @Override
     public void onBindViewHolder(@NonNull HeroesAdapters.ViewHolder holder, int position) {
         Heroes item = heroes.get(position);
-
         Log.d(TAG, "Heroes Details: " + item.toString());
 
         int heroId = (int) item.getHeroID();
@@ -99,8 +100,7 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
             holder.heroes_lastplay.setText(differenceInDays + " days ago");
         } else {
             @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH");
-            holder.heroes_lastplay.setText(sdf.format(lastPlayedDate) + "hours ago");
+            holder.heroes_lastplay.setText(sdf.format(lastPlayedDate) + " hours ago");
         }
     }
-
 }

@@ -5,6 +5,7 @@
     android:id="@+id/layout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".MainActivity"
     android:background="?attr/backgroundColor"
     android:orientation="vertical">
 
@@ -54,30 +55,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="120dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:layout_marginTop="160dp"
+            android:gravity="center_vertical">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:contentDescription="Login"
-                android:background="@drawable/steam_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                android:layout_gravity="center"
+                android:src="@drawable/steam_icon"
+                app:tint="@color/black">
             </ImageView>
 
             <Button
                 android:id="@+id/btnSteamLogin"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:contentDescription="Login"
-                android:background="@drawable/steam_icon"
-                android:text="Login with Steam"
-                android:textColor="@android:color/white"/>
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="Login for automatic replay parsing"
+                android:textColor="?attr/textFillColor"
+                android:textSize="20sp">
+            </Button>
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
         </LinearLayout>
     </RelativeLayout>
 

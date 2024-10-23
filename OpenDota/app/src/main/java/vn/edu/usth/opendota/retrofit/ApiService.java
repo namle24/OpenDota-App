@@ -7,7 +7,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.models.Matches;
-import vn.edu.usth.opendota.models.Profile;
+import vn.edu.usth.opendota.models.Overview;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
+import vn.edu.usth.opendota.models.Winlose;
 
 public interface ApiService {
 
@@ -18,9 +20,13 @@ public interface ApiService {
     Call<List<Heroes>> getHeroes(@Path("id") String id);
 
     @GET("proPlayers")
-    Call<List<Profile>> getProfile();
+    Call<List<ProPlayerProfile>> getProfile();
 
-    @GET("profile/{accountId}")
-    Call<Profile> getProfileById(@Path("accountId") long accountId);
+    @GET("players/{id}")
+    Call<Overview> getOverview(@Path("id") String id);
+
+    @GET("players/{id}/wl")
+    Call<Winlose> getWinlose(@Path("id") String id);
+
 }
 

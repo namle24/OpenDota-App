@@ -1,9 +1,6 @@
 package vn.edu.usth.opendota.ui.favourite;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,49 +16,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.SearchAdapter;
-import vn.edu.usth.opendota.models.PlayerObj;
-import vn.edu.usth.opendota.models.PlayerWinLoss;
-import vn.edu.usth.opendota.models.ProPlayerObj;
-import vn.edu.usth.opendota.models.RecentMatchesObj;
-import vn.edu.usth.opendota.retrofit.IAPINetwork;
-import vn.edu.usth.opendota.ui.my_profile.MyProfileFragment;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
+import vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;
 import vn.edu.usth.opendota.utils.PrefUtil;
 
-
 public class FavoriteFragment extends Fragment {
+    private List<ProPlayerProfile> listFavorited;
     private RecyclerView recyclerView;
     private SearchAdapter favAdapter;
-    private List<ProPlayerObj> listFavorited;
-    private SharedPreferences sharedPreferences;
-    private int storedColor;
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favourite, container, false);
 
         recyclerView = view.findViewById(R.id.favorites_recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Lấy danh sách người dùng yêu thích từ PrefUtil
         listFavorited = PrefUtil.getListFavorite(requireContext());
-        if (listFavorited.isEmpty()) {
-            Log.d("Favorites", "No favorites found.");
-        }
 
         favAdapter = new SearchAdapter(requireContext(), new ArrayList<>(listFavorited), new SearchAdapter.IOnSearchAdapterListener() {
             @Override
-            public void onClickItem(ProPlayerObj user) {
-                onClickGoToDetail(user);
+            public void onClickItem(ProPlayerProfile user) {
+                navigateToProfileDetail(user);
             }
 
             @Override
-            public void onClickFavorite(ProPlayerObj user) {
+            public void onClickFavorite(ProPlayerProfile user) {
                 if (user.isFavorited()) {
                     removeFavorite(user);
                 } else {
@@ -70,12 +53,12 @@ public class FavoriteFragment extends Fragment {
             }
         }) {
             @Override
-            public void onClickItem(ProPlayerObj user) {
+            public void onClickItem(ProPlayerProfile user) {
 
             }
 
             @Override
-            public void onClickFavorite(ProPlayerObj user) {
+            public void onClickFavorite(ProPlayerProfile user) {
 
             }
         };
@@ -87,82 +70,33 @@ public class FavoriteFragment extends Fragment {
     }
 
 
-    private void removeFavorite(ProPlayerObj user) {
-        PrefUtil.removeFavorite(requireContext(), user);
-        user.setFavorited(false);
-        updateUIWithFavorites();
+    private void addFavorite(ProPlayerProfile user) {
+        if (!listFavorited.contains(user)) {
+            PrefUtil.addToFavorites(requireContext(), user);
+            user.setFavorited(true);
+            listFavorited.add(user);  // Thêm người dùng vào danh sách yêu thích
+            favAdapter.notifyItemInserted(listFavorited.size() - 1);  // Cập nhật giao diện
+        }
     }
 
-    private void addFavorite(ProPlayerObj user) {
-        PrefUtil.addToFavorites(requireContext(), user);
-        user.setFavorited(true);
-        updateUIWithFavorites();
+    private void removeFavorite(ProPlayerProfile user) {
+        if (listFavorited.contains(user)) {
+            PrefUtil.removeFavorite(requireContext(), user);
+            user.setFavorited(false);
+            int index = listFavorited.indexOf(user);
+            listFavorited.remove(user);  // Xóa người dùng khỏi danh sách yêu thích
+            favAdapter.notifyItemRemoved(index);  // Cập nhật giao diện
+        }
     }
+
 
     private void updateUIWithFavorites() {
-        favAdapter.notifyDataSetChanged();
+        favAdapter.notifyDataSetChanged(); // Cập nhật giao diện
     }
 
-    private void onClickGoToDetail(ProPlayerObj user) {
-        IAPINetwork.getRecentMatch(user.getAccountId()).enqueue(new Callback<List<RecentMatchesObj>>() {
-            @Override
-            public void onResponse(Call<List<RecentMatchesObj>> call, Response<List<RecentMatchesObj>> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().size() > 0) {
-                    callGetPlayerData(user, response.body().subList(0, Math.min(response.body().size(), 30)));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<RecentMatchesObj>> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
-            }
-        });
-    }
-
-    private void callGetPlayerData(ProPlayerObj user, List<RecentMatchesObj> recentMatchesList) {
-        IAPINetwork.getPlayerData(user.getAccountId()).enqueue(new Callback<PlayerObj>() {
-            @Override
-            public void onResponse(Call<PlayerObj> call, Response<PlayerObj> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    PlayerObj playerObj = response.body();
-                    playerObj.setProfile(user);
-                    callGetPlayerWl(playerObj, user.getAccountId(), recentMatchesList);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PlayerObj> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
-            }
-        });
-    }
-
-    private void callGetPlayerWl(PlayerObj playerObj, int accountId, List<RecentMatchesObj> recentMatchesList) {
-        IAPINetwork.getPlayerWinLoss(accountId).enqueue(new Callback<PlayerWinLoss>() {
-            @Override
-            public void onResponse(Call<PlayerWinLoss> call, Response<PlayerWinLoss> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    playerObj.setWinLoss(response.body());
-
-                    // Here we replace the fragment instead of starting an activity
-                    MyProfileFragment myProfileFragment = new MyProfileFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("player_data", playerObj);
-                    bundle.putSerializable("player_recent_matches", new ArrayList<>(recentMatchesList));
-                    myProfileFragment.setArguments(bundle);
-
-                    // Use FragmentTransaction to replace the current fragment
-                    requireActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framelayout, myProfileFragment) // Use your actual container ID
-                            .addToBackStack(null) // Optional: Add to back stack
-                            .commit();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PlayerWinLoss> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
-            }
-        });
+    private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {
+        Intent intent = new Intent(getContext(), MyProfileActivity.class);
+        intent.putExtra("profile_data", proPlayerProfile);
+        startActivity(intent);
     }
 }

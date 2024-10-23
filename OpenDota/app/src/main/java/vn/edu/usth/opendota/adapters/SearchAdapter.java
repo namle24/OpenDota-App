@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,26 +21,25 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
-import vn.edu.usth.opendota.models.ProPlayerObj;
-import vn.edu.usth.opendota.ui.my_profile.overview.RecentMatchesAdapter;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
+import vn.edu.usth.opendota.utils.PrefUtil;
 
 
 public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyHolder>{
     private Context context;
-    private ArrayList<ProPlayerObj> arrayListUser;
-    private RecentMatchesAdapter recentMatchesAdapter;
-
+    private List<ProPlayerProfile> arrayListUser;
     private IOnSearchAdapterListener listener;
 
 
 
     private final String TAG = SearchAdapter.class.getSimpleName();
 
-    public SearchAdapter(Context context, ArrayList<ProPlayerObj> arrayListUser, IOnSearchAdapterListener listener){
+    public SearchAdapter(Context context, List<ProPlayerProfile> arrayListUser, IOnSearchAdapterListener listener){
         this.context = context;
         this.arrayListUser = arrayListUser;
         this.listener = listener;
@@ -54,38 +54,38 @@ public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.M
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, @SuppressLint("RecyclerView") int position) {
-        final ProPlayerObj user = arrayListUser.get(position);
+        final ProPlayerProfile user = arrayListUser.get(position);
         if (user == null) {
             return;
         }
 
+        // Cập nhật trạng thái yêu thích từ PrefUtil
+        boolean isFavorited = PrefUtil.isFavorite(context, String.valueOf(user.getAccountID()));
+        user.setFavorited(isFavorited);
+
         holder.userName.setText(user.getName());
-        holder.userID.setText(String.valueOf(user.getAccountId()));
+        holder.userID.setText(String.valueOf(user.getAccountID()));
         Picasso.get().load(user.getAvatarmedium()).into(holder.imgAvatar);
 
-        holder.ivFavorite.setImageResource(user.isFavorited() ? R.drawable.baseline_favorite_24 : R.drawable.baseline_favorite_border_24);
+        // Đặt đúng hình ảnh cho nút trái tim
+        holder.ivFavorite.setImageResource(user.isFavorited() ? R.drawable.baseline_favorite_24 : R.drawable.heart_icon);
 
-        holder.cardViewItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onClickItem(user);
-            }
-        });
+        holder.cardViewItem.setOnClickListener(view -> listener.onClickItem(user));
 
-        holder.ivFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (user.isFavorited()) {
-                    listener.onClickFavorite(user);
-                    user.setFavorited(false);
-                } else {
-                    listener.onClickFavorite(user);
-                    user.setFavorited(true);
-                }
-                notifyItemChanged(position);
+        holder.ivFavorite.setOnClickListener(view -> {
+            if (user.isFavorited()) {
+                listener.onClickFavorite(user);  // Gọi hàm để xử lý yêu thích
+                PrefUtil.removeFavorite(context, user);  // Xóa khỏi danh sách yêu thích
+                user.setFavorited(false);
+            } else {
+                listener.onClickFavorite(user);  // Gọi hàm để xử lý yêu thích
+                PrefUtil.addToFavorites(context, user);  // Thêm vào danh sách yêu thích
+                user.setFavorited(true);
             }
+            notifyItemChanged(position);  // Cập nhật lại giao diện
         });
     }
+
 
     @Override
     public int getItemCount () {
@@ -95,31 +95,31 @@ public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.M
         return 0;
     }
 
-    public abstract void onClickItem(ProPlayerObj user);
+    public abstract void onClickItem(ProPlayerProfile user);
 
-    public abstract void onClickFavorite(ProPlayerObj user);
+    public abstract void onClickFavorite(ProPlayerProfile user);
 
 
     public class MyHolder extends RecyclerView.ViewHolder {
         private CardView cardViewItem;
-        private ImageView imgAvatar;
-        private ImageView ivFavorite;
+        private CircleImageView imgAvatar;
+        private ImageButton ivFavorite;
         private TextView userName;
         private TextView userID;
 
         public MyHolder(@NonNull View itemView) { // khai bao thanh phan co trong item_file
             super(itemView);
-            cardViewItem = itemView.findViewById(R.id.layout_item_file);
-            userName=itemView.findViewById(R.id.name);
-            userID=itemView.findViewById(R.id.ID);
-            imgAvatar=itemView.findViewById(R.id.img);
-            ivFavorite=itemView.findViewById(R.id.favorite_button);
+            cardViewItem = itemView.findViewById(R.id.profile_frame);
+            userName=itemView.findViewById(R.id.profile_name);
+            userID=itemView.findViewById(R.id.profile_id);
+            imgAvatar=itemView.findViewById(R.id.profile_avar);
+            ivFavorite=itemView.findViewById(R.id.heart_button);
         }
     }
 
 
     public interface IOnSearchAdapterListener{
-        void onClickItem(ProPlayerObj user);
-        void onClickFavorite(ProPlayerObj user);
+        void onClickItem(ProPlayerProfile user);
+        void onClickFavorite(ProPlayerProfile user);
     }
 }

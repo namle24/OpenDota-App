@@ -1,65 +1,82 @@
 package vn.edu.usth.opendota.ui.search;
 
-import android.content.Context;
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.SearchView;
+
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
+import vn.edu.usth.opendota.adapters.ProfileAdapters;
 import vn.edu.usth.opendota.adapters.SearchAdapter;
-import vn.edu.usth.opendota.models.PlayerObj;
-import vn.edu.usth.opendota.models.PlayerWinLoss;
-import vn.edu.usth.opendota.models.ProPlayerObj;
-import vn.edu.usth.opendota.models.RecentMatchesObj;
-import vn.edu.usth.opendota.retrofit.IAPINetwork;
+import vn.edu.usth.opendota.models.Heroes;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
+import vn.edu.usth.opendota.retrofit.ApiClient;
+import vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;
+import vn.edu.usth.opendota.ui.my_profile.OverviewFragment;
 import vn.edu.usth.opendota.utils.PrefUtil;
-import vn.edu.usth.opendota.ui.my_profile.MyProfileFragment;
 
 public class SearchFragment extends Fragment {
-    private final String TAG = SearchFragment.class.getSimpleName();
-    private SearchView searchView;
+    private ProfileAdapters profileAdapters;
+    private ApiClient client;
     private RecyclerView recyclerView;
+    private SearchView searchView;
+    private List<ProPlayerProfile> proPlayerProfileList = new ArrayList<>();
+    private LottieAnimationView animationView;
     private SearchAdapter searchAdapter; // Corrected type
-    private List<ProPlayerObj> listPlayer;
-    private ArrayList<ProPlayerObj> arrayList;
-    private List<ProPlayerObj> listFavorited;
+    private List<ProPlayerProfile> listPlayer;
+    private ArrayList<ProPlayerProfile> arrayList;
+    private List<ProPlayerProfile> listFavorited;
+    private List<Heroes> listHero;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_search, container, false);
+    }
 
-        recyclerView = view.findViewById(R.id.recyclerView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        client = ApiClient.getInstance();
+        recyclerView = view.findViewById(R.id.Matches_recyclerview);
+        searchView = view.findViewById(R.id.search_view);
+        animationView = view.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
 
-        searchView = view.findViewById(R.id.searchView);
-        searchView.setIconified(false);
-        searchView.clearFocus();
+        profileAdapters = new ProfileAdapters(requireContext(), this::navigateToProfileDetail);
+        setViews();
+        listeners();
+        setupSearch();
 
+        listHero = new ArrayList<>();
         listPlayer = new ArrayList<>();
         arrayList = new ArrayList<>();
         searchAdapter = new SearchAdapter(requireContext(), arrayList, new SearchAdapter.IOnSearchAdapterListener() {
             @Override
-            public void onClickItem(ProPlayerObj user) {
-                onClickGoToDetail(user);
+            public void onClickItem(ProPlayerProfile user) {
+                navigateToProfileDetail(user);
             }
 
             @Override
-            public void onClickFavorite(ProPlayerObj user) {
+            public void onClickFavorite(ProPlayerProfile user) {
                 if (user.isFavorited()) {
                     PrefUtil.removeFavorite(requireContext(), user);
                     user.setFavorited(false);
@@ -71,12 +88,12 @@ public class SearchFragment extends Fragment {
             }
         }) {
             @Override
-            public void onClickItem(ProPlayerObj user) {
+            public void onClickItem(ProPlayerProfile user) {
 
             }
 
             @Override
-            public void onClickFavorite(ProPlayerObj user) {
+            public void onClickFavorite(ProPlayerProfile user) {
 
             }
         };
@@ -84,7 +101,8 @@ public class SearchFragment extends Fragment {
         recyclerView.setAdapter(searchAdapter);
         listFavorited = PrefUtil.getListFavorite(requireContext());
 
-        callGetProPlayer();
+
+        listeners();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -95,7 +113,7 @@ public class SearchFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 arrayList.clear();
-                for (ProPlayerObj item : listPlayer) {
+                for (ProPlayerProfile item : listPlayer) {
                     if (item.getName().toLowerCase().contains(newText.toLowerCase())) {
                         arrayList.add(item);
                     }
@@ -104,96 +122,83 @@ public class SearchFragment extends Fragment {
                 return false;
             }
         });
-
-        return view;
     }
 
-    private void callGetProPlayer() {
-        IAPINetwork.getProPlayer().enqueue(new Callback<List<ProPlayerObj>>() {
+    private void setViews() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(profileAdapters);
+    }
+
+    private void listeners() {
+        client.getAPIService().getProfile().enqueue(new Callback<List<ProPlayerProfile>>() {
             @Override
-            public void onResponse(Call<List<ProPlayerObj>> call, Response<List<ProPlayerObj>> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().size() > 0) {
-                    listPlayer.clear();
-                    arrayList.clear();
-                    for (ProPlayerObj item : response.body().subList(0, Math.min(response.body().size(), 30))) {
-                        for (ProPlayerObj itemFavorite : listFavorited) {
-                            if (item.getAccountId() == itemFavorite.getAccountId()) {
-                                item.setFavorited(true);
-                                break;
+            public void onResponse(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Response<List<ProPlayerProfile>> response) {
+                Log.d(TAG, "onResponse: " + response.body());
+                if (response.isSuccessful()) {
+                    proPlayerProfileList = response.body();
+                    if (proPlayerProfileList != null) {
+                        if (proPlayerProfileList.size() > 30) {
+                            proPlayerProfileList = proPlayerProfileList.subList(0, 30);
+                        }
+
+                        for (ProPlayerProfile item : proPlayerProfileList) {
+                            for (ProPlayerProfile itemFavorite : listFavorited) {
+                                if (item.getAccountID().equals(itemFavorite.getAccountID())) {
+                                    item.setFavorited(true);
+                                    break;
+                                }
                             }
                         }
-                        listPlayer.add(item);
-                        arrayList.add(item);
+
+
+                        arrayList.clear(); // Xóa danh sách cũ
+                        arrayList.addAll(proPlayerProfileList); // Thêm danh sách mới
+                        searchAdapter.notifyDataSetChanged(); // Thông báo adapter cập nhật
+                        profileAdapters.submit(proPlayerProfileList); // Cập nhật adapter cho danh sách người dùng
+                        animationView.setVisibility(View.GONE);
                     }
-                    searchAdapter.notifyDataSetChanged(); // This is now correct
+                } else {
+                    Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ProPlayerObj>> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
+            public void onFailure(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Throwable t) {
+                Log.e(TAG, "Failure: " + t.getMessage());
+                animationView.setVisibility(View.GONE);
             }
         });
     }
 
-    private void onClickGoToDetail(ProPlayerObj user) {
-        IAPINetwork.getRecentMatch(user.getAccountId()).enqueue(new Callback<List<RecentMatchesObj>>() {
+
+    private void setupSearch() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onResponse(Call<List<RecentMatchesObj>> call, Response<List<RecentMatchesObj>> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().size() > 0) {
-                    callGetPlayerData(user, response.body().subList(0, Math.min(response.body().size(), 30)));
-                }
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
             @Override
-            public void onFailure(Call<List<RecentMatchesObj>> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
-            }
-        });
-    }
-
-    private void callGetPlayerData(ProPlayerObj user, List<RecentMatchesObj> recentMatchesList) {
-        IAPINetwork.getPlayerData(user.getAccountId()).enqueue(new Callback<PlayerObj>() {
-            @Override
-            public void onResponse(Call<PlayerObj> call, Response<PlayerObj> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    PlayerObj playerObj = response.body();
-                    playerObj.setProfile(user);
-                    callGetPlayerWl(playerObj, user.getAccountId(), recentMatchesList);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PlayerObj> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
+            public boolean onQueryTextChange(String newText) {
+                filterProfiles(newText);
+                return true;
             }
         });
     }
 
-    private void callGetPlayerWl(PlayerObj playerObj, int accountId, List<RecentMatchesObj> recentMatchesList) {
-        IAPINetwork.getPlayerWinLoss(accountId).enqueue(new Callback<PlayerWinLoss>() {
-            @Override
-            public void onResponse(Call<PlayerWinLoss> call, Response<PlayerWinLoss> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    playerObj.setWinLoss(response.body());
-
-                    MyProfileFragment myProfileFragment = new MyProfileFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("player_data", playerObj);
-                    bundle.putSerializable("player_recent_matches", new ArrayList<>(recentMatchesList));
-                    myProfileFragment.setArguments(bundle);
-
-                    requireActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framelayout, myProfileFragment)
-                            .addToBackStack(null)
-                            .commit();
-                }
+    private void filterProfiles(String query) {
+        List<ProPlayerProfile> filteredList = new ArrayList<>();
+        for (ProPlayerProfile proPlayerProfile : proPlayerProfileList) {
+            if (proPlayerProfile.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(proPlayerProfile);
             }
+        }
+        profileAdapters.submit(filteredList);
+    }
 
-            @Override
-            public void onFailure(Call<PlayerWinLoss> call, Throwable t) {
-                Log.e(TAG, "onFailure: ", t);
-            }
-        });
+    private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {
+        Intent intent = new Intent(getContext(), MyProfileActivity.class);
+        intent.putExtra("profile_data",  proPlayerProfile);
+        startActivity(intent);
     }
 }

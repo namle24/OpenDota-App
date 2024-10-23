@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_heroes"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
+    android:background="?attr/backgroundColor"
     tools:ignore="HardcodedText">
 
+
     <LinearLayout
+        android:id="@+id/header_heroes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:orientation="vertical"
-        android:background="?attr/backgroundColor">
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+
             android:layout_marginTop="10dp"
             android:textSize="14sp"
             android:gravity="center"
@@ -32,8 +37,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:text="HEROES"
             android:textAlignment="center"
             android:background="?attr/colorOnSecondary"
@@ -42,62 +45,77 @@
             />
 
         <LinearLayout
+            android:id="@+id/line_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:background="?attr/colorOnSecondary"
+            android:orientation="horizontal"
             android:weightSum="4">
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Hero"
-                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                android:textColor="?attr/textFillColor"/>
+                android:text="Heroes"
+                android:textColor="?attr/textFillColor"
+                android:textSize="18sp" />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="?attr/textFillColor"
                 android:text="Played"
-                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                android:textColor="?attr/textFillColor"/>
+                android:textSize="18sp"/>
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="?attr/textFillColor"
+                android:text="Win %"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:ellipsize="end"
                 android:gravity="center"
-                android:text="Win%"
-                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                android:textColor="?attr/textFillColor"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Last Played"
-                android:textSize="@dimen/Maches_hero_mode_ended_length_KDA_textsize"
-                android:textColor="?attr/textFillColor"/>
-
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:textColor="?attr/textFillColor"
+                android:textSize="18sp"
+                android:text="Last Played" />
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/Heroes_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/fragment_heroes_frame"
-            tools:ignore="MissingConstraints" />
-
-
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Heroes_recyclerview"
+        app:layout_constraintTop_toBottomOf="@+id/header_heroes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/fragment_heroes_frame"
+        tools:ignore="MissingConstraints" />
 
-</androidx.core.widget.NestedScrollView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

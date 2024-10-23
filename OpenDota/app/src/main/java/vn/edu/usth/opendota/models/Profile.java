@@ -1,107 +1,150 @@
 package vn.edu.usth.opendota.models;
 
+import java.time.OffsetDateTime;
+
 public class Profile {
-    private long account_id;
-    private Object steamid;
-    private Object avatar;
-    private Object avatarmedium;
-    private Object avatarfull;
-    private Object profileurl;
-    private Object personaname;
-    private Object lastLogin;
-    private Object fullHistoryTime;
-    private Object cheese;
-    private Object fhUnavailable;
-    private Object loccountrycode;
-    private Object lastMatchTime;
-    private Object plus;
+    private long accountID;
+    private String personaname;
     private String name;
-    private String countryCode;
-    private long fantasyRole;
-    private long teamID;
-    private String teamName;
-    private String teamTag;
-    private boolean isLocked;
-    private boolean isPro;
-    private Object lockedUntil;
-    private boolean isFavourite;
+    private boolean plus;
+    private long cheese;
+    private String steamid;
+    private String avatar;
+    private String avatarmedium;
+    private String avatarfull;
+    private String profileurl;
+    private OffsetDateTime lastLogin;
+    private String loccountrycode;
+    private Object status;
+    private boolean fhUnavailable;
+    private boolean isContributor;
+    private boolean isSubscriber;
 
-    public boolean getFavourite() {
-        return isFavourite;
+    public long getAccountID() {
+        return accountID;
     }
 
-    public void setFavourite(boolean isFavourite) {
-        this.isFavourite = isFavourite;
+    public void setAccountID(long accountID) {
+        this.accountID = accountID;
     }
 
+    public String getAvatarmedium() {
+        return avatarmedium;
+    }
 
+    public void setAvatarmedium(String avatarmedium) {
+        this.avatarmedium = avatarmedium;
+    }
 
-    public long getAccountID() { return account_id; }
-    public void setAccountID(long value) { this.account_id = value; }
+    public String getSteamid() {
+        return steamid;
+    }
 
-    public Object getSteamid() { return steamid; }
-    public void setSteamid(Object value) { this.steamid = value; }
+    public void setSteamid(String steamid) {
+        this.steamid = steamid;
+    }
 
-    public Object getAvatar() { return avatar; }
-    public void setAvatar(Object value) { this.avatar = value; }
+    public boolean isPlus() {
+        return plus;
+    }
 
-    public Object getAvatarmedium() { return avatarmedium; }
-    public void setAvatarmedium(Object value) { this.avatarmedium = value; }
+    public void setPlus(boolean plus) {
+        this.plus = plus;
+    }
 
-    public Object getAvatarfull() { return avatarfull; }
-    public void setAvatarfull(Object value) { this.avatarfull = value; }
+    public String getName() {
+        return name;
+    }
 
-    public Object getProfileurl() { return profileurl; }
-    public void setProfileurl(Object value) { this.profileurl = value; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Object getPersonaname() { return personaname; }
-    public void setPersonaname(Object value) { this.personaname = value; }
+    public String getPersonaname() {
+        return personaname;
+    }
 
-    public Object getLastLogin() { return lastLogin; }
-    public void setLastLogin(Object value) { this.lastLogin = value; }
+    public void setPersonaname(String personaname) {
+        this.personaname = personaname;
+    }
 
-    public Object getFullHistoryTime() { return fullHistoryTime; }
-    public void setFullHistoryTime(Object value) { this.fullHistoryTime = value; }
+    public String getAvatarfull() {
+        return avatarfull;
+    }
 
-    public Object getCheese() { return cheese; }
-    public void setCheese(Object value) { this.cheese = value; }
+    public void setAvatarfull(String avatarfull) {
+        this.avatarfull = avatarfull;
+    }
 
-    public Object getFhUnavailable() { return fhUnavailable; }
-    public void setFhUnavailable(Object value) { this.fhUnavailable = value; }
+    public boolean isFhUnavailable() {
+        return fhUnavailable;
+    }
 
-    public Object getLoccountrycode() { return loccountrycode; }
-    public void setLoccountrycode(Object value) { this.loccountrycode = value; }
+    public void setFhUnavailable(boolean fhUnavailable) {
+        this.fhUnavailable = fhUnavailable;
+    }
 
-    public Object getLastMatchTime() { return lastMatchTime; }
-    public void setLastMatchTime(Object value) { this.lastMatchTime = value; }
+    public Object getStatus() {
+        return status;
+    }
 
-    public Object getPlus() { return plus; }
-    public void setPlus(Object value) { this.plus = value; }
+    public void setStatus(Object status) {
+        this.status = status;
+    }
 
-    public String getName() { return name; }
-    public void setName(String value) { this.name = value; }
+    public String getAvatar() {
+        return avatar;
+    }
 
-    public String getCountryCode() { return countryCode; }
-    public void setCountryCode(String value) { this.countryCode = value; }
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
-    public long getFantasyRole() { return fantasyRole; }
-    public void setFantasyRole(long value) { this.fantasyRole = value; }
+    public String getLoccountrycode() {
+        return loccountrycode;
+    }
 
-    public long getTeamID() { return teamID; }
-    public void setTeamID(long value) { this.teamID = value; }
+    public void setLoccountrycode(String loccountrycode) {
+        this.loccountrycode = loccountrycode;
+    }
 
-    public String getTeamName() { return teamName; }
-    public void setTeamName(String value) { this.teamName = value; }
+    public boolean isSubscriber() {
+        return isSubscriber;
+    }
 
-    public String getTeamTag() { return teamTag; }
-    public void setTeamTag(String value) { this.teamTag = value; }
+    public void setSubscriber(boolean subscriber) {
+        isSubscriber = subscriber;
+    }
 
-    public boolean getIsLocked() { return isLocked; }
-    public void setIsLocked(boolean value) { this.isLocked = value; }
+    public long getCheese() {
+        return cheese;
+    }
 
-    public boolean getIsPro() { return isPro; }
-    public void setIsPro(boolean value) { this.isPro = value; }
+    public void setCheese(long cheese) {
+        this.cheese = cheese;
+    }
 
-    public Object getLockedUntil() { return lockedUntil; }
-    public void setLockedUntil(Object value) { this.lockedUntil = value; }
+    public boolean isContributor() {
+        return isContributor;
+    }
+
+    public void setContributor(boolean contributor) {
+        isContributor = contributor;
+    }
+
+    public String getProfileurl() {
+        return profileurl;
+    }
+
+    public void setProfileurl(String profileurl) {
+        this.profileurl = profileurl;
+    }
+
+    public OffsetDateTime getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(OffsetDateTime lastLogin) {
+        this.lastLogin = lastLogin;
+    }
 }

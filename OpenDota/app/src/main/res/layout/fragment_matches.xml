@@ -13,15 +13,8 @@
         android:orientation="vertical"
         android:background="?attr/backgroundColor"
         android:paddingTop="12dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorOnSecondary"
-            app:queryHint="Search Match" />
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
 
         <TextView
             android:layout_width="match_parent"

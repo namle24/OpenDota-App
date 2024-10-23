@@ -10,18 +10,18 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import vn.edu.usth.opendota.models.ProPlayerObj;
+import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 
 public class PrefUtil {
 
     private static final String KEY_FAVORITES = "favorite_players";
 
-    public static void addToFavorites(Context context, ProPlayerObj player) {
+    public static void addToFavorites(Context context, ProPlayerProfile player) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(KEY_FAVORITES, "[]");
-        Type type = new TypeToken<List<ProPlayerObj>>() {}.getType();
-        List<ProPlayerObj> favorites = new Gson().fromJson(json, type);
+        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
+        List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);
 
         if (!favorites.contains(player)) {
             favorites.add(player);
@@ -33,11 +33,11 @@ public class PrefUtil {
     }
 
 
-    public static void removeFavorite(Context context, ProPlayerObj player) {
+    public static void removeFavorite(Context context, ProPlayerProfile player) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(KEY_FAVORITES, "[]");
-        Type type = new TypeToken<List<ProPlayerObj>>() {}.getType();
-        List<ProPlayerObj> favorites = new Gson().fromJson(json, type);
+        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
+        List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);
 
         favorites.remove(player);
 
@@ -46,25 +46,25 @@ public class PrefUtil {
         editor.apply();
     }
 
-    // Check if a player is in the favorites list
-    public static boolean isFavorite(Context context, int accountId) {
+    public static boolean isFavorite(Context context, String accountId) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(KEY_FAVORITES, "[]");
-        Type type = new TypeToken<List<ProPlayerObj>>() {}.getType();
-        List<ProPlayerObj> favorites = new Gson().fromJson(json, type);
+        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
+        List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);
 
-        for (ProPlayerObj player : favorites) {
-            if (player.getAccountId() == accountId) {
+        // So sánh accountId đúng kiểu int
+        for (ProPlayerProfile player : favorites) {
+            if (player.getAccountID() == accountId) {
                 return true;
             }
         }
         return false;
     }
 
-    public static List<ProPlayerObj> getListFavorite(Context context) {
+    public static List<ProPlayerProfile> getListFavorite(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(KEY_FAVORITES, "[]");
-        Type type = new TypeToken<List<ProPlayerObj>>() {}.getType();
+        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
         return new Gson().fromJson(json, type);
     }
 }

@@ -14,22 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenDota">
         <activity
-            android:name=".ui.login.SteamLoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.settings.SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.search.Search_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.favourite.Favourites_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.my_profile.playerProfile_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.my_profile.MyProfileActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -39,6 +24,21 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="steam-login-opendota"
+                    android:scheme="myapp" />
             </intent-filter>
         </activity>
     </application>
