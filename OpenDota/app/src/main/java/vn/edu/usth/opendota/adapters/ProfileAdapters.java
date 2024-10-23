@@ -25,7 +25,6 @@ import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHolder> {
-
     private final List<ProPlayerProfile> proPlayerProfiles = new ArrayList<>();
     private final Context context;
     private final OnItemClickListener onItemClickListener;
@@ -62,7 +61,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         holder.profile_id.setText(String.valueOf(item.getAccountID()));
         holder.profile_name.setText(item.getName());
 
-        String avatarUrl = item.getAvatarmedium();
+        String avatarUrl = (String) item.getAvatarmedium();
         if (avatarUrl != null && !avatarUrl.isEmpty()) {
             Picasso.get().load(avatarUrl).into(holder.profile_avar);
         } else {
@@ -71,24 +70,25 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
 
         // Kiểm tra trạng thái yêu thích và cập nhật nút trái tim
         boolean isFavourite = checkIfFavourite(item);
-        holder.heart.setSelected(isFavourite);  // Đảm bảo nút trái tim hiển thị đúng trạng thái yêu thích
+        holder.heart.setSelected(isFavourite);
+        holder.heart.setImageResource(isFavourite ? R.drawable.ic_red_heart_x24 : R.drawable.ic_white_heart_x24);
 
         // Xử lý sự kiện click vào trái tim
         holder.heart.setOnClickListener(v -> {
-            boolean newState = !holder.heart.isSelected();
-            holder.heart.setSelected(newState);  // Cập nhật trạng thái ngay lập tức khi click
-
-            if (newState) {
-                addToFavourites(item);
-            } else {
+            if (isFavourite) {
                 removeFromFavourites(item);
+                holder.heart.setImageResource(R.drawable.ic_white_heart_x24); // Đặt hình ảnh trái tim không yêu thích
+            } else {
+                addToFavourites(item);
+                holder.heart.setImageResource(R.drawable.ic_red_heart_x24); // Đặt hình ảnh trái tim đã được yêu thích
             }
+            // Cập nhật lại trạng thái yêu thích
+            notifyItemChanged(position); // Cập nhật lại vị trí để hiển thị đúng trạng thái
         });
 
         // Xử lý sự kiện click vào mục người chơi
         holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(item));
     }
-
 
     // Kiểm tra nếu người chơi đã được thêm vào danh sách yêu thích
     private boolean checkIfFavourite(ProPlayerProfile proPlayerProfile) {
@@ -101,14 +101,12 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         return false;
     }
 
-    // Lấy danh sách người chơi yêu thích từ SharedPreferences
     private List<ProPlayerProfile> getFavourites() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("favorite_profiles", Context.MODE_PRIVATE);
         String json = sharedPreferences.getString("favorites_list", null);
         if (json != null) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<ProPlayerProfile>>() {
-            }.getType();
+            Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
             return gson.fromJson(json, type);
         }
         return new ArrayList<>();
@@ -124,9 +122,14 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         editor.apply();
     }
 
-    // Thêm người chơi vào danh sách yêu thích
     private void addToFavourites(ProPlayerProfile proPlayerProfile) {
         List<ProPlayerProfile> favourites = getFavourites();
+        // Kiểm tra nếu profile đã tồn tại, không thêm vào nếu đã có
+        for (ProPlayerProfile fav : favourites) {
+            if (fav.getAccountID() == proPlayerProfile.getAccountID()) {
+                return; // Đã tồn tại, không thêm vào
+            }
+        }
         favourites.add(proPlayerProfile);
         saveFavourites(favourites);
     }

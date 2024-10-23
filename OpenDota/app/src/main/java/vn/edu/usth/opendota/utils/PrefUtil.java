@@ -46,13 +46,13 @@ public class PrefUtil {
         editor.apply();
     }
 
+    // Check if a player is in the favorites list
     public static boolean isFavorite(Context context, String accountId) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(KEY_FAVORITES, "[]");
         Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
         List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);
 
-        // So sánh accountId đúng kiểu int
         for (ProPlayerProfile player : favorites) {
             if (player.getAccountID() == accountId) {
                 return true;

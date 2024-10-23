@@ -26,13 +26,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.ProfileAdapters;
-import vn.edu.usth.opendota.adapters.SearchAdapter;
-import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 import vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;
 import vn.edu.usth.opendota.ui.my_profile.OverviewFragment;
-import vn.edu.usth.opendota.utils.PrefUtil;
 
 public class SearchFragment extends Fragment {
     private ProfileAdapters profileAdapters;
@@ -41,11 +38,6 @@ public class SearchFragment extends Fragment {
     private SearchView searchView;
     private List<ProPlayerProfile> proPlayerProfileList = new ArrayList<>();
     private LottieAnimationView animationView;
-    private SearchAdapter searchAdapter; // Corrected type
-    private List<ProPlayerProfile> listPlayer;
-    private ArrayList<ProPlayerProfile> arrayList;
-    private List<ProPlayerProfile> listFavorited;
-    private List<Heroes> listHero;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -65,63 +57,6 @@ public class SearchFragment extends Fragment {
         setViews();
         listeners();
         setupSearch();
-
-        listHero = new ArrayList<>();
-        listPlayer = new ArrayList<>();
-        arrayList = new ArrayList<>();
-        searchAdapter = new SearchAdapter(requireContext(), arrayList, new SearchAdapter.IOnSearchAdapterListener() {
-            @Override
-            public void onClickItem(ProPlayerProfile user) {
-                navigateToProfileDetail(user);
-            }
-
-            @Override
-            public void onClickFavorite(ProPlayerProfile user) {
-                if (user.isFavorited()) {
-                    PrefUtil.removeFavorite(requireContext(), user);
-                    user.setFavorited(false);
-                } else {
-                    PrefUtil.addToFavorites(requireContext(), user);
-                    user.setFavorited(true);
-                }
-                searchAdapter.notifyDataSetChanged();
-            }
-        }) {
-            @Override
-            public void onClickItem(ProPlayerProfile user) {
-
-            }
-
-            @Override
-            public void onClickFavorite(ProPlayerProfile user) {
-
-            }
-        };
-
-        recyclerView.setAdapter(searchAdapter);
-        listFavorited = PrefUtil.getListFavorite(requireContext());
-
-
-        listeners();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                arrayList.clear();
-                for (ProPlayerProfile item : listPlayer) {
-                    if (item.getName().toLowerCase().contains(newText.toLowerCase())) {
-                        arrayList.add(item);
-                    }
-                }
-                searchAdapter.notifyDataSetChanged(); // This is now correct
-                return false;
-            }
-        });
     }
 
     private void setViews() {
@@ -140,23 +75,9 @@ public class SearchFragment extends Fragment {
                         if (proPlayerProfileList.size() > 30) {
                             proPlayerProfileList = proPlayerProfileList.subList(0, 30);
                         }
-
-                        for (ProPlayerProfile item : proPlayerProfileList) {
-                            for (ProPlayerProfile itemFavorite : listFavorited) {
-                                if (item.getAccountID().equals(itemFavorite.getAccountID())) {
-                                    item.setFavorited(true);
-                                    break;
-                                }
-                            }
-                        }
-
-
-                        arrayList.clear(); // Xóa danh sách cũ
-                        arrayList.addAll(proPlayerProfileList); // Thêm danh sách mới
-                        searchAdapter.notifyDataSetChanged(); // Thông báo adapter cập nhật
-                        profileAdapters.submit(proPlayerProfileList); // Cập nhật adapter cho danh sách người dùng
-                        animationView.setVisibility(View.GONE);
                     }
+                    profileAdapters.submit(proPlayerProfileList);
+                    animationView.setVisibility(View.GONE);
                 } else {
                     Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
                 }
@@ -165,11 +86,11 @@ public class SearchFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Failure: " + t.getMessage());
+
                 animationView.setVisibility(View.GONE);
             }
         });
     }
-
 
     private void setupSearch() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
