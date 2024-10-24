@@ -3,6 +3,8 @@ package vn.edu.usth.opendota.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ProPlayerProfile implements Parcelable {
     private String account_id;
     private Object steamid;
@@ -27,6 +29,7 @@ public class ProPlayerProfile implements Parcelable {
     private boolean isLocked;
     private boolean isPro;
     private Object lockedUntil;
+    @SerializedName("isFavorite")
     private boolean isFavourite;
 
     protected ProPlayerProfile(Parcel in) {
@@ -59,7 +62,7 @@ public class ProPlayerProfile implements Parcelable {
     }
 
     public void setFavourite(boolean isFavourite) {
-        this.isFavourite = isFavourite;
+        isFavourite = isFavourite;
     }
 
 
@@ -150,5 +153,21 @@ public class ProPlayerProfile implements Parcelable {
         dest.writeByte((byte) (isLocked ? 1 : 0));
         dest.writeByte((byte) (isPro ? 1 : 0));
         dest.writeByte((byte) (isFavourite ? 1 : 0));
+    }
+
+    @Override
+    public String toString() {
+        return "ProPlayerProfile{" +
+                "name='" + name + '\'' +
+                ", isFavorited=" + isFavourite + // Hiển thị trạng thái favorited
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        ProPlayerProfile that = (ProPlayerProfile) obj;
+        return account_id == that.account_id;
     }
 }

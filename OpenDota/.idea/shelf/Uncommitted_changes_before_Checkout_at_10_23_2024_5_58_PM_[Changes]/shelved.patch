@@ -1,0 +1,100 @@
+Index: app/src/main/java/vn/edu/usth/opendota/adapters/HeroesAdapters.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.adapters;\n\nimport static android.content.ContentValues.TAG;\nimport static vn.edu.usth.opendota.utils.Db.getHeroNameByID;\nimport static vn.edu.usth.opendota.utils.Db.getLocalizedNameByID;\n\nimport android.annotation.SuppressLint;\nimport android.content.Context;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.ImageView;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.cardview.widget.CardView;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport com.squareup.picasso.Picasso;\n\nimport java.text.SimpleDateFormat;\nimport java.util.ArrayList;\nimport java.util.Date;\nimport java.util.List;\n\nimport de.hdodenhof.circleimageview.CircleImageView;\nimport vn.edu.usth.opendota.R;\nimport vn.edu.usth.opendota.models.Heroes;\nimport vn.edu.usth.opendota.models.PlayerObj;\nimport vn.edu.usth.opendota.models.ProPlayerObj;\nimport vn.edu.usth.opendota.models.RecentMatchesObj;\nimport vn.edu.usth.opendota.utils.Db;\nimport vn.edu.usth.opendota.utils.Util;\n\npublic class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHolder> {\n    ArrayList<RecentMatchesObj> listRecentMatches;\n    private Context context;\n\n    public HeroesAdapters(Context context, ArrayList<RecentMatchesObj> listRecentMatches) {\n        this.listRecentMatches = listRecentMatches;\n        this.context = context;\n    }\n\n\n    @NonNull\n    @Override\n    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n        LayoutInflater inflater = LayoutInflater.from(parent.getContext());\n        View view = inflater.inflate(R.layout.fragment_heroes_frame, parent, false);\n        return new ViewHolder(view);\n    }\n\n    public static class ViewHolder extends RecyclerView.ViewHolder {\n\n        private final TextView heroes_name;\n        public final ImageView heroes_avar;\n        private final TextView heroes_played;\n        private final TextView heroes_winrate;\n        private final TextView heroes_lastplay;\n\n        public ViewHolder(@NonNull View itemView) {\n            super(itemView);\n\n            heroes_name = itemView.findViewById(R.id.heroes_name);\n            heroes_avar = itemView.findViewById(R.id.heroes_avar);\n            heroes_played = itemView.findViewById(R.id.heroes_played);\n            heroes_lastplay = itemView.findViewById(R.id.heroes_lastplay);\n            heroes_winrate = itemView.findViewById(R.id.heroes_winrate);\n        }\n\n    }\n\n    @Override\n    public int getItemCount() {\n        return listRecentMatches.size();\n    }\n\n    @SuppressLint(\"ResourceAsColor\")\n    @Override\n    public void onBindViewHolder(@NonNull HeroesAdapters.ViewHolder holder, int position) {\n        RecentMatchesObj item = listRecentMatches.get(position);\n\n        Log.d(TAG, \"Heroes Details: \" + item.toString());\n\n        int heroId = (int) item.getHeroID();\n        String heroName = getHeroNameByID(heroId);\n        String imageUrl = \"https://cdn.dota2.com/apps/dota2/images/heroes/\"+heroName+\"_full.png\";\n        Picasso.get().load(imageUrl).into(holder.heroes_avar);\n\n        String localname = getLocalizedNameByID(heroId);\n        holder.heroes_name.setText(localname);\n\n        int total = (int) item.getGames();\n        holder.heroes_played.setText(String.valueOf(total));\n\n        String winrate = String.format(\"%.2f%%\", ((float) item.getWin() / total) * 100);\n        holder.heroes_winrate.setText(winrate);\n\n        long lastPlayedTimestamp = item.getLastPlayed();\n        Date lastPlayedDate = new Date(lastPlayedTimestamp * 1000);\n        Date currentTime = new Date();\n        long differenceInMillis = currentTime.getTime() - lastPlayedDate.getTime();\n        long differenceInDays = differenceInMillis / (1000 * 60 * 60 * 24);\n\n        if (differenceInDays > 0) {\n            holder.heroes_lastplay.setText(differenceInDays + \" days ago\");\n        } else {\n            @SuppressLint(\"SimpleDateFormat\") SimpleDateFormat sdf = new SimpleDateFormat(\"HH\");\n            holder.heroes_lastplay.setText(sdf.format(lastPlayedDate) + \"hours ago\");\n        }\n    }\n\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/adapters/HeroesAdapters.java b/app/src/main/java/vn/edu/usth/opendota/adapters/HeroesAdapters.java
+--- a/app/src/main/java/vn/edu/usth/opendota/adapters/HeroesAdapters.java	(revision 389e3694317c54e4c1b35d0fdbd50a19888f78e7)
++++ b/app/src/main/java/vn/edu/usth/opendota/adapters/HeroesAdapters.java	(date 1729681099367)
+@@ -14,7 +14,6 @@
+ import android.widget.TextView;
+ 
+ import androidx.annotation.NonNull;
+-import androidx.cardview.widget.CardView;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+ import com.squareup.picasso.Picasso;
+@@ -24,24 +23,22 @@
+ import java.util.Date;
+ import java.util.List;
+ 
+-import de.hdodenhof.circleimageview.CircleImageView;
+ import vn.edu.usth.opendota.R;
+ import vn.edu.usth.opendota.models.Heroes;
+-import vn.edu.usth.opendota.models.PlayerObj;
+-import vn.edu.usth.opendota.models.ProPlayerObj;
+-import vn.edu.usth.opendota.models.RecentMatchesObj;
+-import vn.edu.usth.opendota.utils.Db;
+-import vn.edu.usth.opendota.utils.Util;
+ 
+ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHolder> {
+-    ArrayList<RecentMatchesObj> listRecentMatches;
+-    private Context context;
++
++    private List<Heroes> heroes;
+ 
+-    public HeroesAdapters(Context context, ArrayList<RecentMatchesObj> listRecentMatches) {
+-        this.listRecentMatches = listRecentMatches;
+-        this.context = context;
++    public HeroesAdapters(Context context, List<Heroes> heroes) {
++        this.heroes = heroes;
+     }
+ 
++    @SuppressLint("NotifyDataSetChanged")
++    public void submit(List<Heroes> newList) {
++        heroes = newList;
++        notifyDataSetChanged();
++    }
+ 
+     @NonNull
+     @Override
+@@ -52,7 +49,6 @@
+     }
+ 
+     public static class ViewHolder extends RecyclerView.ViewHolder {
+-
+         private final TextView heroes_name;
+         public final ImageView heroes_avar;
+         private final TextView heroes_played;
+@@ -61,26 +57,23 @@
+ 
+         public ViewHolder(@NonNull View itemView) {
+             super(itemView);
+-
+             heroes_name = itemView.findViewById(R.id.heroes_name);
+             heroes_avar = itemView.findViewById(R.id.heroes_avar);
+             heroes_played = itemView.findViewById(R.id.heroes_played);
+             heroes_lastplay = itemView.findViewById(R.id.heroes_lastplay);
+             heroes_winrate = itemView.findViewById(R.id.heroes_winrate);
+         }
+-
+     }
+ 
+     @Override
+     public int getItemCount() {
+-        return listRecentMatches.size();
++        return heroes.size();
+     }
+ 
+     @SuppressLint("ResourceAsColor")
+     @Override
+     public void onBindViewHolder(@NonNull HeroesAdapters.ViewHolder holder, int position) {
+-        RecentMatchesObj item = listRecentMatches.get(position);
+-
++        Heroes item = heroes.get(position);
+         Log.d(TAG, "Heroes Details: " + item.toString());
+ 
+         int heroId = (int) item.getHeroID();
+@@ -107,9 +100,7 @@
+             holder.heroes_lastplay.setText(differenceInDays + " days ago");
+         } else {
+             @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH");
+-            holder.heroes_lastplay.setText(sdf.format(lastPlayedDate) + "hours ago");
++            holder.heroes_lastplay.setText(sdf.format(lastPlayedDate) + " hours ago");
+         }
+     }
+-
+ }
+-
