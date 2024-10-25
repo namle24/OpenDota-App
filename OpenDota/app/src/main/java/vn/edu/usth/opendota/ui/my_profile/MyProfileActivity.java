@@ -3,20 +3,21 @@ package vn.edu.usth.opendota.ui.my_profile;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.MyProfileAdapters;
+import vn.edu.usth.opendota.models.Matches;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public class MyProfileActivity extends AppCompatActivity {
@@ -34,17 +35,17 @@ public class MyProfileActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle("Profile");
 
-        ProPlayerProfile profile = getIntent().getParcelableExtra("profile_data");
-        if (profile == null) {
-            Log.e(TAG, "ProPlayerProfile is null");
-            Toast.makeText(this, "Cannot load player profile", Toast.LENGTH_SHORT).show();
-            finish();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null){
             return;
         }
+        ProPlayerProfile proPlayerProfile = (ProPlayerProfile) bundle.get("profile_data");
+        ArrayList<Matches> recentMatchesList = (ArrayList<Matches>) bundle.get("player_recent_matches");
+
 
 
         ViewPager viewPager = findViewById(R.id.profile_viewpager);
-        MyProfileAdapters adapter = new MyProfileAdapters(getSupportFragmentManager(), profile);
+        MyProfileAdapters adapter = new MyProfileAdapters(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, proPlayerProfile, recentMatchesList);
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.profile_tab);

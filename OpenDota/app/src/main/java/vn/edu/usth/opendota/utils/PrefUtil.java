@@ -59,7 +59,7 @@ public class PrefUtil {
         List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);
 
         for (ProPlayerProfile player : favorites) {
-            if (player.getAccountID() == accountId) {
+            if (String.valueOf(player.getAccountId()).equals(accountId)) {
                 return true; // Player is a favorite
             }
         }

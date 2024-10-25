@@ -56,14 +56,13 @@ public class SearchFragment extends Fragment {
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
         searchView = view.findViewById(R.id.search_view);
+        searchView.setIconified(false);
+        searchView.clearFocus();
         animationView = view.findViewById(R.id.animationView);
         animationView.setVisibility(View.VISIBLE);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-
-        searchView.setIconified(false);
-        searchView.clearFocus();
 
         listPlayer = new ArrayList<>();
         arrayList = new ArrayList<>();
@@ -75,12 +74,12 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onClickFavorite(ProPlayerProfile proPlayerProfile) {
-                if (proPlayerProfile.getFavourite()) {
+                if (proPlayerProfile.isFavorited()) {
                     PrefUtil.removeFavorite(requireContext(), proPlayerProfile);
-                    proPlayerProfile.setFavourite(false);
+                    proPlayerProfile.setFavorited(false);
                 } else {
                     PrefUtil.addToFavorites(requireContext(), proPlayerProfile);
-                    proPlayerProfile.setFavourite(true);
+                    proPlayerProfile.setFavorited(true);
                 }
                 searchAdapter.notifyDataSetChanged();
             }
@@ -130,8 +129,8 @@ public class SearchFragment extends Fragment {
                     arrayList.clear();
                     for (ProPlayerProfile item : response.body().subList(0, Math.min(response.body().size(), 30))) {
                         for (ProPlayerProfile itemFavorite : listFavorited) {
-                            if (item.getAccountID() == itemFavorite.getAccountID()) {
-                                item.setFavourite(true);
+                            if (item.getAccountId() == itemFavorite.getAccountId()) {
+                                item.setFavorited(true);
                                 break;
                             }
                         }

@@ -1,165 +1,316 @@
 package vn.edu.usth.opendota.models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
-public class ProPlayerProfile implements Parcelable {
-    private String account_id;
-    private Object steamid;
-    private Object avatar;
-    private Object avatarmedium;
-    private Object avatarfull;
-    private Object profileurl;
-    private Object personaname;
-    private Object lastLogin;
-    private Object fullHistoryTime;
-    private Object cheese;
-    private Object fhUnavailable;
-    private Object loccountrycode;
-    private Object lastMatchTime;
-    private Object plus;
-    private String name;
-    private String countryCode;
-    private long fantasyRole;
-    private long teamID;
-    private String teamName;
-    private String teamTag;
+import java.io.Serializable;
+import java.util.List;
+
+public class ProPlayerProfile implements Serializable {
+
+    @SerializedName("profileurl")
+    private String profileurl;
+
+    @SerializedName("is_locked")
     private boolean isLocked;
-    private boolean isPro;
+
+    @SerializedName("last_login")
+    private Object lastLogin;
+
+    @SerializedName("fantasy_role")
+    private int fantasyRole;
+
+    @SerializedName("avatarfull")
+    private String avatarfull;
+
+    @SerializedName("fh_unavailable")
+    private boolean fhUnavailable;
+
+    @SerializedName("team_tag")
+    private String teamTag;
+
+    @SerializedName("avatarmedium")
+    private String avatarmedium;
+
+    @SerializedName("locked_until")
     private Object lockedUntil;
-    @SerializedName("isFavorite")
-    private boolean isFavourite;
 
-    protected ProPlayerProfile(Parcel in) {
-        account_id = String.valueOf(in.readLong());
-        name = in.readString();
-        countryCode = in.readString();
-        fantasyRole = in.readLong();
-        teamID = in.readLong();
-        teamName = in.readString();
-        teamTag = in.readString();
-        isLocked = in.readByte() != 0;
-        isPro = in.readByte() != 0;
-        isFavourite = in.readByte() != 0;
+    @SerializedName("avatar")
+    private String avatar;
+
+    @SerializedName("team_id")
+    private int teamId;
+
+    @SerializedName("personaname")
+    private String personaname;
+
+    @SerializedName("plus")
+    private boolean plus;
+
+    @SerializedName("team_name")
+    private String teamName;
+
+    @SerializedName("full_history_time")
+    private String fullHistoryTime;
+
+    @SerializedName("cheese")
+    private int cheese;
+
+    @SerializedName("steamid")
+    private String steamid;
+
+    @SerializedName("last_match_time")
+    private String lastMatchTime;
+
+    @SerializedName("country_code")
+    private String countryCode;
+
+    @SerializedName("account_id")
+    private int accountId;
+
+    @SerializedName("is_pro")
+    private boolean isPro;
+
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("loccountrycode")
+    private String loccountrycode;
+
+    @SerializedName("isFavorited")
+    private boolean isFavorited;
+
+    private int hero_id;
+    private int last_played;
+    private int games;
+    private int win;
+    private int with_games;
+    private int with_win;
+    private int against_games;
+    private int against_win;
+
+    public boolean isFavorited() {
+        return isFavorited;
     }
 
-    public static final Creator<ProPlayerProfile> CREATOR = new Creator<ProPlayerProfile>() {
-        @Override
-        public ProPlayerProfile createFromParcel(Parcel in) {
-            return new ProPlayerProfile(in);
-        }
-
-        @Override
-        public ProPlayerProfile[] newArray(int size) {
-            return new ProPlayerProfile[size];
-        }
-    };
-
-    public boolean getFavourite() {
-        return isFavourite;
+    public void setFavorited(boolean favorited) {
+        isFavorited = favorited;
     }
 
-    public void setFavourite(boolean isFavourite) {
-        isFavourite = isFavourite;
+    // Các Getter và Setter khác
+
+    public void setProfileurl(String profileurl) {
+        this.profileurl = profileurl;
     }
 
-
-
-    public String getAccountID() { return account_id; }
-    public void setAccountID(long value) { this.account_id = String.valueOf(value); }
-
-    public Object getSteamid() { return steamid; }
-    public void setSteamid(Object value) { this.steamid = value; }
-
-    public Object getAvatar() { return avatar; }
-    public void setAvatar(Object value) { this.avatar = value; }
-
-    public Object getAvatarmedium() { return avatarmedium; }
-    public void setAvatarmedium(Object value) { this.avatarmedium = value; }
-
-    public Object getAvatarfull() { return avatarfull; }
-    public void setAvatarfull(Object value) { this.avatarfull = value; }
-
-    public Object getProfileurl() { return profileurl; }
-    public void setProfileurl(Object value) { this.profileurl = value; }
-
-    public Object getPersonaname() { return personaname; }
-    public void setPersonaname(Object value) { this.personaname = value; }
-
-    public Object getLastLogin() { return lastLogin; }
-    public void setLastLogin(Object value) { this.lastLogin = value; }
-
-    public Object getFullHistoryTime() { return fullHistoryTime; }
-    public void setFullHistoryTime(Object value) { this.fullHistoryTime = value; }
-
-    public Object getCheese() { return cheese; }
-    public void setCheese(Object value) { this.cheese = value; }
-
-    public Object getFhUnavailable() { return fhUnavailable; }
-    public void setFhUnavailable(Object value) { this.fhUnavailable = value; }
-
-    public Object getLoccountrycode() { return loccountrycode; }
-    public void setLoccountrycode(Object value) { this.loccountrycode = value; }
-
-    public Object getLastMatchTime() { return lastMatchTime; }
-    public void setLastMatchTime(Object value) { this.lastMatchTime = value; }
-
-    public Object getPlus() { return plus; }
-    public void setPlus(Object value) { this.plus = value; }
-
-    public String getName() { return name; }
-    public void setName(String value) { this.name = value; }
-
-    public String getCountryCode() { return countryCode; }
-    public void setCountryCode(String value) { this.countryCode = value; }
-
-    public long getFantasyRole() { return fantasyRole; }
-    public void setFantasyRole(long value) { this.fantasyRole = value; }
-
-    public long getTeamID() { return teamID; }
-    public void setTeamID(long value) { this.teamID = value; }
-
-    public String getTeamName() { return teamName; }
-    public void setTeamName(String value) { this.teamName = value; }
-
-    public String getTeamTag() { return teamTag; }
-    public void setTeamTag(String value) { this.teamTag = value; }
-
-    public boolean getIsLocked() { return isLocked; }
-    public void setIsLocked(boolean value) { this.isLocked = value; }
-
-    public boolean getIsPro() { return isPro; }
-    public void setIsPro(boolean value) { this.isPro = value; }
-
-    public Object getLockedUntil() { return lockedUntil; }
-    public void setLockedUntil(Object value) { this.lockedUntil = value; }
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getProfileurl() {
+        return profileurl;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(Long.parseLong(account_id));
-        dest.writeString(name);
-        dest.writeString(countryCode);
-        dest.writeLong(fantasyRole);
-        dest.writeLong(teamID);
-        dest.writeString(teamName);
-        dest.writeString(teamTag);
-        dest.writeByte((byte) (isLocked ? 1 : 0));
-        dest.writeByte((byte) (isPro ? 1 : 0));
-        dest.writeByte((byte) (isFavourite ? 1 : 0));
+    public void setIsLocked(boolean isLocked) {
+        this.isLocked = isLocked;
     }
+
+    public boolean isIsLocked() {
+        return isLocked;
+    }
+
+    public void setLastLogin(Object lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public Object getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setFantasyRole(int fantasyRole) {
+        this.fantasyRole = fantasyRole;
+    }
+
+    public int getFantasyRole() {
+        return fantasyRole;
+    }
+
+    public void setAvatarfull(String avatarfull) {
+        this.avatarfull = avatarfull;
+    }
+
+    public String getAvatarfull() {
+        return avatarfull;
+    }
+
+    public void setFhUnavailable(boolean fhUnavailable) {
+        this.fhUnavailable = fhUnavailable;
+    }
+
+    public boolean isFhUnavailable() {
+        return fhUnavailable;
+    }
+
+    public void setTeamTag(String teamTag) {
+        this.teamTag = teamTag;
+    }
+
+    public String getTeamTag() {
+        return teamTag;
+    }
+
+    public void setAvatarmedium(String avatarmedium) {
+        this.avatarmedium = avatarmedium;
+    }
+
+    public String getAvatarmedium() {
+        return avatarmedium;
+    }
+
+    public void setLockedUntil(Object lockedUntil) {
+        this.lockedUntil = lockedUntil;
+    }
+
+    public Object getLockedUntil() {
+        return lockedUntil;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
+    public int getTeamId() {
+        return teamId;
+    }
+
+    public void setPersonaname(String personaname) {
+        this.personaname = personaname;
+    }
+
+    public String getPersonaname() {
+        return personaname;
+    }
+
+    public void setPlus(boolean plus) {
+        this.plus = plus;
+    }
+
+    public boolean isPlus() {
+        return plus;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setFullHistoryTime(String fullHistoryTime) {
+        this.fullHistoryTime = fullHistoryTime;
+    }
+
+    public String getFullHistoryTime() {
+        return fullHistoryTime;
+    }
+
+    public void setCheese(int cheese) {
+        this.cheese = cheese;
+    }
+
+    public int getCheese() {
+        return cheese;
+    }
+
+    public void setSteamid(String steamid) {
+        this.steamid = steamid;
+    }
+
+    public String getSteamid() {
+        return steamid;
+    }
+
+    public void setLastMatchTime(String lastMatchTime) {
+        this.lastMatchTime = lastMatchTime;
+    }
+
+    public String getLastMatchTime() {
+        return lastMatchTime;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setIsPro(boolean isPro) {
+        this.isPro = isPro;
+    }
+
+    public boolean isIsPro() {
+        return isPro;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setLoccountrycode(String loccountrycode) {
+        this.loccountrycode = loccountrycode;
+    }
+
+    public String getLoccountrycode() {
+        return loccountrycode;
+    }
+
+    public int getHeroID() { return hero_id; }
+    public void setHeroID(int value) { this.hero_id = hero_id; }
+
+    public int getLastPlayed() { return last_played; }
+    public void setLastPlayed(int value) { this.last_played = last_played; }
+
+    public int getGames() { return games; }
+    public void setGames(int value) { this.games = value; }
+
+    public int getWin() { return win; }
+    public void setWin(int value) { this.win = value; }
+
+    public int getWithGames() { return with_games; }
+    public void setWithGames(int value) { this.with_games = value; }
+
+    public int getWithWin() { return with_win; }
+    public void setWithWin(int value) { this.with_win = value; }
+
+    public int getAgainstGames() { return against_games; }
+    public void setAgainstGames(int value) { this.against_games = against_games; }
+
+    public int getAgainstWin() { return against_win; }
+    public void setAgainstWin(int value) { this.against_win = against_win; }
 
     @Override
     public String toString() {
-        return "ProPlayerProfile{" +
+        return "ProPlayerObj{" +
                 "name='" + name + '\'' +
-                ", isFavorited=" + isFavourite + // Hiển thị trạng thái favorited
+                ", isFavorited=" + isFavorited + // Hiển thị trạng thái favorited
                 '}';
     }
 
@@ -168,6 +319,12 @@ public class ProPlayerProfile implements Parcelable {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         ProPlayerProfile that = (ProPlayerProfile) obj;
-        return account_id == that.account_id;
+        return accountId == that.accountId; // Assuming accountId uniquely identifies a player
     }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(accountId); // Use accountId for hash code
+    }
+
 }

@@ -63,7 +63,7 @@ public class FavoriteFragment extends Fragment {
 
             @Override
             public void onClickFavorite(ProPlayerProfile proPlayerProfile) {
-                if (proPlayerProfile.getFavourite()) {
+                if (proPlayerProfile.isFavorited()) {
                     removeFavorite(proPlayerProfile);
                 } else {
                     addFavorite(proPlayerProfile);
@@ -90,13 +90,13 @@ public class FavoriteFragment extends Fragment {
 
     private void removeFavorite(ProPlayerProfile user) {
         PrefUtil.removeFavorite(requireContext(), user); // Xóa người chơi khỏi danh sách yêu thích
-        user.setFavourite(false); // Cập nhật trạng thái
+        user.setFavorited(false); // Cập nhật trạng thái
         updateUIWithFavorites(); // Cập nhật giao diện người dùng
     }
 
     private void addFavorite(ProPlayerProfile user) {
         PrefUtil.addToFavorites(requireContext(), user); // Thêm người chơi vào danh sách yêu thích
-        user.setFavourite(true); // Cập nhật trạng thái
+        user.setFavorited(true); // Cập nhật trạng thái
         updateUIWithFavorites(); // Cập nhật giao diện người dùng
     }
 

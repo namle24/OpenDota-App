@@ -1,6 +1,9 @@
 package vn.edu.usth.opendota.models;
 
-public class Matches {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Matches implements Parcelable {
     private long matchID;
     private long player_slot;
     private boolean radiant_win;
@@ -105,4 +108,117 @@ public class Matches {
 
     public long getHeroVariant() { return heroVariant; }
     public void setHeroVariant(long value) { this.heroVariant = value; }
+
+    protected Matches(Parcel in) {
+        matchID = in.readLong();
+        player_slot = in.readLong();
+        radiant_win = in.readByte() != 0;
+        hero_id = in.readLong();
+        start_time = in.readLong();
+        duration = in.readLong();
+        game_mode = in.readLong();
+        lobby_type = in.readLong();
+        if (in.readByte() == 0) {
+            version = null;
+        } else {
+            version = in.readLong();
+        }
+        kills = in.readLong();
+        deaths = in.readLong();
+        assists = in.readLong();
+        averageRank = in.readLong();
+        xpPerMin = in.readLong();
+        goldPerMin = in.readLong();
+        heroDamage = in.readLong();
+        towerDamage = in.readLong();
+        heroHealing = in.readLong();
+        lastHits = in.readLong();
+        if (in.readByte() == 0) {
+            lane = null;
+        } else {
+            lane = in.readLong();
+        }
+        if (in.readByte() == 0) {
+            laneRole = null;
+        } else {
+            laneRole = in.readLong();
+        }
+        byte tmpIsRoaming = in.readByte();
+        isRoaming = tmpIsRoaming == 0 ? null : tmpIsRoaming == 1;
+        cluster = in.readLong();
+        leaverStatus = in.readLong();
+        if (in.readByte() == 0) {
+            partySize = null;
+        } else {
+            partySize = in.readLong();
+        }
+        heroVariant = in.readLong();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(matchID);
+        dest.writeLong(player_slot);
+        dest.writeByte((byte) (radiant_win ? 1 : 0));
+        dest.writeLong(hero_id);
+        dest.writeLong(start_time);
+        dest.writeLong(duration);
+        dest.writeLong(game_mode);
+        dest.writeLong(lobby_type);
+        if (version == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(version);
+        }
+        dest.writeLong(kills);
+        dest.writeLong(deaths);
+        dest.writeLong(assists);
+        dest.writeLong(averageRank);
+        dest.writeLong(xpPerMin);
+        dest.writeLong(goldPerMin);
+        dest.writeLong(heroDamage);
+        dest.writeLong(towerDamage);
+        dest.writeLong(heroHealing);
+        dest.writeLong(lastHits);
+        if (lane == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(lane);
+        }
+        if (laneRole == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(laneRole);
+        }
+        dest.writeByte((byte) (isRoaming == null ? 0 : isRoaming ? 1 : 2));
+        dest.writeLong(cluster);
+        dest.writeLong(leaverStatus);
+        if (partySize == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(partySize);
+        }
+        dest.writeLong(heroVariant);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Matches> CREATOR = new Creator<Matches>() {
+        @Override
+        public Matches createFromParcel(Parcel in) {
+            return new Matches(in);
+        }
+
+        @Override
+        public Matches[] newArray(int size) {
+            return new Matches[size];
+        }
+    };
 }

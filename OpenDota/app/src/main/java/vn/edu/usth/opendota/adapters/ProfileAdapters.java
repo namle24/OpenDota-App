@@ -59,7 +59,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         if (item == null) {
             return;
         }
-        holder.profile_id.setText(String.valueOf(item.getAccountID()));
+        holder.profile_id.setText(String.valueOf(item.getAccountId()));
         holder.profile_name.setText(item.getName());
         String avatarUrl = (String) item.getAvatarfull();
         if (avatarUrl != null && !avatarUrl.isEmpty()) {
@@ -68,7 +68,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
             holder.profile_avar.setImageResource(R.drawable.no_item);
         }
 
-        holder.heart.setImageResource(item.getFavourite() ? R.drawable.baseline_favorite_24 : R.drawable.heart_icon);
+        holder.heart.setImageResource(item.isFavorited() ? R.drawable.baseline_favorite_24 : R.drawable.heart_icon);
 
         holder.cardViewItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,12 +80,12 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
         holder.heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (item.getFavourite()) {
+                if (item.isFavorited()) {
                     onItemClickListener.onClickFavorite(item);
-                    item.setFavourite(false);
+                    item.setFavorited(false);
                 } else {
                     onItemClickListener.onClickFavorite(item);
-                    item.setFavourite(true);
+                    item.setFavorited(true);
                 }
                 notifyItemChanged(position);
             }

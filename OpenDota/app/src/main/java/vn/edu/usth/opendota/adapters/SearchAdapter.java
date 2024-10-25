@@ -29,7 +29,7 @@ import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyHolder> {
     private Context context;
-    private List<ProPlayerProfile> arrayListUser;
+    private ArrayList<ProPlayerProfile> arrayListUser;
     private IOnSearchAdapterListener listener;
 
     private final String TAG = SearchAdapter.class.getSimpleName();
@@ -56,14 +56,14 @@ public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.M
         }
 
         holder.userName.setText(user.getName());
-        holder.userID.setText(String.valueOf(user.getAccountID()));
+        holder.userID.setText(String.valueOf(user.getAccountId()));
         if (user.getAvatarmedium() != null) {
             Picasso.get().load((String) user.getAvatarmedium()).into(holder.imgAvatar);
         } else {
             holder.imgAvatar.setImageResource(R.drawable.no_item);  // Default avatar
         }
 
-        holder.ivFavorite.setImageResource(user.getFavourite() ? R.drawable.baseline_favorite_24 : R.drawable.baseline_favorite_border_24);
+        holder.ivFavorite.setImageResource(user.isFavorited() ? R.drawable.baseline_favorite_24 : R.drawable.baseline_favorite_border_24);
 
 
         holder.cardViewItem.setOnClickListener(new View.OnClickListener() {
@@ -76,12 +76,12 @@ public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.M
         holder.ivFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (user.getFavourite()) {
+                if (user.isFavorited()) {
                     listener.onClickFavorite(user);
-                    user.setFavourite(false);
+                    user.setFavorited(false);
                 } else {
                     listener.onClickFavorite(user);
-                    user.setFavourite(true);
+                    user.setFavorited(true);
                 }
                 notifyItemChanged(position);
             }
@@ -89,8 +89,11 @@ public abstract class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.M
     }
 
     @Override
-    public int getItemCount() {
-        return arrayListUser.size();  // No need to check for null
+    public int getItemCount () {
+        if (arrayListUser != null) {
+            return arrayListUser.size();
+        }
+        return 0;
     }
 
     public abstract void onClickItem(ProPlayerProfile user);
