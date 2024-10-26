@@ -80,6 +80,15 @@
             android:layout_marginTop="8dp"
             tools:src="@drawable/rank_icon_8" />
 
+        <TextView
+            android:id="@+id/ow_leaderboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/wins_loses_winrate"
+            tools:text="1000" />
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="@android:style/Widget.ProgressBar.Horizontal"
@@ -117,7 +126,7 @@
         android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/backgroundColor"
+        android:background="@color/black"
         app:lottie_rawRes="@raw/loading"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"/>

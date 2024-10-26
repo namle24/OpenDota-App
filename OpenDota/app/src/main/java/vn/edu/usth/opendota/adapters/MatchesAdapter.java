@@ -1,7 +1,6 @@
 package vn.edu.usth.opendota.adapters;
 
 import static android.content.ContentValues.TAG;
-
 import static vn.edu.usth.opendota.utils.Db.getGameModeNameById;
 import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
 import static vn.edu.usth.opendota.utils.Db.getLobbyTypeNameById;
@@ -31,6 +30,8 @@ import vn.edu.usth.opendota.models.Matches;
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
 
     private List<Matches> matches = new ArrayList<>();
+    public static final String TAG = "MATCHES Adapters";
+
 
     public MatchesAdapter(Context context, ArrayList<Matches> listRecentMatches) {
     }
@@ -40,7 +41,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         matches = newList;
         notifyDataSetChanged();
     }
-
 
     @NonNull
     @Override
@@ -53,7 +53,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView tvTitle;
-
         private final TextView tvKda;
         private final TextView tvTimeEnded;
         private final TextView idDuration;
@@ -83,7 +82,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         Matches item = matches.get(position);
 
         int gamemode = (int) item.getGameMode();
-        String mode =  getGameModeNameById(gamemode)+" "+getLobbyTypeNameById(gamemode);
+        int type = (int) item.getLobbyType();
+        String mode = getGameModeNameById(gamemode) + " " + getLobbyTypeNameById(type);
         holder.tvTitle.setText(mode);
 
         String kda = item.getKills() + "/" + item.getDeaths() + "/" + item.getAssists();
@@ -102,8 +102,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
         int heroId = (int) item.getHeroID();
         String heroName = getHeroNameByID(heroId);
-        Log.d(TAG, "Heroes id: "+ item.getHeroID());
         String imageUrl = "https://cdn.dota2.com/apps/dota2/images/heroes/"+heroName+"_full.png";
+        Log.d(TAG,"ID: " + item.getHeroID()+ " - URL: " + imageUrl);
         Picasso.get().load(imageUrl).into(holder.avatar);
 
         int playerSlot = (int) item.getPlayerSlot();

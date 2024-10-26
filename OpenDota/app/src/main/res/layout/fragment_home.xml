@@ -85,7 +85,7 @@
         android:id="@+id/khunghome_2">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_below="@+id/khunghome_1"
             android:layout_weight="1"

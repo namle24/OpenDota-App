@@ -1,0 +1,634 @@
+Index: app/src/main/java/vn/edu/usth/opendota/utils/PrefUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.utils;\r\n\r\nimport android.content.Context;\r\nimport android.content.SharedPreferences;\r\nimport android.preference.PreferenceManager;\r\n\r\nimport com.google.gson.Gson;\r\nimport com.google.gson.reflect.TypeToken;\r\n\r\nimport java.lang.reflect.Type;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nimport vn.edu.usth.opendota.models.ProPlayerProfile;\r\n\r\n\r\npublic class PrefUtil {\r\n\r\n    private static final String KEY_FAVORITES = \"favorite_players\";\r\n\r\n    public static void addToFavorites(Context context, ProPlayerProfile player) {\r\n        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);\r\n        String json = prefs.getString(KEY_FAVORITES, \"[]\");\r\n        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();\r\n        List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);\r\n\r\n        // Add the player only if it's not already in the favorites\r\n        if (!favorites.contains(player)) {\r\n            favorites.add(player);\r\n        }\r\n\r\n        // Save the updated list\r\n        SharedPreferences.Editor editor = prefs.edit();\r\n        editor.putString(KEY_FAVORITES, new Gson().toJson(favorites));\r\n        editor.apply();\r\n    }\r\n\r\n    // Remove a player from the favorites list\r\n    public static void removeFavorite(Context context, ProPlayerProfile player) {\r\n        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);\r\n        String json = prefs.getString(KEY_FAVORITES, \"[]\");\r\n        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();\r\n        List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);\r\n\r\n        // Remove the player if it's in the favorites\r\n        favorites.remove(player);  // Ensure equals() is implemented in ProPlayerObj\r\n\r\n        // Save the updated list\r\n        SharedPreferences.Editor editor = prefs.edit();\r\n        editor.putString(KEY_FAVORITES, new Gson().toJson(favorites));\r\n        editor.apply();\r\n    }\r\n\r\n    // Check if a player is in the favorites list\r\n    public static boolean isFavorite(Context context, String accountId) {\r\n        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);\r\n        String json = prefs.getString(KEY_FAVORITES, \"[]\");\r\n        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();\r\n        List<ProPlayerProfile> favorites = new Gson().fromJson(json, type);\r\n\r\n        for (ProPlayerProfile player : favorites) {\r\n            if (String.valueOf(player.getAccountId()).equals(accountId)) {\r\n                return true; // Player is a favorite\r\n            }\r\n        }\r\n        return false; // Player not found in favorites\r\n    }\r\n\r\n    public static List<ProPlayerProfile> getListFavorite(Context context) {\r\n        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);\r\n        String json = prefs.getString(KEY_FAVORITES, \"[]\");\r\n        Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();\r\n        return new Gson().fromJson(json, type);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/utils/PrefUtil.java b/app/src/main/java/vn/edu/usth/opendota/utils/PrefUtil.java
+--- a/app/src/main/java/vn/edu/usth/opendota/utils/PrefUtil.java	(revision 9bd36381d62d3ef7370dd4dcc2de0e3f2724b8d8)
++++ b/app/src/main/java/vn/edu/usth/opendota/utils/PrefUtil.java	(date 1729956971717)
+@@ -66,6 +66,8 @@
+         return false; // Player not found in favorites
+     }
+ 
++
++
+     public static List<ProPlayerProfile> getListFavorite(Context context) {
+         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+         String json = prefs.getString(KEY_FAVORITES, "[]");
+Index: app/src/main/java/vn/edu/usth/opendota/ui/favourite/FavoriteFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.ui.favourite;\r\n\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.LinkedHashSet;\r\nimport java.util.List;\r\nimport java.util.Set;\r\n\r\nimport vn.edu.usth.opendota.R;\r\nimport vn.edu.usth.opendota.adapters.ProfileAdapters;\r\nimport vn.edu.usth.opendota.adapters.SearchAdapter;\r\nimport vn.edu.usth.opendota.models.ProPlayerProfile;\r\nimport vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;\r\nimport vn.edu.usth.opendota.utils.PrefUtil;\r\n\r\npublic class FavoriteFragment extends Fragment {\r\n\r\n    private static final String TAG = \"FAVOURITE\";\r\n    private RecyclerView recyclerView;\r\n    private SearchAdapter adapter;\r\n    private List<ProPlayerProfile> listFavorited;\r\n    private SharedPreferences sharedPreferences;\r\n    private ProfileAdapters favAdapter;\r\n\r\n    @Nullable\r\n    @Override\r\n    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {\r\n        return inflater.inflate(R.layout.fragment_favourite, container, false);\r\n    }\r\n\r\n    @Override\r\n    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {\r\n        super.onViewCreated(view, savedInstanceState);\r\n\r\n        recyclerView = view.findViewById(R.id.favorites_recyclerview);\r\n        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));\r\n        List<ProPlayerProfile> allPlayers = getAllPlayers();\r\n\r\n        listFavorited = PrefUtil.getListFavorite(requireContext());\r\n        if (listFavorited.isEmpty()) {\r\n            Log.d(\"Favorites\", \"No favorites found.\");\r\n        }\r\n\r\n        adapter = new SearchAdapter(requireContext(), new ArrayList<>(listFavorited), new SearchAdapter.IOnSearchAdapterListener() {\r\n\r\n            @Override\r\n            public void onClickItem(ProPlayerProfile user) {\r\n                navigateToProfileDetail(user);\r\n            }\r\n\r\n            @Override\r\n            public void onClickFavorite(ProPlayerProfile proPlayerProfile) {\r\n                if (proPlayerProfile.isFavorited()) {\r\n                    removeFavorite(proPlayerProfile);\r\n                } else {\r\n                    addFavorite(proPlayerProfile);\r\n                }\r\n            }\r\n        }) {\r\n            @Override\r\n            public void onClickItem(ProPlayerProfile user) {\r\n\r\n            }\r\n\r\n            @Override\r\n            public void onClickFavorite(ProPlayerProfile user) {\r\n\r\n            }\r\n        };\r\n        recyclerView.setAdapter(adapter);\r\n        adapter.notifyDataSetChanged();\r\n    }\r\n\r\n    private List<ProPlayerProfile> getAllPlayers() {\r\n        return new ArrayList<>();\r\n    }\r\n\r\n    private void removeFavorite(ProPlayerProfile user) {\r\n        PrefUtil.removeFavorite(requireContext(), user); // Xóa người chơi khỏi danh sách yêu thích\r\n        user.setFavorited(false); // Cập nhật trạng thái\r\n        updateUIWithFavorites(); // Cập nhật giao diện người dùng\r\n    }\r\n\r\n    private void addFavorite(ProPlayerProfile user) {\r\n        PrefUtil.addToFavorites(requireContext(), user); // Thêm người chơi vào danh sách yêu thích\r\n        user.setFavorited(true); // Cập nhật trạng thái\r\n        updateUIWithFavorites(); // Cập nhật giao diện người dùng\r\n    }\r\n\r\n    private void updateUIWithFavorites() {\r\n        favAdapter.notifyDataSetChanged(); // Cập nhật adapter\r\n    }\r\n\r\n    private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {\r\n        Intent intent = new Intent(getContext(), MyProfileActivity.class);\r\n        intent.putExtra(\"profile_data\", proPlayerProfile);\r\n        startActivity(intent);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/ui/favourite/FavoriteFragment.java b/app/src/main/java/vn/edu/usth/opendota/ui/favourite/FavoriteFragment.java
+--- a/app/src/main/java/vn/edu/usth/opendota/ui/favourite/FavoriteFragment.java	(revision 9bd36381d62d3ef7370dd4dcc2de0e3f2724b8d8)
++++ b/app/src/main/java/vn/edu/usth/opendota/ui/favourite/FavoriteFragment.java	(date 1729956971717)
+@@ -101,8 +101,10 @@
+     }
+ 
+     private void updateUIWithFavorites() {
+-        favAdapter.notifyDataSetChanged(); // Cập nhật adapter
++        adapter.notifyDataSetChanged(); // Cập nhật adapter
+     }
++
++
+ 
+     private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {
+         Intent intent = new Intent(getContext(), MyProfileActivity.class);
+Index: app/src/main/res/layout/fragment_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/layout1\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\"\r\n    android:background=\"?attr/backgroundColor\"\r\n    android:orientation=\"vertical\">\r\n\r\n    <RelativeLayout\r\n        android:id=\"@+id/khunghome_1\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"220dp\"\r\n        android:layout_marginStart=\"5dp\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:layout_marginEnd=\"5dp\"\r\n        android:background=\"?attr/colorOnSecondary\"\r\n        tools:ignore=\"MissingConstraints\">\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"25dp\"\r\n            android:layout_marginStart=\"45dp\"\r\n            android:text=\"OPENDOTA\"\r\n            android:gravity=\"left\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            android:textSize=\"35sp\"/>\r\n\r\n        <ImageView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"63dp\"\r\n            android:layout_alignParentEnd=\"true\"\r\n            android:layout_marginTop=\"15dp\"\r\n            android:layout_marginEnd=\"50dp\"\r\n            android:src=\"@drawable/dota_2\"/>\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_marginTop=\"90sp\"\r\n            android:text=\"Open source Dota 2 data platform\"\r\n            android:textAlignment=\"center\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            android:textSize=\"22sp\">\r\n        </TextView>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"20dp\"\r\n            android:layout_marginTop=\"160dp\"\r\n            android:gravity=\"center_vertical\">\r\n\r\n            <ImageView\r\n                android:layout_width=\"40dp\"\r\n                android:layout_height=\"40dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:src=\"@drawable/steam_icon\"/>\r\n\r\n            <Button\r\n                android:id=\"@+id/btnSteamLogin\"\r\n                android:layout_width=\"0dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_weight=\"1\"\r\n                android:layout_gravity=\"center\"\r\n                android:gravity=\"center\"\r\n                android:textAlignment=\"center\"\r\n                android:text=\"Login for automatic replay parsing\"\r\n                android:textColor=\"?attr/textFillColor\"\r\n                android:textSize=\"20sp\"/>\r\n            <View\r\n                android:layout_width=\"40dp\"\r\n                android:layout_height=\"40dp\"/>\r\n\r\n        </LinearLayout>\r\n    </RelativeLayout>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"220dp\"\r\n        android:id=\"@+id/khunghome_2\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"220dp\"\r\n            android:layout_marginStart=\"5dp\"\r\n            android:layout_weight=\"1\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_marginBottom=\"288dp\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            android:gravity=\"center_horizontal\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <ImageView\r\n                android:id=\"@+id/open_source\"\r\n                android:layout_width=\"65dp\"\r\n                android:layout_height=\"67dp\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:src=\"@drawable/open_source_icon\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"top\"\r\n                android:text=\"Open Source\"\r\n                android:textColor=\"#03A9F4\"\r\n                android:textSize=\"22sp\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:gravity=\"center_horizontal\"\r\n                android:text=\"All project code is open source and available for contributors to improve and modify.\"\r\n                android:textColor=\"?attr/textFillColor\"\r\n                android:textSize=\"15sp\" />\r\n        </LinearLayout>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"220dp\"\r\n            android:layout_below=\"@+id/khunghome_1\"\r\n            android:layout_weight=\"1\"\r\n            android:layout_marginStart=\"5dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_marginEnd=\"5dp\"\r\n            android:background=\"?attr/colorOnSecondary\"\r\n            android:gravity=\"center_horizontal\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <ImageView\r\n                android:layout_width=\"65dp\"\r\n                android:layout_height=\"75dp\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:src=\"@drawable/stats_icon\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:gravity=\"top\"\r\n                android:text=\"In-Depth Data\"\r\n                android:textColor=\"#03A9F4\"\r\n                android:textSize=\"22sp\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"5dp\"\r\n                android:gravity=\"center\"\r\n                android:text=\"Parsing replay files provides highly detailed match data.\"\r\n                android:textAlignment=\"center\"\r\n                android:textColor=\"?attr/textFillColor\"\r\n                android:textSize=\"15sp\" />\r\n        </LinearLayout>\r\n\r\n    </LinearLayout>\r\n\r\n\r\n\r\n    <RelativeLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"200dp\"\r\n        android:layout_alignParentEnd=\"true\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:layout_marginStart=\"5dp\"\r\n        android:layout_marginEnd=\"5dp\"\r\n        android:background=\"?attr/colorOnSecondary\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/magic\"\r\n            android:layout_width=\"97dp\"\r\n            android:layout_height=\"67dp\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_marginTop=\"15dp\"\r\n            android:src=\"@drawable/magic_icon\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/text9\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_centerInParent=\"true\"\r\n            android:gravity=\"top\"\r\n            android:text=\"Free of Charge\"\r\n            android:textColor=\"#03A9F4\"\r\n            android:textSize=\"24sp\" />\r\n\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_below=\"@id/text9\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_marginLeft=\"30dp\"\r\n            android:layout_marginTop=\"5dp\"\r\n            android:gravity=\"center_horizontal\"\r\n            android:text=\"Server are funded by sponsors and volunteers maintain the code, so the service is offered free of charge.\"\r\n            android:textColor=\"?attr/textFillColor\"\r\n            android:textSize=\"18sp\" />\r\n\r\n    </RelativeLayout>\r\n\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_home.xml b/app/src/main/res/layout/fragment_home.xml
+--- a/app/src/main/res/layout/fragment_home.xml	(revision 9bd36381d62d3ef7370dd4dcc2de0e3f2724b8d8)
++++ b/app/src/main/res/layout/fragment_home.xml	(date 1729956971718)
+@@ -85,7 +85,7 @@
+         android:id="@+id/khunghome_2">
+ 
+         <LinearLayout
+-            android:layout_width="wrap_content"
++            android:layout_width="0dp"
+             android:layout_height="220dp"
+             android:layout_marginStart="5dp"
+             android:layout_weight="1"
+@@ -121,7 +121,7 @@
+         </LinearLayout>
+ 
+         <LinearLayout
+-            android:layout_width="wrap_content"
++            android:layout_width="0dp"
+             android:layout_height="220dp"
+             android:layout_below="@+id/khunghome_1"
+             android:layout_weight="1"
+Index: app/src/main/java/vn/edu/usth/opendota/utils/Db.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package vn.edu.usth.opendota.utils;\n\nimport vn.edu.usth.opendota.R;\n\npublic class Db {\n\n    public static String getLobbyTypeNameById(int id) {\n        switch (id) {\n            case 1:\n                return \"practice\";\n            case 2:\n                return \"tournament\";\n            case 3:\n                return \"tutorial\";\n            case 4:\n                return \"coop bots\";\n            case 5:\n                return \"ranked team mm\";\n            case 6:\n                return \"ranked solo mm\";\n            case 7:\n                return \"ranked\";\n            case 8:\n                return \"1v1 mid\";\n            case 9:\n                return \"battle cup\";\n            case 10:\n                return \"local bots\";\n            case 11:\n                return \"spectator\";\n            case 12:\n                return \"event\";\n            case 13:\n                return \"gauntlet\";\n            case 14:\n                return \"new_player\";\n            case 15:\n                return \"featured\";\n            default:\n                return \"normal\";\n        }\n    }\n\n    public static String getGameModeNameById(int id) {\n        switch (id) {\n            case 1:\n                return \"All pick\";\n            case 2:\n                return \"Captains mode\";\n            case 3:\n                return \"Random draft\";\n            case 4:\n                return \"Single draft\";\n            case 5:\n                return \"All random\";\n            case 6:\n                return \"Intro\";\n            case 7:\n                return \"Diretide\";\n            case 8:\n                return \"Reverse captains mode\";\n            case 9:\n                return \"Greeviling\";\n            case 10:\n                return \"Tutorial\";\n            case 11:\n                return \"Mid only\";\n            case 12:\n                return \"Least played\";\n            case 13:\n                return \"Limited heroes\";\n            case 14:\n                return \"Compendium matchmaking\";\n            case 15:\n                return \"Custom\";\n            case 16:\n                return \"Captains draft\";\n            case 17:\n                return \"Balanced draft\";\n            case 18:\n                return \"Ability draft\";\n            case 19:\n                return \"event\";\n            case 20:\n                return \"All random death match\";\n            case 21:\n                return \"1v1 mid\";\n            case 22:\n                return \"All draft\";\n            case 23:\n                return \"Turbo\";\n            case 24:\n                return \"Mutation\";\n            case 25:\n                return \"Coaches challenge\";\n            default:\n                return \"Unknown\";\n        }\n    }\n\n    public static String getHeroNameByID(int id) {\n        String[] heroNames = {\n                \"Unknown Hero\", // 0\n                \"antimage\", // 1\n                \"axe\", // 2\n                \"bane\", // 3\n                \"bloodseeker\", // 4\n                \"crystal_maiden\", // 5\n                \"drow_ranger\", // 6\n                \"earthshaker\", // 7\n                \"juggernaut\", // 8\n                \"mirana\", // 9\n                \"morphling\", // 10\n                \"nevermore\", // 11\n                \"phantom_lancer\", // 12\n                \"puck\", // 13\n                \"pudge\", // 14\n                \"razor\", // 15\n                \"sand_king\", // 16\n                \"storm_spirit\", // 17\n                \"sven\", // 18\n                \"tiny\", // 19\n                \"vengefulspirit\", // 20\n                \"windrunner\", // 21\n                \"zuus\", // 22\n                \"kunkka\", // 23\n                \"\", // 24\n                \"lina\", // 25\n                \"lion\", // 26\n                \"shadow_shaman\", // 27\n                \"slardar\", // 28\n                \"tidehunter\", // 29\n                \"witch_doctor\", // 30\n                \"lich\", // 31\n                \"riki\", // 32\n                \"enigma\", // 33\n                \"tinker\", // 34\n                \"sniper\", // 35\n                \"necrolyte\", // 36\n                \"warlock\", // 37\n                \"beastmaster\", // 38\n                \"queenofpain\", // 39\n                \"venomancer\", // 40\n                \"faceless_void\", // 41\n                \"skeleton_king\", // 42\n                \"death_prophet\", // 43\n                \"phantom_assassin\", // 44\n                \"pugna\", // 45\n                \"templar_assassin\", // 46\n                \"viper\", // 47\n                \"luna\", // 48\n                \"dragon_knight\", // 49\n                \"dazzle\", // 50\n                \"rattletrap\", // 51\n                \"leshrac\", // 52\n                \"furion\", // 53\n                \"life_stealer\", // 54\n                \"dark_seer\", // 55\n                \"clinkz\", // 56\n                \"omniknight\", // 57\n                \"enchantress\", // 58\n                \"huskar\", // 59\n                \"night_stalker\", // 60\n                \"broodmother\", // 61\n                \"bounty_hunter\", // 62\n                \"weaver\", // 63\n                \"jakiro\", // 64\n                \"batrider\", // 65\n                \"chen\", // 66\n                \"spectre\", // 67\n                \"ancient_apparition\", // 68\n                \"doom_bringer\", // 69\n                \"ursa\", // 70\n                \"spirit_breaker\", // 71\n                \"gyrocopter\", // 72\n                \"alchemist\", // 73\n                \"invoker\", // 74\n                \"silencer\", // 75\n                \"obsidian_destroyer\", // 76\n                \"lycan\", // 77\n                \"brewmaster\", // 78\n                \"shadow_demon\", // 79\n                \"lone_druid\", // 80\n                \"chaos_knight\", // 81\n                \"meepo\", // 82\n                \"treant\", // 83\n                \"ogre_magi\", // 84\n                \"undying\", // 85\n                \"rubick\", // 86\n                \"disruptor\", // 87\n                \"nyx_assassin\", // 88\n                \"naga_siren\", // 89\n                \"keeper_of_the_light\", // 90\n                \"wisp\", // 91\n                \"visage\", // 92\n                \"slark\", // 93\n                \"medusa\", // 94\n                \"troll_warlord\", // 95\n                \"centaur\", // 96\n                \"magnataur\", // 97\n                \"shredder\", // 98\n                \"bristleback\", // 99\n                \"tusk\", // 100\n                \"skywrath_mage\", // 101\n                \"abaddon\", // 102\n                \"elder_titan\", // 103\n                \"legion_commander\", // 104\n                \"techies\", // 105\n                \"ember_spirit\", // 106\n                \"earth_spirit\", // 107\n                \"abyssal_underlord\", // 108\n                \"terrorblade\", // 109\n                \"phoenix\", // 110\n                \"oracle\", // 111\n                \"winter_wyvern\", // 112\n                \"arc_warden\", // 113\n                \"monkey_king\", // 114\n                \"\", // 115\n                \"dark_willow\", // 119\n                \"pangolier\", // 120\n                \"grimstroke\", // 121\n                \"\", // 122\n                \"hoodwink\", // 123\n                \"\", // 124\n                \"\", // 125\n                \"void_spirit\", // 126\n                \"snapfire\", // 128\n                \"mars\", // 129\n                \"\", // 130\n                \"ringmaster\", // 131\n                \"\", // 132\n                \"\", // 133\n                \"\", // 134\n                \"dawnbreaker\", // 135\n                \"marci\", // 136\n                \"primal_beast\", // 137\n                \"muerta\" // 138\n        };\n\n        if (id < 0 || id >= heroNames.length) {\n            return heroNames[0];\n        }\n        return heroNames[id];\n    }\n\n    public static String getLocalizedNameByID(int id) {\n        String[] localizedHeroNames = {\n                \"Unknown Hero\", // 0\n                \"Anti-Mage\", // 1\n                \"Axe\", // 2\n                \"Bane\", // 3\n                \"Bloodseeker\", // 4\n                \"Crystal Maiden\", // 5\n                \"Drow Ranger\", // 6\n                \"Earthshaker\", // 7\n                \"Juggernaut\", // 8\n                \"Mirana\", // 9\n                \"Morphling\", // 10\n                \"Shadow Fiend\", // 11\n                \"Phantom Lancer\", // 12\n                \"Puck\", // 13\n                \"Pudge\", // 14\n                \"Razor\", // 15\n                \"Sand King\", // 16\n                \"Storm Spirit\", // 17\n                \"Sven\", // 18\n                \"Tiny\", // 19\n                \"Vengeful Spirit\", // 20\n                \"Windranger\", // 21\n                \"Zeus\", // 22\n                \"Kunkka\", // 23\n                \"\", // 24\n                \"Lina\", // 25\n                \"Lion\", // 26\n                \"Shadow Shaman\", // 27\n                \"Slardar\", // 28\n                \"Tidehunter\", // 29\n                \"Witch Doctor\", // 30\n                \"Lich\", // 31\n                \"Riki\", // 32\n                \"Enigma\", // 33\n                \"Tinker\", // 34\n                \"Sniper\", // 35\n                \"Necrophos\", // 36\n                \"Warlock\", // 37\n                \"Beastmaster\", // 38\n                \"Queen of Pain\", // 39\n                \"Venomancer\", // 40\n                \"Faceless Void\", // 41\n                \"Wraith King\", // 42\n                \"Death Prophet\", // 43\n                \"Phantom Assassin\", // 44\n                \"Pugna\", // 45\n                \"Templar Assassin\", // 46\n                \"Viper\", // 47\n                \"Luna\", // 48\n                \"Dragon Knight\", // 49\n                \"Dazzle\", // 50\n                \"Clockwerk\", // 51\n                \"Leshrac\", // 52\n                \"Nature's Prophet\", // 53\n                \"Lifestealer\", // 54\n                \"Dark Seer\", // 55\n                \"Clinkz\", // 56\n                \"Omniknight\", // 57\n                \"Enchantress\", // 58\n                \"Huskar\", // 59\n                \"Night Stalker\", // 60\n                \"Broodmother\", // 61\n                \"Bounty Hunter\", // 62\n                \"Weaver\", // 63\n                \"Jakiro\", // 64\n                \"Batrider\", // 65\n                \"Chen\", // 66\n                \"Spectre\", // 67\n                \"Ancient Apparition\", // 68\n                \"Doom Bringer\", // 69\n                \"Ursa\", // 70\n                \"Spirit Breaker\", // 71\n                \"Gyrocopter\", // 72\n                \"Alchemist\", // 73\n                \"Invoker\", // 74\n                \"Silencer\", // 75\n                \"Obsidian Destroyer\", // 76\n                \"Lycan\", // 77\n                \"Brewmaster\", // 78\n                \"Shadow Demon\", // 79\n                \"Lone Druid\", // 80\n                \"Chaos Knight\", // 81\n                \"Meepo\", // 82\n                \"Treant Protector\", // 83\n                \"Ogre Magi\", // 84\n                \"Undying\", // 85\n                \"Rubick\", // 86\n                \"Disruptor\", // 87\n                \"Nyx Assassin\", // 88\n                \"Naga Siren\", // 89\n                \"Keeper of the Light\", // 90\n                \"Wisp\", // 91\n                \"Visage\", // 92\n                \"Slark\", // 93\n                \"Medusa\", // 94\n                \"Troll Warlord\", // 95\n                \"Centaur Warrunner\", // 96\n                \"Magnus\", // 97\n                \"Timbersaw\", // 98\n                \"Bristleback\", // 99\n                \"Tusk\", // 100\n                \"Skywrath Mage\", // 101\n                \"Abaddon\", // 102\n                \"Elder Titan\", // 103\n                \"Legion Commander\", // 104\n                \"Techies\", // 105\n                \"Ember Spirit\", // 106\n                \"Earth Spirit\", // 107\n                \"Abyssal Underlord\", // 108\n                \"Terrorblade\", // 109\n                \"Phoenix\", // 110\n                \"Oracle\", // 111\n                \"Winter Wyvern\", // 112\n                \"Arc Warden\", // 113\n                \"Monkey King\", // 114\n                \"\", // 115\n                \"Dark Willow\", // 119\n                \"Pangolier\", // 120\n                \"Grimstroke\", // 121\n                \"\", // 122\n                \"Hoodwink\", // 123\n                \"\", // 124\n                \"\", // 125\n                \"Void Spirit\", // 126\n                \"Snapfire\", // 128\n                \"Mars\", // 129\n                \"\", // 130\n                \"Ringmaster\", // 131\n                \"\", // 132\n                \"\", // 133\n                \"\", // 134\n                \"Dawnbreaker\", // 135\n                \"Marci\", // 136\n                \"Primal Beast\", // 137\n                \"Muerta\" // 138\n        };\n\n        if (id < 0 || id >= localizedHeroNames.length) {\n            return localizedHeroNames[0];\n        }\n        return localizedHeroNames[id];\n    }\n\n\n    public static int getRankDrawableId(int rankTier) {\n        if (rankTier >= 11 && rankTier <= 15) {\n            return R.drawable.rank_icon_1;\n        } else if (rankTier >= 21 && rankTier <= 25) {\n            return R.drawable.rank_icon_2;\n        } else if (rankTier >= 31 && rankTier <= 35) {\n            return R.drawable.rank_icon_3;\n        } else if (rankTier >= 41 && rankTier <= 45) {\n            return R.drawable.rank_icon_4;\n        } else if (rankTier >= 51 && rankTier <= 55) {\n            return R.drawable.rank_icon_5;\n        } else if (rankTier >= 61 && rankTier <= 65) {\n            return R.drawable.rank_icon_6;\n        } else if (rankTier >= 71 && rankTier <= 75) {\n            return R.drawable.rank_icon_7;\n        } else if (rankTier == 80) {\n            return R.drawable.rank_icon_8;\n        } else {\n            return R.drawable.rank_icon_0;\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/vn/edu/usth/opendota/utils/Db.java b/app/src/main/java/vn/edu/usth/opendota/utils/Db.java
+--- a/app/src/main/java/vn/edu/usth/opendota/utils/Db.java	(revision 9bd36381d62d3ef7370dd4dcc2de0e3f2724b8d8)
++++ b/app/src/main/java/vn/edu/usth/opendota/utils/Db.java	(date 1729956971717)
+@@ -99,295 +99,262 @@
+     }
+ 
+     public static String getHeroNameByID(int id) {
+-        String[] heroNames = {
+-                "Unknown Hero", // 0
+-                "antimage", // 1
+-                "axe", // 2
+-                "bane", // 3
+-                "bloodseeker", // 4
+-                "crystal_maiden", // 5
+-                "drow_ranger", // 6
+-                "earthshaker", // 7
+-                "juggernaut", // 8
+-                "mirana", // 9
+-                "morphling", // 10
+-                "nevermore", // 11
+-                "phantom_lancer", // 12
+-                "puck", // 13
+-                "pudge", // 14
+-                "razor", // 15
+-                "sand_king", // 16
+-                "storm_spirit", // 17
+-                "sven", // 18
+-                "tiny", // 19
+-                "vengefulspirit", // 20
+-                "windrunner", // 21
+-                "zuus", // 22
+-                "kunkka", // 23
+-                "", // 24
+-                "lina", // 25
+-                "lion", // 26
+-                "shadow_shaman", // 27
+-                "slardar", // 28
+-                "tidehunter", // 29
+-                "witch_doctor", // 30
+-                "lich", // 31
+-                "riki", // 32
+-                "enigma", // 33
+-                "tinker", // 34
+-                "sniper", // 35
+-                "necrolyte", // 36
+-                "warlock", // 37
+-                "beastmaster", // 38
+-                "queenofpain", // 39
+-                "venomancer", // 40
+-                "faceless_void", // 41
+-                "skeleton_king", // 42
+-                "death_prophet", // 43
+-                "phantom_assassin", // 44
+-                "pugna", // 45
+-                "templar_assassin", // 46
+-                "viper", // 47
+-                "luna", // 48
+-                "dragon_knight", // 49
+-                "dazzle", // 50
+-                "rattletrap", // 51
+-                "leshrac", // 52
+-                "furion", // 53
+-                "life_stealer", // 54
+-                "dark_seer", // 55
+-                "clinkz", // 56
+-                "omniknight", // 57
+-                "enchantress", // 58
+-                "huskar", // 59
+-                "night_stalker", // 60
+-                "broodmother", // 61
+-                "bounty_hunter", // 62
+-                "weaver", // 63
+-                "jakiro", // 64
+-                "batrider", // 65
+-                "chen", // 66
+-                "spectre", // 67
+-                "ancient_apparition", // 68
+-                "doom_bringer", // 69
+-                "ursa", // 70
+-                "spirit_breaker", // 71
+-                "gyrocopter", // 72
+-                "alchemist", // 73
+-                "invoker", // 74
+-                "silencer", // 75
+-                "obsidian_destroyer", // 76
+-                "lycan", // 77
+-                "brewmaster", // 78
+-                "shadow_demon", // 79
+-                "lone_druid", // 80
+-                "chaos_knight", // 81
+-                "meepo", // 82
+-                "treant", // 83
+-                "ogre_magi", // 84
+-                "undying", // 85
+-                "rubick", // 86
+-                "disruptor", // 87
+-                "nyx_assassin", // 88
+-                "naga_siren", // 89
+-                "keeper_of_the_light", // 90
+-                "wisp", // 91
+-                "visage", // 92
+-                "slark", // 93
+-                "medusa", // 94
+-                "troll_warlord", // 95
+-                "centaur", // 96
+-                "magnataur", // 97
+-                "shredder", // 98
+-                "bristleback", // 99
+-                "tusk", // 100
+-                "skywrath_mage", // 101
+-                "abaddon", // 102
+-                "elder_titan", // 103
+-                "legion_commander", // 104
+-                "techies", // 105
+-                "ember_spirit", // 106
+-                "earth_spirit", // 107
+-                "abyssal_underlord", // 108
+-                "terrorblade", // 109
+-                "phoenix", // 110
+-                "oracle", // 111
+-                "winter_wyvern", // 112
+-                "arc_warden", // 113
+-                "monkey_king", // 114
+-                "", // 115
+-                "dark_willow", // 119
+-                "pangolier", // 120
+-                "grimstroke", // 121
+-                "", // 122
+-                "hoodwink", // 123
+-                "", // 124
+-                "", // 125
+-                "void_spirit", // 126
+-                "snapfire", // 128
+-                "mars", // 129
+-                "", // 130
+-                "ringmaster", // 131
+-                "", // 132
+-                "", // 133
+-                "", // 134
+-                "dawnbreaker", // 135
+-                "marci", // 136
+-                "primal_beast", // 137
+-                "muerta" // 138
+-        };
+-
+-        if (id < 0 || id >= heroNames.length) {
+-            return heroNames[0];
+-        }
+-        return heroNames[id];
++        if (id == 1) return "antimage";
++        else if (id == 2) return "axe";
++        else if (id == 3) return "bane";
++        else if (id == 4) return "bloodseeker";
++        else if (id == 5) return "crystal_maiden";
++        else if (id == 6) return "drow_ranger";
++        else if (id == 7) return "earthshaker";
++        else if (id == 8) return "juggernaut";
++        else if (id == 9) return "mirana";
++        else if (id == 10) return "morphling";
++        else if (id == 11) return "nevermore";
++        else if (id == 12) return "phantom_lancer";
++        else if (id == 13) return "puck";
++        else if (id == 14) return "pudge";
++        else if (id == 15) return "razor";
++        else if (id == 16) return "sand_king";
++        else if (id == 17) return "storm_spirit";
++        else if (id == 18) return "sven";
++        else if (id == 19) return "tiny";
++        else if (id == 20) return "vengefulspirit";
++        else if (id == 21) return "windrunner";
++        else if (id == 22) return "zuus";
++        else if (id == 23) return "kunkka";
++        else if (id == 25) return "lina";
++        else if (id == 26) return "lion";
++        else if (id == 27) return "shadow_shaman";
++        else if (id == 28) return "slardar";
++        else if (id == 29) return "tidehunter";
++        else if (id == 30) return "witch_doctor";
++        else if (id == 31) return "lich";
++        else if (id == 32) return "riki";
++        else if (id == 33) return "enigma";
++        else if (id == 34) return "tinker";
++        else if (id == 35) return "sniper";
++        else if (id == 36) return "necrolyte";
++        else if (id == 37) return "warlock";
++        else if (id == 38) return "beastmaster";
++        else if (id == 39) return "queenofpain";
++        else if (id == 40) return "venomancer";
++        else if (id == 41) return "faceless_void";
++        else if (id == 42) return "skeleton_king";
++        else if (id == 43) return "death_prophet";
++        else if (id == 44) return "phantom_assassin";
++        else if (id == 45) return "pugna";
++        else if (id == 46) return "templar_assassin";
++        else if (id == 47) return "viper";
++        else if (id == 48) return "luna";
++        else if (id == 49) return "dragon_knight";
++        else if (id == 50) return "dazzle";
++        else if (id == 51) return "rattletrap";
++        else if (id == 52) return "leshrac";
++        else if (id == 53) return "furion";
++        else if (id == 54) return "life_stealer";
++        else if (id == 55) return "dark_seer";
++        else if (id == 56) return "clinkz";
++        else if (id == 57) return "omniknight";
++        else if (id == 58) return "enchantress";
++        else if (id == 59) return "huskar";
++        else if (id == 60) return "night_stalker";
++        else if (id == 61) return "broodmother";
++        else if (id == 62) return "bounty_hunter";
++        else if (id == 63) return "weaver";
++        else if (id == 64) return "jakiro";
++        else if (id == 65) return "batrider";
++        else if (id == 66) return "chen";
++        else if (id == 67) return "spectre";
++        else if (id == 68) return "ancient_apparition";
++        else if (id == 69) return "doom_bringer";
++        else if (id == 70) return "ursa";
++        else if (id == 71) return "spirit_breaker";
++        else if (id == 72) return "gyrocopter";
++        else if (id == 73) return "alchemist";
++        else if (id == 74) return "invoker";
++        else if (id == 75) return "silencer";
++        else if (id == 76) return "obsidian_destroyer";
++        else if (id == 77) return "lycan";
++        else if (id == 78) return "brewmaster";
++        else if (id == 79) return "shadow_demon";
++        else if (id == 80) return "lone_druid";
++        else if (id == 81) return "chaos_knight";
++        else if (id == 82) return "meepo";
++        else if (id == 83) return "treant";
++        else if (id == 84) return "ogre_magi";
++        else if (id == 85) return "undying";
++        else if (id == 86) return "rubick";
++        else if (id == 87) return "disruptor";
++        else if (id == 88) return "nyx_assassin";
++        else if (id == 89) return "naga_siren";
++        else if (id == 90) return "keeper_of_the_light";
++        else if (id == 91) return "wisp";
++        else if (id == 92) return "visage";
++        else if (id == 93) return "slark";
++        else if (id == 94) return "medusa";
++        else if (id == 95) return "troll_warlord";
++        else if (id == 96) return "centaur";
++        else if (id == 97) return "magnataur";
++        else if (id == 98) return "shredder";
++        else if (id == 99) return "bristleback";
++        else if (id == 100) return "tusk";
++        else if (id == 101) return "skywrath_mage";
++        else if (id == 102) return "abaddon";
++        else if (id == 103) return "elder_titan";
++        else if (id == 104) return "legion_commander";
++        else if (id == 105) return "techies";
++        else if (id == 106) return "ember_spirit";
++        else if (id == 107) return "earth_spirit";
++        else if (id == 108) return "abyssal_underlord";
++        else if (id == 109) return "terrorblade";
++        else if (id == 110) return "phoenix";
++        else if (id == 111) return "oracle";
++        else if (id == 112) return "winter_wyvern";
++        else if (id == 113) return "arc_warden";
++        else if (id == 114) return "monkey_king";
++        else if (id == 119) return "dark_willow";
++        else if (id == 120) return "pangolier";
++        else if (id == 121) return "grimstroke";
++        else if (id == 123) return "hoodwink";
++        else if (id == 126) return "void_spirit";
++        else if (id == 128) return "snapfire";
++        else if (id == 129) return "mars";
++        else if (id == 131) return "ringmaster";
++        else if (id == 135) return "dawnbreaker";
++        else if (id == 136) return "marci";
++        else if (id == 137) return "primal_beast";
++        else if (id == 138) return "muerta";
++        else return "Unknown Hero";
+     }
+ 
+     public static String getLocalizedNameByID(int id) {
+-        String[] localizedHeroNames = {
+-                "Unknown Hero", // 0
+-                "Anti-Mage", // 1
+-                "Axe", // 2
+-                "Bane", // 3
+-                "Bloodseeker", // 4
+-                "Crystal Maiden", // 5
+-                "Drow Ranger", // 6
+-                "Earthshaker", // 7
+-                "Juggernaut", // 8
+-                "Mirana", // 9
+-                "Morphling", // 10
+-                "Shadow Fiend", // 11
+-                "Phantom Lancer", // 12
+-                "Puck", // 13
+-                "Pudge", // 14
+-                "Razor", // 15
+-                "Sand King", // 16
+-                "Storm Spirit", // 17
+-                "Sven", // 18
+-                "Tiny", // 19
+-                "Vengeful Spirit", // 20
+-                "Windranger", // 21
+-                "Zeus", // 22
+-                "Kunkka", // 23
+-                "", // 24
+-                "Lina", // 25
+-                "Lion", // 26
+-                "Shadow Shaman", // 27
+-                "Slardar", // 28
+-                "Tidehunter", // 29
+-                "Witch Doctor", // 30
+-                "Lich", // 31
+-                "Riki", // 32
+-                "Enigma", // 33
+-                "Tinker", // 34
+-                "Sniper", // 35
+-                "Necrophos", // 36
+-                "Warlock", // 37
+-                "Beastmaster", // 38
+-                "Queen of Pain", // 39
+-                "Venomancer", // 40
+-                "Faceless Void", // 41
+-                "Wraith King", // 42
+-                "Death Prophet", // 43
+-                "Phantom Assassin", // 44
+-                "Pugna", // 45
+-                "Templar Assassin", // 46
+-                "Viper", // 47
+-                "Luna", // 48
+-                "Dragon Knight", // 49
+-                "Dazzle", // 50
+-                "Clockwerk", // 51
+-                "Leshrac", // 52
+-                "Nature's Prophet", // 53
+-                "Lifestealer", // 54
+-                "Dark Seer", // 55
+-                "Clinkz", // 56
+-                "Omniknight", // 57
+-                "Enchantress", // 58
+-                "Huskar", // 59
+-                "Night Stalker", // 60
+-                "Broodmother", // 61
+-                "Bounty Hunter", // 62
+-                "Weaver", // 63
+-                "Jakiro", // 64
+-                "Batrider", // 65
+-                "Chen", // 66
+-                "Spectre", // 67
+-                "Ancient Apparition", // 68
+-                "Doom Bringer", // 69
+-                "Ursa", // 70
+-                "Spirit Breaker", // 71
+-                "Gyrocopter", // 72
+-                "Alchemist", // 73
+-                "Invoker", // 74
+-                "Silencer", // 75
+-                "Obsidian Destroyer", // 76
+-                "Lycan", // 77
+-                "Brewmaster", // 78
+-                "Shadow Demon", // 79
+-                "Lone Druid", // 80
+-                "Chaos Knight", // 81
+-                "Meepo", // 82
+-                "Treant Protector", // 83
+-                "Ogre Magi", // 84
+-                "Undying", // 85
+-                "Rubick", // 86
+-                "Disruptor", // 87
+-                "Nyx Assassin", // 88
+-                "Naga Siren", // 89
+-                "Keeper of the Light", // 90
+-                "Wisp", // 91
+-                "Visage", // 92
+-                "Slark", // 93
+-                "Medusa", // 94
+-                "Troll Warlord", // 95
+-                "Centaur Warrunner", // 96
+-                "Magnus", // 97
+-                "Timbersaw", // 98
+-                "Bristleback", // 99
+-                "Tusk", // 100
+-                "Skywrath Mage", // 101
+-                "Abaddon", // 102
+-                "Elder Titan", // 103
+-                "Legion Commander", // 104
+-                "Techies", // 105
+-                "Ember Spirit", // 106
+-                "Earth Spirit", // 107
+-                "Abyssal Underlord", // 108
+-                "Terrorblade", // 109
+-                "Phoenix", // 110
+-                "Oracle", // 111
+-                "Winter Wyvern", // 112
+-                "Arc Warden", // 113
+-                "Monkey King", // 114
+-                "", // 115
+-                "Dark Willow", // 119
+-                "Pangolier", // 120
+-                "Grimstroke", // 121
+-                "", // 122
+-                "Hoodwink", // 123
+-                "", // 124
+-                "", // 125
+-                "Void Spirit", // 126
+-                "Snapfire", // 128
+-                "Mars", // 129
+-                "", // 130
+-                "Ringmaster", // 131
+-                "", // 132
+-                "", // 133
+-                "", // 134
+-                "Dawnbreaker", // 135
+-                "Marci", // 136
+-                "Primal Beast", // 137
+-                "Muerta" // 138
+-        };
+-
+-        if (id < 0 || id >= localizedHeroNames.length) {
+-            return localizedHeroNames[0];
+-        }
+-        return localizedHeroNames[id];
++        if (id == 1) return "Anti-Mage";
++        else if (id == 2) return "Axe";
++        else if (id == 3) return "Bane";
++        else if (id == 4) return "Bloodseeker";
++        else if (id == 5) return "Crystal Maiden";
++        else if (id == 6) return "Drow Ranger";
++        else if (id == 7) return "Earthshaker";
++        else if (id == 8) return "Juggernaut";
++        else if (id == 9) return "Mirana";
++        else if (id == 10) return "Morphling";
++        else if (id == 11) return "Shadow Fiend";
++        else if (id == 12) return "Phantom Lancer";
++        else if (id == 13) return "Puck";
++        else if (id == 14) return "Pudge";
++        else if (id == 15) return "Razor";
++        else if (id == 16) return "Sand King";
++        else if (id == 17) return "Storm Spirit";
++        else if (id == 18) return "Sven";
++        else if (id == 19) return "Tiny";
++        else if (id == 20) return "Vengeful Spirit";
++        else if (id == 21) return "Windranger";
++        else if (id == 22) return "Zeus";
++        else if (id == 23) return "Kunkka";
++        else if (id == 25) return "Lina";
++        else if (id == 26) return "Lion";
++        else if (id == 27) return "Shadow Shaman";
++        else if (id == 28) return "Slardar";
++        else if (id == 29) return "Tidehunter";
++        else if (id == 30) return "Witch Doctor";
++        else if (id == 31) return "Lich";
++        else if (id == 32) return "Riki";
++        else if (id == 33) return "Enigma";
++        else if (id == 34) return "Tinker";
++        else if (id == 35) return "Sniper";
++        else if (id == 36) return "Necrophos";
++        else if (id == 37) return "Warlock";
++        else if (id == 38) return "Beastmaster";
++        else if (id == 39) return "Queen of Pain";
++        else if (id == 40) return "Venomancer";
++        else if (id == 41) return "Faceless Void";
++        else if (id == 42) return "Wraith King";
++        else if (id == 43) return "Death Prophet";
++        else if (id == 44) return "Phantom Assassin";
++        else if (id == 45) return "Pugna";
++        else if (id == 46) return "Templar Assassin";
++        else if (id == 47) return "Viper";
++        else if (id == 48) return "Luna";
++        else if (id == 49) return "Dragon Knight";
++        else if (id == 50) return "Dazzle";
++        else if (id == 51) return "Clockwerk";
++        else if (id == 52) return "Leshrac";
++        else if (id == 53) return "Nature's Prophet";
++        else if (id == 54) return "Lifestealer";
++        else if (id == 55) return "Dark Seer";
++        else if (id == 56) return "Clinkz";
++        else if (id == 57) return "Omniknight";
++        else if (id == 58) return "Enchantress";
++        else if (id == 59) return "Huskar";
++        else if (id == 60) return "Night Stalker";
++        else if (id == 61) return "Broodmother";
++        else if (id == 62) return "Bounty Hunter";
++        else if (id == 63) return "Weaver";
++        else if (id == 64) return "Jakiro";
++        else if (id == 65) return "Batrider";
++        else if (id == 66) return "Chen";
++        else if (id == 67) return "Spectre";
++        else if (id == 68) return "Ancient Apparition";
++        else if (id == 69) return "Doom";
++        else if (id == 70) return "Ursa";
++        else if (id == 71) return "Spirit Breaker";
++        else if (id == 72) return "Gyrocopter";
++        else if (id == 73) return "Alchemist";
++        else if (id == 74) return "Invoker";
++        else if (id == 75) return "Silencer";
++        else if (id == 76) return "Outworld Destroyer";
++        else if (id == 77) return "Lycan";
++        else if (id == 78) return "Brewmaster";
++        else if (id == 79) return "Shadow Demon";
++        else if (id == 80) return "Lone Druid";
++        else if (id == 81) return "Chaos Knight";
++        else if (id == 82) return "Meepo";
++        else if (id == 83) return "Treant Protector";
++        else if (id == 84) return "Ogre Magi";
++        else if (id == 85) return "Undying";
++        else if (id == 86) return "Rubick";
++        else if (id == 87) return "Disruptor";
++        else if (id == 88) return "Nyx Assassin";
++        else if (id == 89) return "Naga Siren";
++        else if (id == 90) return "Keeper of the Light";
++        else if (id == 91) return "Io";
++        else if (id == 92) return "Visage";
++        else if (id == 93) return "Slark";
++        else if (id == 94) return "Medusa";
++        else if (id == 95) return "Troll Warlord";
++        else if (id == 96) return "Centaur Warrunner";
++        else if (id == 97) return "Magnus";
++        else if (id == 98) return "Timbersaw";
++        else if (id == 99) return "Bristleback";
++        else if (id == 100) return "Tusk";
++        else if (id == 101) return "Skywrath Mage";
++        else if (id == 102) return "Abaddon";
++        else if (id == 103) return "Elder Titan";
++        else if (id == 104) return "Legion Commander";
++        else if (id == 105) return "Techies";
++        else if (id == 106) return "Ember Spirit";
++        else if (id == 107) return "Earth Spirit";
++        else if (id == 108) return "Underlord";
++        else if (id == 109) return "Terrorblade";
++        else if (id == 110) return "Phoenix";
++        else if (id == 111) return "Oracle";
++        else if (id == 112) return "Winter Wyvern";
++        else if (id == 113) return "Arc Warden";
++        else if (id == 114) return "Monkey King";
++        else if (id == 119) return "Dark Willow";
++        else if (id == 120) return "Pangolier";
++        else if (id == 121) return "Grimstroke";
++        else if (id == 123) return "Hoodwink";
++        else if (id == 126) return "Void Spirit";
++        else if (id == 128) return "Snapfire";
++        else if (id == 129) return "Mars";
++        else if (id == 131) return "Ringmaster";
++        else if (id == 135) return "Dawnbreaker";
++        else if (id == 136) return "Marci";
++        else if (id == 137) return "Primal Beast";
++        else if (id == 138) return "Muerta";
++        else return "Unknown Hero";
+     }
+-
+ 
+     public static int getRankDrawableId(int rankTier) {
+         if (rankTier >= 11 && rankTier <= 15) {
+@@ -410,4 +377,4 @@
+             return R.drawable.rank_icon_0;
+         }
+     }
+-}
++}
+\ No newline at end of file

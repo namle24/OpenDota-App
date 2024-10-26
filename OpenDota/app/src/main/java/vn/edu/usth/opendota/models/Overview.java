@@ -3,7 +3,7 @@ package vn.edu.usth.opendota.models;
 public class Overview {
     private Profile profile;
     private int rank_tier;
-    private long leaderboardRank;
+    private int leaderboard_rank;
     private Winlose winlose;
 
     public Profile getProfile() { return profile; }
@@ -12,8 +12,8 @@ public class Overview {
     public int getRankTier() { return rank_tier; }
     public void setRankTier(int value) { this.rank_tier = value; }
 
-    public long getLeaderboardRank() { return leaderboardRank; }
-    public void setLeaderboardRank(long value) { this.leaderboardRank = value; }
+    public int getLeaderboardRank() { return leaderboard_rank; }
+    public void setLeaderboardRank(int value) { this.leaderboard_rank = value; }
 
     public Winlose getWinlose() { return winlose; }
 
