@@ -27,7 +27,6 @@ public class ProPlayerProfile implements Parcelable {
     private boolean isLocked;
     private boolean isPro;
     private Object lockedUntil;
-    private boolean isFavourite;
 
     protected ProPlayerProfile(Parcel in) {
         account_id = String.valueOf(in.readLong());
@@ -39,7 +38,6 @@ public class ProPlayerProfile implements Parcelable {
         teamTag = in.readString();
         isLocked = in.readByte() != 0;
         isPro = in.readByte() != 0;
-        isFavourite = in.readByte() != 0;
     }
 
     public static final Creator<ProPlayerProfile> CREATOR = new Creator<ProPlayerProfile>() {
@@ -53,15 +51,6 @@ public class ProPlayerProfile implements Parcelable {
             return new ProPlayerProfile[size];
         }
     };
-
-    public boolean getFavourite() {
-        return isFavourite;
-    }
-
-    public void setFavourite(boolean isFavourite) {
-        this.isFavourite = isFavourite;
-    }
-
 
 
     public String getAccountID() { return account_id; }
@@ -149,6 +138,5 @@ public class ProPlayerProfile implements Parcelable {
         dest.writeString(teamTag);
         dest.writeByte((byte) (isLocked ? 1 : 0));
         dest.writeByte((byte) (isPro ? 1 : 0));
-        dest.writeByte((byte) (isFavourite ? 1 : 0));
-    }
+        }
 }

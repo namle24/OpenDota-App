@@ -99,295 +99,262 @@ public class Db {
     }
 
     public static String getHeroNameByID(int id) {
-        String[] heroNames = {
-                "Unknown Hero", // 0
-                "antimage", // 1
-                "axe", // 2
-                "bane", // 3
-                "bloodseeker", // 4
-                "crystal_maiden", // 5
-                "drow_ranger", // 6
-                "earthshaker", // 7
-                "juggernaut", // 8
-                "mirana", // 9
-                "morphling", // 10
-                "nevermore", // 11
-                "phantom_lancer", // 12
-                "puck", // 13
-                "pudge", // 14
-                "razor", // 15
-                "sand_king", // 16
-                "storm_spirit", // 17
-                "sven", // 18
-                "tiny", // 19
-                "vengefulspirit", // 20
-                "windrunner", // 21
-                "zuus", // 22
-                "kunkka", // 23
-                "", // 24
-                "lina", // 25
-                "lion", // 26
-                "shadow_shaman", // 27
-                "slardar", // 28
-                "tidehunter", // 29
-                "witch_doctor", // 30
-                "lich", // 31
-                "riki", // 32
-                "enigma", // 33
-                "tinker", // 34
-                "sniper", // 35
-                "necrolyte", // 36
-                "warlock", // 37
-                "beastmaster", // 38
-                "queenofpain", // 39
-                "venomancer", // 40
-                "faceless_void", // 41
-                "skeleton_king", // 42
-                "death_prophet", // 43
-                "phantom_assassin", // 44
-                "pugna", // 45
-                "templar_assassin", // 46
-                "viper", // 47
-                "luna", // 48
-                "dragon_knight", // 49
-                "dazzle", // 50
-                "rattletrap", // 51
-                "leshrac", // 52
-                "furion", // 53
-                "life_stealer", // 54
-                "dark_seer", // 55
-                "clinkz", // 56
-                "omniknight", // 57
-                "enchantress", // 58
-                "huskar", // 59
-                "night_stalker", // 60
-                "broodmother", // 61
-                "bounty_hunter", // 62
-                "weaver", // 63
-                "jakiro", // 64
-                "batrider", // 65
-                "chen", // 66
-                "spectre", // 67
-                "ancient_apparition", // 68
-                "doom_bringer", // 69
-                "ursa", // 70
-                "spirit_breaker", // 71
-                "gyrocopter", // 72
-                "alchemist", // 73
-                "invoker", // 74
-                "silencer", // 75
-                "obsidian_destroyer", // 76
-                "lycan", // 77
-                "brewmaster", // 78
-                "shadow_demon", // 79
-                "lone_druid", // 80
-                "chaos_knight", // 81
-                "meepo", // 82
-                "treant", // 83
-                "ogre_magi", // 84
-                "undying", // 85
-                "rubick", // 86
-                "disruptor", // 87
-                "nyx_assassin", // 88
-                "naga_siren", // 89
-                "keeper_of_the_light", // 90
-                "wisp", // 91
-                "visage", // 92
-                "slark", // 93
-                "medusa", // 94
-                "troll_warlord", // 95
-                "centaur", // 96
-                "magnataur", // 97
-                "shredder", // 98
-                "bristleback", // 99
-                "tusk", // 100
-                "skywrath_mage", // 101
-                "abaddon", // 102
-                "elder_titan", // 103
-                "legion_commander", // 104
-                "techies", // 105
-                "ember_spirit", // 106
-                "earth_spirit", // 107
-                "abyssal_underlord", // 108
-                "terrorblade", // 109
-                "phoenix", // 110
-                "oracle", // 111
-                "winter_wyvern", // 112
-                "arc_warden", // 113
-                "monkey_king", // 114
-                "", // 115
-                "dark_willow", // 119
-                "pangolier", // 120
-                "grimstroke", // 121
-                "", // 122
-                "hoodwink", // 123
-                "", // 124
-                "", // 125
-                "void_spirit", // 126
-                "snapfire", // 128
-                "mars", // 129
-                "", // 130
-                "ringmaster", // 131
-                "", // 132
-                "", // 133
-                "", // 134
-                "dawnbreaker", // 135
-                "marci", // 136
-                "primal_beast", // 137
-                "muerta" // 138
-        };
-
-        if (id < 0 || id >= heroNames.length) {
-            return heroNames[0];
-        }
-        return heroNames[id];
+        if (id == 1) return "antimage";
+        else if (id == 2) return "axe";
+        else if (id == 3) return "bane";
+        else if (id == 4) return "bloodseeker";
+        else if (id == 5) return "crystal_maiden";
+        else if (id == 6) return "drow_ranger";
+        else if (id == 7) return "earthshaker";
+        else if (id == 8) return "juggernaut";
+        else if (id == 9) return "mirana";
+        else if (id == 10) return "morphling";
+        else if (id == 11) return "nevermore";
+        else if (id == 12) return "phantom_lancer";
+        else if (id == 13) return "puck";
+        else if (id == 14) return "pudge";
+        else if (id == 15) return "razor";
+        else if (id == 16) return "sand_king";
+        else if (id == 17) return "storm_spirit";
+        else if (id == 18) return "sven";
+        else if (id == 19) return "tiny";
+        else if (id == 20) return "vengefulspirit";
+        else if (id == 21) return "windrunner";
+        else if (id == 22) return "zuus";
+        else if (id == 23) return "kunkka";
+        else if (id == 25) return "lina";
+        else if (id == 26) return "lion";
+        else if (id == 27) return "shadow_shaman";
+        else if (id == 28) return "slardar";
+        else if (id == 29) return "tidehunter";
+        else if (id == 30) return "witch_doctor";
+        else if (id == 31) return "lich";
+        else if (id == 32) return "riki";
+        else if (id == 33) return "enigma";
+        else if (id == 34) return "tinker";
+        else if (id == 35) return "sniper";
+        else if (id == 36) return "necrolyte";
+        else if (id == 37) return "warlock";
+        else if (id == 38) return "beastmaster";
+        else if (id == 39) return "queenofpain";
+        else if (id == 40) return "venomancer";
+        else if (id == 41) return "faceless_void";
+        else if (id == 42) return "skeleton_king";
+        else if (id == 43) return "death_prophet";
+        else if (id == 44) return "phantom_assassin";
+        else if (id == 45) return "pugna";
+        else if (id == 46) return "templar_assassin";
+        else if (id == 47) return "viper";
+        else if (id == 48) return "luna";
+        else if (id == 49) return "dragon_knight";
+        else if (id == 50) return "dazzle";
+        else if (id == 51) return "rattletrap";
+        else if (id == 52) return "leshrac";
+        else if (id == 53) return "furion";
+        else if (id == 54) return "life_stealer";
+        else if (id == 55) return "dark_seer";
+        else if (id == 56) return "clinkz";
+        else if (id == 57) return "omniknight";
+        else if (id == 58) return "enchantress";
+        else if (id == 59) return "huskar";
+        else if (id == 60) return "night_stalker";
+        else if (id == 61) return "broodmother";
+        else if (id == 62) return "bounty_hunter";
+        else if (id == 63) return "weaver";
+        else if (id == 64) return "jakiro";
+        else if (id == 65) return "batrider";
+        else if (id == 66) return "chen";
+        else if (id == 67) return "spectre";
+        else if (id == 68) return "ancient_apparition";
+        else if (id == 69) return "doom_bringer";
+        else if (id == 70) return "ursa";
+        else if (id == 71) return "spirit_breaker";
+        else if (id == 72) return "gyrocopter";
+        else if (id == 73) return "alchemist";
+        else if (id == 74) return "invoker";
+        else if (id == 75) return "silencer";
+        else if (id == 76) return "obsidian_destroyer";
+        else if (id == 77) return "lycan";
+        else if (id == 78) return "brewmaster";
+        else if (id == 79) return "shadow_demon";
+        else if (id == 80) return "lone_druid";
+        else if (id == 81) return "chaos_knight";
+        else if (id == 82) return "meepo";
+        else if (id == 83) return "treant";
+        else if (id == 84) return "ogre_magi";
+        else if (id == 85) return "undying";
+        else if (id == 86) return "rubick";
+        else if (id == 87) return "disruptor";
+        else if (id == 88) return "nyx_assassin";
+        else if (id == 89) return "naga_siren";
+        else if (id == 90) return "keeper_of_the_light";
+        else if (id == 91) return "wisp";
+        else if (id == 92) return "visage";
+        else if (id == 93) return "slark";
+        else if (id == 94) return "medusa";
+        else if (id == 95) return "troll_warlord";
+        else if (id == 96) return "centaur";
+        else if (id == 97) return "magnataur";
+        else if (id == 98) return "shredder";
+        else if (id == 99) return "bristleback";
+        else if (id == 100) return "tusk";
+        else if (id == 101) return "skywrath_mage";
+        else if (id == 102) return "abaddon";
+        else if (id == 103) return "elder_titan";
+        else if (id == 104) return "legion_commander";
+        else if (id == 105) return "techies";
+        else if (id == 106) return "ember_spirit";
+        else if (id == 107) return "earth_spirit";
+        else if (id == 108) return "abyssal_underlord";
+        else if (id == 109) return "terrorblade";
+        else if (id == 110) return "phoenix";
+        else if (id == 111) return "oracle";
+        else if (id == 112) return "winter_wyvern";
+        else if (id == 113) return "arc_warden";
+        else if (id == 114) return "monkey_king";
+        else if (id == 119) return "dark_willow";
+        else if (id == 120) return "pangolier";
+        else if (id == 121) return "grimstroke";
+        else if (id == 123) return "hoodwink";
+        else if (id == 126) return "void_spirit";
+        else if (id == 128) return "snapfire";
+        else if (id == 129) return "mars";
+        else if (id == 131) return "ringmaster";
+        else if (id == 135) return "dawnbreaker";
+        else if (id == 136) return "marci";
+        else if (id == 137) return "primal_beast";
+        else if (id == 138) return "muerta";
+        else return "Unknown Hero";
     }
 
     public static String getLocalizedNameByID(int id) {
-        String[] localizedHeroNames = {
-                "Unknown Hero", // 0
-                "Anti-Mage", // 1
-                "Axe", // 2
-                "Bane", // 3
-                "Bloodseeker", // 4
-                "Crystal Maiden", // 5
-                "Drow Ranger", // 6
-                "Earthshaker", // 7
-                "Juggernaut", // 8
-                "Mirana", // 9
-                "Morphling", // 10
-                "Shadow Fiend", // 11
-                "Phantom Lancer", // 12
-                "Puck", // 13
-                "Pudge", // 14
-                "Razor", // 15
-                "Sand King", // 16
-                "Storm Spirit", // 17
-                "Sven", // 18
-                "Tiny", // 19
-                "Vengeful Spirit", // 20
-                "Windranger", // 21
-                "Zeus", // 22
-                "Kunkka", // 23
-                "", // 24
-                "Lina", // 25
-                "Lion", // 26
-                "Shadow Shaman", // 27
-                "Slardar", // 28
-                "Tidehunter", // 29
-                "Witch Doctor", // 30
-                "Lich", // 31
-                "Riki", // 32
-                "Enigma", // 33
-                "Tinker", // 34
-                "Sniper", // 35
-                "Necrophos", // 36
-                "Warlock", // 37
-                "Beastmaster", // 38
-                "Queen of Pain", // 39
-                "Venomancer", // 40
-                "Faceless Void", // 41
-                "Wraith King", // 42
-                "Death Prophet", // 43
-                "Phantom Assassin", // 44
-                "Pugna", // 45
-                "Templar Assassin", // 46
-                "Viper", // 47
-                "Luna", // 48
-                "Dragon Knight", // 49
-                "Dazzle", // 50
-                "Clockwerk", // 51
-                "Leshrac", // 52
-                "Nature's Prophet", // 53
-                "Lifestealer", // 54
-                "Dark Seer", // 55
-                "Clinkz", // 56
-                "Omniknight", // 57
-                "Enchantress", // 58
-                "Huskar", // 59
-                "Night Stalker", // 60
-                "Broodmother", // 61
-                "Bounty Hunter", // 62
-                "Weaver", // 63
-                "Jakiro", // 64
-                "Batrider", // 65
-                "Chen", // 66
-                "Spectre", // 67
-                "Ancient Apparition", // 68
-                "Doom Bringer", // 69
-                "Ursa", // 70
-                "Spirit Breaker", // 71
-                "Gyrocopter", // 72
-                "Alchemist", // 73
-                "Invoker", // 74
-                "Silencer", // 75
-                "Obsidian Destroyer", // 76
-                "Lycan", // 77
-                "Brewmaster", // 78
-                "Shadow Demon", // 79
-                "Lone Druid", // 80
-                "Chaos Knight", // 81
-                "Meepo", // 82
-                "Treant Protector", // 83
-                "Ogre Magi", // 84
-                "Undying", // 85
-                "Rubick", // 86
-                "Disruptor", // 87
-                "Nyx Assassin", // 88
-                "Naga Siren", // 89
-                "Keeper of the Light", // 90
-                "Wisp", // 91
-                "Visage", // 92
-                "Slark", // 93
-                "Medusa", // 94
-                "Troll Warlord", // 95
-                "Centaur Warrunner", // 96
-                "Magnus", // 97
-                "Timbersaw", // 98
-                "Bristleback", // 99
-                "Tusk", // 100
-                "Skywrath Mage", // 101
-                "Abaddon", // 102
-                "Elder Titan", // 103
-                "Legion Commander", // 104
-                "Techies", // 105
-                "Ember Spirit", // 106
-                "Earth Spirit", // 107
-                "Abyssal Underlord", // 108
-                "Terrorblade", // 109
-                "Phoenix", // 110
-                "Oracle", // 111
-                "Winter Wyvern", // 112
-                "Arc Warden", // 113
-                "Monkey King", // 114
-                "", // 115
-                "Dark Willow", // 119
-                "Pangolier", // 120
-                "Grimstroke", // 121
-                "", // 122
-                "Hoodwink", // 123
-                "", // 124
-                "", // 125
-                "Void Spirit", // 126
-                "Snapfire", // 128
-                "Mars", // 129
-                "", // 130
-                "Ringmaster", // 131
-                "", // 132
-                "", // 133
-                "", // 134
-                "Dawnbreaker", // 135
-                "Marci", // 136
-                "Primal Beast", // 137
-                "Muerta" // 138
-        };
-
-        if (id < 0 || id >= localizedHeroNames.length) {
-            return localizedHeroNames[0];
-        }
-        return localizedHeroNames[id];
+        if (id == 1) return "Anti-Mage";
+        else if (id == 2) return "Axe";
+        else if (id == 3) return "Bane";
+        else if (id == 4) return "Bloodseeker";
+        else if (id == 5) return "Crystal Maiden";
+        else if (id == 6) return "Drow Ranger";
+        else if (id == 7) return "Earthshaker";
+        else if (id == 8) return "Juggernaut";
+        else if (id == 9) return "Mirana";
+        else if (id == 10) return "Morphling";
+        else if (id == 11) return "Shadow Fiend";
+        else if (id == 12) return "Phantom Lancer";
+        else if (id == 13) return "Puck";
+        else if (id == 14) return "Pudge";
+        else if (id == 15) return "Razor";
+        else if (id == 16) return "Sand King";
+        else if (id == 17) return "Storm Spirit";
+        else if (id == 18) return "Sven";
+        else if (id == 19) return "Tiny";
+        else if (id == 20) return "Vengeful Spirit";
+        else if (id == 21) return "Windranger";
+        else if (id == 22) return "Zeus";
+        else if (id == 23) return "Kunkka";
+        else if (id == 25) return "Lina";
+        else if (id == 26) return "Lion";
+        else if (id == 27) return "Shadow Shaman";
+        else if (id == 28) return "Slardar";
+        else if (id == 29) return "Tidehunter";
+        else if (id == 30) return "Witch Doctor";
+        else if (id == 31) return "Lich";
+        else if (id == 32) return "Riki";
+        else if (id == 33) return "Enigma";
+        else if (id == 34) return "Tinker";
+        else if (id == 35) return "Sniper";
+        else if (id == 36) return "Necrophos";
+        else if (id == 37) return "Warlock";
+        else if (id == 38) return "Beastmaster";
+        else if (id == 39) return "Queen of Pain";
+        else if (id == 40) return "Venomancer";
+        else if (id == 41) return "Faceless Void";
+        else if (id == 42) return "Wraith King";
+        else if (id == 43) return "Death Prophet";
+        else if (id == 44) return "Phantom Assassin";
+        else if (id == 45) return "Pugna";
+        else if (id == 46) return "Templar Assassin";
+        else if (id == 47) return "Viper";
+        else if (id == 48) return "Luna";
+        else if (id == 49) return "Dragon Knight";
+        else if (id == 50) return "Dazzle";
+        else if (id == 51) return "Clockwerk";
+        else if (id == 52) return "Leshrac";
+        else if (id == 53) return "Nature's Prophet";
+        else if (id == 54) return "Lifestealer";
+        else if (id == 55) return "Dark Seer";
+        else if (id == 56) return "Clinkz";
+        else if (id == 57) return "Omniknight";
+        else if (id == 58) return "Enchantress";
+        else if (id == 59) return "Huskar";
+        else if (id == 60) return "Night Stalker";
+        else if (id == 61) return "Broodmother";
+        else if (id == 62) return "Bounty Hunter";
+        else if (id == 63) return "Weaver";
+        else if (id == 64) return "Jakiro";
+        else if (id == 65) return "Batrider";
+        else if (id == 66) return "Chen";
+        else if (id == 67) return "Spectre";
+        else if (id == 68) return "Ancient Apparition";
+        else if (id == 69) return "Doom";
+        else if (id == 70) return "Ursa";
+        else if (id == 71) return "Spirit Breaker";
+        else if (id == 72) return "Gyrocopter";
+        else if (id == 73) return "Alchemist";
+        else if (id == 74) return "Invoker";
+        else if (id == 75) return "Silencer";
+        else if (id == 76) return "Outworld Destroyer";
+        else if (id == 77) return "Lycan";
+        else if (id == 78) return "Brewmaster";
+        else if (id == 79) return "Shadow Demon";
+        else if (id == 80) return "Lone Druid";
+        else if (id == 81) return "Chaos Knight";
+        else if (id == 82) return "Meepo";
+        else if (id == 83) return "Treant Protector";
+        else if (id == 84) return "Ogre Magi";
+        else if (id == 85) return "Undying";
+        else if (id == 86) return "Rubick";
+        else if (id == 87) return "Disruptor";
+        else if (id == 88) return "Nyx Assassin";
+        else if (id == 89) return "Naga Siren";
+        else if (id == 90) return "Keeper of the Light";
+        else if (id == 91) return "Io";
+        else if (id == 92) return "Visage";
+        else if (id == 93) return "Slark";
+        else if (id == 94) return "Medusa";
+        else if (id == 95) return "Troll Warlord";
+        else if (id == 96) return "Centaur Warrunner";
+        else if (id == 97) return "Magnus";
+        else if (id == 98) return "Timbersaw";
+        else if (id == 99) return "Bristleback";
+        else if (id == 100) return "Tusk";
+        else if (id == 101) return "Skywrath Mage";
+        else if (id == 102) return "Abaddon";
+        else if (id == 103) return "Elder Titan";
+        else if (id == 104) return "Legion Commander";
+        else if (id == 105) return "Techies";
+        else if (id == 106) return "Ember Spirit";
+        else if (id == 107) return "Earth Spirit";
+        else if (id == 108) return "Underlord";
+        else if (id == 109) return "Terrorblade";
+        else if (id == 110) return "Phoenix";
+        else if (id == 111) return "Oracle";
+        else if (id == 112) return "Winter Wyvern";
+        else if (id == 113) return "Arc Warden";
+        else if (id == 114) return "Monkey King";
+        else if (id == 119) return "Dark Willow";
+        else if (id == 120) return "Pangolier";
+        else if (id == 121) return "Grimstroke";
+        else if (id == 123) return "Hoodwink";
+        else if (id == 126) return "Void Spirit";
+        else if (id == 128) return "Snapfire";
+        else if (id == 129) return "Mars";
+        else if (id == 131) return "Ringmaster";
+        else if (id == 135) return "Dawnbreaker";
+        else if (id == 136) return "Marci";
+        else if (id == 137) return "Primal Beast";
+        else if (id == 138) return "Muerta";
+        else return "Unknown Hero";
     }
-
 
     public static int getRankDrawableId(int rankTier) {
         if (rankTier >= 11 && rankTier <= 15) {

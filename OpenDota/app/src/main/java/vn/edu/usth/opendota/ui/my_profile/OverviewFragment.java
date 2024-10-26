@@ -1,7 +1,6 @@
 package vn.edu.usth.opendota.ui.my_profile;
 
 import static android.content.ContentValues.TAG;
-
 import static vn.edu.usth.opendota.utils.Db.getRankDrawableId;
 
 import android.annotation.SuppressLint;
@@ -20,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +37,7 @@ import vn.edu.usth.opendota.retrofit.ApiClient;
 public class OverviewFragment extends Fragment {
     private ApiClient client;
     private CircleImageView ow_avar, ow_rank;
-    private TextView ow_name, ow_win, ow_lose, ow_winrate, ow_url;
+    private TextView ow_name, ow_win, ow_lose, ow_winrate, ow_url, ow_leaderboard;
     private LottieAnimationView animationView;
     private RecyclerView recyclerView;
     private final MatchesAdapter matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
@@ -57,8 +55,7 @@ public class OverviewFragment extends Fragment {
         ow_winrate = view.findViewById(R.id.ow_winrate);
         ow_url = view.findViewById(R.id.ow_profile_steam);
         ow_rank = view.findViewById(R.id.ow_ranked);
-
-
+        ow_leaderboard = view.findViewById(R.id.ow_leaderboard);
 
         return view;
     }
@@ -140,6 +137,8 @@ public class OverviewFragment extends Fragment {
         int rankimg = getRankDrawableId(rankid);
         Picasso.get().load(rankimg).into(ow_rank);
 
+        ow_leaderboard.setText(String.valueOf(overview.getLeaderboardRank()));
+
 
         String wins = String.valueOf(overview.getWinlose().getWin());
         String lose = String.valueOf(overview.getWinlose().getLose());
@@ -149,6 +148,8 @@ public class OverviewFragment extends Fragment {
         ow_win.setText("WINS\n" + wins);
         ow_lose.setText("LOSSES\n" + lose);
         ow_winrate.setText("WINRATE\n" + winrate);
+
+
     }
 
     private void setViews() {
