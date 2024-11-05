@@ -6,12 +6,12 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import vn.edu.usth.opendota.MainActivity;
 import vn.edu.usth.opendota.R;
 
 public class SettingsFragment extends Fragment {
@@ -43,21 +43,14 @@ public class SettingsFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         themeRadioGroup = view.findViewById(R.id.theme_radio_group);
-        Button applyButton = view.findViewById(R.id.apply_button);
 
         loadSelectedTheme();
 
-        applyButton.setOnClickListener(v -> applyTheme());
+        view.findViewById(R.id.apply_button).setOnClickListener(v -> applyTheme());
 
         return view;
     }
@@ -74,7 +67,12 @@ public class SettingsFragment extends Fragment {
         saveSelectedTheme(selectedTheme);
         Toast.makeText(getContext(), "Theme changed to " + selectedTheme, Toast.LENGTH_SHORT).show();
 
-        if (getActivity() != null) {
+        // Save current title in SharedPreferences
+        if (getActivity() instanceof MainActivity) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String currentTitle = ((MainActivity) getActivity()).getToolbar().getTitle().toString();
+            sharedPreferences.edit().putString("toolbar_title", currentTitle).apply();
+
             getActivity().recreate();
         }
     }

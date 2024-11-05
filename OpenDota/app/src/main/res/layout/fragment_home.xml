@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="?attr/backgroundColor"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/khunghome_1"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
@@ -22,12 +21,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="45dp"
-            android:text="OPENDOTA"
+            android:layout_marginTop="25dp"
             android:gravity="left"
+            android:text="OPENDOTA"
             android:textColor="?attr/textFillColor"
-            android:textSize="35sp"/>
+            android:textSize="35sp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -35,7 +34,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="50dp"
-            android:src="@drawable/dota_2"/>
+            android:src="@drawable/dota_2" />
 
         <TextView
             android:layout_width="match_parent"
@@ -45,52 +44,54 @@
             android:text="Open source Dota 2 data platform"
             android:textAlignment="center"
             android:textColor="?attr/textFillColor"
-            android:textSize="22sp">
-        </TextView>
+            android:textSize="22sp" />
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnSteamLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="160dp"
-            android:gravity="center_vertical">
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="140dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:src="@drawable/steam_icon"/>
-
-            <Button
-                android:id="@+id/btnSteamLogin"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:text="Login for automatic replay parsing"
-                android:textColor="?attr/textFillColor"
-                android:textSize="20sp"/>
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                android:orientation="horizontal"
+                android:background="?attr/colorPrimary">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/steam_icon" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Login for automatic replay parsing"
+                    android:textAlignment="center"
+                    android:textColor="?attr/textFillColor"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/khunghome_2"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:id="@+id/khunghome_2">
+        android:layout_height="220dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_marginStart="5dp"
-            android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="288dp"
+            android:layout_weight="1"
             android:background="?attr/colorOnSecondary"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -121,13 +122,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_below="@+id/khunghome_1"
-            android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
+            android:layout_weight="1"
             android:background="?attr/colorOnSecondary"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -160,13 +161,12 @@
     </LinearLayout>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:background="?attr/colorOnSecondary">
 
