@@ -14,10 +14,11 @@
     <string name="player_profile12">9 months</string>
     <string name="win">Win</string>
     <string name="item">item</string>
-    <string name="image">image</string>
-    <string name="navigation_drawer_open">Open Navigation Drawer</string>
-    <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav1">Home</string>
+    <string name="nav2">Search</string>
+    <string name="nav3">Favourite</string>
+    <string name="nav4">Settings</string>
 
 </resources>

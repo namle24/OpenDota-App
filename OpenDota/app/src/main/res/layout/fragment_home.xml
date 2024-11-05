@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/CARD"
-    android:orientation="vertical">
+    android:background="?attr/backgroundColor"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/khunghome_1"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:background="@color/licorice"
+        android:background="?attr/colorOnSecondary"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="45dp"
-            android:text="OPENDOTA"
+            android:layout_marginTop="25dp"
             android:gravity="left"
-            android:textColor="@color/white"
-            android:textSize="35sp">
-        </TextView>
+            android:text="OPENDOTA"
+            android:textColor="?attr/textFillColor"
+            android:textSize="35sp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -36,9 +34,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="50dp"
-            android:src="@drawable/dota_2">
-
-        </ImageView>
+            android:src="@drawable/dota_2" />
 
         <TextView
             android:layout_width="match_parent"
@@ -47,57 +43,57 @@
             android:layout_marginTop="90sp"
             android:text="Open source Dota 2 data platform"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="22sp">
-        </TextView>
+            android:textColor="?attr/textFillColor"
+            android:textSize="22sp" />
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnSteamLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="20dp"
-            android:gravity="center_vertical">
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="140dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:src="@drawable/steam_icon"
-                app:tint="@color/black">
-            </ImageView>
-
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:text="Login for automatic replay parsing"
-                android:textColor="@color/white"
-                android:textSize="20sp">
-            </TextView>
-            <View
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                android:orientation="horizontal"
+                android:background="?attr/colorPrimary"
+                android:paddingStart="5dp">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/steam_icon" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Login for automatic replay parsing"
+                    android:textAlignment="center"
+                    android:textColor="?attr/textFillColor"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/khunghome_2"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:id="@+id/khunghome_2">
+        android:layout_height="220dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="220dp"
             android:layout_marginStart="5dp"
-            android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="288dp"
-            android:background="@color/licorice"
+            android:layout_weight="1"
+            android:background="?attr/colorOnSecondary"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -122,19 +118,18 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
                 android:text="All project code is open source and available for contributors to improve and modify."
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="220dp"
-            android:layout_below="@+id/khunghome_1"
-            android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            android:background="@color/licorice"
+            android:layout_weight="1"
+            android:background="?attr/colorOnSecondary"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -159,22 +154,20 @@
                 android:gravity="center"
                 android:text="Parsing replay files provides highly detailed match data."
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="?attr/textFillColor"
                 android:textSize="15sp" />
         </LinearLayout>
 
     </LinearLayout>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:background="@color/licorice">
+        android:background="?attr/colorOnSecondary">
 
         <ImageView
             android:id="@+id/magic"
@@ -199,12 +192,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text9"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
             android:text="Server are funded by sponsors and volunteers maintain the code, so the service is offered free of charge."
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textColor="?attr/textFillColor"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 
