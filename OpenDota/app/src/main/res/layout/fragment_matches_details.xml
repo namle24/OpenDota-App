@@ -1,0 +1,673 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:ignore="ScrollViewCount"
+    android:id="@+id/matches_info">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/black"
+        tools:ignore="HardcodedText" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="204dp"
+                android:orientation="vertical"
+                android:background="@color/CARD">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="65dp"
+                        android:src="@drawable/radiant"
+                        android:contentDescription="@string/win">
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Dire Victory"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Match ID: \nRegion: \nSkill:"
+                        android:textAlignment="viewStart"
+                        android:textColor="#03A9F4"
+                        android:textSize="15sp"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="7932356419\nEurope \n"
+                        android:textColor="@color/white"
+                        android:textSize="20sp">
+                    </TextView>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="120dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="42"
+                        android:layout_marginStart="20dp"
+                        android:textSize="50sp"
+                        android:textColor="@color/win">
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="All Draft"
+                            android:textSize="18sp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white">
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00:41:06"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white">
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ENDED 16 DAYS AGO"
+                            android:textSize="18dp"
+                            android:textColor="@color/white">
+                        </TextView>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="44"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/lose"
+                        android:textSize="50sp">
+                    </TextView>
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/CARD"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/radiant"
+                    android:contentDescription="logo"
+                    android:layout_gravity="center_vertical">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Radiant"
+                    android:layout_marginStart="50sp"
+                    android:layout_gravity="bottom"
+                    android:textSize="35sp"
+                    android:textColor="@color/white">
+                </TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_marginTop="60sp">
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:weightSum="5"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/card_border">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hero"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="Player"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="K/D/A"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:padding="8dp"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="GPM"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XPM"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/player_info2"
+                        android:weightSum="8"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/player_info3"
+                        android:background="@color/licorice"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/layout_hide_show3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:layout_marginBottom="3dp"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/player_stats2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="185\n11\n20.1k\n17.3k\n0\n425"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="backpack"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/blink_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/cyclone_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/phase_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/octarine_core_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/bracer_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="item"
+                                    android:src="@drawable/black_king_bar_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </TableLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/CARD"
+            android:layout_margin="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/radiant"
+                    android:layout_gravity="center_vertical">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dire"
+                    android:layout_marginStart="50sp"
+                    android:layout_gravity="bottom"
+                    android:textSize="35sp"
+                    android:textColor="@color/white">
+                </TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_marginTop="60sp">
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/card_border">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hero"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:padding="8dp"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Player"
+                        android:layout_weight="3"
+                        android:textAlignment="center"
+                        android:padding="2dp"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="K/D/A"
+                        android:padding="8dp"
+                        android:textAlignment="center"
+                        android:layout_weight="1"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="GPM"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XPM"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:padding="8dp"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/licorice"
+                        android:id="@+id/player_info8"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:layout_marginBottom="3dp"
+                            android:id="@+id/layout_hide_show8"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/player_stats8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="76\n4\n16.1k\n21.7k\n0\n925"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/cyclone_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_magic_wand_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/arcane_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/no_item" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/no_item" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/ghost_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/licorice"
+                        android:id="@+id/player_info9"
+                        android:orientation="vertical">
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/licorice"
+                        android:id="@+id/player_info10"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/licorice"
+                            android:id="@+id/layout_hide_show10"
+                            android:visibility="gone"
+                            android:paddingStart="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/player_stats10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4BB7F1"
+                                android:text="Last Hits:\nDenies:\nTotal Gold:\nHero Damage:\nHero Healing:\nTower Damage:"
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/white"
+                                android:text="118\n17\n14.2k\n19.1k\n284\n3.0k"
+                                android:textSize="15sp"/>
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/backpack"/>
+
+                            <GridLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:rowCount="2"
+                                android:columnCount="3"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/recipe_magic_wand_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/ultimate_scepter_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/black_king_bar_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/bracer_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/phase_boots_lg" />
+
+                                <ImageView
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    android:contentDescription="@string/item"
+                                    android:src="@drawable/veil_of_discord_lg" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </TableLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

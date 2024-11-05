@@ -1,8 +1,52 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#673AB7</item>
-        <item name="colorPrimaryDark">#512DA8</item>
-        <item name="colorAccent">#FF4081</item>
+    <style name="AppTheme.Light" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#fedbd0</item>
+        <item name="colorPrimaryVariant">#E9E4E4</item>
+        <item name="colorOnPrimary">#E0D9D9</item>
+        <item name="colorSecondary">#feeae6</item>
+        <item name="colorOnSecondary">#E7E1E1</item>
+        <item name="textFillColor">#000000</item>
+        <item name="backgroundColor">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#290851</item>
+        <item name="colorPrimaryVariant">#3700b3</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#484848</item>
+        <item name="colorOnSecondary">#DC1D1D1D</item>
+        <item name="textFillColor">#ffffff</item>
+        <item name="backgroundColor">#0D0D0D</item>
+
+    </style>
+
+    <style name="AppTheme.ClassicLight" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#344955</item>
+        <item name="colorPrimaryVariant">#19A5B8</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#6A0958A6</item>
+        <item name="colorOnSecondary">#E2E1E1</item>
+        <item name="textFillColor">#000000</item>
+        <item name="backgroundColor">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.ClassicDark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#DC2F2E2E</item>
+        <item name="colorPrimaryVariant">#3700b3</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#353935</item>
+        <item name="colorOnSecondary">#DC1D1D1D</item>
+        <item name="textFillColor">#ffffff</item>
+        <item name="backgroundColor">#000000</item>
+    </style>
+
+    <style name="AppTheme.PearlDark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#4A9287</item>
+        <item name="colorPrimaryVariant">#0f172a</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">#637272</item>
+        <item name="colorOnSecondary">#1e3434</item>
+        <item name="textFillColor">#000000</item>
+        <item name="backgroundColor">#0d2424</item>
     </style>
 </resources>

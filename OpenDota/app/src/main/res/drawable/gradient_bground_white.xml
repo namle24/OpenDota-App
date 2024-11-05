@@ -7,8 +7,8 @@
             <!-- Gradient from right to left -->
             <gradient
                 android:type="linear"
-                android:startColor="#000000"
-                android:endColor="#949393"
+                android:startColor="@color/CARD"
+                android:endColor="#434343"
                 android:angle="0"
                 />
         </shape>

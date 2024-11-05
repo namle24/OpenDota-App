@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/relative_layout_search"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/CARD">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/backgroundColor">
 
-   <androidx.appcompat.widget.SearchView
-       android:id="@+id/search_view"
+   <androidx.cardview.widget.CardView
+       android:id="@+id/card"
        android:layout_width="match_parent"
-       android:textAppearance="@color/white"
        android:layout_height="wrap_content"
-       android:background="@drawable/rounded"
-       android:gravity="left"
-       android:layout_margin="10dp"
-       android:iconifiedByDefault="false"
-       android:queryHint="Search Users" />
+       android:layout_marginHorizontal="10dp"
+       android:layout_marginTop="10dp"
+       app:cardCornerRadius="5dp"
+       app:cardElevation="5dp" >
+
+
+      <androidx.appcompat.widget.SearchView
+          android:id="@+id/search_view"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:iconifiedByDefault="false"
+          android:queryHint="Search Users"
+          android:background="?attr/colorSecondary"
+          android:text="?attr/textFillColor"/>
+   </androidx.cardview.widget.CardView>
 
 
    <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/rcv_users"
+       android:layout_marginTop="10dp"
+       android:layout_below="@+id/card"
+       android:id="@+id/Matches_recyclerview"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="?attr/backgroundColor"
+       android:scrollbars="vertical"
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+       tools:listitem="@layout/fragment_profile_frame"
+       tools:ignore="MissingConstraints" />
+
+   <com.airbnb.lottie.LottieAnimationView
+       android:id="@+id/animationView"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:layout_below="@id/search_view"
-       android:padding="16dp" />
+       android:background="?attr/backgroundColor"
+       app:lottie_rawRes="@raw/loading"
+       app:lottie_autoPlay="true"
+       app:lottie_loop="true"/>
 
 </RelativeLayout>
