@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
@@ -89,7 +90,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
     private boolean checkIfFavourite(ProPlayerProfile proPlayerProfile) {
         List<ProPlayerProfile> favourites = getFavourites();
         for (ProPlayerProfile fav : favourites) {
-            if (fav.getAccountID() == proPlayerProfile.getAccountID()) {
+            if (Objects.equals(fav.getAccountID(), proPlayerProfile.getAccountID())) {
                 return true;
             }
         }

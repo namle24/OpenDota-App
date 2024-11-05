@@ -21,9 +21,9 @@ public class SettingsFragment extends Fragment {
     private enum Theme {
         LIGHT("Light", R.id.theme_light),
         DARK("Dark", R.id.theme_dark),
-        CLASSIC_LIGHT("ClassicLight", R.id.theme_classicLight),
-        CLASSIC_DARK("ClassicDark", R.id.theme_classicDark),
-        PEARL_DARK("PearlDark", R.id.theme_pearlDark);
+        CLASSIC_LIGHT("Classic Light", R.id.theme_classicLight),
+        CLASSIC_DARK("Classic Dark", R.id.theme_classicDark),
+        PEARL_DARK("Pearl Dark", R.id.theme_pearlDark);
 
         private final String name;
         private final int radioId;
@@ -67,7 +67,6 @@ public class SettingsFragment extends Fragment {
         saveSelectedTheme(selectedTheme);
         Toast.makeText(getContext(), "Theme changed to " + selectedTheme, Toast.LENGTH_SHORT).show();
 
-        // Save current title in SharedPreferences
         if (getActivity() instanceof MainActivity) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String currentTitle = ((MainActivity) getActivity()).getToolbar().getTitle().toString();
