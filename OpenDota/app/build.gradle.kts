@@ -33,7 +33,6 @@ android {
 
 dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.core:core-ktx:1.12.0") // Add this line
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment:2.8.3")
@@ -65,6 +64,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.8")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.airbnb.android:lottie:6.5.2")
+    
 
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
@@ -72,5 +72,4 @@ dependencies {
         }
     }
 }
-
 

@@ -18,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import vn.edu.usth.opendota.R;
+import vn.edu.usth.opendota.ui.home.HomeFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,16 +27,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);  // Đảm bảo layout chính cho LoginActivity
+        setContentView(R.layout.activity_login);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new HomeFragment())  // R.id.fragment_container là ID cho FrameLayout nơi bạn muốn hiển thị Fragment
+                    .replace(R.id.fragment_container, new HomeFragment())
                     .commit();
         }
     }
 
-    // Phương thức này sẽ được gọi từ HomeFragment
     public void initiateSteamLogin() {
         Log.d("SteamLogin", "Chuẩn bị khởi chạy Intent đăng nhập Steam");
         String openidUrl = "https://steamcommunity.com/openid/login" +

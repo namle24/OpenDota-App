@@ -3,10 +3,7 @@ package vn.edu.usth.opendota;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.MenuItem;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -37,46 +34,44 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String savedTitle = sharedPreferences.getString("toolbar_title", "Home");
+        toolbar.setTitle(savedTitle);
+
+        toolbar.setNavigationOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
         if (savedInstanceState == null) {
             replaceFragment(new HomeFragment());
-            toolbar.setTitle("Home");
             navigationView.setCheckedItem(R.id.nav_home);
+            toolbar.setTitle("Home");
         }
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                item.setChecked(true);
-                drawerLayout.closeDrawer(GravityCompat.START);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            item.setChecked(true);
+            drawerLayout.closeDrawer(GravityCompat.START);
 
-                if (id == R.id.nav_home) {
-                    replaceFragment(new HomeFragment());
-                    toolbar.setTitle("Home");
-                } else if (id == R.id.nav_favourite) {
-                    replaceFragment(new FavoriteFragment());
-                    toolbar.setTitle("Favourite");
-                } else if (id == R.id.nav_search) {
-                    replaceFragment(new SearchFragment());
-                    toolbar.setTitle("Search");
-                } else if (id == R.id.nav_settings) {
-                    replaceFragment(new SettingsFragment());
-                    toolbar.setTitle("Settings");
-                } else {
-                    return true;
-                }
+            if (id == R.id.nav_home) {
+                replaceFragment(new HomeFragment());
+                toolbar.setTitle("Home");
+            } else if (id == R.id.nav_favourite) {
+                replaceFragment(new FavoriteFragment());
+                toolbar.setTitle("Favourite");
+            } else if (id == R.id.nav_search) {
+                replaceFragment(new SearchFragment());
+                toolbar.setTitle("Search");
+            } else if (id == R.id.nav_settings) {
+                replaceFragment(new SettingsFragment());
+                toolbar.setTitle("Settings");
+            } else {
                 return true;
             }
+            return true;
         });
+    }
 
-
+    public MaterialToolbar getToolbar() {
+        return toolbar;
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -97,10 +92,10 @@ public class MainActivity extends AppCompatActivity {
             case "Classic Light":
                 setTheme(R.style.AppTheme_ClassicLight);
                 break;
-            case "ClassicDark":
+            case "Classic Dark":
                 setTheme(R.style.AppTheme_ClassicDark);
                 break;
-            case "PearlDark":
+            case "Pearl Dark":
                 setTheme(R.style.AppTheme_PearlDark);
                 break;
             default:

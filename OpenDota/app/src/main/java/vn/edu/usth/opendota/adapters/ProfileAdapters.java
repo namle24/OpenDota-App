@@ -1,10 +1,8 @@
 package vn.edu.usth.opendota.adapters;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,31 +11,39 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHolder> {
-    private static final String KEY_FAVORITES = "favorite_players";
-    private final String TAG = ProfileAdapters.class.getSimpleName();
-    private final ArrayList<ProPlayerProfile> proPlayerProfiles;
+
+    private static final String TAG = "Profile";
+    private final List<ProPlayerProfile> proPlayerProfiles = new ArrayList<>();
     private final Context context;
     private final OnItemClickListener onItemClickListener;
 
-    public ProfileAdapters(Context context, ArrayList<ProPlayerProfile> proPlayerProfiles, OnItemClickListener onItemClickListener) {
+
+    public ProfileAdapters(Context context, OnItemClickListener onItemClickListener) {
         this.context = context;
-        this.proPlayerProfiles = proPlayerProfiles;
         this.onItemClickListener = onItemClickListener;
+
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void submit(List<ProPlayerProfile> newList) {
+        proPlayerProfiles.clear();
+        proPlayerProfiles.addAll(newList);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -54,12 +60,9 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProfileAdapters.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull ProfileAdapters.ViewHolder holder, int position) {
         ProPlayerProfile item = proPlayerProfiles.get(position);
-        if (item == null) {
-            return;
-        }
-        holder.profile_id.setText(String.valueOf(item.getAccountId()));
+        holder.profile_id.setText(String.valueOf(item.getAccountID()));
         holder.profile_name.setText(item.getName());
         String avatarUrl = (String) item.getAvatarfull();
         if (avatarUrl != null && !avatarUrl.isEmpty()) {
@@ -68,52 +71,85 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
             holder.profile_avar.setImageResource(R.drawable.no_item);
         }
 
-        holder.heart.setImageResource(item.isFavorited() ? R.drawable.baseline_favorite_24 : R.drawable.heart_icon);
+        boolean isFavourite = checkIfFavourite(item);
+        holder.heart.setSelected(isFavourite);
 
-        holder.cardViewItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onItemClickListener.onItemClick(item);
+        holder.heart.setOnClickListener(v -> {
+            boolean newState = !holder.heart.isSelected();
+            holder.heart.setSelected(newState);
+
+            if (newState) {
+                addToFavourites(item);
+            } else {
+                removeFromFavourites(item);
             }
         });
 
-        holder.heart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (item.isFavorited()) {
-                    onItemClickListener.onClickFavorite(item);
-                    item.setFavorited(false);
-                } else {
-                    onItemClickListener.onClickFavorite(item);
-                    item.setFavorited(true);
-                }
-                notifyItemChanged(position);
-            }
-        });
-
+        holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(item));
     }
 
+    private boolean checkIfFavourite(ProPlayerProfile proPlayerProfile) {
+        List<ProPlayerProfile> favourites = getFavourites();
+        for (ProPlayerProfile fav : favourites) {
+            if (Objects.equals(fav.getAccountID(), proPlayerProfile.getAccountID())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private List<ProPlayerProfile> getFavourites() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("favorite_profiles", Context.MODE_PRIVATE);
+        String json = sharedPreferences.getString("favorites_list", null);
+        if (json != null) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<ProPlayerProfile>>() {
+            }.getType();
+            return gson.fromJson(json, type);
+        }
+        return new ArrayList<>();
+    }
+
+    private void saveFavourites(List<ProPlayerProfile> favourites) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("favorite_profiles", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(favourites);
+        editor.putString("favorites_list", json);
+        editor.apply();
+    }
+
+    private void addToFavourites(ProPlayerProfile proPlayerProfile) {
+        List<ProPlayerProfile> favourites = getFavourites();
+        favourites.add(proPlayerProfile);
+        saveFavourites(favourites);
+    }
+
+    private void removeFromFavourites(ProPlayerProfile proPlayerProfile) {
+        List<ProPlayerProfile> favourites = getFavourites();
+        favourites.removeIf(fav -> Objects.equals(fav.getAccountID(), proPlayerProfile.getAccountID()));
+        saveFavourites(favourites);
+    }
 
     public interface OnItemClickListener {
         void onItemClick(ProPlayerProfile proPlayerProfile);
-        void onClickFavorite(ProPlayerProfile proPlayerProfile);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private CardView cardViewItem;
+
         public final ImageView profile_avar;
         private final TextView profile_id;
         private final TextView profile_name;
-        private final ImageView heart;
+        private final ImageButton heart;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardViewItem = itemView.findViewById(R.id.layout_item_file);
-            profile_name = itemView.findViewById(R.id.name);
-            profile_avar = itemView.findViewById(R.id.img);
-            profile_id = itemView.findViewById(R.id.ID);
-            heart = itemView.findViewById(R.id.favorite_button);
+            profile_name = itemView.findViewById(R.id.profile_name);
+            profile_avar = itemView.findViewById(R.id.profile_avar);
+            profile_id = itemView.findViewById(R.id.profile_id);
+            heart = itemView.findViewById(R.id.heart_button);
         }
     }
+
 
 }

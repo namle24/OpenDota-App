@@ -22,8 +22,11 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:iconifiedByDefault="false"
+          android:layout_marginHorizontal="10dp"
+          android:layout_marginTop="10dp"
+          app:cardCornerRadius="5dp"
+          app:cardElevation="5dp"
           android:queryHint="Search Users"
-          app:searchIcon="?attr/textFillColor"
           android:background="?attr/colorSecondary"
           android:text="?attr/textFillColor"/>
    </androidx.cardview.widget.CardView>

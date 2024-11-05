@@ -1,6 +1,5 @@
 package vn.edu.usth.opendota.ui.my_profile;
 
-import static android.content.ContentValues.TAG;
 import static vn.edu.usth.opendota.utils.Db.getRankDrawableId;
 
 import android.annotation.SuppressLint;
@@ -35,14 +34,22 @@ import vn.edu.usth.opendota.models.Winlose;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class OverviewFragment extends Fragment {
+    private static final String TAG = "OVERVIEW";
+    private final MatchesAdapter matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
     private ApiClient client;
     private CircleImageView ow_avar, ow_rank;
     private TextView ow_name, ow_win, ow_lose, ow_winrate, ow_url, ow_leaderboard;
     private LottieAnimationView animationView;
     private RecyclerView recyclerView;
-    private final MatchesAdapter matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
     private String id;
 
+    public static OverviewFragment newInstance(String id) {
+        OverviewFragment fragment = new OverviewFragment();
+        Bundle args = new Bundle();
+        args.putString("ID_KEY", id);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,14 +65,6 @@ public class OverviewFragment extends Fragment {
         ow_leaderboard = view.findViewById(R.id.ow_leaderboard);
 
         return view;
-    }
-
-    public static OverviewFragment newInstance(String id) {
-        OverviewFragment fragment = new OverviewFragment();
-        Bundle args = new Bundle();
-        args.putString("ID_KEY", id);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -161,7 +160,6 @@ public class OverviewFragment extends Fragment {
         client.getAPIService().getMatches(id).enqueue(new Callback<List<Matches>>() {
             @Override
             public void onResponse(@NonNull Call<List<Matches>> call, @NonNull Response<List<Matches>> response) {
-                Log.d(TAG, "onResponse: " + response.body());
                 if (response.isSuccessful()) {
                     List<Matches> matches = response.body();
                     assert matches != null;
@@ -171,7 +169,6 @@ public class OverviewFragment extends Fragment {
                     Log.e(TAG, "Error code: " + response.code() + "Error Message:" + response.message());
                 }
             }
-
 
 
             @Override

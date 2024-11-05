@@ -1,12 +1,10 @@
 package vn.edu.usth.opendota.adapters;
 
-import static android.content.ContentValues.TAG;
 import static vn.edu.usth.opendota.utils.Db.getHeroNameByID;
 import static vn.edu.usth.opendota.utils.Db.getLocalizedNameByID;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +25,8 @@ import vn.edu.usth.opendota.models.Heroes;
 
 public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHolder> {
 
+    private static final String TAG = "HEROES Ap";
     private List<Heroes> heroes;
-
     public HeroesAdapters(Context context, List<Heroes> heroes) {
         this.heroes = heroes;
     }
@@ -48,23 +45,6 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
         return new ViewHolder(view);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView heroes_name;
-        public final ImageView heroes_avar;
-        private final TextView heroes_played;
-        private final TextView heroes_winrate;
-        private final TextView heroes_lastplay;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            heroes_name = itemView.findViewById(R.id.heroes_name);
-            heroes_avar = itemView.findViewById(R.id.heroes_avar);
-            heroes_played = itemView.findViewById(R.id.heroes_played);
-            heroes_lastplay = itemView.findViewById(R.id.heroes_lastplay);
-            heroes_winrate = itemView.findViewById(R.id.heroes_winrate);
-        }
-    }
-
     @Override
     public int getItemCount() {
         return heroes.size();
@@ -74,11 +54,10 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
     @Override
     public void onBindViewHolder(@NonNull HeroesAdapters.ViewHolder holder, int position) {
         Heroes item = heroes.get(position);
-        Log.d(TAG, "Heroes Details: " + item.toString());
 
         int heroId = (int) item.getHeroID();
         String heroName = getHeroNameByID(heroId);
-        String imageUrl = "https://cdn.dota2.com/apps/dota2/images/heroes/"+heroName+"_full.png";
+        String imageUrl = "https://cdn.dota2.com/apps/dota2/images/heroes/" + heroName + "_full.png";
         Picasso.get().load(imageUrl).into(holder.heroes_avar);
 
         String localname = getLocalizedNameByID(heroId);
@@ -101,6 +80,23 @@ public class HeroesAdapters extends RecyclerView.Adapter<HeroesAdapters.ViewHold
         } else {
             @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH");
             holder.heroes_lastplay.setText(sdf.format(lastPlayedDate) + " hours ago");
+        }
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public final ImageView heroes_avar;
+        private final TextView heroes_name;
+        private final TextView heroes_played;
+        private final TextView heroes_winrate;
+        private final TextView heroes_lastplay;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            heroes_name = itemView.findViewById(R.id.heroes_name);
+            heroes_avar = itemView.findViewById(R.id.heroes_avar);
+            heroes_played = itemView.findViewById(R.id.heroes_played);
+            heroes_lastplay = itemView.findViewById(R.id.heroes_lastplay);
+            heroes_winrate = itemView.findViewById(R.id.heroes_winrate);
         }
     }
 }

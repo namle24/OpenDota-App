@@ -1,7 +1,5 @@
 package vn.edu.usth.opendota.ui.my_profile;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,11 +24,11 @@ import vn.edu.usth.opendota.models.Matches;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class MatchesFragment extends Fragment {
+    private static final String TAG = "Matches Fragment";
     private MatchesAdapter matchesAdapter;
     private ApiClient client;
     private RecyclerView recyclerView;
     private String accountId;
-
 
     public static MatchesFragment newInstance(String accountId) {
         MatchesFragment fragment = new MatchesFragment();

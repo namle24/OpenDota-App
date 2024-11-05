@@ -26,19 +26,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.ProfileAdapters;
-import vn.edu.usth.opendota.adapters.SearchAdapter;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 import vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;
-import vn.edu.usth.opendota.utils.PrefUtil;
+import vn.edu.usth.opendota.ui.my_profile.OverviewFragment;
 
 public class SearchFragment extends Fragment {
-    private final String TAG = SearchAdapter.class.getSimpleName();
     private ProfileAdapters profileAdapters;
-    private SearchAdapter searchAdapter;
-    private List<ProPlayerProfile> listPlayer;
-    private ArrayList<ProPlayerProfile> arrayList;
-    private List<ProPlayerProfile> listFavorited;
     private ApiClient client;
     private RecyclerView recyclerView;
     private SearchView searchView;
@@ -56,49 +50,49 @@ public class SearchFragment extends Fragment {
         client = ApiClient.getInstance();
         recyclerView = view.findViewById(R.id.Matches_recyclerview);
         searchView = view.findViewById(R.id.search_view);
-        searchView.setIconified(false);
-        searchView.clearFocus();
         animationView = view.findViewById(R.id.animationView);
         animationView.setVisibility(View.VISIBLE);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        profileAdapters = new ProfileAdapters(requireContext(), this::navigateToProfileDetail);
+        setViews();
+        listeners();
+        setupSearch();
+    }
 
-        listPlayer = new ArrayList<>();
-        arrayList = new ArrayList<>();
-        searchAdapter = new SearchAdapter(requireContext(),  arrayList, new SearchAdapter.IOnSearchAdapterListener() {
-            @Override
-            public void onClickItem(ProPlayerProfile user) {
-                navigateToProfileDetail(user);
-            }
+    private void setViews() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(profileAdapters);
+    }
 
+    private void listeners() {
+        client.getAPIService().getProfile().enqueue(new Callback<List<ProPlayerProfile>>() {
             @Override
-            public void onClickFavorite(ProPlayerProfile proPlayerProfile) {
-                if (proPlayerProfile.isFavorited()) {
-                    PrefUtil.removeFavorite(requireContext(), proPlayerProfile);
-                    proPlayerProfile.setFavorited(false);
+            public void onResponse(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Response<List<ProPlayerProfile>> response) {
+                Log.d(TAG, "onResponse: " + response.body());
+                if (response.isSuccessful()) {
+                    proPlayerProfileList = response.body();
+                    if (proPlayerProfileList != null) {
+                        if (proPlayerProfileList.size() > 30) {
+                            proPlayerProfileList = proPlayerProfileList.subList(0, 30);
+                        }
+                    }
+                    profileAdapters.submit(proPlayerProfileList);
+                    animationView.setVisibility(View.GONE);
                 } else {
-                    PrefUtil.addToFavorites(requireContext(), proPlayerProfile);
-                    proPlayerProfile.setFavorited(true);
+                    Log.e(TAG, "Error code: " + response.code() + " Error Message: " + response.message());
                 }
-                searchAdapter.notifyDataSetChanged();
-            }
-
-        }) {
-            @Override
-            public void onClickItem(ProPlayerProfile user) {
-
             }
 
             @Override
-            public void onClickFavorite(ProPlayerProfile user) {
+            public void onFailure(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Throwable t) {
+                Log.e(TAG, "Failure: " + t.getMessage());
 
+                animationView.setVisibility(View.GONE);
             }
-        };
-        recyclerView.setAdapter(searchAdapter);
-        listFavorited = PrefUtil.getListFavorite(requireContext());
-        callGetProPlayer();
+        });
+    }
 
+    private void setupSearch() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -107,49 +101,21 @@ public class SearchFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                arrayList.clear();
-                for (ProPlayerProfile item : listPlayer) {
-                    if (item.getName().toLowerCase().contains(newText.toLowerCase())) {
-                        arrayList.add(item);
-                    }
-                }
-                searchAdapter.notifyDataSetChanged();
-                return false;
+                filterProfiles(newText);
+                return true;
             }
         });
     }
 
-
-    private void callGetProPlayer() {
-        client.getAPIService().getProfile().enqueue(new Callback<List<ProPlayerProfile>>() {
-            @Override
-            public void onResponse(Call<List<ProPlayerProfile>> call, Response<List<ProPlayerProfile>> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().size() > 0) {
-                    listPlayer.clear();
-                    arrayList.clear();
-                    for (ProPlayerProfile item : response.body().subList(0, Math.min(response.body().size(), 30))) {
-                        for (ProPlayerProfile itemFavorite : listFavorited) {
-                            if (item.getAccountId() == itemFavorite.getAccountId()) {
-                                item.setFavorited(true);
-                                break;
-                            }
-                        }
-                        listPlayer.add(item);
-                        arrayList.add(item);
-                    }
-                    searchAdapter.notifyDataSetChanged();
-                    animationView.setVisibility(View.GONE);// This is now correct
-                }
+    private void filterProfiles(String query) {
+        List<ProPlayerProfile> filteredList = new ArrayList<>();
+        for (ProPlayerProfile proPlayerProfile : proPlayerProfileList) {
+            if (proPlayerProfile.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(proPlayerProfile);
             }
-
-            @Override
-            public void onFailure(@NonNull Call<List<ProPlayerProfile>> call, @NonNull Throwable t) {
-                Log.e(TAG, "Failure: " + t.getMessage());
-                animationView.setVisibility(View.GONE);
-            }
-        });
+        }
+        profileAdapters.submit(filteredList);
     }
-
 
     private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {
         Intent intent = new Intent(getContext(), MyProfileActivity.class);

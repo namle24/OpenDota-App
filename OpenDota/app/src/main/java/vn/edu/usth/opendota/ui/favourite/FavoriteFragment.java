@@ -14,26 +14,23 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import vn.edu.usth.opendota.R;
 import vn.edu.usth.opendota.adapters.ProfileAdapters;
-import vn.edu.usth.opendota.adapters.SearchAdapter;
 import vn.edu.usth.opendota.models.ProPlayerProfile;
 import vn.edu.usth.opendota.ui.my_profile.MyProfileActivity;
-import vn.edu.usth.opendota.utils.PrefUtil;
 
 public class FavoriteFragment extends Fragment {
 
     private static final String TAG = "FAVOURITE";
     private RecyclerView recyclerView;
-    private SearchAdapter adapter;
-    private List<ProPlayerProfile> listFavorited;
-    private SharedPreferences sharedPreferences;
-    private ProfileAdapters favAdapter;
+    private ProfileAdapters adapter;
 
     @Nullable
     @Override
@@ -47,61 +44,23 @@ public class FavoriteFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.favorites_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<ProPlayerProfile> allPlayers = getAllPlayers();
 
-        listFavorited = PrefUtil.getListFavorite(requireContext());
-        if (listFavorited.isEmpty()) {
-            Log.d("Favorites", "No favorites found.");
-        }
-
-        adapter = new SearchAdapter(requireContext(), new ArrayList<>(listFavorited), new SearchAdapter.IOnSearchAdapterListener() {
-
-            @Override
-            public void onClickItem(ProPlayerProfile user) {
-                navigateToProfileDetail(user);
-            }
-
-            @Override
-            public void onClickFavorite(ProPlayerProfile proPlayerProfile) {
-                if (proPlayerProfile.isFavorited()) {
-                    removeFavorite(proPlayerProfile);
-                } else {
-                    addFavorite(proPlayerProfile);
-                }
-            }
-        }) {
-            @Override
-            public void onClickItem(ProPlayerProfile user) {
-
-            }
-
-            @Override
-            public void onClickFavorite(ProPlayerProfile user) {
-
-            }
-        };
+        adapter = new ProfileAdapters(getContext(), this::navigateToProfileDetail);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+        List<ProPlayerProfile> favouriteProPlayerProfiles = getFavourites();
+        adapter.submit(favouriteProPlayerProfiles);
     }
 
-    private List<ProPlayerProfile> getAllPlayers() {
+    private List<ProPlayerProfile> getFavourites() {
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("favorite_profiles", getContext().MODE_PRIVATE);
+        String json = sharedPreferences.getString("favorites_list", null);
+        if (json != null) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<ProPlayerProfile>>() {}.getType();
+            return gson.fromJson(json, type);
+        }
         return new ArrayList<>();
-    }
-
-    private void removeFavorite(ProPlayerProfile user) {
-        PrefUtil.removeFavorite(requireContext(), user); // Xóa người chơi khỏi danh sách yêu thích
-        user.setFavorited(false); // Cập nhật trạng thái
-        updateUIWithFavorites(); // Cập nhật giao diện người dùng
-    }
-
-    private void addFavorite(ProPlayerProfile user) {
-        PrefUtil.addToFavorites(requireContext(), user); // Thêm người chơi vào danh sách yêu thích
-        user.setFavorited(true); // Cập nhật trạng thái
-        updateUIWithFavorites(); // Cập nhật giao diện người dùng
-    }
-
-    private void updateUIWithFavorites() {
-        favAdapter.notifyDataSetChanged(); // Cập nhật adapter
     }
 
     private void navigateToProfileDetail(ProPlayerProfile proPlayerProfile) {
