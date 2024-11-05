@@ -4,7 +4,7 @@
     android:id="@+id/heroes_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp">
+    android:layout_marginBottom="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             <LinearLayout
                 android:id="@+id/line_view"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="60dp"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
@@ -50,7 +50,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:paddingVertical="8dp"
-                    tools:src="@drawable/mars_full" />
+                    tools:src="@drawable/steam_icon" />
 
 
                 <TextView
