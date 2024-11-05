@@ -126,7 +126,7 @@ public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHo
 
     private void removeFromFavourites(ProPlayerProfile proPlayerProfile) {
         List<ProPlayerProfile> favourites = getFavourites();
-        favourites.removeIf(fav -> Objects.equals(fav.getAccountID(), proPlayerProfile.getAccountID()));
+        favourites.removeIf(fav -> fav.getAccountID() == proPlayerProfile.getAccountID());
         saveFavourites(favourites);
     }
 
