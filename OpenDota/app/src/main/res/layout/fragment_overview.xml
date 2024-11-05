@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="?attr/textFillColor"
             android:textSize="@dimen/wins_loses_winrate"
             tools:text="1000" />
 

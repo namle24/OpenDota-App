@@ -50,15 +50,16 @@
             android:id="@+id/btnSteamLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="140dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="?attr/colorPrimary">
+                android:background="?attr/colorPrimary"
+                android:paddingStart="5dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -71,12 +72,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:layout_marginStart="2dp"
                     android:gravity="center"
                     android:text="Login for automatic replay parsing"
                     android:textAlignment="center"
                     android:textColor="?attr/textFillColor"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
@@ -125,7 +125,6 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="220dp"
-            android:layout_below="@+id/khunghome_1"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
@@ -165,7 +164,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
@@ -194,12 +192,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text9"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
             android:text="Server are funded by sponsors and volunteers maintain the code, so the service is offered free of charge."
             android:textColor="?attr/textFillColor"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

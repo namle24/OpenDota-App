@@ -62,10 +62,10 @@ public class MyProfileActivity extends AppCompatActivity {
             case "Classic Light":
                 setTheme(R.style.AppTheme_ClassicLight);
                 break;
-            case "ClassicDark":
+            case "Classic Dark":
                 setTheme(R.style.AppTheme_ClassicDark);
                 break;
-            case "PearlDark":
+            case "Pearl Dark":
                 setTheme(R.style.AppTheme_PearlDark);
                 break;
             default:

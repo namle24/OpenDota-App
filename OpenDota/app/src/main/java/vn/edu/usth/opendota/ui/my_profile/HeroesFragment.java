@@ -1,7 +1,5 @@
 package vn.edu.usth.opendota.ui.my_profile;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,12 +26,12 @@ import vn.edu.usth.opendota.models.Heroes;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
 public class HeroesFragment extends Fragment {
+    private static final String TAG = "Heroes Fragment";
     private HeroesAdapters heroesAdapters;
     private ApiClient client;
     private RecyclerView recyclerView;
     private String accountId;
     private LottieAnimationView animationView;
-
 
     public static HeroesFragment newInstance(String accountId) {
         HeroesFragment fragment = new HeroesFragment();

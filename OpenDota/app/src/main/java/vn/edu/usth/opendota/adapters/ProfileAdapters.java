@@ -27,6 +27,7 @@ import vn.edu.usth.opendota.models.ProPlayerProfile;
 
 public class ProfileAdapters extends RecyclerView.Adapter<ProfileAdapters.ViewHolder> {
 
+    private static final String TAG = "Profile";
     private final List<ProPlayerProfile> proPlayerProfiles = new ArrayList<>();
     private final Context context;
     private final OnItemClickListener onItemClickListener;
