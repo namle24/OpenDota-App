@@ -1,14 +1,13 @@
 package vn.edu.usth.opendota.ui.my_profile;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,47 +22,32 @@ import vn.edu.usth.opendota.adapters.MatchesAdapter;
 import vn.edu.usth.opendota.models.Matches;
 import vn.edu.usth.opendota.retrofit.ApiClient;
 
-public class MatchesFragment extends Fragment {
-    private static final String TAG = "Matches Fragment";
+public class MatchesActivity extends AppCompatActivity implements MatchesAdapter.OnItemClickListener {
+    private static final String TAG = "Matches Activity";
     private MatchesAdapter matchesAdapter;
     private ApiClient client;
     private RecyclerView recyclerView;
     private String accountId;
 
-    public static MatchesFragment newInstance(String accountId) {
-        MatchesFragment fragment = new MatchesFragment();
-        Bundle args = new Bundle();
-        args.putString("account_id", accountId);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        applyThemeFromPreferences();
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            accountId = getArguments().getString("account_id");
-        }
-    }
+        setContentView(R.layout.activity_matches);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_matches, container, false);
-    }
+        accountId = getIntent().getStringExtra("account_id");
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         client = ApiClient.getInstance();
-        recyclerView = view.findViewById(R.id.Matches_recyclerview);
-        matchesAdapter = new MatchesAdapter(getContext(), new ArrayList<>());
+        recyclerView = findViewById(R.id.Matches_recyclerview);
+
+        matchesAdapter = new MatchesAdapter(this, new ArrayList<>(), this);
 
         setViews();
         listeners();
     }
 
     private void setViews() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(matchesAdapter);
     }
 
@@ -91,4 +75,35 @@ public class MatchesFragment extends Fragment {
             Log.e(TAG, "Account ID is null");
         }
     }
+
+    @Override
+    public void onItemClick(String matchId) {
+        Intent intent = new Intent(this, MatchesDetailsFragment.class);
+        intent.putExtra("match_id", matchId);
+        startActivity(intent);
+    }
+
+    private void applyThemeFromPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String theme = sharedPreferences.getString("theme_key", "Light");
+
+        switch (theme) {
+            case "Dark":
+                setTheme(R.style.AppTheme_Dark);
+                break;
+            case "Classic Light":
+                setTheme(R.style.AppTheme_ClassicLight);
+                break;
+            case "Classic Dark":
+                setTheme(R.style.AppTheme_ClassicDark);
+                break;
+            case "Pearl Dark":
+                setTheme(R.style.AppTheme_PearlDark);
+                break;
+            default:
+                setTheme(R.style.AppTheme_Light);
+                break;
+        }
+    }
+
 }
