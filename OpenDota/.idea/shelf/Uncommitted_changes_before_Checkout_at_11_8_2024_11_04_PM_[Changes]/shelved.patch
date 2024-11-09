@@ -1,0 +1,21 @@
+Index: app/src/main/res/layout/fragment_search.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:layout_width=\"match_parent\"\n    android:id=\"@+id/relative_layout_search\"\n    android:layout_height=\"match_parent\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:background=\"?attr/backgroundColor\">\n\n   <androidx.cardview.widget.CardView\n       android:id=\"@+id/card\"\n       android:layout_width=\"match_parent\"\n       android:layout_height=\"wrap_content\"\n       android:layout_marginHorizontal=\"10dp\"\n       android:layout_marginTop=\"10dp\"\n       app:cardCornerRadius=\"5dp\"\n       app:cardElevation=\"5dp\" >\n\n\n      <androidx.appcompat.widget.SearchView\n          android:id=\"@+id/search_view\"\n          android:layout_width=\"match_parent\"\n          android:layout_height=\"wrap_content\"\n          android:iconifiedByDefault=\"false\"\n          android:layout_marginHorizontal=\"10dp\"\n          android:layout_marginTop=\"10dp\"\n          app:cardCornerRadius=\"5dp\"\n          app:cardElevation=\"5dp\"\n          android:queryHint=\"Search Users\"\n          android:background=\"?attr/colorSecondary\"\n          android:text=\"?attr/textFillColor\"/>\n   </androidx.cardview.widget.CardView>\n\n\n   <androidx.recyclerview.widget.RecyclerView\n       android:layout_marginTop=\"10dp\"\n       android:layout_below=\"@+id/card\"\n       android:id=\"@+id/Matches_recyclerview\"\n       android:layout_width=\"match_parent\"\n       android:layout_height=\"wrap_content\"\n       android:background=\"?attr/backgroundColor\"\n       android:scrollbars=\"vertical\"\n       app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\n       tools:listitem=\"@layout/fragment_profile_frame\"\n       tools:ignore=\"MissingConstraints\" />\n\n   <com.airbnb.lottie.LottieAnimationView\n       android:id=\"@+id/animationView\"\n       android:layout_width=\"match_parent\"\n       android:layout_height=\"match_parent\"\n       android:background=\"?attr/backgroundColor\"\n       app:lottie_rawRes=\"@raw/loading\"\n       app:lottie_autoPlay=\"true\"\n       app:lottie_loop=\"true\"/>\n\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_search.xml b/app/src/main/res/layout/fragment_search.xml
+--- a/app/src/main/res/layout/fragment_search.xml	(revision 1ca55a54b10d47fae719b92b16e73de732939bb6)
++++ b/app/src/main/res/layout/fragment_search.xml	(date 1730965732114)
+@@ -22,10 +22,6 @@
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:iconifiedByDefault="false"
+-          android:layout_marginHorizontal="10dp"
+-          android:layout_marginTop="10dp"
+-          app:cardCornerRadius="5dp"
+-          app:cardElevation="5dp"
+           android:queryHint="Search Users"
+           android:background="?attr/colorSecondary"
+           android:text="?attr/textFillColor"/>
